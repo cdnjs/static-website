@@ -27,11 +27,19 @@ body,
     position: absolute;
     top: 40px;
     left: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .nav a {
     margin-left: 28px;
     text-decoration: none;
+    width: 31px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav a i {
@@ -48,7 +56,7 @@ body,
     display: block;
     text-decoration: none;
     width: 412px;
-    max-width: 90%;
+    max-width: 90vw;
 }
 
 .main a img {
@@ -59,5 +67,32 @@ body,
     color: #CBC9C9;
     font-family: "Ubuntu", sans-serif;
     font-size: 38px;
+    margin: 18px 0;
     letter-spacing: 0.29px;
+}
+
+@media only screen and (max-width: 768px) {
+    html, body {
+        background-image: url("mobile.svg");
+        background-position: left top;
+    }
+
+    .nav {
+        left: 20px;
+        flex-direction: column;
+    }
+
+    .nav a {
+        margin-left: 0;
+        margin-top: 28px;
+    }
+
+    .main a {
+        width: 300px;
+    }
+
+    .main h1 {
+        font-size: 28px;
+        margin: 12px 0;
+    }
 }
