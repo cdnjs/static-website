@@ -6,4 +6,5 @@ node_modules
 
 # Parcel
 dist
+dev
 .cache

@@ -4,7 +4,17 @@
   "description": "The new cdnjs website, using Vue & VueRouter",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "npm run dev:static && npm run dev:parcel",
+    "dev:parcel": "parcel src/index.html --out-dir dev --port 8000",
+    "dev:static": "copyfiles --up 2 src/static/{*,**/*} dev",
+    "build": "npm run build:clean && npm run build:static && npm run build:parcel",
+    "build:clean": "rm -rf dist",
+    "build:static": "copyfiles --up 2 ./src/static/{*,**/*} dist",
+    "build:parcel": "parcel build src/index.html --out-dir dist",
+    "test": "npm run test:eslint && npm run test:scss",
+    "test:eslint": "eslint 'src/**/*.{js,vue}'",
+    "test:eslint:fix": "npm run test:eslint -- --fix",
+    "test:scss": "sass-lint 'src/**/*.scss' --verbose --no-exit --config .sasslintrc"
   },
   "repository": {
     "type": "git",
@@ -25,7 +35,11 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.1.1",
+    "copyfiles": "^2.2.0",
+    "eslint": "^6.2.2",
+    "eslint-plugin-vue": "5.2.3",
     "sass": "^1.26.1",
+    "sass-lint": "^1.13.1",
     "vue-template-compiler": "^2.6.11"
   }
 }
