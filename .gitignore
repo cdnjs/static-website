@@ -1,1 +1,9 @@
-.idea/
+# IDE
+.idea
+
+# Node.js
+node_modules
+
+# Parcel
+dist
+.cache

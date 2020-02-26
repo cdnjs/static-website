@@ -1,0 +1,31 @@
+{
+  "name": "cdnjs.dev",
+  "version": "1.0.0",
+  "description": "The new cdnjs website, using Vue & VueRouter",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattIPv4/cdnjs.dev.git"
+  },
+  "author": "Matt (IPv4) Cowley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MattIPv4/cdnjs.dev/issues"
+  },
+  "homepage": "https://github.com/MattIPv4/cdnjs.dev#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "parcel-bundler": "^1.12.4",
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4",
+    "vue-router": "^3.1.6"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.1.1",
+    "sass": "^1.26.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

@@ -20,7 +20,7 @@
     <meta name="twitter:creator" content="@MattIPv4"/>
     <meta name="twitter:title" content="cdnjs - Coming Soon"/>
     <meta name="twitter:description" content="cdnjs.dev - The testbed for the new cdnjs branding/website."/>
-    <meta name="twitter:image" content="https://cdnjs.dev/assets/banner.png"/>
+    <meta name="twitter:image" content="assets/banner.png"/>
     <meta name="twitter:url" content="https://cdnjs.dev"/>
 
     <link rel="canonical" href="https://cdnjs.dev"/>
@@ -33,26 +33,21 @@
     <meta prefix="og: http://ogp.me/ns#" property="og:description"
           content="cdnjs.dev - The testbed for the new cdnjs branding/website."/>
     <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://cdnjs.dev"/>
-    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://cdnjs.dev/assets/banner.png"/>
-    <meta prefix="og: http://ogp.me/ns#" property="og:image:url" content="https://cdnjs.dev/assets/banner.png"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="assets/banner.png"/>
+    <meta prefix="og: http://ogp.me/ns#" property="og:image:url" content="assets/banner.png"/>
 
-    <link rel="stylesheet" href="assets/style.min.css"/>
+    <link rel="stylesheet" href="scss/style.scss"/>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/brands.min.css"
           integrity="sha256-vewCp5psT5Kc8SybIVSSpVMMSJrSdIf4SIdGaDERVJM=" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css"
           integrity="sha256-2YN65RPLgK7PP1NpH0YKIgYwPo7o/96HqVXBH7lQ3MU=" crossorigin="anonymous"/>
 </head>
 <body>
-<div class="nav">
-    <a href="https://twitter.com/cdnjs"><i class="fab fa-twitter"></i></a>
-    <a href="https://cdnjs.discourse.group/"><i class="fab fa-discourse"></i></a>
-    <a href="https://github.com/MattIPv4/cdnjs.dev"><i class="fab fa-github"></i></a>
-</div>
 
-<div class="main">
-    <a href="https://cdnjs.com"><img src="assets/logo.svg" alt="cdnjs"/></a>
-    <h1>Coming soon</h1>
-</div>
+<!-- Vue (VueRouter) app -->
+<div id="app"></div>
+<script src="mount.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
