@@ -2,7 +2,7 @@
     <main>
         <Nav></Nav>
         <section class="main">
-            <a href="https://cdnjs.com"><img src="../assets/logo.svg" alt="cdnjs"/></a>
+            <a href="https://cdnjs.com"><img src="../assets/logo.svg" alt="cdnjs" /></a>
             <h1>Coming soon</h1>
         </section>
     </main>
@@ -15,6 +15,6 @@
         name: 'Index',
         components: {
             Nav,
-        }
+        },
     };
 </script>
