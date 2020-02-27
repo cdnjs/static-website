@@ -4,9 +4,10 @@
   "description": "The new cdnjs website, using Vue & VueRouter",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev:static && npm run dev:parcel",
-    "dev:parcel": "parcel src/index.html --out-dir dev --port 8000",
+    "dev": "npm run dev:static && npm run dev:parcel & npm run dev:server",
     "dev:static": "copyfiles --up 2 src/static/{*,**/*} dev",
+    "dev:parcel": "parcel watch src/index.html --out-dir dev",
+    "dev:server": "node src/server/app.js",
     "build": "npm run build:clean && npm run build:static && npm run build:parcel",
     "build:clean": "rm -rf dist",
     "build:static": "copyfiles --up 2 ./src/static/{*,**/*} dist",
@@ -38,6 +39,7 @@
     "copyfiles": "^2.2.0",
     "eslint": "^6.2.2",
     "eslint-plugin-vue": "5.2.3",
+    "express": "^4.17.1",
     "sass": "^1.26.1",
     "sass-lint": "^1.13.1",
     "vue-template-compiler": "^2.6.11"
