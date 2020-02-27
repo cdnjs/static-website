@@ -4,22 +4,20 @@
             index-name="libraries"
             :search-client="searchClient"
             class="inline-search"
+            ref="instantSearch"
             v-if="!hidden"
         >
             <ais-configure :hits-per-page.camel="3"></ais-configure>
-            <ais-search-box
-                :placeholder="placeholder"
-                @focus="showHits = true"
-                @blur="showHits = false"
-                @submit.native="showMore"
-                ref="search"
-            ></ais-search-box>
-            <ais-state-results>
+            <ais-search-box :placeholder="placeholder" @focus="focused" @submit.native="showMore" ref="search"></ais-search-box>
+            <ais-state-results ref="results">
                 <template slot-scope="{ query }">
                     <ais-hits v-if="query.length > 0 && showHits">
                         <ul slot-scope="{ items }">
                             <li v-for="item in items" :key="item.objectID">
-                                {{ item.name }}
+                                <router-link :to="{ name: 'library', params: { id: item.name } }">
+                                    <p class="name">{{ item.name }} <span class="version">@ {{ item.version }}</span></p>
+                                    <p class="description">{{ item.description }}</p>
+                                </router-link>
                             </li>
                         </ul>
                     </ais-hits>
@@ -39,6 +37,7 @@
             return {
                 hidden: false,
                 showHits: false,
+                listenerRegistered: false,
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient: algoliasearch(
                     '2QWLVLXZB6',
@@ -47,8 +46,26 @@
             };
         },
         methods: {
+            focused() {
+                // Register a listener for results
+                if (!this.$data.listenerRegistered) {
+                    this.$refs.instantSearch.instantSearchInstance.helper.on('result', () => {
+                       this.$nextTick(() => {
+                           // If the search element is not in the nav, set a margin so it doesn't overflow the page
+                           if (!this.$refs.instantSearch.$el.childNodes.length) {
+                               const results = this.$refs.results.$el;
+                               results.parentElement.style.marginBottom = `${results.offsetHeight + 4}px`;
+                           }
+                       });
+                    });
+                    this.$data.listenerRegistered = true;
+                }
+
+                // Ensure we are showing hits now they're using the input
+                this.$data.showHits = true;
+            },
             showMore() {
-                this.$router.push({ path: '/libraries', query: {
+                this.$router.push({ name: 'libraries', query: {
                     q: this.$refs.search.$children[0].$refs.input.value || undefined
                 }});
             },

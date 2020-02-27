@@ -24,6 +24,11 @@
         },
         methods: {
             recoverInlineSearch() {
+                // Reset query
+                this.$refs.inlineSearch.$data.showHits = false;
+                this.$refs.inlineSearch.$refs.search.$data.state.refine('');
+
+                // Recover element back to nav
                 if (this.$data.currentSearchElm) {
                     // Show the elm
                     this.$refs.inlineSearch.$data.hidden = false;

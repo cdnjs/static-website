@@ -14,7 +14,7 @@ main {
     section {
         align-items: flex-start;
         max-width: 932px;
-        padding: 0 $whitespace;
+        padding: $whitespace;
 
         h1 {
           @include font-regular;
