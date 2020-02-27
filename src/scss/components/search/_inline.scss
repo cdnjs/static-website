@@ -1,0 +1,76 @@
+&.inline-search {
+  position: relative;
+
+  .ais-StateResults {
+    background: $darker;
+    border-radius: $radius;
+    position: absolute;
+    top: calc(100% + 4px);
+    width: 100%;
+
+    .ais-Hits {
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: $whitespace;
+
+        li {
+          background: $dark;
+          border-radius: $radius / 2;
+          margin: 0;
+          padding: $whitespace;
+
+          a {
+            display: block;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+              p {
+                &.name {
+                  color: $primary-hover;
+                }
+
+                &.description {
+                  color: $alt;
+                }
+              }
+            }
+
+            p {
+              transition: color .2s ease-in-out;
+
+              &.name {
+                @include font-regular;
+
+                color: $primary;
+                font-size: 20px;
+                margin: 0 0 ($whitespace / 4);
+
+                span {
+                  &.version {
+                    font-size: 16px;
+                  }
+                }
+              }
+
+              &.description {
+                @include font-regular;
+
+                color: $light;
+                font-size: 16px;
+                margin: 0;
+              }
+            }
+          }
+
+          + li {
+            margin-top: $whitespace;
+          }
+        }
+      }
+    }
+  }
+}

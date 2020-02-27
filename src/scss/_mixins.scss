@@ -4,6 +4,12 @@
   flex-wrap: wrap;
 };
 
+@mixin flex-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+};
+
 @mixin font-light {
   font-family: "Ubuntu", sans-serif;
   font-weight: 300;

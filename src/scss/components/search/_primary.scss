@@ -1,0 +1,136 @@
+&.primary-search {
+  @include flex-column;
+
+  align-items: normal;
+  flex-grow: 1;
+
+  header {
+    @include flex-column;
+
+    padding: ($whitespace * 4) 0 $whitespace;
+
+    section {
+      max-width: 1100px;
+
+      .ais-SearchBox {
+        width: 100%;
+      }
+
+      .ais-Stats {
+        p {
+          @include font-regular;
+
+          font-size: 18px;
+          color: $alt;
+
+          .hits {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+
+  .ais-InfiniteHits {
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 1280px;
+
+    ul {
+      @include flex-row;
+
+      list-style: none;
+      margin: $whitespace 0;
+      padding: 0;
+
+      li {
+        flex-basis: calc(50% - #{$whitespace * 4});
+        margin: ($whitespace / 2) ($whitespace * 2);
+        background: $darker;
+        border-radius: $radius / 2;
+        padding: $whitespace ($whitespace * 1.5);
+
+        &.show-more {
+          flex-basis: 100%;
+        }
+
+        .title {
+          @include flex-row;
+
+          align-items: flex-end;
+
+          a {
+            @include font-regular;
+
+            display: block;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            transition: color .2s ease-in-out;
+            color: $primary;
+            font-size: 24px;
+
+            &:hover,
+            &:focus {
+                color: $primary-hover;
+            }
+
+            .version {
+              font-size: 14px;
+            }
+          }
+
+          .stars {
+            @include font-regular;
+
+            color: $light;
+            display: block;
+            font-size: 14px;
+            margin: 0 0 0 $whitespace;
+
+            i {
+              margin: 0 0 ($whitespace / 4);
+            }
+          }
+
+          .links {
+            margin: 0 0 0 auto;
+
+            i {
+              color: $light;
+              cursor: pointer;
+              transition: color .2s ease-in-out;
+              margin: 0 0 0 ($whitespace / 2);
+              font-size: 1.2rem;
+
+              &:hover {
+                color: $alt;
+              }
+            }
+          }
+        }
+
+        .description {
+          @include font-regular;
+
+          color: $light;
+          font-size: 16px;
+          margin: $whitespace 0 0;
+        }
+
+        .tags {
+          @include font-regular;
+
+          color: $light;
+          font-size: 12px;
+          margin: ($whitespace / 2) 0 0;
+
+          .keywords {
+            display: inline-block;
+            margin: 0 0 0 ($whitespace / 2);
+          }
+        }
+      }
+    }
+  }
+}
