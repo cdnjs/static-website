@@ -11,7 +11,7 @@
                 <ais-search-box :placeholder="placeholder" :autofocus="true"></ais-search-box>
 
                 <ais-stats>
-                    <p slot-scope="{ hitsPerPage, nbPages, nbHits, page, processingTimeMS, query }">
+                    <p slot-scope="{ nbHits, processingTimeMS }">
                         <span class="hits">{{ nbHits.toLocaleString() }}</span> libraries found in {{ processingTimeMS }}ms.
                     </p>
                 </ais-stats>
@@ -19,7 +19,7 @@
         </header>
 
         <ais-infinite-hits>
-            <ul slot-scope="{ items, refinePrevious, refineNext }">
+            <ul slot-scope="{ items, refineNext }">
                 <template v-for="item in items">
                     <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
                 </template>
@@ -44,7 +44,7 @@
         },
         data() {
             return {
-                query: this.$route.params.q || this.$route.params.query || '',
+                query: this.$route.query.q || this.$route.query.query || '',
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
             };

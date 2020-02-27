@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    const Nav = require('./components/nav.vue');
-    const InlineSearch = require('./components/inline_search.vue');
+    const Nav = require('./components/nav');
+    const InlineSearch = require('./components/inline_search');
 
     module.exports = {
         name: 'App',
