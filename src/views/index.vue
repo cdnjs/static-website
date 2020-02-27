@@ -9,5 +9,7 @@
             cdnjs is a web CDN service, trusted by over 4,000,000 websites, working to make it faster and easier to
             load library files to your websites.
         </h2>
+
+        <div data-search-target></div>
     </section>
 </template>

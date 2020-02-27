@@ -4,7 +4,7 @@ const Index = require('./views/index.vue');
 const Libraries = require('./views/libraries.vue');
 const NotFound = require('./views/not_found.vue');
 
-const router = [
+const routes = [
     {
         name: 'index',
         meta: { classes: ['landing'] },
@@ -15,7 +15,8 @@ const router = [
         name: 'libraries',
         meta: { classes: [] },
         path: '/libraries',
-        component: Libraries, props: (route) => ({ query: route.query.q || '' })
+        component: Libraries,
+        props: (route) => ({ query: route.query.q || '' })
     },
     {
         name: 'not-found',
@@ -25,7 +26,9 @@ const router = [
     },
 ];
 
-module.exports = new VueRouter({
+const router = new VueRouter({
     mode: 'history',
-    routes: router,
+    routes,
 });
+
+module.exports = router;

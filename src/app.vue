@@ -17,22 +17,54 @@
             Nav,
             InlineSearch,
         },
+        data() {
+            return {
+                currentSearchElm: null,
+            };
+        },
         methods: {
-            checkInlineSearch() {
-                if (this.$route.name === 'libraries')
-                    this.$refs.inlineSearch.$data.hidden = true;
-                else
+            recoverInlineSearch() {
+                if (this.$data.currentSearchElm) {
+                    // Show the elm
                     this.$refs.inlineSearch.$data.hidden = false;
 
+                    // Move it back to the nav
+                    while (this.$data.currentSearchElm.childNodes.length > 0) {
+                        this.$refs.inlineSearch.$el.appendChild(this.$data.currentSearchElm.childNodes[0]);
+                    }
 
-                // If home, move to landing
-                // Else, ensure in nav
+                    // Reset where it is
+                    this.$data.currentSearchElm = null;
+                }
+            },
+            checkInlineSearch() {
+                // Show before we do anything
+                this.$refs.inlineSearch.$data.hidden = false;
+
+                this.$nextTick(() => {
+                    // Move search to inside landing on index
+                    const searchTarget = this.$el.querySelector('[data-search-target]');
+                    if (searchTarget) {
+                        searchTarget.className = [...searchTarget.classList, ...this.$refs.inlineSearch.$el.classList].join(' ');
+                        while (this.$refs.inlineSearch.$el.childNodes.length > 0) {
+                            searchTarget.appendChild(this.$refs.inlineSearch.$el.childNodes[0]);
+                        }
+                        this.$data.currentSearchElm = searchTarget;
+                    }
+
+                    // Hide search on libraries
+                    this.$refs.inlineSearch.$data.hidden = this.$route.name === 'libraries';
+                });
             }
         },
-        watch: {
-            $route() {
+        created() {
+            this.$router.beforeEach((_, __, next) => {
+                this.recoverInlineSearch();
+                next();
+            });
+            this.$router.afterEach(() => {
                 this.checkInlineSearch();
-            }
+            });
         },
         mounted() {
             this.checkInlineSearch();
