@@ -1,0 +1,50 @@
+main {
+  &.landing {
+    background-image: url("../assets/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+
+    @media only screen and (max-width: 768px) {
+      background-image: url("../assets/mobile.svg");
+      background-position: left top;
+    }
+
+    section {
+        align-items: flex-start;
+        max-width: 932px;
+        padding: 0 $whitespace;
+
+        h1 {
+          @include font-regular;
+
+          color: $light;
+          font-size: 48px;
+          margin: 0 0 ($whitespace * 2);
+          letter-spacing: .41px;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 32px;
+            margin: 0 0 $whitespace;
+          }
+        }
+
+        h2 {
+          @include font-light;
+
+          color: $light;
+          font-size: 24px;
+          letter-spacing: .2px;
+          margin: 0 0 ($whitespace * 5);
+
+          @media only screen and (max-width: 768px) {
+            font-size: 16px;
+            margin: 0 0 ($whitespace * 2.5);
+          }
+        }
+    }
+  }
+}
+
+

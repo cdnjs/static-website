@@ -5,35 +5,51 @@
   height: 75px;
   background: $darker;
 
+  .left {
+    margin: 0 auto 0 ($whitespace * 8);
+  }
+
+  .right {
+    margin: 0 ($whitespace * 8) 0 auto;
+  }
+
   .left,
   .right {
     @include flex-row;
     align-content: center;
 
+    @media only screen and (max-width: 768px) {
+      margin: 0 $whitespace;
+    }
+
     a {
-      margin-left: 28px;
+      @include font-regular;
+
+      font-size: 20px;
+      color: $light;
+      margin: 0 $whitespace;
       text-decoration: none;
-      width: 31px;
-      height: 31px;
       display: flex;
       align-items: center;
       justify-content: center;
 
-      @media only screen and (max-width: 768px) {
-        margin-left: 0;
-        margin-top: 28px;
-      }
-
       &:hover,
       &:focus {
+        color: $alt;
+
         i {
-          color: #CBC9C9;
+          color: $light;
         }
       }
 
       i {
-        color: #A6A6A6;
+        margin-top: 2px;
+        color: $alt;
         font-size: 26px;
+      }
+
+      img {
+        height: $whitespace * 2.25;
       }
     }
   }

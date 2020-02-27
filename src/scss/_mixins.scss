@@ -3,3 +3,23 @@
   flex-direction: row;
   flex-wrap: wrap;
 };
+
+@mixin font-light {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
+
+@mixin font-regular {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+}
+
+@mixin font-medium {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+}
+
+@mixin font-bold {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}

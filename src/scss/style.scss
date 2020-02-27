@@ -1,4 +1,6 @@
 @import "variables";
 @import "mixins";
-@import "components/main";
+@import "components/base";
+@import "components/landing";
 @import "components/nav";
+@import "views/index";

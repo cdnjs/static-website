@@ -1,18 +1,16 @@
 require('babel-polyfill');
 const Vue = require('vue').default;
+
 const VueRouter = require('vue-router').default;
-const Index = require('./views/index.vue');
+Vue.use(VueRouter);
 
-const routes = [
-    { path: '/', component: Index },
-];
+const InstantSearch = require('vue-instantsearch').default;
+Vue.use(InstantSearch);
 
-const router = new VueRouter({
-    mode: 'history',
-    routes,
-});
+const App = require('./app.vue');
+const router = require('./router');
 
 new Vue({
-    render: h => h(Index),
+    render: h => h(App),
     router,
 }).$mount('#app');
