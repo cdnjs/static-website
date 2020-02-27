@@ -11,5 +11,8 @@
         </h2>
 
         <div data-search-target></div>
+
+        <!-- TODO: GitHub corner -->
+        <!-- TODO: sponsor/support banner -->
     </section>
 </template>

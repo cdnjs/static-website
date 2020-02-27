@@ -8,6 +8,7 @@
 
         <header>
             <section>
+                <!-- TODO: Make autofocus work -->
                 <ais-search-box :placeholder="placeholder" :autofocus="true"></ais-search-box>
 
                 <ais-stats>

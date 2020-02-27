@@ -19,10 +19,23 @@ const routes = [
         component: Libraries,
     },
     {
+        // TODO: this
         name: 'library',
         meta: { classes: [] },
         path: '/libraries/:id',
         component: Library,
+    },
+    {
+        // TODO: this
+        name: 'about',
+        meta: { classes: [] },
+        path: '/about',
+    },
+    {
+        // TODO: this
+        name: 'sponsor',
+        meta: { classes: [] },
+        path: '/sponsor',
     },
     {
         name: 'not-found',

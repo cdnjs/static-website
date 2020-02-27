@@ -12,6 +12,8 @@
             </p>
 
             <div class="links">
+                <!-- TODO: VueTippy tooltip for each each -->
+                <!-- TODO: Secondary (or replacement) tooltip on copy -->
                 <i v-clipboard:copy="fileLink" class="fas fa-link"></i>
                 <i v-if="fileCode" v-clipboard:copy="fileCode" class="fas fa-code"></i>
                 <i v-if="library.sri" v-clipboard:copy="library.sri" class="fas fa-shield-alt"></i>
