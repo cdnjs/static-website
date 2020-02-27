@@ -60,7 +60,7 @@
                     // Hide search on libraries
                     this.$refs.inlineSearch.$data.hidden = this.$route.name === 'libraries';
                 });
-            }
+            },
         },
         created() {
             this.$router.beforeEach((_, __, next) => {

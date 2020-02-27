@@ -1,3 +1,4 @@
+// sass-lint:disable class-name-format
 &.primary-search {
   @include flex-column;
 
@@ -20,8 +21,8 @@
         p {
           @include font-regular;
 
-          font-size: 18px;
           color: $alt;
+          font-size: 18px;
 
           .hits {
             color: $primary;
@@ -44,10 +45,10 @@
       padding: 0;
 
       li {
-        flex-basis: calc(50% - #{$whitespace * 4});
-        margin: ($whitespace / 2) ($whitespace * 2);
         background: $darker;
         border-radius: $radius / 2;
+        flex-basis: calc(50% - #{$whitespace * 4});
+        margin: ($whitespace / 2) ($whitespace * 2);
         padding: $whitespace ($whitespace * 1.5);
 
         &.show-more {
@@ -62,17 +63,17 @@
           a {
             @include font-regular;
 
+            color: $primary;
             display: block;
+            font-size: 24px;
             margin: 0;
             padding: 0;
             text-decoration: none;
             transition: color .2s ease-in-out;
-            color: $primary;
-            font-size: 24px;
 
             &:hover,
             &:focus {
-                color: $primary-hover;
+              color: $primary-hover;
             }
 
             .version {
@@ -99,9 +100,9 @@
             i {
               color: $light;
               cursor: pointer;
-              transition: color .2s ease-in-out;
-              margin: 0 0 0 ($whitespace / 2);
               font-size: 1.2rem;
+              margin: 0 0 0 ($whitespace / 2);
+              transition: color .2s ease-in-out;
 
               &:hover {
                 color: $alt;

@@ -12,13 +12,15 @@
             </p>
 
             <div class="links">
-                <i class="fas fa-link" v-clipboard:copy="fileLink"></i>
-                <i class="fas fa-code" v-if="fileCode" v-clipboard:copy="fileCode"></i>
-                <i class="fas fa-shield-alt" v-if="library.sri" v-clipboard:copy="library.sri"></i>
+                <i v-clipboard:copy="fileLink" class="fas fa-link"></i>
+                <i v-if="fileCode" v-clipboard:copy="fileCode" class="fas fa-code"></i>
+                <i v-if="library.sri" v-clipboard:copy="library.sri" class="fas fa-shield-alt"></i>
             </div>
         </div>
 
-        <p class="description">{{ library.description }}</p>
+        <p class="description">
+            {{ library.description }}
+        </p>
         <p class="tags">
             Tags: <span class="keywords">{{ library.keywords.join(', ') }}</span>
         </p>
@@ -43,18 +45,21 @@
                 return ` integrity="${this.$props.library.sri}" crossorigin="anonymous"`;
             },
             fileCode() {
+                // TODO: move this logic to a util to resolve weird template issues
                 const lib = this.$props.library;
                 switch (lib.fileType) {
-                    case 'css':
-                        return `<link rel="stylesheet" href="${this.fileLink}"${this.fileSRI} \/>`;
+                case 'css':
+                    // eslint-disable-next-line no-useless-escape
+                    return `<link rel="stylesheet" href="${this.fileLink}"${this.fileSRI} \/>`;
 
-                    case 'js':
-                        return `<script src="${this.fileLink}"${this.fileSRI}><\/script>`;
+                case 'js':
+                    // eslint-disable-next-line no-useless-escape
+                    return `<script src="${this.fileLink}"${this.fileSRI}><\/script>`;
 
-                    default:
-                        return undefined;
+                default:
+                    return undefined;
                 }
-            }
+            },
         },
         methods: {
             formatUnits,

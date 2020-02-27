@@ -2,7 +2,9 @@
     <section class="breadcrumbs">
         <ul>
             <li v-for="item in breadcrumbs">
-                <router-link :to="{ path: item.url}">{{ item.index }}</router-link>
+                <router-link :to="{ path: item.url}">
+                    {{ item.index }}
+                </router-link>
             </li>
         </ul>
     </section>

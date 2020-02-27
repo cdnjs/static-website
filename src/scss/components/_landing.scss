@@ -12,37 +12,37 @@ main {
     }
 
     section {
-        align-items: flex-start;
-        max-width: 932px;
-        padding: $whitespace;
+      align-items: flex-start;
+      max-width: 932px;
+      padding: $whitespace;
 
-        h1 {
-          @include font-regular;
+      h1 {
+        @include font-regular;
 
-          color: $light;
-          font-size: 48px;
-          letter-spacing: .41px;
-          margin: 0 0 ($whitespace * 2);
+        color: $light;
+        font-size: 48px;
+        letter-spacing: .41px;
+        margin: 0 0 ($whitespace * 2);
 
-          @media only screen and (max-width: 768px) {
-            font-size: 32px;
-            margin: 0 0 $whitespace;
-          }
+        @media only screen and (max-width: 768px) {
+          font-size: 32px;
+          margin: 0 0 $whitespace;
         }
+      }
 
-        h2 {
-          @include font-light;
+      h2 {
+        @include font-light;
 
-          color: $light;
-          font-size: 24px;
-          letter-spacing: .2px;
-          margin: 0 0 ($whitespace * 5);
+        color: $light;
+        font-size: 24px;
+        letter-spacing: .2px;
+        margin: 0 0 ($whitespace * 5);
 
-          @media only screen and (max-width: 768px) {
-            font-size: 16px;
-            margin: 0 0 ($whitespace * 2.5);
-          }
+        @media only screen and (max-width: 768px) {
+          font-size: 16px;
+          margin: 0 0 ($whitespace * 2.5);
         }
+      }
     }
   }
 }

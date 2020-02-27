@@ -2,7 +2,7 @@
     <section>
         <h1>
             Simple. Fast. Reliable.
-            <br/>Content delivery at its finest.
+            <br />Content delivery at its finest.
         </h1>
 
         <h2>

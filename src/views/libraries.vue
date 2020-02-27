@@ -19,6 +19,6 @@
         },
         mounted() {
             console.log(this.$route);
-        }
+        },
     };
 </script>

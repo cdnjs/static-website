@@ -15,7 +15,7 @@ module.exports = path => {
         return {
             index: path || 'Home',  // empty when it is root
             url: nowUrl,
-            position: position + 1
+            position: position + 1,
         };
     });
 

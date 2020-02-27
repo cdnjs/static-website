@@ -15,7 +15,7 @@ section {
           a {
             &::before {
               color: $light;
-              content: '/';
+              content: "/";
               display: inline-block;
               margin: 0 ($whitespace / 2);
             }

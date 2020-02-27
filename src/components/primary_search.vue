@@ -21,7 +21,7 @@
         <ais-infinite-hits>
             <ul slot-scope="{ items, refinePrevious, refineNext }">
                 <template v-for="item in items">
-                    <LibraryCard :library="item" :key="item.objectID"></LibraryCard>
+                    <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
                 </template>
                 <li class="show-more">
                     <button @click="refineNext">
