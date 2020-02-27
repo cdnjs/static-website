@@ -6,6 +6,10 @@
             <a href="https://cdnjs.discourse.group/"><i class="fab fa-discourse"></i></a>
         </div>
 
+        <div class="middle">
+            <slot></slot>
+        </div>
+
         <div class="right">
             <router-link to="/about">About</router-link>
             <router-link to="/libraries">Libraries</router-link>

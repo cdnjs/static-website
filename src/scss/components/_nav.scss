@@ -13,8 +13,17 @@
     margin: 0 ($whitespace * 8) 0 auto;
   }
 
+  .middle {
+    flex-grow: 1;
+
+    .inline-search {
+      margin: 0 ($whitespace * 8);
+    }
+  }
+
   .left,
-  .right {
+  .right,
+  .middle {
     @include flex-row;
     align-content: center;
 

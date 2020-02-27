@@ -1,6 +1,18 @@
 .ais-InstantSearch {
   width: 100%;
 
+  &.inline-search {
+    position: relative;
+
+    .ais-StateResults {
+      position: absolute;
+      width: 100%;
+      background: $light;
+      border-radius: $radius;
+      top: calc(100% + 4px);
+    }
+  }
+
   .ais-SearchBox {
     .ais-SearchBox-form {
       .ais-SearchBox-input {
@@ -19,6 +31,7 @@
 
       .ais-SearchBox-submit,
       .ais-SearchBox-reset {
+        background: $light;
         height: $whitespace * 1.5;
         left: unset;
         right: $whitespace;

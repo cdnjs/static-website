@@ -1,5 +1,7 @@
 <template>
     <section>
+        <portal-target name="fake-search"></portal-target>
+
         <ais-instant-search
             index-name="libraries"
             :search-client="searchClient"
