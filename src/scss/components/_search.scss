@@ -1,0 +1,43 @@
+.ais-InstantSearch {
+  width: 100%;
+
+  .ais-SearchBox {
+    .ais-SearchBox-form {
+      .ais-SearchBox-input {
+        background: $light;
+        border: 0;
+        border-radius: $radius;
+        color: $dark;
+        font-size: 18px;
+        height: $whitespace * 3;
+        padding: ($whitespace / 2) ($whitespace * 3.25) ($whitespace / 2) ($whitespace);
+
+        &::placeholder {
+          color: $dark;
+        }
+      }
+
+      .ais-SearchBox-submit,
+      .ais-SearchBox-reset {
+        height: $whitespace * 1.5;
+        left: unset;
+        right: $whitespace;
+        width: $whitespace * 1.5;
+
+        .ais-SearchBox-submitIcon,
+        .ais-SearchBox-resetIcon {
+          height: $whitespace * 1.5;
+          left: unset;
+          position: initial;
+          top: unset;
+          transform: none;
+          width: $whitespace * 1.5;
+
+          path {
+            fill: $dark;
+          }
+        }
+      }
+    }
+  }
+}

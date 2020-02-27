@@ -1,6 +1,10 @@
 @import "variables";
 @import "mixins";
+
+@import "../../node_modules/instantsearch.css/themes/algolia.css";
+
 @import "components/base";
-@import "components/landing";
 @import "components/nav";
+@import "components/landing";
+@import "components/search";
 @import "views/index";

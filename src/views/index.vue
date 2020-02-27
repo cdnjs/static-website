@@ -16,7 +16,7 @@
             :search-client="searchClient"
             :search-function="searchFunction"
         >
-            <ais-search-box></ais-search-box>
+            <ais-search-box :placeholder="placeholder"></ais-search-box>
         </ais-instant-search>
     </section>
 </template>
@@ -29,6 +29,7 @@
         data() {
             return {
                 router: null,
+                placeholder: 'Search libraries on cdnjs...',
                 searchClient: algoliasearch(
                     '2QWLVLXZB6',
                     '2663c73014d2e4d6d1778cc8ad9fd010'
@@ -37,12 +38,15 @@
         },
         methods: {
             searchFunction(helper) {
-                helper.search();
                 if (helper.state.query) {
-                    console.log(helper.state.query);
-                    this.$router.push({ path: '/libraries', query: { q: helper.state.query } });
+                    return this.$router.push({ path: '/libraries', query: { q: helper.state.query } });
                 }
+                helper.search();
             },
+        },
+        created() {
+            this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
+                .then(data => this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`);
         },
     };
 </script>

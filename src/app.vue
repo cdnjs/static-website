@@ -13,8 +13,5 @@
         components: {
             Nav,
         },
-        created() {
-            console.log(this.$route);
-        },
     };
 </script>
