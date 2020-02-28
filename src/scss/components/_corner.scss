@@ -38,7 +38,8 @@ aside {
 
         color: $white;
         font-size: 20px;
-        margin: 0 0 $whitespace;
+        margin: 0 0 (-$whitespace);
+        padding: $whitespace * 2;
         text-decoration: none;
         transition: color .2s ease-in-out;
 
