@@ -1,0 +1,60 @@
+aside {
+  &.corner {
+    bottom: 0;
+    height: 250px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    width: 250px;
+
+    &::after {
+      border-bottom: 250px solid $darker;
+      border-left: 250px solid transparent;
+      border-top: 250px solid transparent;
+      bottom: 0;
+      content: "";
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: 0;
+    }
+
+    div {
+      @include flex-column;
+
+      height: 100%;
+      justify-content: flex-end;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: rotate(-45deg);
+      width: 100%;
+      z-index: 1;
+
+      a {
+        @include font-regular;
+        @include flex-column;
+
+        color: $white;
+        font-size: 20px;
+        margin: 0 0 $whitespace;
+        text-decoration: none;
+        transition: color .2s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: $alt;
+        }
+
+        p {
+          margin: 0 0 $whitespace;
+        }
+
+        i {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}

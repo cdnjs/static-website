@@ -8,10 +8,15 @@
             class="inline-search"
         >
             <ais-configure :hits-per-page.camel="3"></ais-configure>
-            <ais-search-box ref="search" :placeholder="placeholder" @focus="focused" @submit.native="showMore"></ais-search-box>
+            <ais-search-box ref="search"
+                            :placeholder="placeholder"
+                            @focus="focused"
+                            @blur="blurred"
+                            @submit.native="showMore"
+            ></ais-search-box>
             <ais-state-results ref="results">
                 <template slot-scope="{ query }">
-                    <ais-hits v-if="query.length > 0 && showHits">
+                    <ais-hits v-if="(hasFocus || query.length > 0) && showHits">
                         <ul slot-scope="{ items }">
                             <li v-for="item in items" :key="item.objectID">
                                 <router-link :to="{ name: 'library', params: { id: item.name } }">
@@ -41,6 +46,7 @@
             return {
                 hidden: false,
                 showHits: false,
+                hasFocus: false,
                 listenerRegistered: false,
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
@@ -64,6 +70,10 @@
 
                 // Ensure we are showing hits now they're using the input
                 this.$data.showHits = true;
+                this.$data.hasFocus = true;
+            },
+            blurred() {
+                this.$data.hasFocus = false;
             },
             showMore() {
                 this.$router.push({ name: 'libraries', query: {

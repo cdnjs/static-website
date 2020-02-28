@@ -12,7 +12,18 @@
 
         <div data-search-target></div>
 
-        <!-- TODO: GitHub corner -->
+        <Corner></Corner>
         <!-- TODO: sponsor/support banner -->
     </section>
 </template>
+
+<script>
+    const Corner = require('../components/corner');
+
+    module.exports = {
+        name: 'Index',
+        components: {
+            Corner,
+        },
+    };
+</script>
