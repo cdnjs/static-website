@@ -11,12 +11,30 @@
                 {{ formatUnits(library.github.stargazers_count, 0) }}
             </p>
 
-            <div class="links">
-                <!-- TODO: VueTippy tooltip for each each -->
-                <!-- TODO: Secondary (or replacement) tooltip on copy -->
-                <i v-clipboard:copy="fileLink" class="fas fa-link"></i>
-                <i v-if="fileCode" v-clipboard:copy="fileCode" class="fas fa-code"></i>
-                <i v-if="library.sri" v-clipboard:copy="library.sri" class="fas fa-shield-alt"></i>
+            <Tippy to="copied" :visible="tippyShow" trigger="manual" hide-on-click="false">
+                {{ tippyText }}
+            </Tippy>
+            <div class="links" name="copied">
+                <i v-clipboard:copy="fileLink"
+                   v-clipboard:success="onCopy"
+                   v-tippy
+                   content="Copy URL"
+                   class="fas fa-link"
+                ></i>
+                <i v-if="fileCode"
+                   v-clipboard:copy="fileCode"
+                   v-clipboard:success="onCopy"
+                   v-tippy
+                   :content="fileCodeTitle"
+                   class="fas fa-code"
+                ></i>
+                <i v-if="library.sri"
+                   v-clipboard:copy="library.sri"
+                   v-clipboard:success="onCopy"
+                   v-tippy
+                   content="Copy SRI Hash"
+                   class="fas fa-shield-alt"
+                ></i>
             </div>
         </div>
 
@@ -31,11 +49,21 @@
 
 <script>
     const formatUnits = require('../util/format_units');
+    const Tippy = require('vue-tippy').TippyComponent;
 
     module.exports = {
         name: 'LibraryCard',
         props: {
             library: Object,
+        },
+        components: {
+            Tippy,
+        },
+        data() {
+            return {
+                tippyText: null,
+                tippyShow: false,
+            };
         },
         computed: {
             fileLink() {
@@ -62,9 +90,29 @@
                     return undefined;
                 }
             },
+            fileCodeTitle() {
+                const lib = this.$props.library;
+                switch (lib.fileType) {
+                case 'css':
+                    return 'Copy Link Tag';
+
+                case 'js':
+                    return 'Copy Script Tag';
+
+                default:
+                    return undefined;
+                }
+            },
         },
         methods: {
             formatUnits,
+            onCopy() {
+                this.$data.tippyText = 'Copied!';
+                this.$data.tippyShow = true;
+                setTimeout(() => {
+                    this.$data.tippyShow = false;
+                }, 800);
+            },
         },
     };
 </script>

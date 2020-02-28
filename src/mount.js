@@ -10,6 +10,9 @@ Vue.use(InstantSearch);
 const VueClipboard = require('vue-clipboard2');
 Vue.use(VueClipboard);
 
+const VueTippy = require('vue-tippy').default;
+Vue.use(VueTippy);
+
 const App = require('./app.vue');
 const router = require('./router');
 

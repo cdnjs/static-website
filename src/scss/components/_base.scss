@@ -4,6 +4,8 @@
 
 html,
 body {
+  @include font-light;
+
   background-color: $dark;
   height: 100vh;
   margin: 0;
