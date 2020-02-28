@@ -73,7 +73,13 @@
                 this.$data.hasFocus = true;
             },
             blurred() {
-                this.$data.hasFocus = false;
+                // If no query, this will hide the default results
+                // Use a delay so that if the user clicks on one, it will navigate correctly
+                setTimeout(() => {
+                    this.$nextTick(() => {
+                        this.$data.hasFocus = false;
+                    });
+                }, 100);
             },
             showMore() {
                 this.$router.push({ name: 'libraries', query: {
