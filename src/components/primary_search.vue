@@ -7,7 +7,7 @@
         <ais-configure :query="query"></ais-configure>
 
         <header>
-            <section>
+            <div class="content">
                 <!-- TODO: Make autofocus work -->
                 <ais-search-box :placeholder="placeholder" :autofocus="true"></ais-search-box>
 
@@ -16,12 +16,12 @@
                         <span class="hits">{{ nbHits.toLocaleString() }}</span> libraries found in {{ processingTimeMS }}ms.
                     </p>
                 </ais-stats>
-            </section>
+            </div>
         </header>
 
         <ais-state-results>
             <template slot-scope="{ query, nbHits, page, nbPages }">
-                <ais-infinite-hits>
+                <ais-infinite-hits class="content">
                     <ul slot-scope="{ items, refineNext }">
                         <template v-for="item in items">
                             <LibraryCard :key="item.objectID" :library="item"></LibraryCard>

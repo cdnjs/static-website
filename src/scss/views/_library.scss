@@ -1,0 +1,9 @@
+main {
+  &.library {
+    .content {
+      align-items: flex-start;
+      max-width: none;
+      padding: ($whitespace * 2) ($whitespace * 12) 0;
+    }
+  }
+}

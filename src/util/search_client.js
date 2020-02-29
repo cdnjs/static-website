@@ -1,4 +1,4 @@
-const algoliasearch = require('algoliasearch/lite');
+const algoliasearch = require('algoliasearch');
 
 module.exports = algoliasearch(
     '2QWLVLXZB6',

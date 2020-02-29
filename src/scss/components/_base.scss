@@ -14,10 +14,10 @@ body {
 }
 
 main,
-section {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+section,
+.content {
+  @include flex-column;
+
   flex-grow: 1;
   justify-content: center;
   width: 100%;
@@ -28,13 +28,18 @@ main {
   position: relative;
 }
 
+.content {
+  margin: 0 auto;
+  max-width: 1280px;
+
+  .row {
+    @include flex-row;
+  }
+}
+
 header {
   @include flex-column;
 
   background: $header;
   width: 100%;
 }
-
-//section {
-//  max-width: 1280px;
-//}

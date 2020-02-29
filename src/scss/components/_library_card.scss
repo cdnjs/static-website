@@ -1,10 +1,11 @@
 li {
   &.library-card {
+    @include flex-column;
+
+    align-items: flex-start;
     background: $darker;
     border-radius: $radius / 2;
-    display: flex;
     flex-basis: calc(50% - #{$whitespace * 4});
-    flex-direction: column;
     margin: ($whitespace / 2) ($whitespace * 2);
     padding: $whitespace ($whitespace * 1.5);
 
@@ -12,6 +13,7 @@ li {
       @include flex-row;
 
       align-items: flex-end;
+      width: 100%;
 
       a {
         @include font-regular;

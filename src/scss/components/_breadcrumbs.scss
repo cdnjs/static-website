@@ -1,39 +1,38 @@
-section {
-  &.breadcrumbs {
-    align-items: flex-start;
-    padding: ($whitespace * 2) ($whitespace * 12) 0;
+.breadcrumbs {
+  align-items: flex-start;
+  max-width: none;
+  padding: ($whitespace * 2) ($whitespace * 12) 0;
 
-    ul {
-      @include flex-row;
+  ul {
+    @include flex-row;
 
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-      li {
-        &:not(:first-child) {
-          a {
-            &::before {
-              color: $light;
-              content: "/";
-              display: inline-block;
-              margin: 0 ($whitespace / 2);
-            }
+    li {
+      &:not(:first-child) {
+        a {
+          &::before {
+            color: $light;
+            content: "/";
+            display: inline-block;
+            margin: 0 ($whitespace / 2);
           }
         }
+      }
 
-        a {
-          @include font-regular;
+      a {
+        @include font-regular;
 
-          color: $primary;
-          font-size: 24px;
-          text-decoration: none;
-          transition: color .2s ease-in-out;
+        color: $primary;
+        font-size: 24px;
+        text-decoration: none;
+        transition: color .2s ease-in-out;
 
-          &:hover,
-          &:focus {
-            color: $primary-hover;
-          }
+        &:hover,
+        &:focus {
+          color: $primary-hover;
         }
       }
     }
