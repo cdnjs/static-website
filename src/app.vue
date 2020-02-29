@@ -4,18 +4,21 @@
             <InlineSearch ref="inlineSearch"></InlineSearch>
         </Nav>
         <router-view></router-view>
+        <Footer></Footer>
     </main>
 </template>
 
 <script>
     const Nav = require('./components/nav');
     const InlineSearch = require('./components/inline_search');
+    const Footer = require('./components/footer');
 
     module.exports = {
         name: 'App',
         components: {
             Nav,
             InlineSearch,
+            Footer,
         },
         data() {
             return {

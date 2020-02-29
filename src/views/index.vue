@@ -13,7 +13,6 @@
         <div data-search-target></div>
 
         <Corner></Corner>
-        <!-- TODO: sponsor/support banner -->
     </section>
 </template>
 

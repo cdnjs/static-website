@@ -33,9 +33,9 @@ const routes = [
     },
     {
         // TODO: this
-        name: 'sponsor',
+        name: 'sponsor-us',
         meta: { classes: [] },
-        path: '/sponsor',
+        path: '/sponsor-us',
     },
     {
         name: 'not-found',

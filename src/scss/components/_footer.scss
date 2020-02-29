@@ -1,0 +1,42 @@
+main {
+  > footer {
+    @include flex-row;
+
+    align-items: center;
+    background: $primary;
+    justify-content: flex-start;
+    padding: ($whitespace * .75) (250px + ($whitespace * 2)) ($whitespace * .75) ($whitespace * 2);
+    width: 100%;
+
+    p {
+      color: $white;
+
+      &:first-child {
+        @include font-regular;
+
+        border-right: 2px solid $white;
+        font-size: 20px;
+        line-height: 1.3;
+        margin: 0 ($whitespace * .5) 0 0;
+        padding: 0 ($whitespace * .5) 0 0;
+      }
+
+      &:last-child {
+        font-size: 16px;
+        line-height: 1.1;
+        margin: ($whitespace * .125) 0 0;
+
+        a {
+          color: mix($darker, $alt, 70%);
+          text-decoration: none;
+          transition: color .2s ease-in-out;
+
+          &:hover,
+          &:focus {
+            color: $darker;
+          }
+        }
+      }
+    }
+  }
+}
