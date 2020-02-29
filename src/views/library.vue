@@ -2,13 +2,12 @@
     <section>
         <header>
             <Breadcrumbs></Breadcrumbs>
-            <div class="content library-hero" v-if="state !== 2">
+            <div v-if="state !== 2" class="content library-hero">
                 <h1>{{ message }}</h1>
             </div>
             <LibraryHero v-else :library="library"></LibraryHero>
         </header>
         <div class="content">
-
         </div>
     </section>
 </template>
@@ -33,7 +32,7 @@
                 state: 0,
                 message: 'Loading...',
                 version: null,
-            }
+            };
         },
         methods: {
             formatUnits,
@@ -59,6 +58,6 @@
                     this.$data.message = `Failed load library ${this.$data.libraryName}`;
                 this.$data.state = 1;
             });
-        }
+        },
     };
 </script>

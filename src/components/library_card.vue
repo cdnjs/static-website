@@ -41,7 +41,7 @@
         <p class="description">
             {{ truncate(library.description, small ? 100 : 200) }}
         </p>
-        <p class="tags" v-if="!small">
+        <p v-if="!small" class="tags">
             Tags: <span class="keywords">{{ library.keywords.slice(0, 8).join(', ') }}</span>
         </p>
     </li>

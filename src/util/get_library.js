@@ -8,10 +8,10 @@ const api = async lib => {
     return await res.json();
 };
 
-const cdn = async lib => {
+/*const cdn = async lib => {
     const res = await fetch(`https://cdnjs.cloudflare.com/ajax/libs/${encodeURIComponent(lib)}/package.json`);
     return await res.json();
-};
+};*/
 
 const licenses = lib => {
     // Create the licenses array
@@ -27,7 +27,7 @@ const licenses = lib => {
             const name = license.toString();
             license = {
                 type: name,
-                url: '#'
+                url: '#',
             };
         }
 
@@ -57,7 +57,8 @@ module.exports = async lib => {
     apiData.licenses = licenses(apiData);
 
     // Get package.json from CDN
-    // apiData['package.json'] = await cdn(lib); // FIXME: Needs CORS + correct mime-type
+    // FIXME: Needs CORS + correct mime-type
+    // apiData['package.json'] = await cdn(lib);
 
     // Done
     return apiData;

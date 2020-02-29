@@ -26,21 +26,25 @@
                         <template v-for="item in items">
                             <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
                         </template>
-                        <li class="library-card show-more" v-if="page + 1 < nbPages">
-                            <button @click="refineNext" class="button">
+                        <li v-if="page + 1 < nbPages" class="library-card show-more">
+                            <button class="button" @click="refineNext">
                                 Show more results
                             </button>
                         </li>
                         <li class="library-card not-found">
-                            <p v-if="nbHits">Couldn't find the library you're looking for?</p>
-                            <p v-else>We're sorry, the library you're searching for couldn't be found.</p>
+                            <p v-if="nbHits">
+                                Couldn't find the library you're looking for?
+                            </p>
+                            <p v-else>
+                                We're sorry, the library you're searching for couldn't be found.
+                            </p>
                             <p>
                                 You can make a request to have it added on our
                                 <a href="https://github.com/cdnjs/cdnjs">GitHub repository</a>.
                             </p>
                             <p>
                                 Please make sure to <a :href="cdnjsSearch(query)">search and see if there is already an
-                                issue</a> for it before adding a request.
+                                    issue</a> for it before adding a request.
                             </p>
                         </li>
                     </ul>
