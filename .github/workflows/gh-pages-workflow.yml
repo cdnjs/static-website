@@ -30,6 +30,9 @@ jobs:
     - name: Build for Deploy
       run: npm run build
 
+    - name: Create GitHub Pages 404
+      run: cp dist/index.html dist/404.html
+
     - name: Deploy master to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@2.0.0
       env:
