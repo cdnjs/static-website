@@ -44,91 +44,42 @@
       margin: $whitespace 0;
       padding: 0;
 
-      li {
-        background: $darker;
-        border-radius: $radius / 2;
-        flex-basis: calc(50% - #{$whitespace * 4});
-        margin: ($whitespace / 2) ($whitespace * 2);
-        padding: $whitespace ($whitespace * 1.5);
 
-        &.show-more {
+      li {
+        &.show-more,
+        &.not-found {
           flex-basis: 100%;
         }
 
-        .title {
-          @include flex-row;
+        &.show-more {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+        }
 
-          align-items: flex-end;
-
-          a {
-            @include font-regular;
-
-            color: $primary;
-            display: block;
-            font-size: 24px;
-            margin: 0;
-            padding: 0;
-            text-decoration: none;
-            transition: color .2s ease-in-out;
-
-            &:hover,
-            &:focus {
-              color: $primary-hover;
-            }
-
-            .version {
-              font-size: 14px;
-            }
-          }
-
-          .stars {
+        &.not-found {
+          p {
             @include font-regular;
 
             color: $light;
-            display: block;
-            font-size: 14px;
-            margin: 0 0 0 $whitespace;
+            font-size: 16px;
+            margin: ($whitespace * .25) 0;
+            text-align: center;
 
-            i {
-              margin: 0 0 ($whitespace / 4);
+            &:first-child {
+              font-size: 18px;
+              margin: ($whitespace * .25) 0 ($whitespace * 1.5);
             }
-          }
 
-          .links {
-            margin: 0 0 0 auto;
-
-            i {
-              color: $light;
-              cursor: pointer;
-              font-size: 1.2rem;
-              margin: 0 0 0 ($whitespace / 2);
+            a {
+              color: $primary;
               transition: color .2s ease-in-out;
 
-              &:hover {
-                color: $alt;
+              &:hover,
+              &:focus {
+                color: $primary-hover;
               }
             }
-          }
-        }
-
-        .description {
-          @include font-regular;
-
-          color: $light;
-          font-size: 16px;
-          margin: $whitespace 0 0;
-        }
-
-        .tags {
-          @include font-regular;
-
-          color: $light;
-          font-size: 12px;
-          margin: ($whitespace / 2) 0 0;
-
-          .keywords {
-            display: inline-block;
-            margin: 0 0 0 ($whitespace / 2);
           }
         }
       }

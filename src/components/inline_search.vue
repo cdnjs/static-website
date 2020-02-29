@@ -18,16 +18,9 @@
                 <template slot-scope="{ query }">
                     <ais-hits v-if="(hasFocus || query.length > 0) && showHits">
                         <ul slot-scope="{ items }">
-                            <li v-for="item in items" :key="item.objectID">
-                                <router-link :to="{ name: 'library', params: { id: item.name } }">
-                                    <p class="name">
-                                        {{ item.name }} <span class="version">@ {{ item.version }}</span>
-                                    </p>
-                                    <p class="description">
-                                        {{ item.description }}
-                                    </p>
-                                </router-link>
-                            </li>
+                            <template v-for="item in items">
+                                <LibraryCard :key="item.objectID" :library="item" :small="true"></LibraryCard>
+                            </template>
                         </ul>
                     </ais-hits>
                     <div v-else></div>
@@ -38,10 +31,14 @@
 </template>
 
 <script>
+    const LibraryCard = require('./library_card');
     const searchClient = require('../util/search_client');
 
     module.exports = {
         name: 'InlineSearch',
+        components: {
+            LibraryCard,
+        },
         data() {
             return {
                 hidden: false,

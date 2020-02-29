@@ -19,18 +19,34 @@
             </section>
         </header>
 
-        <ais-infinite-hits>
-            <ul slot-scope="{ items, refineNext }">
-                <template v-for="item in items">
-                    <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
-                </template>
-                <li class="show-more">
-                    <button @click="refineNext">
-                        Show more results
-                    </button>
-                </li>
-            </ul>
-        </ais-infinite-hits>
+        <ais-state-results>
+            <template slot-scope="{ query, nbHits, page, nbPages }">
+                <ais-infinite-hits>
+                    <ul slot-scope="{ items, refineNext }">
+                        <template v-for="item in items">
+                            <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
+                        </template>
+                        <li class="library-card show-more" v-if="page + 1 < nbPages">
+                            <button @click="refineNext" class="button">
+                                Show more results
+                            </button>
+                        </li>
+                        <li class="library-card not-found">
+                            <p v-if="nbHits">Couldn't find the library you're looking for?</p>
+                            <p v-else>We're sorry, the library you're searching for couldn't be found.</p>
+                            <p>
+                                You can make a request to have it added on our
+                                <a href="https://github.com/cdnjs/cdnjs">GitHub repository</a>.
+                            </p>
+                            <p>
+                                Please make sure to <a :href="cdnjsSearch(query)">search and see if there is already an
+                                issue</a> for it before adding a request.
+                            </p>
+                        </li>
+                    </ul>
+                </ais-infinite-hits>
+            </template>
+        </ais-state-results>
     </ais-instant-search>
 </template>
 
@@ -49,6 +65,11 @@
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
             };
+        },
+        methods: {
+            cdnjsSearch(query) {
+                return `https://github.com/cdnjs/cdnjs/issues?utf8=✓&q=${encodeURIComponent(query)}`;
+            },
         },
         created() {
             this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })

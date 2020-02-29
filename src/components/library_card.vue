@@ -1,5 +1,5 @@
 <template>
-    <li>
+    <li class="library-card">
         <div class="title">
             <router-link :to="{ name: 'library', params: { id: library.name } }">
                 {{ library.name }}
@@ -39,22 +39,24 @@
         </div>
 
         <p class="description">
-            {{ library.description }}
+            {{ truncate(library.description, small ? 100 : 200) }}
         </p>
-        <p class="tags">
-            Tags: <span class="keywords">{{ library.keywords.join(', ') }}</span>
+        <p class="tags" v-if="!small">
+            Tags: <span class="keywords">{{ library.keywords.slice(0, 8).join(', ') }}</span>
         </p>
     </li>
 </template>
 
 <script>
     const formatUnits = require('../util/format_units');
+    const truncate = require('../util/truncate');
     const Tippy = require('vue-tippy').TippyComponent;
 
     module.exports = {
         name: 'LibraryCard',
         props: {
             library: Object,
+            small: Boolean,
         },
         components: {
             Tippy,
@@ -106,6 +108,7 @@
         },
         methods: {
             formatUnits,
+            truncate,
             onCopy() {
                 this.$data.tippyText = 'Copied!';
                 this.$data.tippyShow = true;

@@ -1,0 +1,19 @@
+a,
+button {
+  &.button {
+    -webkit-appearance: button;
+    background: $primary;
+    border: 0;
+    border-radius: $radius * 1.3;
+    font-size: 18px;
+    padding: ($whitespace * .75) ($whitespace * 2.5);
+    color: $light;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background: $primary-hover;
+    }
+  }
+}

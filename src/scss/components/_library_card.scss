@@ -1,0 +1,89 @@
+li {
+  &.library-card {
+    background: $darker;
+    border-radius: $radius / 2;
+    display: flex;
+    flex-basis: calc(50% - #{$whitespace * 4});
+    flex-direction: column;
+    margin: ($whitespace / 2) ($whitespace * 2);
+    padding: $whitespace ($whitespace * 1.5);
+
+    .title {
+      @include flex-row;
+
+      align-items: flex-end;
+
+      a {
+        @include font-regular;
+
+        color: $primary;
+        display: block;
+        font-size: 24px;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        transition: color .2s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: $primary-hover;
+        }
+
+        .version {
+          font-size: 14px;
+        }
+      }
+
+      .stars {
+        @include font-regular;
+
+        color: $light;
+        display: block;
+        font-size: 14px;
+        margin: 0 0 0 $whitespace;
+
+        i {
+          margin: 0 0 ($whitespace / 4);
+        }
+      }
+
+      .links {
+        margin: 0 0 0 auto;
+
+        i {
+          color: $light;
+          cursor: pointer;
+          font-size: 1.2rem;
+          margin: 0 0 0 ($whitespace / 2);
+          transition: color .2s ease-in-out;
+
+          &:hover {
+            color: $alt;
+          }
+        }
+      }
+    }
+
+    .description {
+      @include font-regular;
+
+      color: $light;
+      flex-grow: 1;
+      font-size: 16px;
+      margin: $whitespace 0 0;
+    }
+
+    .tags {
+      @include font-regular;
+
+      color: $light;
+      font-size: 12px;
+      margin: ($whitespace / 2) 0 0;
+
+      .keywords {
+        display: inline-block;
+        margin: 0 0 0 ($whitespace / 2);
+      }
+    }
+  }
+}
