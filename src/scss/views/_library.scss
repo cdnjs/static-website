@@ -2,8 +2,100 @@ main {
   &.library {
     .content {
       align-items: flex-start;
+      justify-content: flex-start;
       max-width: none;
       padding: ($whitespace * 2) ($whitespace * 12) 0;
+
+      .version {
+        align-items: center;
+        margin: 0 0 $whitespace;
+
+        p {
+          @include font-regular;
+
+          color: $light;
+          font-size: 20px;
+          margin: 0 ($whitespace * .75) 0 0;
+        }
+
+        // sass-lint:disable class-name-format
+        .v-select {
+          background: $light;
+          border: 0;
+          border-radius: $radius;
+          width: 300px;
+
+          &.vs--open {
+            border-radius: $radius $radius 0 0;
+          }
+
+          .vs__selected {
+            @include font-medium;
+
+            color: $darker;
+            font-size: 20px;
+          }
+
+          .vs__dropdown-menu {
+            .vs__dropdown-option {
+              @include font-regular;
+
+              background: transparent;
+              color: $darker;
+              transition: background .2s ease-in-out, color .2s ease-in-out;
+
+              &.vs__dropdown-option--selected {
+                color: $primary;
+              }
+
+              &.vs__dropdown-option--highlight {
+                background: $dark;
+                color: $primary;
+              }
+            }
+          }
+        }
+        // sass-lint:enable class-name-format
+      }
+
+      .assets {
+        @include flex-column;
+        align-items: flex-start;
+
+        list-style: none;
+        margin: $whitespace 0 0;
+        padding: 0;
+
+        .asset {
+          @include flex-row;
+          @include font-regular;
+
+          background: $alt;
+          border-radius: $radius;
+          color: $darker;
+          font-size: 18px;
+          margin: ($whitespace * .75) 0;
+          padding: ($whitespace * .75) ($whitespace * 1.25) ($whitespace * .875);
+          width: 100%;
+
+          &.default-asset {
+            background: mix($primary, $alt);
+          }
+
+          .library-asset-buttons {
+            padding: 0 0 0 $whitespace;
+
+            i {
+              color: $darker;
+
+              &:hover,
+              &:focus {
+                color: $dark;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

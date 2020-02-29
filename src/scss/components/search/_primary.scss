@@ -51,6 +51,7 @@
         &.show-more {
           @include flex-row;
 
+          background: none;
           justify-content: center;
         }
 

@@ -2,6 +2,7 @@
 @import "mixins";
 
 @import "../../node_modules/instantsearch.css/themes/algolia.css";
+@import "../../node_modules/vue-select/src/scss/vue-select";
 
 @import "components/base";
 @import "components/nav";
@@ -11,6 +12,7 @@
 @import "components/button";
 @import "components/library_card";
 @import "components/library_hero";
+@import "components/library_asset_buttons";
 @import "components/search";
 
 @import "views/library";

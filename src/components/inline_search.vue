@@ -74,9 +74,11 @@
                 // Use a delay so that if the user clicks on one, it will navigate correctly
                 setTimeout(() => {
                     this.$nextTick(() => {
-                        this.$data.hasFocus = false;
+                        this.$nextTick(() => {
+                            this.$data.hasFocus = false;
+                        });
                     });
-                }, 100);
+                }, 200);
             },
             showMore() {
                 this.$router.push({ name: 'libraries', query: {
