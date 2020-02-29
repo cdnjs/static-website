@@ -34,6 +34,7 @@
     "node-fetch": "^2.6.0",
     "parcel-bundler": "^1.12.4",
     "semver-sort": "0.0.4",
+    "spdx-license-ids": "^3.0.5",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
     "vue-hot-reload-api": "^2.3.4",

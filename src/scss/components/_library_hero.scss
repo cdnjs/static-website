@@ -1,0 +1,48 @@
+.library-hero {
+  h1 {
+    @include font-medium;
+
+    color: $light;
+    font-size: 45px;
+    margin: ($whitespace * .5) 0;
+  }
+
+  p {
+    @include font-regular;
+
+    color: $light;
+    font-size: 18px;
+  }
+
+  .row {
+    p {
+      margin: ($whitespace * .5) $whitespace ($whitespace * .5) 0;
+
+      a {
+        color: $primary;
+        text-decoration: none;
+        transition: color .2s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: $primary-hover;
+        }
+      }
+    }
+  }
+
+  .description {
+    margin: ($whitespace * 2) 0 ($whitespace * .5);
+  }
+
+  .tags {
+    color: $alt;
+    font-size: 16px;
+    margin: ($whitespace * .5) 0 ($whitespace * 2);
+
+    .keywords {
+      display: inline-block;
+      margin: 0 0 0 ($whitespace / 2);
+    }
+  }
+}

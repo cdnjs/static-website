@@ -2,32 +2,10 @@
     <section>
         <header>
             <Breadcrumbs></Breadcrumbs>
-            <div class="content" v-if="state !== 2">
+            <div class="content library-hero" v-if="state !== 2">
                 <h1>{{ message }}</h1>
             </div>
-            <div class="content" v-else>
-                <h1>{{ library.name }}</h1>
-                <div class="row">
-                    <p v-if="library.algolia.github && library.algolia.github.stargazers_count" class="stars">
-                        <i class="fas fa-star"></i>
-                        {{ formatUnits(library.algolia.github.stargazers_count, 0) }}
-                    </p>
-                    <p v-if="library.algolia.github && library.algolia.github.user && library.algolia.github.repo"
-                       class="repo"
-                    >
-                        <a :href="`https://github.com/${library.algolia.github.user}/${library.algolia.github.repo}?utm_source=cdnjs`">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </p>
-                    <p v-if="library.autoupdate && library.autoupdate.source === 'npm'" class="auto-update">
-                        <a :href="`https://npmjs.com/package/${library.autoupdate.target}?utm_source=cdnjs`">
-                            <i class="fab fa-npm" aria-label="NPM"></i>
-                            package
-                        </a>
-                    </p>
-                </div>
-            </div>
+            <LibraryHero v-else :library="library"></LibraryHero>
         </header>
         <div class="content">
 
@@ -40,11 +18,13 @@
     const formatUnits = require('../util/format_units');
     const getLibrary = require('../util/get_library');
     const Breadcrumbs = require('../components/breadcrumbs');
+    const LibraryHero = require('../components/library_hero');
 
     module.exports = {
         name: 'Library',
         components: {
             Breadcrumbs,
+            LibraryHero,
         },
         data() {
             return {
@@ -59,18 +39,20 @@
             formatUnits,
             versions() {
                 return semverSort.desc(this.$data.library.assets.map(a => a.version));
-            }
+            },
         },
         mounted() {
+            // Store the name from the URL
             this.$data.libraryName = this.$route.params.id;
+
+            // Attempt to get data for the lib
             getLibrary(this.$data.libraryName).then(data => {
-                console.log(data);
+                // Save the lib data
                 this.$data.library = data;
                 this.$data.version = data.version;
-                console.log(this.versions());
                 this.$data.state = 2;
             }).catch(e => {
-                console.log(e);
+                // If we fail to find it, let the user know
                 if (e.message === 'Library not found')
                     this.$data.message = `Could not find library ${this.$data.libraryName}`;
                 else
