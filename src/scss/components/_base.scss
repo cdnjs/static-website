@@ -26,14 +26,18 @@ section,
 main {
   min-height: 100%;
   position: relative;
-}
 
-.content {
-  margin: 0 auto;
-  max-width: 1280px;
+  .content {
+    margin: 0 auto;
+    max-width: 1280px;
+  }
 
   .row {
     @include flex-row;
+  }
+
+  .column {
+    @include flex-column;
   }
 }
 

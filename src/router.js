@@ -3,6 +3,7 @@ const VueRouter = require('vue-router').default;
 const Index = require('./views/index');
 const Libraries = require('./views/libraries');
 const Library = require('./views/library');
+const About = require('./views/about');
 const NotFound = require('./views/not_found');
 
 const routes = [
@@ -19,17 +20,16 @@ const routes = [
         component: Libraries,
     },
     {
-        // TODO: this
         name: 'library',
         meta: { classes: [] },
         path: '/libraries/:id',
         component: Library,
     },
     {
-        // TODO: this
         name: 'about',
         meta: { classes: [] },
         path: '/about',
+        component: About,
     },
     {
         // TODO: this
