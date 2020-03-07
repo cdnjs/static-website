@@ -1,0 +1,20 @@
+main {
+  &.index {
+    h2 {
+      sup {
+        vertical-align: text-top;
+
+        a {
+          color: $alt;
+          text-decoration: none;
+          transition: color .2s ease-in-out;
+
+          &:hover,
+          &:focus {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,19 +1,29 @@
-a,
-button {
-  &.button {
-    -webkit-appearance: button;
-    background: $primary;
-    border: 0;
-    border-radius: $radius * 1.3;
-    color: $white;
-    cursor: pointer;
-    font-size: 18px;
-    padding: ($whitespace * .75) ($whitespace * 2.5);
-    transition: background .2s ease-in-out;
+main {
+  section {
+    .content {
+      a,
+      button {
+        &.button {
+          -webkit-appearance: button;
+          background: $primary;
+          border: 0;
+          border-radius: $radius * 1.3;
+          color: $white;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 18px;
+          padding: ($whitespace * .75) ($whitespace * 2.5);
+          text-decoration: none;
+          transition: background .2s ease-in-out;
 
-    &:hover,
-    &:focus {
-      background: $primary-hover;
+          &:hover,
+          &:focus {
+            background: $primary-hover;
+            color: $white;
+            text-decoration: none;
+          }
+        }
+      }
     }
   }
 }

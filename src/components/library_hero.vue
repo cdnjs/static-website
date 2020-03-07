@@ -7,13 +7,13 @@
                 {{ formatUnits(library.algolia.github.stargazers_count, 0) }}
             </p>
             <p v-if="repo()" class="repo">
-                <a :href="`https://github.com/${repo()}?utm_source=cdnjs`">
+                <a :href="`https://github.com/${repo()}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
                     <i class="fab fa-github"></i>
                     GitHub
                 </a>
             </p>
             <p v-if="library.autoupdate && library.autoupdate.source === 'npm'" class="auto-update">
-                <a :href="`https://npmjs.com/package/${library.autoupdate.target}?utm_source=cdnjs`">
+                <a :href="`https://npmjs.com/package/${library.autoupdate.target}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
                     <i class="fab fa-npm" aria-label="NPM"></i>
                     package
                 </a>
@@ -22,7 +22,7 @@
         <div class="row">
             <p v-if="library.licenses" class="license">
                 <template v-for="(license, index) of library.licenses">
-                    <a v-if="license.url" :href="`${license.url}?utm_source=cdnjs`">
+                    <a v-if="license.url" :href="`${license.url}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
                         {{ license.type }}
                     </a>
                     <template v-else>
@@ -33,7 +33,7 @@
                 licensed
             </p>
             <p v-if="library.homepage" class="homepage">
-                <a :href="`${library.homepage}?utm_source=cdnjs`">
+                <a :href="`${library.homepage}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
                     {{ library.homepage }}
                 </a>
             </p>

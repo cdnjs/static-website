@@ -28,8 +28,9 @@ main {
   position: relative;
 
   .content {
-    margin: 0 auto;
-    max-width: 1280px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: ($whitespace * 2) ($whitespace * 12) 0;
   }
 
   .row {

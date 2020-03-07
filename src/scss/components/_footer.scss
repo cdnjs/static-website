@@ -27,13 +27,13 @@ main {
         margin: ($whitespace * .125) 0 0;
 
         a {
-          color: mix($darker, $alt, 70%);
+          color: $darker;
           text-decoration: none;
           transition: color .2s ease-in-out;
 
           &:hover,
           &:focus {
-            color: $darker;
+            color: mix($darker, $alt, 70%);
           }
         }
       }

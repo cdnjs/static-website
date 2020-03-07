@@ -1,11 +1,6 @@
 main {
   &.library {
     .content {
-      align-items: flex-start;
-      justify-content: flex-start;
-      max-width: none;
-      padding: ($whitespace * 2) ($whitespace * 12) 0;
-
       .version {
         align-items: center;
         margin: 0 0 $whitespace;

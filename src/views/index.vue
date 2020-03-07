@@ -6,8 +6,9 @@
         </h1>
 
         <h2>
-            cdnjs is a web CDN service, trusted by over 4,000,000 websites, working to make it faster and easier to
-            load library files to your websites.
+            cdnjs is a web CDN service, trusted by over 985,000,000
+            websites<sup><router-link :to="{ name: 'about' }">*</router-link></sup>,
+            working to make it faster and easier to load library files to your websites.
         </h2>
 
         <div data-search-target></div>
