@@ -1,6 +1,6 @@
 <template>
     <div class="library-asset-buttons" name="copied">
-        <Tippy to="copied" :visible="tippyShow" trigger="manual" hide-on-click="false">
+        <Tippy :visible="tippyShow" to="copied" trigger="manual" hide-on-click="false">
             {{ tippyText }}
         </Tippy>
         <i v-clipboard:copy="asset.url"

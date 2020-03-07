@@ -1,10 +1,10 @@
 <template>
     <keep-alive>
         <ais-instant-search
-            v-if="!hidden"
             ref="instantSearch"
-            index-name="libraries"
+            v-if="!hidden"
             :search-client="searchClient"
+            index-name="libraries"
             class="inline-search"
         >
             <ais-configure :hits-per-page.camel="3"></ais-configure>

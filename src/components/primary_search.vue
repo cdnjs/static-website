@@ -1,7 +1,7 @@
 <template>
     <ais-instant-search
-        index-name="libraries"
         :search-client="searchClient"
+        index-name="libraries"
         class="primary-search"
     >
         <ais-configure :query="query"></ais-configure>
@@ -27,7 +27,7 @@
                             <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
                         </template>
                         <li v-if="page + 1 < nbPages" class="library-card show-more">
-                            <button class="button" @click="refineNext">
+                            <button @click="refineNext" class="button">
                                 Show more results
                             </button>
                         </li>
