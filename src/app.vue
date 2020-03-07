@@ -12,6 +12,7 @@
     const Nav = require('./components/nav');
     const InlineSearch = require('./components/inline_search');
     const Footer = require('./components/footer');
+    const setMeta = require('./util/set_meta');
 
     module.exports = {
         name: 'App',
@@ -64,6 +65,15 @@
                     this.$refs.inlineSearch.$data.hidden = this.$route.name === 'libraries';
                 });
             },
+            setMeta() {
+                let title = this.$route.meta.title || '';
+                if (typeof title === 'function') title = title(this);
+
+                let desc = this.$route.meta.desc || '';
+                if (typeof desc === 'function') desc = desc(this);
+
+                setMeta(title, desc);
+            },
         },
         created() {
             this.$router.beforeEach((_, __, next) => {
@@ -71,10 +81,12 @@
                 next();
             });
             this.$router.afterEach(() => {
+                this.setMeta();
                 this.checkInlineSearch();
             });
         },
         mounted() {
+            this.setMeta();
             this.checkInlineSearch();
         },
     };

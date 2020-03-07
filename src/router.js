@@ -15,19 +15,36 @@ const routes = [
     },
     {
         name: 'libraries',
-        meta: { classes: [] },
+        meta: {
+            title: 'Libraries',
+            breadcrumb: 'Libraries',
+            classes: [],
+        },
         path: '/libraries',
         component: Libraries,
     },
     {
         name: 'library',
-        meta: { classes: [] },
+        meta: {
+            title(context) {
+                console.log();
+                return `${context.$route.params.id} - Libraries`;
+            },
+            breadcrumb(context) {
+                return context.$route.params.id;
+            },
+            classes: [],
+        },
         path: '/libraries/:id',
         component: Library,
     },
     {
         name: 'about',
-        meta: { classes: [] },
+        meta: {
+            title: 'About',
+            breadcrumb: 'About',
+            classes: [],
+        },
         path: '/about',
         component: About,
     },

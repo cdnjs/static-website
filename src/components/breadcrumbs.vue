@@ -17,7 +17,7 @@
         name: 'Breadcrumbs',
         computed: {
             breadcrumbs() {
-                return breadcrumbs(this.$route.path);
+                return breadcrumbs(this);
             },
         },
     };

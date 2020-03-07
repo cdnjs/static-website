@@ -1,6 +1,6 @@
-module.exports = path => {
+module.exports = context => {
     // Split the url into parts
-    let breadcrumbList = path.split('/');
+    let breadcrumbList = context.$route.path.split('/');
 
     // If the originalUrl ended with '/', pop last item, which will be empty
     if (breadcrumbList[breadcrumbList.length - 1] === '') breadcrumbList.pop();
@@ -12,8 +12,23 @@ module.exports = path => {
     breadcrumbList = breadcrumbList.map(path => {
         position = breadcrumbList.indexOf(path);
         nowUrl += path + (position === lastIndex ? '' : '/'); // don't append / to last item
+
+        // Get the display name of the route
+        let name = 'Home';
+        if (path) {
+            name = path;
+
+            // Try getting router meta data
+            const match = context.$router.matcher.match(nowUrl);
+            if (match && match.meta && match.meta.breadcrumb) {
+                name = match.meta.breadcrumb;
+                if (typeof name === 'function') name = name(context);
+            }
+        }
+
+        // Save it
         return {
-            index: path || 'Home',  // empty when it is root
+            index: name,
             url: nowUrl,
             position: position + 1,
         };
