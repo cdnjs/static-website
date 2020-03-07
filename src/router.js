@@ -1,10 +1,10 @@
 const VueRouter = require('vue-router').default;
 
-const Index = require('./views/index');
-const Libraries = require('./views/libraries');
-const Library = require('./views/library');
-const About = require('./views/about');
-const NotFound = require('./views/not_found');
+const Index = () => import('./views/index');
+const Libraries = () => import('./views/libraries');
+const Library = () => import('./views/library');
+const About = () => import('./views/about');
+const NotFound = () => import('./views/not_found');
 
 const routes = [
     {
