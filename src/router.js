@@ -4,6 +4,7 @@ const Index = () => import('./views/index');
 const Libraries = () => import('./views/libraries');
 const Library = () => import('./views/library');
 const About = () => import('./views/about');
+const API = () => import('./views/api');
 const NotFound = () => import('./views/not_found');
 
 const routes = [
@@ -27,7 +28,6 @@ const routes = [
         name: 'library',
         meta: {
             title(context) {
-                console.log();
                 return `${context.$route.params.id} - Libraries`;
             },
             breadcrumb(context) {
@@ -47,6 +47,16 @@ const routes = [
         },
         path: '/about',
         component: About,
+    },
+    {
+        name: 'api',
+        meta: {
+            title: 'API',
+            breadcrumb: 'API',
+            classes: [],
+        },
+        path: '/api',
+        component: API,
     },
     {
         // TODO: this
