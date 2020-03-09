@@ -1,7 +1,7 @@
 main {
   &.library {
     .content {
-      .version {
+      .filter {
         align-items: center;
         margin: 0 0 $whitespace;
 
@@ -11,6 +11,18 @@ main {
           color: $light;
           font-size: 20px;
           margin: 0 ($whitespace * .75) 0 0;
+        }
+
+        br {
+          display: inline-block;
+          margin: 0 ($whitespace * .75);
+          white-space: normal;
+
+          &::before,
+          &::after {
+            content: none;
+            display: none;
+          }
         }
 
         // sass-lint:disable class-name-format

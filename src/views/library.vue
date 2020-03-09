@@ -10,9 +10,12 @@
         <div v-if="!ready" class="content">
         </div>
         <div v-else class="content">
-            <div class="row version">
+            <div class="row filter">
                 <p>Version</p>
                 <VueSelect v-model="version" :options="versions()" :clearable="false"></VueSelect>
+                <br />
+                <p>Asset Type</p>
+                <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
             </div>
             <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
                 {{ showHidden ? 'All files are shown, click to hide non-essential files'
@@ -22,7 +25,7 @@
                 <li v-for="asset of assets"
                     :key="asset.url"
                     :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
-                    :style="{ display: asset.hidden && !showHidden ? 'none' : undefined }"
+                    :style="{ display: hideAsset(asset) ? 'none' : undefined }"
                 >
                     <span class="url">{{ asset.url }}</span>
                     <LibraryAssetButtons :asset="asset">
@@ -49,7 +52,7 @@
     const formatUnits = require('../util/format_units');
     const getLibrary = require('../util/get_library');
     const getAsset = require('../util/get_asset');
-    const { isWhitelisted } = require('../util/file_type');
+    const { isWhitelisted, category } = require('../util/file_type');
     const Breadcrumbs = require('../components/breadcrumbs');
     const LibraryHero = require('../components/library_hero');
     const LibraryAssetButtons = require('../components/library_asset_buttons');
@@ -69,6 +72,8 @@
                 ready: false,
                 message: 'Loading...',
                 version: null,
+                category: 'All',
+                categories: [],
                 assets: [],
                 hasHidden: false,
                 showHidden: false,
@@ -85,7 +90,16 @@
                     return versions;
                 }
             },
+            hideAsset(asset) {
+                if (asset.hidden && !this.$data.showHidden) return true;
+                if (this.$data.category !== 'All') return category(asset.type) !== this.$data.category;
+                return false;
+            },
             getAssets() {
+                // Generate the categories
+                const categories = new Set();
+                categories.add('All');
+
                 // Get the raw assets for this version
                 const rawAssets = this.$data.library.assets.find(a => a.version === this.$data.version);
 
@@ -114,18 +128,25 @@
                 const commonFileRegExp = globToRegExp(commonFileGlob, { extended: true });
                 let hasHiddenFiles = false;
                 const hiddenAssets = sortedAssets.map(asset => {
-                    asset.hidden = false;
                     // Only hide things if we have lots of files and the current file isn't the default
+                    asset.hidden = false;
                     if (sortedAssets.length > 20 && this.$data.library.filename !== asset.file) {
                         asset.hidden = !(hasMinifiedFiles ? criticalFileRegExp : commonFileRegExp).test(asset.file);
                         hasHiddenFiles = hasHiddenFiles || asset.hidden;
                     }
+
+                    // Generate the categories whilst we're here
+                    const cat = category(asset.type);
+                    categories.add(cat);
+
+                    // Done!
                     return asset;
                 });
 
                 // Done!
                 this.$data.assets = hiddenAssets;
                 this.$data.hasHidden = hasHiddenFiles;
+                this.$data.categories = [...categories];
             },
         },
         watch: {
