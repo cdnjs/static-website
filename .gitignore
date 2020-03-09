@@ -4,7 +4,5 @@
 # Node.js
 node_modules
 
-# Parcel
-dist
-dev
-.cache
+# Nuxt
+.nuxt

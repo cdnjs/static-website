@@ -4,14 +4,7 @@
   "description": "The new cdnjs website, using Vue & VueRouter",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev:static && npm run dev:parcel & npm run dev:server",
-    "dev:static": "copyfiles --up 2 src/static/{*,**/*} dev",
-    "dev:parcel": "parcel watch src/index.html --out-dir dev",
-    "dev:server": "node src/server/app.js",
-    "build": "npm run build:clean && npm run build:static && npm run build:parcel",
-    "build:clean": "rm -rf dist",
-    "build:static": "copyfiles --up 2 ./src/static/{*,**/*} dist",
-    "build:parcel": "parcel build src/index.html --out-dir dist",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "test": "npm run test:eslint && npm run test:scss",
     "test:eslint": "eslint 'src/**/*.{js,vue}'",
     "test:eslint:fix": "npm run test:eslint -- --fix",
@@ -30,10 +23,11 @@
   "dependencies": {
     "algoliasearch": "^4.0.3",
     "babel-polyfill": "^6.26.0",
+    "cross-env": "^7.0.2",
     "glob-to-regexp": "^0.4.1",
     "instantsearch.css": "^7.4.2",
     "node-fetch": "^2.6.0",
-    "parcel-bundler": "^1.12.4",
+    "nuxt": "^2.11.0",
     "semver-sort": "0.0.4",
     "spdx-license-ids": "^3.0.5",
     "thenby": "^1.3.0",
@@ -46,15 +40,17 @@
     "vue-tippy": "^4.4.0"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.1.1",
+    "@nuxtjs/eslint-config": "^2.0.2",
     "babel-eslint": "^10.1.0",
     "copyfiles": "^2.2.0",
     "eslint": "^6.8.0",
+    "eslint-plugin-nuxt": "^0.5.1",
     "eslint-plugin-vue": "5.2.3",
     "express": "^4.17.1",
-    "sass": "^1.26.1",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
     "sass-lint": "^1.13.1",
-    "vue-eslint-parser": "^7.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "sass-loader": "^8.0.2",
+    "vue-eslint-parser": "^7.0.0"
   }
 }

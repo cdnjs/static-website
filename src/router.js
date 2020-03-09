@@ -1,11 +1,11 @@
 const VueRouter = require('vue-router').default;
 
-const Index = () => import('./views/index');
-const Libraries = () => import('./views/libraries');
-const Library = () => import('./views/library');
-const About = () => import('./views/about');
-const API = () => import('./views/api');
-const NotFound = () => import('./views/not_found');
+const Index = () => import('../pages/index');
+const Libraries = () => import('../pages/libraries');
+const Library = () => import('../pages/library');
+const About = () => import('../pages/about');
+const API = () => import('../pages/api');
+const NotFound = () => import('../pages/not_found');
 
 const routes = [
     {
@@ -27,10 +27,10 @@ const routes = [
     {
         name: 'library',
         meta: {
-            title(context) {
+            title (context) {
                 return `${context.$route.params.id} - Libraries`;
             },
-            breadcrumb(context) {
+            breadcrumb (context) {
                 return context.$route.params.id;
             },
             classes: [],
