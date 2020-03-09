@@ -2,7 +2,9 @@
     <div class="content library-hero">
         <h1>{{ library.name }}</h1>
         <div class="row">
-            <p v-if="library.algolia.github && library.algolia.github.stargazers_count" class="stars">
+            <p v-if="library.algolia && library.algolia.github && library.algolia.github.stargazers_count"
+               class="stars"
+            >
                 <i class="fas fa-star"></i>
                 {{ formatUnits(library.algolia.github.stargazers_count, 0) }}
             </p>
@@ -58,8 +60,8 @@
         methods: {
             formatUnits,
             repo() {
-                if (this.$props.library.algolia.github && this.$props.library.algolia.github.user &&
-                    this.$props.library.algolia.github.repo)
+                if (this.$props.library.algolia && this.$props.library.algolia.github &&
+                    this.$props.library.algolia.github.user && this.$props.library.algolia.github.repo)
                     return `${this.$props.library.algolia.github.user}/${this.$props.library.algolia.github.repo}`;
             },
         },

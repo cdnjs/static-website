@@ -25,7 +25,15 @@
                     :style="{ display: asset.hidden && !showHidden ? 'none' : undefined }"
                 >
                     <span class="url">{{ asset.url }}</span>
-                    <LibraryAssetButtons :asset="asset"></LibraryAssetButtons>
+                    <LibraryAssetButtons :asset="asset">
+                        <template slot="before">
+                            <i v-if="!isWhitelisted(asset.type)"
+                               v-tippy
+                               content="This file type is not whitelisted on the CDN and will not be available."
+                               class="fas fa-exclamation-triangle"
+                            ></i>
+                        </template>
+                    </LibraryAssetButtons>
                 </li>
             </ul>
             <!-- TODO: Tutorials? -->
@@ -41,6 +49,7 @@
     const formatUnits = require('../util/format_units');
     const getLibrary = require('../util/get_library');
     const getAsset = require('../util/get_asset');
+    const { isWhitelisted } = require('../util/file_type');
     const Breadcrumbs = require('../components/breadcrumbs');
     const LibraryHero = require('../components/library_hero');
     const LibraryAssetButtons = require('../components/library_asset_buttons');
@@ -67,6 +76,7 @@
         },
         methods: {
             formatUnits,
+            isWhitelisted,
             versions() {
                 const versions = this.$data.library.assets.map(a => a.version);
                 try {

@@ -83,6 +83,15 @@ main {
             i {
               color: $darker;
 
+              &.fa-exclamation-triangle {
+                color: $primary;
+
+                &:hover,
+                &:focus {
+                  color: $primary-hover;
+                }
+              }
+
               &:hover,
               &:focus {
                 color: $dark;

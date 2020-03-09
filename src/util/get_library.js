@@ -8,6 +8,19 @@ const api = async lib => {
     return await res.json();
 };
 
+const algolia = async name => {
+    const hits = [];
+    const data = await index.findObject(hit => {
+        hits.push(hit);
+        return hit.name === name;
+    }).catch((e) => {
+        console.log('Caught error:', e);
+    });
+    console.log('Promise result:', data);
+    console.log('Hits checked:', hits.length, hits);
+    return data && data.object ? data.object : {};
+};
+
 /*const cdn = async lib => {
     const res = await fetch(`https://cdnjs.cloudflare.com/ajax/libs/${encodeURIComponent(lib)}/package.json`);
     return await res.json();
@@ -51,7 +64,7 @@ module.exports = async lib => {
     if (Object.entries(apiData).length === 0 && apiData.constructor === Object) throw new Error('Library not found');
 
     // Get Algolia data
-    apiData.algolia = (await index.findObject(hit => hit.name === apiData.name)).object;
+    apiData.algolia = await algolia(apiData.name);
 
     // Get license data
     apiData.licenses = licenses(apiData);
