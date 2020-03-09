@@ -19,6 +19,7 @@
 
 <script>
     import Corner from '../components/corner';
+    import setMeta from "../util/set_meta";
 
     export default {
         name: 'Index',
@@ -26,6 +27,9 @@
             title: '',
             breadcrumb: '',
             classes: ['landing'],
+        },
+        head() {
+            return setMeta(this.$nuxt.context);
         },
         components: {
             Corner,

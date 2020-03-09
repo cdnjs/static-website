@@ -45,6 +45,8 @@
 </template>
 
 <script>
+    import setMeta from "../../util/set_meta";
+
     const semverSort = require('semver-sort');
     const globToRegExp = require('glob-to-regexp');
     const { VueSelect } = require('vue-select');
@@ -59,6 +61,18 @@
 
     export default {
         name: 'Library',
+        meta: {
+            title(context) {
+                return `${context.$route.params.id} - Libraries`
+            },
+            breadcrumb(context) {
+                return context.$route.params.id;
+            },
+            classes: [],
+        },
+        head() {
+            return setMeta(this.$nuxt.context);
+        },
         components: {
             Breadcrumbs,
             LibraryHero,

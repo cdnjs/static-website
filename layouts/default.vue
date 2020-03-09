@@ -22,7 +22,6 @@
     import Nav from '../components/nav';
     import InlineSearch from '../components/inline_search';
     import Footer from '../components/footer';
-    import setMeta from '../util/set_meta';
 
     export default {
         name: 'App',
@@ -76,15 +75,6 @@
                     this.$refs.inlineSearch.$data.hidden = this.$route.name === 'libraries';
                 });
             },
-            setMeta() {
-                let title = this.$route.meta.title || '';
-                if (typeof title === 'function') title = title(this);
-
-                let desc = this.$route.meta.desc || '';
-                if (typeof desc === 'function') desc = desc(this);
-
-                setMeta(title, desc);
-            },
             setClasses() {
                 const route = this.$nuxt.context.route;
                 const newClasses = [];
@@ -112,13 +102,11 @@
                 next();
             });
             this.$nuxt.$router.afterEach(() => {
-                this.setMeta();
                 this.setClasses();
                 this.checkInlineSearch();
             });
         },
         mounted() {
-            this.setMeta();
             this.setClasses();
             this.checkInlineSearch();
         },
