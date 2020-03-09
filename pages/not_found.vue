@@ -9,5 +9,10 @@
 <script>
     export default {
         name: 'NotFound',
+        meta: {
+            title: '404 - Not Found',
+            breadcrumb: 'Not Found',
+            classes: [],
+        },
     };
 </script>

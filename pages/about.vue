@@ -213,6 +213,11 @@
 
     export default {
         name: 'About',
+        meta: {
+            title: 'About',
+            breadcrumb: 'About',
+            classes: [],
+        },
         components: {
             Breadcrumbs,
         },

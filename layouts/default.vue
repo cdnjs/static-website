@@ -1,10 +1,20 @@
 <template>
-    <main :class="[$route.name, ...($route.meta.classes || [])]">
+    <main :class="classes">
         <Nav>
             <InlineSearch ref="inlineSearch"></InlineSearch>
         </Nav>
         <nuxt />
         <Footer></Footer>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-139601399-3');
+        </script>
     </main>
 </template>
 
@@ -24,6 +34,7 @@
         data() {
             return {
                 currentSearchElm: null,
+                classes: [],
             };
         },
         methods: {
@@ -74,24 +85,41 @@
 
                 setMeta(title, desc);
             },
+            setClasses() {
+                const route = this.$nuxt.context.route;
+                const newClasses = [];
+
+                // Use the route name as a class always
+                newClasses.push(route.name);
+
+                // Get additional classes from meta (which might be an object, or an array of objects)
+                if (Array.isArray(route.meta)) {
+                    newClasses.push(...route.meta.reduce((prev, item) => {
+                        prev.push(...(item.classes || []));
+                        return prev;
+                    }, []));
+                } else {
+                    newClasses.push(...(route.meta.classes || []))
+                }
+
+                // Store it!
+                this.$data.classes = newClasses;
+            }
         },
         created() {
             this.$nuxt.$router.beforeEach((_, __, next) => {
-                console.log('before');
                 this.recoverInlineSearch();
                 next();
             });
             this.$nuxt.$router.afterEach(() => {
-                console.log('after');
                 this.setMeta();
+                this.setClasses();
                 this.checkInlineSearch();
             });
         },
         mounted() {
-            console.log(this.$route);
-            console.log(this.$nuxt);
-            console.log(this);
             this.setMeta();
+            this.setClasses();
             this.checkInlineSearch();
         },
     };

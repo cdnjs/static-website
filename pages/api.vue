@@ -58,6 +58,11 @@
 
     export default {
         name: 'API',
+        meta: {
+            title: 'API',
+            breadcrumb: 'API',
+            classes: [],
+        },
         components: {
             Breadcrumbs,
         },

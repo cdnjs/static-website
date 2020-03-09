@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const spdxLicenseIds = require('spdx-license-ids');
-const searchClient = require('./search_client');
+
+import searchClient from './search_client';
 const index = searchClient.initIndex('libraries');
 
 const api = async lib => {

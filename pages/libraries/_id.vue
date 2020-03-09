@@ -49,13 +49,13 @@
     const globToRegExp = require('glob-to-regexp');
     const { VueSelect } = require('vue-select');
     const firstBy = require('thenby');
-    import formatUnits from '../util/format_units';
-    import getLibrary from '../util/get_library';
-    import getAsset from '../util/get_asset';
-    import { isWhitelisted, category } from '../util/file_type';
-    import Breadcrumbs from '../components/breadcrumbs';
-    import LibraryHero from '../components/library_hero';
-    import LibraryAssetButtons from '../components/library_asset_buttons';
+    import formatUnits from '../../util/format_units';
+    import getLibrary from '../../util/get_library';
+    import getAsset from '../../util/get_asset';
+    import { isWhitelisted, category } from '../../util/file_type';
+    import Breadcrumbs from '../../components/breadcrumbs';
+    import LibraryHero from '../../components/library_hero';
+    import LibraryAssetButtons from '../../components/library_asset_buttons';
 
     export default {
         name: 'Library',

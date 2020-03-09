@@ -22,6 +22,11 @@
 
     export default {
         name: 'Index',
+        meta: {
+            title: '',
+            breadcrumb: '',
+            classes: ['landing'],
+        },
         components: {
             Corner,
         },

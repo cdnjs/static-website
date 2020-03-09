@@ -3,7 +3,9 @@
 }
 
 html,
-body {
+body,
+#__nuxt,
+#__layout {
   @include font-light;
 
   background-color: $dark;
