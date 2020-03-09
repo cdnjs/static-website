@@ -14,10 +14,15 @@
                 <p>Version</p>
                 <VueSelect v-model="version" :options="versions()" :clearable="false"></VueSelect>
             </div>
+            <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
+                {{ showHidden ? 'All files are shown, click to hide non-essential files'
+                    : 'Some files are hidden, click to show all files' }}
+            </a>
             <ul class="assets">
-                <li v-for="asset of assets()"
+                <li v-for="asset of assets"
                     :key="asset.url"
                     :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
+                    :style="{ display: asset.hidden && !showHidden ? 'none' : undefined }"
                 >
                     <span class="url">{{ asset.url }}</span>
                     <LibraryAssetButtons :asset="asset"></LibraryAssetButtons>
@@ -30,14 +35,15 @@
 
 <script>
     const semverSort = require('semver-sort');
+    const globToRegExp = require('glob-to-regexp');
+    const { VueSelect } = require('vue-select');
+    const firstBy = require('thenby');
     const formatUnits = require('../util/format_units');
     const getLibrary = require('../util/get_library');
     const getAsset = require('../util/get_asset');
     const Breadcrumbs = require('../components/breadcrumbs');
     const LibraryHero = require('../components/library_hero');
     const LibraryAssetButtons = require('../components/library_asset_buttons');
-    const { VueSelect } = require('vue-select');
-    const firstBy = require('thenby');
 
     module.exports = {
         name: 'Library',
@@ -54,6 +60,9 @@
                 ready: false,
                 message: 'Loading...',
                 version: null,
+                assets: [],
+                hasHidden: false,
+                showHidden: false,
             };
         },
         methods: {
@@ -66,20 +75,52 @@
                     return versions;
                 }
             },
-            assets() {
-                const assets = this.$data.library.assets.find(a => a.version === this.$data.version);
-                return assets.files
+            getAssets() {
+                // Get the raw assets for this version
+                const rawAssets = this.$data.library.assets.find(a => a.version === this.$data.version);
+
+                // Convert them to asset objects and sort them
+                const sortedAssets = rawAssets.files
                     .map(asset => getAsset(
                         this.$data.library.name,
                         this.$data.version,
                         asset,
-                        assets.sri && asset in assets.sri ? assets.sri[asset] : null,
+                        rawAssets.sri && asset in rawAssets.sri ? rawAssets.sri[asset] : null,
                     ))
                     .sort(
                         firstBy(v1 => v1.file === this.$data.library.filename, -1)
                             .thenBy((v1, v2) => v1.file.split('/').length - v2.file.split('/').length)
                             .thenBy('file'),
                     );
+
+                // Determine if we have any minified files
+                const minFileRe = globToRegExp('*.min.*');
+                const hasMinifiedFiles = sortedAssets.reduce((prev, asset) => prev || minFileRe.test(asset.file), false);
+
+                // Use some glob regex to determine if each file should be hidden
+                const criticalFilesGlob = '{' + '*.min.js,' + '*.min.css,' + this.$data.library.filename + '}';
+                const commonFileGlob = '{' + '*.js.*,' + '*.css.*,' + this.$data.library.filename + '}';
+                const criticalFileRegExp = globToRegExp(criticalFilesGlob, { extended: true });
+                const commonFileRegExp = globToRegExp(commonFileGlob, { extended: true });
+                let hasHiddenFiles = false;
+                const hiddenAssets = sortedAssets.map(asset => {
+                    asset.hidden = false;
+                    // Only hide things if we have lots of files and the current file isn't the default
+                    if (sortedAssets.length > 20 && this.$data.library.filename !== asset.file) {
+                        asset.hidden = !(hasMinifiedFiles ? criticalFileRegExp : commonFileRegExp).test(asset.file);
+                        hasHiddenFiles = hasHiddenFiles || asset.hidden;
+                    }
+                    return asset;
+                });
+
+                // Done!
+                this.$data.assets = hiddenAssets;
+                this.$data.hasHidden = hasHiddenFiles;
+            },
+        },
+        watch: {
+            version() {
+                this.getAssets();
             },
         },
         mounted() {

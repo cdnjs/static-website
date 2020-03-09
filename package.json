@@ -30,6 +30,7 @@
   "dependencies": {
     "algoliasearch": "^4.0.3",
     "babel-polyfill": "^6.26.0",
+    "glob-to-regexp": "^0.4.1",
     "instantsearch.css": "^7.4.2",
     "node-fetch": "^2.6.0",
     "parcel-bundler": "^1.12.4",
