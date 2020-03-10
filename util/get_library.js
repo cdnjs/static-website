@@ -6,7 +6,7 @@ const index = searchClient.initIndex('libraries');
 
 const api = async (lib) => {
     const res = await fetch(`https://api.cdnjs.com/libraries/${encodeURIComponent(lib)}`);
-    return await res.json();
+    return res.json();
 };
 
 const algolia = async (name) => {
@@ -16,7 +16,7 @@ const algolia = async (name) => {
 
 /* const cdn = async lib => {
     const res = await fetch(`https://cdnjs.cloudflare.com/ajax/libs/${encodeURIComponent(lib)}/package.json`);
-    return await res.json();
+    return res.json();
 }; */
 
 const licenses = (lib) => {

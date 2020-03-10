@@ -1,6 +1,6 @@
-export default (route, matcher) => {
+export default (context) => {
     // Split the url into parts
-    let breadcrumbList = route.path.split('/');
+    let breadcrumbList = context.route.path.split('/');
 
     // If the originalUrl ended with '/', pop last item, which will be empty
     if (breadcrumbList[breadcrumbList.length - 1] === '') { breadcrumbList.pop(); }
@@ -19,7 +19,7 @@ export default (route, matcher) => {
             name = path;
 
             // Try getting router meta data
-            const match = matcher.match(nowUrl);
+            const match = context.app.router.matcher.match(nowUrl);
             if (match && match.meta && match.meta.breadcrumb) {
                 name = match.meta.breadcrumb;
                 if (typeof name === 'function') { name = name(context); }

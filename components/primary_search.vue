@@ -4,7 +4,7 @@
         index-name="libraries"
         class="primary-search"
     >
-        <ais-configure :query="query"></ais-configure>
+        <ais-configure :query="searchQuery"></ais-configure>
 
         <header>
             <div class="content">
@@ -55,8 +55,8 @@
 </template>
 
 <script>
-    import LibraryCard from './library_card';
     import searchClient from '../util/search_client';
+    import LibraryCard from './library_card';
 
     export default {
         name: 'PrimarySearch',
@@ -65,14 +65,14 @@
         },
         data () {
             return {
-                query: this.$route.query.q || this.$route.query.query || '',
+                searchQuery: this.$route.query.q || this.$route.query.query || '',
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
             };
         },
         created () {
             this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
-                .then(data => this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`);
+                .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`; });
         },
         methods: {
             cdnjsSearch (query) {

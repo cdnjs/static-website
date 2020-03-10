@@ -17,7 +17,7 @@
         name: 'Breadcrumbs',
         computed: {
             breadcrumbs () {
-                return breadcrumbs(this.$nuxt.context.route, this.$router.matcher);
+                return breadcrumbs(this.$nuxt.context);
             },
         },
     };

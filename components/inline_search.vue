@@ -31,8 +31,8 @@
 </template>
 
 <script>
-    import LibraryCard from './library_card';
     import searchClient from '../util/search_client';
+    import LibraryCard from './library_card';
 
     export default {
         name: 'InlineSearch',
@@ -54,7 +54,7 @@
         },
         created () {
             this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
-                .then(data => this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`);
+                .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`; });
         },
         methods: {
             focused () {
@@ -89,11 +89,11 @@
             },
             showMore () {
                 this.$router.push({
-                        name: 'libraries',
-                        query: {
-                            q: this.$refs.search.$children[0].$refs.input.value || undefined,
-                        },
-                    });
+                    name: 'libraries',
+                    query: {
+                        q: this.$refs.search.$children[0].$refs.input.value || undefined,
+                    },
+                });
             },
         },
     };

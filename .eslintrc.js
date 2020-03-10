@@ -16,6 +16,14 @@ module.exports = {
         sourceType: 'module',
         parser: 'babel-eslint',
     },
+    overrides: [
+        {
+            files: ['**/*.vue'],
+            rules: {
+                indent: 0,
+            },
+        },
+    ],
     rules: {
         indent: ['error', 4],
         'no-console': 0,

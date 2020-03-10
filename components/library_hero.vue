@@ -61,8 +61,9 @@
             formatUnits,
             repo () {
                 if (this.$props.library.algolia && this.$props.library.algolia.github &&
-                    this.$props.library.algolia.github.user && this.$props.library.algolia.github.repo)
+                    this.$props.library.algolia.github.user && this.$props.library.algolia.github.repo) {
                     return `${this.$props.library.algolia.github.user}/${this.$props.library.algolia.github.repo}`;
+                }
             },
         },
     };

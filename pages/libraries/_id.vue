@@ -45,18 +45,18 @@
 </template>
 
 <script>
-import formatUnits from '../../util/format_units';
-import getLibrary from '../../util/get_library';
-import getAsset from '../../util/get_asset';
-import setMeta from '../../util/set_meta';
-import { isWhitelisted, category } from '../../util/file_type';
-import Breadcrumbs from '../../components/breadcrumbs';
-import LibraryHero from '../../components/library_hero';
-import LibraryAssetButtons from '../../components/library_asset_buttons';
-const semverSort = require('semver-sort');
-const globToRegExp = require('glob-to-regexp');
-const { VueSelect } = require('vue-select');
-const firstBy = require('thenby');
+    import formatUnits from '../../util/format_units';
+    import getLibrary from '../../util/get_library';
+    import getAsset from '../../util/get_asset';
+    import setMeta from '../../util/set_meta';
+    import { isWhitelisted, category } from '../../util/file_type';
+    import Breadcrumbs from '../../components/breadcrumbs';
+    import LibraryHero from '../../components/library_hero';
+    import LibraryAssetButtons from '../../components/library_asset_buttons';
+    const semverSort = require('semver-sort');
+    const globToRegExp = require('glob-to-regexp');
+    const { VueSelect } = require('vue-select');
+    const firstBy = require('thenby');
 
     export default {
         name: 'Library',
@@ -109,10 +109,7 @@ const firstBy = require('thenby');
                 this.$data.ready = true;
             }).catch((e) => {
                 // If we fail to find it, let the user know
-                if (e.message === 'Library not found')
-                    this.$data.message = `Could not find library ${this.$data.libraryName}`;
-                else
-                    this.$data.message = `Failed load library ${this.$data.libraryName}`;
+                if (e.message === 'Library not found') { this.$data.message = `Could not find library ${this.$data.libraryName}`; } else { this.$data.message = `Failed load library ${this.$data.libraryName}`; }
             });
         },
         methods: {
