@@ -1,10 +1,10 @@
 <template>
     <li class="library-card">
         <div class="title">
-            <router-link :to="{ name: 'library', params: { id: library.name } }">
+            <nuxt-link :to="{ name: 'libraries-id', params: { id: library.name } }">
                 {{ library.name }}
                 <span class="version">@ {{ library.version }}</span>
-            </router-link>
+            </nuxt-link>
 
             <p v-if="library.github && library.github.stargazers_count" class="stars">
                 <i class="fas fa-star"></i>

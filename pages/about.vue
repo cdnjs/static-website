@@ -22,9 +22,9 @@
                         While a CDN isn’t perfect for every occasion, when it is we’re here for you.
                     </p>
                     <p>
-                        <router-link :to="{ name: 'libraries' }" class="button">
+                        <nuxt-link :to="{ name: 'libraries' }" class="button">
                             View our libraries
-                        </router-link>
+                        </nuxt-link>
                         <a href="https://github.com/cdnjs" class="button">We're on GitHub</a>
                     </p>
                     <p>
@@ -41,9 +41,9 @@
                     <p>
                         As a public OSS project, cdnjs relies on contributions and donations from the community.
                         You can get get involved on <a href="https://github.com/cdnjs">GitHub</a> or find out more about
-                        <router-link :to="{ name: 'sponsor-us' }">
+                        <nuxt-link :to="{ name: 'sponsor-us' }">
                             donating here
-                        </router-link>.
+                        </nuxt-link>.
                     </p>
 
                     <h1>Legal</h1>

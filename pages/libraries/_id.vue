@@ -45,8 +45,6 @@
 </template>
 
 <script>
-    import setMeta from "../../util/set_meta";
-
     const semverSort = require('semver-sort');
     const globToRegExp = require('glob-to-regexp');
     const { VueSelect } = require('vue-select');
@@ -54,6 +52,7 @@
     import formatUnits from '../../util/format_units';
     import getLibrary from '../../util/get_library';
     import getAsset from '../../util/get_asset';
+    import setMeta from "../../util/set_meta";
     import { isWhitelisted, category } from '../../util/file_type';
     import Breadcrumbs from '../../components/breadcrumbs';
     import LibraryHero from '../../components/library_hero';
@@ -63,10 +62,10 @@
         name: 'Library',
         meta: {
             title(context) {
-                return `${context.$route.params.id} - Libraries`
+                return `${context.route.params.id} - Libraries`
             },
             breadcrumb(context) {
-                return context.$route.params.id;
+                return context.route.params.id;
             },
             classes: [],
         },

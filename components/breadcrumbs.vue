@@ -2,9 +2,9 @@
     <div class="content breadcrumbs">
         <ul>
             <li v-for="item in breadcrumbs">
-                <router-link :to="{ path: item.url}">
+                <nuxt-link :to="{ path: item.url}">
                     {{ item.index }}
-                </router-link>
+                </nuxt-link>
             </li>
         </ul>
     </div>
@@ -17,7 +17,7 @@
         name: 'Breadcrumbs',
         computed: {
             breadcrumbs() {
-                return breadcrumbs(this);
+                return breadcrumbs(this.$nuxt.context.route, this.$router.matcher);
             },
         },
     };
