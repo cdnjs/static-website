@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import TippyComponent from 'vue-tippy';
+    import { TippyComponent } from 'vue-tippy';
 
     export default {
         name: 'LibraryAssetButtons',
