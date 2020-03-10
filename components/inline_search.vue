@@ -39,6 +39,9 @@
         components: {
             LibraryCard,
         },
+        props: {
+            margin: Boolean,
+        },
         data() {
             return {
                 hidden: false,
@@ -55,8 +58,8 @@
                 if (!this.$data.listenerRegistered) {
                     this.$refs.instantSearch.instantSearchInstance.helper.on('result', () => {
                         this.$nextTick(() => {
-                            // If the search element is not in the nav, set a margin so it doesn't overflow the page
-                            if (!this.$refs.instantSearch.$el.childNodes.length) {
+                            // Set a margin so it doesn't overflow the page (if enabled)
+                            if (this.$props.margin) {
                                 const results = this.$refs.results.$el;
                                 results.parentElement.style.marginBottom = `${results.offsetHeight + 4}px`;
                             }

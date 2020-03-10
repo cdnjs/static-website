@@ -11,7 +11,7 @@
             working to make it faster and easier to load library files to your websites.
         </h2>
 
-        <div data-search-target></div>
+        <InlineSearch :margin="true"></InlineSearch>
 
         <Corner></Corner>
     </section>
@@ -19,6 +19,7 @@
 
 <script>
     import Corner from '../components/corner';
+    import InlineSearch from '../components/inline_search';
     import setMeta from "../util/set_meta";
 
     export default {
@@ -33,6 +34,7 @@
         },
         components: {
             Corner,
+            InlineSearch,
         },
     };
 </script>
