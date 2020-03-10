@@ -30,23 +30,33 @@
             InlineSearch,
             Footer,
         },
-        data() {
+        data () {
             return {
                 classes: [],
             };
         },
+        created () {
+            this.$nuxt.$router.afterEach(() => {
+                this.setClasses();
+                this.checkInlineSearch();
+            });
+        },
+        mounted () {
+            this.setClasses();
+            this.checkInlineSearch();
+        },
         methods: {
-            checkInlineSearch() {
+            checkInlineSearch () {
                 // Show before we do anything
                 this.$refs.inlineSearch.$data.hidden = false;
 
                 // Hide search on landing
-                if (this.$nuxt.context.route.name === 'index') this.$refs.inlineSearch.$data.hidden = true;
+                if (this.$nuxt.context.route.name === 'index') { this.$refs.inlineSearch.$data.hidden = true; }
 
                 // Hide search on libraries
-                if (this.$nuxt.context.route.name === 'libraries') this.$refs.inlineSearch.$data.hidden = true;
+                if (this.$nuxt.context.route.name === 'libraries') { this.$refs.inlineSearch.$data.hidden = true; }
             },
-            setClasses() {
+            setClasses () {
                 const route = this.$nuxt.context.route;
                 const newClasses = [];
 
@@ -60,22 +70,12 @@
                         return prev;
                     }, []));
                 } else {
-                    newClasses.push(...(route.meta.classes || []))
+                    newClasses.push(...(route.meta.classes || []));
                 }
 
                 // Store it!
                 this.$data.classes = newClasses;
-            }
-        },
-        created() {
-            this.$nuxt.$router.afterEach(() => {
-                this.setClasses();
-                this.checkInlineSearch();
-            });
-        },
-        mounted() {
-            this.setClasses();
-            this.checkInlineSearch();
+            },
         },
     };
 </script>

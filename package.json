@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "test": "npm run test:eslint && npm run test:scss",
-    "test:eslint": "eslint 'src/**/*.{js,vue}'",
+    "test:eslint": "eslint '!(node_modules|.nuxt)/**/*.{js,vue}'",
     "test:eslint:fix": "npm run test:eslint -- --fix",
-    "test:scss": "sass-lint 'src/**/*.scss' --verbose --no-exit --config .sasslintrc"
+    "test:scss": "sass-lint '!(node_modules|.nuxt)/**/*.scss' --verbose --no-exit --config .sasslintrc"
   },
   "repository": {
     "type": "git",

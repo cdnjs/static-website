@@ -42,7 +42,7 @@
         props: {
             margin: Boolean,
         },
-        data() {
+        data () {
             return {
                 hidden: false,
                 showHits: false,
@@ -52,8 +52,12 @@
                 searchClient,
             };
         },
+        created () {
+            this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
+                .then(data => this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`);
+        },
         methods: {
-            focused() {
+            focused () {
                 // Register a listener for results
                 if (!this.$data.listenerRegistered) {
                     this.$refs.instantSearch.instantSearchInstance.helper.on('result', () => {
@@ -72,7 +76,7 @@
                 this.$data.showHits = true;
                 this.$data.hasFocus = true;
             },
-            blurred() {
+            blurred () {
                 // If no query, this will hide the default results
                 // Use a delay so that if the user clicks on one, it will navigate correctly
                 setTimeout(() => {
@@ -83,15 +87,14 @@
                     });
                 }, 200);
             },
-            showMore() {
-                this.$router.push({ name: 'libraries', query: {
-                    q: this.$refs.search.$children[0].$refs.input.value || undefined,
-                }});
+            showMore () {
+                this.$router.push({
+                        name: 'libraries',
+                        query: {
+                            q: this.$refs.search.$children[0].$refs.input.value || undefined,
+                        },
+                    });
             },
-        },
-        created() {
-            this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
-                .then(data => this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`);
         },
     };
 </script>

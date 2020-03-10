@@ -63,21 +63,21 @@
         components: {
             LibraryCard,
         },
-        data() {
+        data () {
             return {
                 query: this.$route.query.q || this.$route.query.query || '',
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
             };
         },
-        methods: {
-            cdnjsSearch(query) {
-                return `https://github.com/cdnjs/cdnjs/issues?utf8=✓&q=${encodeURIComponent(query)}`;
-            },
-        },
-        created() {
+        created () {
             this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
                 .then(data => this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`);
+        },
+        methods: {
+            cdnjsSearch (query) {
+                return `https://github.com/cdnjs/cdnjs/issues?utf8=✓&q=${encodeURIComponent(query)}`;
+            },
         },
     };
 </script>

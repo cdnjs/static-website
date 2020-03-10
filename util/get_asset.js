@@ -1,40 +1,40 @@
-const sriAttr = asset => {
-    if (!asset.sri) return '';
+const sriAttr = (asset) => {
+    if (!asset.sri) { return ''; }
     return ` integrity="${asset.sri}" crossorigin="anonymous"`;
 };
 
-const code = asset => {
+const code = (asset) => {
     switch (asset.type) {
-        case 'css':
-            return `<link rel="stylesheet" href="${asset.url}"${sriAttr(asset)} />`;
+    case 'css':
+        return `<link rel="stylesheet" href="${asset.url}"${sriAttr(asset)} />`;
 
-        case 'js':
-            return `<script src="${asset.url}"${sriAttr(asset)}></script>`;
+    case 'js':
+        return `<script src="${asset.url}"${sriAttr(asset)}></script>`;
 
-        default:
-            return undefined;
+    default:
+        return undefined;
     }
 };
 
-const codeTitle = asset => {
+const codeTitle = (asset) => {
     switch (asset.type) {
-        case 'css':
-            return 'Copy Link Tag';
+    case 'css':
+        return 'Copy Link Tag';
 
-        case 'js':
-            return 'Copy Script Tag';
+    case 'js':
+        return 'Copy Script Tag';
 
-        default:
-            return undefined;
+    default:
+        return undefined;
     }
 };
 
 export default (library, version, file, sri) => {
     const asset = {
-        library: library,
-        version: version,
-        file: file,
-        sri: sri,
+        library,
+        version,
+        file,
+        sri,
         type: file.split('.').reverse()[0],
         url: `https://cdnjs.cloudflare.com/ajax/libs/${library}/${version}/${file}`,
     };

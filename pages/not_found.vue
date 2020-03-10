@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import setMeta from "../util/set_meta";
+    import setMeta from '../util/set_meta';
 
     export default {
         name: 'NotFound',
@@ -16,7 +16,7 @@
             breadcrumb: 'Not Found',
             classes: [],
         },
-        head() {
+        head () {
             return setMeta(this.$nuxt.context);
         },
     };

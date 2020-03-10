@@ -16,7 +16,7 @@
     export default {
         name: 'Breadcrumbs',
         computed: {
-            breadcrumbs() {
+            breadcrumbs () {
                 return breadcrumbs(this.$nuxt.context.route, this.$router.matcher);
             },
         },

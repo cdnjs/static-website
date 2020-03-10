@@ -45,31 +45,31 @@
 </template>
 
 <script>
-    const semverSort = require('semver-sort');
-    const globToRegExp = require('glob-to-regexp');
-    const { VueSelect } = require('vue-select');
-    const firstBy = require('thenby');
-    import formatUnits from '../../util/format_units';
-    import getLibrary from '../../util/get_library';
-    import getAsset from '../../util/get_asset';
-    import setMeta from "../../util/set_meta";
-    import { isWhitelisted, category } from '../../util/file_type';
-    import Breadcrumbs from '../../components/breadcrumbs';
-    import LibraryHero from '../../components/library_hero';
-    import LibraryAssetButtons from '../../components/library_asset_buttons';
+import formatUnits from '../../util/format_units';
+import getLibrary from '../../util/get_library';
+import getAsset from '../../util/get_asset';
+import setMeta from '../../util/set_meta';
+import { isWhitelisted, category } from '../../util/file_type';
+import Breadcrumbs from '../../components/breadcrumbs';
+import LibraryHero from '../../components/library_hero';
+import LibraryAssetButtons from '../../components/library_asset_buttons';
+const semverSort = require('semver-sort');
+const globToRegExp = require('glob-to-regexp');
+const { VueSelect } = require('vue-select');
+const firstBy = require('thenby');
 
     export default {
         name: 'Library',
         meta: {
-            title(context) {
-                return `${context.route.params.id} - Libraries`
+            title (context) {
+                return `${context.route.params.id} - Libraries`;
             },
-            breadcrumb(context) {
+            breadcrumb (context) {
                 return context.route.params.id;
             },
             classes: [],
         },
-        head() {
+        head () {
             return setMeta(this.$nuxt.context);
         },
         components: {
@@ -78,7 +78,7 @@
             LibraryAssetButtons,
             VueSelect,
         },
-        data() {
+        data () {
             return {
                 libraryName: null,
                 library: null,
@@ -92,10 +92,33 @@
                 showHidden: false,
             };
         },
+        watch: {
+            version () {
+                this.getAssets();
+            },
+        },
+        mounted () {
+            // Store the name from the URL
+            this.$data.libraryName = this.$route.params.id;
+
+            // Attempt to get data for the lib
+            getLibrary(this.$data.libraryName).then((data) => {
+                // Save the lib data
+                this.$data.library = data;
+                this.$data.version = data.version;
+                this.$data.ready = true;
+            }).catch((e) => {
+                // If we fail to find it, let the user know
+                if (e.message === 'Library not found')
+                    this.$data.message = `Could not find library ${this.$data.libraryName}`;
+                else
+                    this.$data.message = `Failed load library ${this.$data.libraryName}`;
+            });
+        },
         methods: {
             formatUnits,
             isWhitelisted,
-            versions() {
+            versions () {
                 const versions = this.$data.library.assets.map(a => a.version);
                 try {
                     return semverSort.desc(versions);
@@ -103,12 +126,12 @@
                     return versions;
                 }
             },
-            hideAsset(asset) {
-                if (asset.hidden && !this.$data.showHidden) return true;
-                if (this.$data.category !== 'All') return category(asset.type) !== this.$data.category;
+            hideAsset (asset) {
+                if (asset.hidden && !this.$data.showHidden) { return true; }
+                if (this.$data.category !== 'All') { return category(asset.type) !== this.$data.category; }
                 return false;
             },
-            getAssets() {
+            getAssets () {
                 // Generate the categories
                 const categories = new Set();
                 categories.add('All');
@@ -140,7 +163,7 @@
                 const criticalFileRegExp = globToRegExp(criticalFilesGlob, { extended: true });
                 const commonFileRegExp = globToRegExp(commonFileGlob, { extended: true });
                 let hasHiddenFiles = false;
-                const hiddenAssets = sortedAssets.map(asset => {
+                const hiddenAssets = sortedAssets.map((asset) => {
                     // Only hide things if we have lots of files and the current file isn't the default
                     asset.hidden = false;
                     if (sortedAssets.length > 20 && this.$data.library.filename !== asset.file) {
@@ -161,29 +184,6 @@
                 this.$data.hasHidden = hasHiddenFiles;
                 this.$data.categories = [...categories];
             },
-        },
-        watch: {
-            version() {
-                this.getAssets();
-            },
-        },
-        mounted() {
-            // Store the name from the URL
-            this.$data.libraryName = this.$route.params.id;
-
-            // Attempt to get data for the lib
-            getLibrary(this.$data.libraryName).then(data => {
-                // Save the lib data
-                this.$data.library = data;
-                this.$data.version = data.version;
-                this.$data.ready = true;
-            }).catch(e => {
-                // If we fail to find it, let the user know
-                if (e.message === 'Library not found')
-                    this.$data.message = `Could not find library ${this.$data.libraryName}`;
-                else
-                    this.$data.message = `Failed load library ${this.$data.libraryName}`;
-            });
         },
     };
 </script>

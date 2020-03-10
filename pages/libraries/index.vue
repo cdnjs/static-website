@@ -10,7 +10,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import PrimarySearch from '../../components/primary_search';
-    import setMeta from "../../util/set_meta";
+    import setMeta from '../../util/set_meta';
 
     export default {
         name: 'Libraries',
@@ -19,7 +19,7 @@
             breadcrumb: 'Libraries',
             classes: [],
         },
-        head() {
+        head () {
             return setMeta(this.$nuxt.context);
         },
         components: {

@@ -33,20 +33,20 @@
 
     export default {
         name: 'LibraryAssetButtons',
-        props: {
-            asset: Object,
-        },
         components: {
             Tippy: TippyComponent,
         },
-        data() {
+        props: {
+            asset: Object,
+        },
+        data () {
             return {
                 tippyText: null,
                 tippyShow: false,
             };
         },
         methods: {
-            onCopy() {
+            onCopy () {
                 this.$data.tippyText = 'Copied!';
                 this.$data.tippyShow = true;
                 setTimeout(() => {

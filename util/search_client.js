@@ -1,4 +1,4 @@
-const algoliasearch = require('algoliasearch');
+import algoliasearch from 'algoliasearch';
 
 export default algoliasearch(
     '2QWLVLXZB6',

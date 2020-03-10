@@ -31,15 +31,15 @@
 
     export default {
         name: 'LibraryCard',
+        components: {
+            LibraryAssetButtons,
+        },
         props: {
             library: Object,
             small: Boolean,
         },
-        components: {
-            LibraryAssetButtons,
-        },
         computed: {
-            asset() {
+            asset () {
                 return getAsset(
                     this.$props.library.name,
                     this.$props.library.version,

@@ -20,7 +20,7 @@
 <script>
     import Corner from '../components/corner';
     import InlineSearch from '../components/inline_search';
-    import setMeta from "../util/set_meta";
+    import setMeta from '../util/set_meta';
 
     export default {
         name: 'Index',
@@ -29,7 +29,7 @@
             breadcrumb: '',
             classes: ['landing'],
         },
-        head() {
+        head () {
             return setMeta(this.$nuxt.context);
         },
         components: {

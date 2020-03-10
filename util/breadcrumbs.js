@@ -3,13 +3,13 @@ export default (route, matcher) => {
     let breadcrumbList = route.path.split('/');
 
     // If the originalUrl ended with '/', pop last item, which will be empty
-    if (breadcrumbList[breadcrumbList.length - 1] === '') breadcrumbList.pop();
+    if (breadcrumbList[breadcrumbList.length - 1] === '') { breadcrumbList.pop(); }
 
     // Generate the breadcrumbs
     const lastIndex = breadcrumbList.length - 1;
     let nowUrl = '';
     let position;
-    breadcrumbList = breadcrumbList.map(path => {
+    breadcrumbList = breadcrumbList.map((path) => {
         position = breadcrumbList.indexOf(path);
         nowUrl += path + (position === lastIndex ? '' : '/'); // don't append / to last item
 
@@ -22,7 +22,7 @@ export default (route, matcher) => {
             const match = matcher.match(nowUrl);
             if (match && match.meta && match.meta.breadcrumb) {
                 name = match.meta.breadcrumb;
-                if (typeof name === 'function') name = name(context);
+                if (typeof name === 'function') { name = name(context); }
             }
         }
 

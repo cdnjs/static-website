@@ -1,31 +1,31 @@
 /* eslint-disable key-spacing */
 export const typeMap = {
-  'js':     'js',
-  'map':    'map',
+    js:     'js',
+    map:    'map',
 
-  'css':    'css',
-  'scss':   'css',
+    css:    'css',
+    scss:   'css',
 
-  'png':    'image',
-  'gif':    'image',
-  'jpg':    'image',
-  'jpeg':   'image',
-  'svg':    'image',
-  'webp':   'image',
-  'cur':    'image',
+    png:    'image',
+    gif:    'image',
+    jpg:    'image',
+    jpeg:   'image',
+    svg:    'image',
+    webp:   'image',
+    cur:    'image',
 
-  'ttf':    'font',
-  'eot':    'font',
-  'woff':   'font',
-  'woff2':  'font',
-  'otf':    'font',
+    ttf:    'font',
+    eot:    'font',
+    woff:   'font',
+    woff2:  'font',
+    otf:    'font',
 
-  'aac':    'audio',
-  'mp3':    'audio',
-  'ogg':    'audio',
+    aac:    'audio',
+    mp3:    'audio',
+    ogg:    'audio',
 
-  'swf':    'flash',
-  'json':   'json',
+    swf:    'flash',
+    json:   'json',
 };
 /* eslint-enable key-spacing */
 
