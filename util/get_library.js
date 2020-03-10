@@ -10,16 +10,8 @@ const api = async lib => {
 };
 
 const algolia = async name => {
-    const hits = [];
-    const data = await index.findObject(hit => {
-        hits.push(hit);
-        return hit.name === name;
-    }).catch((e) => {
-        console.log('Caught error:', e);
-    });
-    console.log('Promise result:', data);
-    console.log('Hits checked:', hits.length, hits);
-    return data && data.object ? data.object : {};
+    const data = await index.getObject(name).catch(() => {});
+    return data || {};
 };
 
 /*const cdn = async lib => {
