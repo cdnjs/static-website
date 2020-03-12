@@ -1,4 +1,4 @@
-export default (route, router, data) => {
+export default async (route, router, data) => {
     // Split the url into parts
     let breadcrumbList = route.path.split('/');
 
@@ -9,7 +9,7 @@ export default (route, router, data) => {
     const lastIndex = breadcrumbList.length - 1;
     let nowUrl = '';
     let position;
-    breadcrumbList = breadcrumbList.map((path) => {
+    breadcrumbList = await Promise.all(breadcrumbList.map(async (path) => {
         position = breadcrumbList.indexOf(path);
         nowUrl += path + (position === lastIndex ? '' : '/'); // don't append / to last item
 
@@ -20,9 +20,32 @@ export default (route, router, data) => {
 
             // Try getting router meta data
             const match = router.getMatchedComponents(nowUrl);
-            if (match.length && match[0].options && match[0].options.meta && match[0].options.meta.breadcrumb) {
-                name = match[0].options.meta.breadcrumb;
-                if (typeof name === 'function') { name = name(data); }
+            if (match.length) {
+                let comp = match[0];
+                // If we have don't have a Vue component, we might have an async one
+                if (comp.name && comp.name !== 'VueComponent') {
+                    try {
+                        comp = await comp();
+                    } catch (_) {
+                    }
+                }
+
+                // Get the meta data
+                let meta;
+                // Component object
+                if (comp.meta) {
+                    meta = comp.meta;
+                }
+                // VueComponent
+                if (comp.options && comp.options.meta) {
+                    meta = comp.options.meta;
+                }
+
+                // Set the breadcrumb name, pass data if function
+                name = meta.breadcrumb;
+                if (typeof name === 'function') {
+                    name = name(data);
+                }
             }
         }
 
@@ -32,7 +55,7 @@ export default (route, router, data) => {
             url: nowUrl,
             position: position + 1,
         };
-    });
+    }));
 
     // Mark the last item
     breadcrumbList[lastIndex].last = true;

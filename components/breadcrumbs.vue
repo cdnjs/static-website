@@ -1,7 +1,7 @@
 <template>
     <div class="content breadcrumbs">
         <ul>
-            <li v-for="item in breadcrumbs">
+            <li v-for="item in crumbs">
                 <nuxt-link :to="{ path: item.url}">
                     {{ item.index }}
                 </nuxt-link>
@@ -11,14 +11,13 @@
 </template>
 
 <script>
-    import breadcrumbs from '../util/breadcrumbs';
-
     export default {
         name: 'Breadcrumbs',
-        computed: {
-            breadcrumbs () {
-                return breadcrumbs(this.$nuxt.context.route, this.$nuxt.context.app.router, this.$parent.$data);
-            },
+        props: {
+            crumbs: Array,
         },
+        mounted() {
+            console.log(this.$props.crumbs)
+        }
     };
 </script>

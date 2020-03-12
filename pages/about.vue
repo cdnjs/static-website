@@ -1,7 +1,7 @@
 <template>
     <section>
         <header>
-            <Breadcrumbs></Breadcrumbs>
+            <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
         </header>
         <div class="content">
             <div class="left">
@@ -210,6 +210,7 @@
 
 <script>
     import Breadcrumbs from '../components/breadcrumbs';
+    import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
 
     const meta = {
@@ -226,6 +227,11 @@
         },
         components: {
             Breadcrumbs,
+        },
+        async asyncData (data) {
+            return {
+                crumbs: await breadcrumbs(data.route, data.app.router, {}),
+            };
         },
     };
 </script>

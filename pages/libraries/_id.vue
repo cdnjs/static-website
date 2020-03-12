@@ -1,7 +1,7 @@
 <template>
     <section>
         <header>
-            <Breadcrumbs></Breadcrumbs>
+            <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
             <div v-if="!ready" class="content library-hero">
                 <h1>{{ message }}</h1>
             </div>
@@ -49,6 +49,7 @@
     import getLibrary from '../../util/get_library';
     import getAsset from '../../util/get_asset';
     import setMeta from '../../util/set_meta';
+    import breadcrumbs from "../../util/breadcrumbs";
     import { isWhitelisted, category } from '../../util/file_type';
     import Breadcrumbs from '../../components/breadcrumbs';
     import LibraryHero from '../../components/library_hero';
@@ -136,7 +137,7 @@
             LibraryAssetButtons,
             VueSelect,
         },
-        async asyncData ({ params }) {
+        async asyncData ({ params, route, app }) {
             const data = {
                 libraryName: params.id,
                 library: null,
@@ -172,6 +173,9 @@
 
                 data.ready = true;
             }
+
+            // Breadcrumbs!
+            data.crumbs = await breadcrumbs(route, app.router, data);
 
             return data;
         },
