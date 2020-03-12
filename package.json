@@ -32,6 +32,7 @@
     "spdx-license-ids": "^3.0.5",
     "thenby": "^1.3.0",
     "vue": "^2.6.11",
+    "vue-client-only": "^2.0.0",
     "vue-clipboard2": "^0.3.1",
     "vue-hot-reload-api": "^2.3.4",
     "vue-instantsearch": "^2.7.0",

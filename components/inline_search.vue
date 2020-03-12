@@ -1,5 +1,5 @@
 <template>
-    <keep-alive>
+    <client-only>
         <ais-instant-search
             ref="instantSearch"
             v-if="!hidden"
@@ -27,16 +27,31 @@
                 </template>
             </ais-state-results>
         </ais-instant-search>
-    </keep-alive>
+    </client-only>
 </template>
 
 <script>
+    import ClientOnly from 'vue-client-only';
+    import {
+        AisInstantSearch,
+        AisConfigure,
+        AisSearchBox,
+        AisStateResults,
+        AisHits,
+    } from 'vue-instantsearch';
+
     import searchClient from '../util/search_client';
     import LibraryCard from './library_card';
 
     export default {
         name: 'InlineSearch',
         components: {
+            ClientOnly,
+            AisInstantSearch,
+            AisConfigure,
+            AisSearchBox,
+            AisStateResults,
+            AisHits,
             LibraryCard,
         },
         props: {

@@ -1,66 +1,85 @@
 <template>
-    <ais-instant-search
-        :search-client="searchClient"
-        index-name="libraries"
-        class="primary-search"
-    >
-        <ais-configure :query="searchQuery"></ais-configure>
+    <client-only>
+        <ais-instant-search
+            :search-client="searchClient"
+            index-name="libraries"
+            class="primary-search"
+        >
+            <ais-configure :query="searchQuery"></ais-configure>
 
-        <header>
-            <div class="content">
-                <!-- TODO: Make autofocus work -->
-                <ais-search-box :placeholder="placeholder" :autofocus="true"></ais-search-box>
+            <header>
+                <div class="content">
+                    <!-- TODO: Make autofocus work -->
+                    <ais-search-box :placeholder="placeholder" :autofocus="true"></ais-search-box>
 
-                <ais-stats>
-                    <p slot-scope="{ nbHits, processingTimeMS }">
-                        <span class="hits">{{ nbHits.toLocaleString() }}</span> libraries found in {{ processingTimeMS }}ms.
-                    </p>
-                </ais-stats>
-            </div>
-        </header>
+                    <ais-stats>
+                        <p slot-scope="{ nbHits, processingTimeMS }">
+                            <span class="hits">{{ nbHits.toLocaleString() }}</span> libraries found in {{ processingTimeMS }}ms.
+                        </p>
+                    </ais-stats>
+                </div>
+            </header>
 
-        <ais-state-results>
-            <template slot-scope="{ query, nbHits, page, nbPages }">
-                <ais-infinite-hits class="content">
-                    <ul slot-scope="{ items, refineNext }">
-                        <template v-for="item in items">
-                            <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
-                        </template>
-                        <li v-if="page + 1 < nbPages" class="library-card show-more">
-                            <button @click="refineNext" class="button">
-                                Show more results
-                            </button>
-                        </li>
-                        <li class="library-card not-found">
-                            <p v-if="nbHits">
-                                Couldn't find the library you're looking for?
-                            </p>
-                            <p v-else>
-                                We're sorry, the library you're searching for couldn't be found.
-                            </p>
-                            <p>
-                                You can make a request to have it added on our
-                                <a href="https://github.com/cdnjs/cdnjs">GitHub repository</a>.
-                            </p>
-                            <p>
-                                Please make sure to <a :href="cdnjsSearch(query)">search and see if there is already an
-                                    issue</a> for it before adding a request.
-                            </p>
-                        </li>
-                    </ul>
-                </ais-infinite-hits>
-            </template>
-        </ais-state-results>
-    </ais-instant-search>
+            <ais-state-results>
+                <template slot-scope="{ query, nbHits, page, nbPages }">
+                    <ais-infinite-hits class="content">
+                        <ul slot-scope="{ items, refineNext }">
+                            <template v-for="item in items">
+                                <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
+                            </template>
+                            <li v-if="page + 1 < nbPages" class="library-card show-more">
+                                <button @click="refineNext" class="button">
+                                    Show more results
+                                </button>
+                            </li>
+                            <li class="library-card not-found">
+                                <p v-if="nbHits">
+                                    Couldn't find the library you're looking for?
+                                </p>
+                                <p v-else>
+                                    We're sorry, the library you're searching for couldn't be found.
+                                </p>
+                                <p>
+                                    You can make a request to have it added on our
+                                    <a href="https://github.com/cdnjs/cdnjs">GitHub repository</a>.
+                                </p>
+                                <p>
+                                    Please make sure to <a :href="cdnjsSearch(query)">search and see if there is already an
+                                        issue</a> for it before adding a request.
+                                </p>
+                            </li>
+                        </ul>
+                    </ais-infinite-hits>
+                </template>
+            </ais-state-results>
+        </ais-instant-search>
+    </client-only>
 </template>
 
 <script>
+    import ClientOnly from 'vue-client-only';
+    import {
+        AisInstantSearch,
+        AisConfigure,
+        AisSearchBox,
+        AisStats,
+        AisStateResults,
+        AisInfiniteHits,
+    } from 'vue-instantsearch';
+
     import searchClient from '../util/search_client';
     import LibraryCard from './library_card';
 
     export default {
         name: 'PrimarySearch',
         components: {
+            ClientOnly,
+            AisInstantSearch,
+            AisConfigure,
+            AisSearchBox,
+            AisStats,
+            AisStateResults,
+            AisInfiniteHits,
             LibraryCard,
         },
         data () {

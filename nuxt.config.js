@@ -1,5 +1,5 @@
 module.exports = {
-    mode: 'spa',
+    mode: 'universal',
     /*
     ** Headers of the page
     */
@@ -90,5 +90,6 @@ module.exports = {
         */
         extend(config, ctx) {
         },
+        transpile: ['vue-instantsearch', 'instantsearch.js/es'],
     },
 };
