@@ -19,9 +19,9 @@ export default (context) => {
             name = path;
 
             // Try getting router meta data
-            const match = context.app.router.matcher.match(nowUrl);
-            if (match && match.meta && match.meta.breadcrumb) {
-                name = match.meta.breadcrumb;
+            const match = context.app.router.getMatchedComponents(nowUrl);
+            if (match.length && match[0].options.meta && match[0].options.meta.breadcrumb) {
+                name = match[0].options.meta.breadcrumb;
                 if (typeof name === 'function') { name = name(context); }
             }
         }
