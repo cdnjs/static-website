@@ -142,7 +142,7 @@
                 this.getAssets();
             },
         },
-        async asyncData ({ params, route, app }) {
+        async asyncData ({ params, route, app, error }) {
             const data = {
                 libraryName: params.id,
                 library: null,
@@ -157,14 +157,26 @@
             };
 
             // Attempt to get data for the lib
-            const lib = await getLibrary(data.libraryName).catch((e) => {
+            let lib;
+            try {
+                lib = await getLibrary(data.libraryName);
+            } catch (e) {
                 // If we fail to find it, let the user know
                 if (e.message === 'Library not found') {
-                    data.message = `Could not find library ${data.libraryName}`;
+                    error({
+                        statusCode: 404,
+                        customMsg: true,
+                        message: `Sorry, we could not find the library you requested, ${data.libraryName}.`,
+                    });
                 } else {
-                    data.message = `Failed load library ${data.libraryName}`;
+                    error({
+                        statusCode: 500,
+                        customMsg: true,
+                        message: `Sorry, an error occurred whilst loading the library ${data.libraryName}.`,
+                    });
                 }
-            });
+                return;
+            }
 
             // Save the lib data
             if (lib) {

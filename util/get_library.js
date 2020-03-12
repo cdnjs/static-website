@@ -54,7 +54,9 @@ export default async (lib) => {
     const apiData = await api(lib);
 
     // Not found
-    if (Object.entries(apiData).length === 0 && apiData.constructor === Object) { throw new Error('Library not found'); }
+    if (Object.entries(apiData).length === 0 && apiData.constructor.name === Object.name) {
+        throw new Error('Library not found');
+    }
 
     // Get Algolia data
     apiData.algolia = await algolia(apiData.name);

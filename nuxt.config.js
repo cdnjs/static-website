@@ -21,7 +21,7 @@ module.exports = {
             { name: 'twitter:creator', content: '@MattIPv4' },
             { hid: 'twitter:title', name: 'twitter:title', content: 'cdnjs' },
             { hid: 'twitter:description', name: 'twitter:description', content: 'cdnjs' },
-            { name: 'twitter:image', content: './assets/img/banner.png' },
+            { name: 'twitter:image', content: '/banner.png' },
             { name: 'twitter:url', content: 'https://cdnjs.dev' },
 
             { name: 'canonicalURL', content: 'https://cdnjs.dev' },
@@ -37,13 +37,13 @@ module.exports = {
                 content: 'cdnjs'
             },
             { prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: 'https://cdnjs.dev' },
-            { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: './assets/img/banner.png' },
-            { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: './assets/img/banner.png' },
+            { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: '/banner.png' },
+            { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: '/banner.png' },
         ],
         link: [
-            { rel: 'icon', type: 'image/png', href: './assets/img/favicon.png' },
-            { rel: 'shortcut-icon', type: 'image/png', href: './assets/img/favicon.png' },
-            { rel: 'apple-touch-icon', type: 'image/png', href: './assets/img/favicon.png' },
+            { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+            { rel: 'shortcut-icon', type: 'image/png', href: '/favicon.png' },
+            { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
 
             { rel: 'canonical', href: 'https://cdnjs.dev' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap' },

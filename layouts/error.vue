@@ -1,10 +1,13 @@
 <template>
     <section>
-        <h1 v-if="error.statusCode === 404">
+        <h1 v-if="error.customMsg">
+            {{ error.statusCode }}. {{ error.message }}
+        </h1>
+        <h1 v-else-if="error.statusCode === 404">
             404. Sorry, the page you requested could not be found.
         </h1>
         <h1 v-else>
-            Sorry, an error occurred.
+            {{ error.statusCode }}. Sorry, an error occurred whilst loading this page.
         </h1>
     </section>
 </template>
@@ -27,6 +30,9 @@
         },
         props: {
             error: Object,
+        },
+        created () {
+            console.log(this.$props.error);
         },
     };
 </script>
