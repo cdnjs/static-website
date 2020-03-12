@@ -4,11 +4,12 @@
   "description": "The new cdnjs website, using Vue & VueRouter",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt generate",
     "test": "npm run test:eslint && npm run test:scss",
-    "test:eslint": "eslint '!(node_modules|.nuxt)/**/*.{js,vue}'",
+    "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
     "test:eslint:fix": "npm run test:eslint -- --fix",
-    "test:scss": "sass-lint '!(node_modules|.nuxt)/**/*.scss' --verbose --no-exit --config .sasslintrc"
+    "test:scss": "sass-lint '!(node_modules|.nuxt|dist)/**/*.scss' --verbose --no-exit --config .sasslintrc"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,6 @@
   "dependencies": {
     "algoliasearch": "^4.0.3",
     "babel-polyfill": "^6.26.0",
-    "cross-env": "^7.0.2",
     "glob-to-regexp": "^0.4.1",
     "instantsearch.css": "^7.4.2",
     "node-fetch": "^2.6.0",
