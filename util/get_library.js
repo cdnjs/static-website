@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
-import spdxLicenseIds from 'spdx-license-ids';
 import searchClient from './search_client';
+
+const spdxLicenseIds = require('spdx-license-ids/index.json');
 
 const index = searchClient.initIndex('libraries');
 

@@ -59,20 +59,76 @@
     const firstBy = require('thenby');
 
     const meta = {
-        title (context) {
-            return `${context.route.params.id} - Libraries`;
+        title (data) {
+            return `${data.libraryName} - Libraries`;
         },
-        breadcrumb (context) {
-            return context.route.params.id;
+        breadcrumb (data) {
+            return data.libraryName;
         },
         classes: [],
+    };
+
+    const getAssets = (data) => {
+        // Generate the categories
+        const categories = new Set();
+        categories.add('All');
+
+        // Get the raw assets for this version
+        const rawAssets = data.library.assets.find(a => a.version === data.version);
+
+        // Convert them to asset objects and sort them
+        const sortedAssets = rawAssets.files
+            .map(asset => getAsset(
+                data.library.name,
+                data.version,
+                asset,
+                rawAssets.sri && asset in rawAssets.sri ? rawAssets.sri[asset] : null,
+            ))
+            .sort(
+                firstBy(v1 => v1.file === data.library.filename, -1)
+                    .thenBy((v1, v2) => v1.file.split('/').length - v2.file.split('/').length)
+                    .thenBy('file'),
+            );
+
+        // Determine if we have any minified files
+        const minFileRe = globToRegExp('*.min.*');
+        const hasMinifiedFiles = sortedAssets.reduce((prev, asset) => prev || minFileRe.test(asset.file), false);
+
+        // Use some glob regex to determine if each file should be hidden
+        const criticalFilesGlob = '{' + '*.min.js,' + '*.min.css,' + data.library.filename + '}';
+        const commonFileGlob = '{' + '*.js.*,' + '*.css.*,' + data.library.filename + '}';
+        const criticalFileRegExp = globToRegExp(criticalFilesGlob, { extended: true });
+        const commonFileRegExp = globToRegExp(commonFileGlob, { extended: true });
+        let hasHiddenFiles = false;
+        const hiddenAssets = sortedAssets.map((asset) => {
+            // Only hide things if we have lots of files and the current file isn't the default
+            asset.hidden = false;
+            if (sortedAssets.length > 20 && data.library.filename !== asset.file) {
+                asset.hidden = !(hasMinifiedFiles ? criticalFileRegExp : commonFileRegExp).test(asset.file);
+                hasHiddenFiles = hasHiddenFiles || asset.hidden;
+            }
+
+            // Generate the categories whilst we're here
+            const cat = category(asset.type);
+            categories.add(cat);
+
+            // Done!
+            return asset;
+        });
+
+        // Done!
+        return {
+            assets: hiddenAssets,
+            hasHidden: hasHiddenFiles,
+            categories: [...categories],
+        }
     };
 
     export default {
         name: 'Library',
         meta,
         head () {
-            return setMeta(meta, this.$nuxt.context);
+            return setMeta(meta, this);
         },
         components: {
             Breadcrumbs,
@@ -80,9 +136,9 @@
             LibraryAssetButtons,
             VueSelect,
         },
-        data () {
-            return {
-                libraryName: null,
+        async asyncData ({ params }) {
+            const data = {
+                libraryName: params.id,
                 library: null,
                 ready: false,
                 message: 'Loading...',
@@ -93,26 +149,36 @@
                 hasHidden: false,
                 showHidden: false,
             };
+
+            // Attempt to get data for the lib
+            const lib = await getLibrary(data.libraryName).catch((e) => {
+                // If we fail to find it, let the user know
+                if (e.message === 'Library not found') {
+                    data.message = `Could not find library ${data.libraryName}`;
+                } else {
+                    data.message = `Failed load library ${data.libraryName}`;
+                }
+            });
+
+            // Save the lib data
+            if (lib) {
+                data.library = lib;
+                data.version = lib.version;
+
+                const { assets, hasHidden, categories } = getAssets(data);
+                data.assets = assets;
+                data.hasHidden = hasHidden;
+                data.categories = categories;
+
+                data.ready = true;
+            }
+
+            return data;
         },
         watch: {
             version () {
                 this.getAssets();
             },
-        },
-        mounted () {
-            // Store the name from the URL
-            this.$data.libraryName = this.$route.params.id;
-
-            // Attempt to get data for the lib
-            getLibrary(this.$data.libraryName).then((data) => {
-                // Save the lib data
-                this.$data.library = data;
-                this.$data.version = data.version;
-                this.$data.ready = true;
-            }).catch((e) => {
-                // If we fail to find it, let the user know
-                if (e.message === 'Library not found') { this.$data.message = `Could not find library ${this.$data.libraryName}`; } else { this.$data.message = `Failed load library ${this.$data.libraryName}`; }
-            });
         },
         methods: {
             formatUnits,
@@ -131,57 +197,10 @@
                 return false;
             },
             getAssets () {
-                // Generate the categories
-                const categories = new Set();
-                categories.add('All');
-
-                // Get the raw assets for this version
-                const rawAssets = this.$data.library.assets.find(a => a.version === this.$data.version);
-
-                // Convert them to asset objects and sort them
-                const sortedAssets = rawAssets.files
-                    .map(asset => getAsset(
-                        this.$data.library.name,
-                        this.$data.version,
-                        asset,
-                        rawAssets.sri && asset in rawAssets.sri ? rawAssets.sri[asset] : null,
-                    ))
-                    .sort(
-                        firstBy(v1 => v1.file === this.$data.library.filename, -1)
-                            .thenBy((v1, v2) => v1.file.split('/').length - v2.file.split('/').length)
-                            .thenBy('file'),
-                    );
-
-                // Determine if we have any minified files
-                const minFileRe = globToRegExp('*.min.*');
-                const hasMinifiedFiles = sortedAssets.reduce((prev, asset) => prev || minFileRe.test(asset.file), false);
-
-                // Use some glob regex to determine if each file should be hidden
-                const criticalFilesGlob = '{' + '*.min.js,' + '*.min.css,' + this.$data.library.filename + '}';
-                const commonFileGlob = '{' + '*.js.*,' + '*.css.*,' + this.$data.library.filename + '}';
-                const criticalFileRegExp = globToRegExp(criticalFilesGlob, { extended: true });
-                const commonFileRegExp = globToRegExp(commonFileGlob, { extended: true });
-                let hasHiddenFiles = false;
-                const hiddenAssets = sortedAssets.map((asset) => {
-                    // Only hide things if we have lots of files and the current file isn't the default
-                    asset.hidden = false;
-                    if (sortedAssets.length > 20 && this.$data.library.filename !== asset.file) {
-                        asset.hidden = !(hasMinifiedFiles ? criticalFileRegExp : commonFileRegExp).test(asset.file);
-                        hasHiddenFiles = hasHiddenFiles || asset.hidden;
-                    }
-
-                    // Generate the categories whilst we're here
-                    const cat = category(asset.type);
-                    categories.add(cat);
-
-                    // Done!
-                    return asset;
-                });
-
-                // Done!
-                this.$data.assets = hiddenAssets;
-                this.$data.hasHidden = hasHiddenFiles;
-                this.$data.categories = [...categories];
+                const { assets, hasHidden, categories } = getAssets(this.$data);
+                this.$data.assets = assets;
+                this.$data.hasHidden = hasHidden;
+                this.$data.categories = categories;
             },
         },
     };
