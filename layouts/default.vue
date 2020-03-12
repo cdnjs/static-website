@@ -1,7 +1,7 @@
 <template>
     <main :class="classes">
         <Nav>
-            <InlineSearch ref="inlineSearch"></InlineSearch>
+            <InlineSearch v-if="showSearch"></InlineSearch>
         </Nav>
         <nuxt />
         <Banner></Banner>
@@ -33,6 +33,7 @@
         data () {
             return {
                 classes: [],
+                showSearch: true,
             };
         },
         created () {
@@ -48,19 +49,21 @@
         methods: {
             checkInlineSearch () {
                 // Show before we do anything
-                this.$refs.inlineSearch.$data.hidden = false;
+                this.$data.showSearch = true;
 
                 // Hide search on landing
-                if (this.$nuxt.context.route.name === 'index') { this.$refs.inlineSearch.$data.hidden = true; }
+                if (this.$nuxt.context.route.name === 'index') { this.$data.showSearch = false; }
 
                 // Hide search on libraries
-                if (this.$nuxt.context.route.name === 'libraries') { this.$refs.inlineSearch.$data.hidden = true; }
+                if (this.$nuxt.context.route.name === 'libraries') { this.$data.showSearch = false; }
             },
             setClasses () {
-                const route = this.$nuxt.context.route;
-                const newClasses = [];
+                // Handle the error page which isn't a route
+                if (this.$nuxt.context._errored) return this.$data.classes = ['error', 'landing'];
 
                 // Use the route name as a class always
+                const route = this.$nuxt.context.route;
+                const newClasses = [];
                 newClasses.push(route.name);
 
                 // Get additional classes from meta (which might be an object, or an array of objects)

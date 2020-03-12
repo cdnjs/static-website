@@ -16,8 +16,5 @@
         props: {
             crumbs: Array,
         },
-        mounted() {
-            console.log(this.$props.crumbs)
-        }
     };
 </script>

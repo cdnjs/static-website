@@ -2,7 +2,6 @@
     <client-only>
         <ais-instant-search
             ref="instantSearch"
-            v-if="!hidden"
             :search-client="searchClient"
             index-name="libraries"
             class="inline-search"
@@ -59,7 +58,6 @@
         },
         data () {
             return {
-                hidden: false,
                 showHits: false,
                 hasFocus: false,
                 listenerRegistered: false,

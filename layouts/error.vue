@@ -1,8 +1,9 @@
 <template>
     <section>
-        <h1>
+        <h1 v-if="error.statusCode === 404">
             404. Sorry, the page you requested could not be found.
         </h1>
+        <h1 v-else>Sorry, an error occurred.</h1>
     </section>
 </template>
 
@@ -10,9 +11,10 @@
     import setMeta from '../util/set_meta';
 
     const meta = {
-        title: '404 - Not Found',
-        breadcrumb: 'Not Found',
-        classes: [],
+        title (data) {
+            if (data.error.statusCode === 404) return '404 Not found';
+            return 'An error occurred';
+        },
     };
 
     export default {
@@ -20,6 +22,9 @@
         meta,
         head () {
             return setMeta(meta, this);
+        },
+        props: {
+            'error': Object,
         },
     };
 </script>
