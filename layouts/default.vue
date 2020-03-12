@@ -59,7 +59,10 @@
             },
             setClasses () {
                 // Handle the error page which isn't a route
-                if (this.$nuxt.context._errored) return this.$data.classes = ['error', 'landing'];
+                if (this.$nuxt.context._errored) {
+                    this.$data.classes = ['error', 'landing'];
+                    return;
+                }
 
                 // Use the route name as a class always
                 const route = this.$nuxt.context.route;

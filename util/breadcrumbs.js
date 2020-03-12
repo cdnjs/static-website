@@ -27,6 +27,7 @@ export default async (route, router, data) => {
                     try {
                         comp = await comp();
                     } catch (_) {
+                        // Probably wasn't an async function
                     }
                 }
 

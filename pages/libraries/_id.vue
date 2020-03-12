@@ -49,7 +49,7 @@
     import getLibrary from '../../util/get_library';
     import getAsset from '../../util/get_asset';
     import setMeta from '../../util/set_meta';
-    import breadcrumbs from "../../util/breadcrumbs";
+    import breadcrumbs from '../../util/breadcrumbs';
     import { isWhitelisted, category } from '../../util/file_type';
     import Breadcrumbs from '../../components/breadcrumbs';
     import LibraryHero from '../../components/library_hero';
@@ -122,7 +122,7 @@
             assets: hiddenAssets,
             hasHidden: hasHiddenFiles,
             categories: [...categories],
-        }
+        };
     };
 
     export default {
@@ -136,6 +136,11 @@
             LibraryHero,
             LibraryAssetButtons,
             VueSelect,
+        },
+        watch: {
+            version () {
+                this.getAssets();
+            },
         },
         async asyncData ({ params, route, app }) {
             const data = {
@@ -178,11 +183,6 @@
             data.crumbs = await breadcrumbs(route, app.router, data);
 
             return data;
-        },
-        watch: {
-            version () {
-                this.getAssets();
-            },
         },
         methods: {
             formatUnits,

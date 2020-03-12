@@ -3,7 +3,9 @@
         <h1 v-if="error.statusCode === 404">
             404. Sorry, the page you requested could not be found.
         </h1>
-        <h1 v-else>Sorry, an error occurred.</h1>
+        <h1 v-else>
+            Sorry, an error occurred.
+        </h1>
     </section>
 </template>
 
@@ -12,7 +14,7 @@
 
     const meta = {
         title (data) {
-            if (data.error.statusCode === 404) return '404 Not found';
+            if (data.error.statusCode === 404) { return '404 Not found'; }
             return 'An error occurred';
         },
     };
@@ -24,7 +26,7 @@
             return setMeta(meta, this);
         },
         props: {
-            'error': Object,
+            error: Object,
         },
     };
 </script>

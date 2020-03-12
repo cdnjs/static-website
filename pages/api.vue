@@ -55,7 +55,7 @@
 
 <script>
     import Breadcrumbs from '../components/breadcrumbs';
-    import breadcrumbs from "../util/breadcrumbs";
+    import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
 
     const meta = {
