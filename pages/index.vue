@@ -32,7 +32,7 @@
         name: 'Index',
         meta,
         head () {
-            return setMeta(meta, this.$nuxt.context);
+            return setMeta(meta, this);
         },
         components: {
             Corner,

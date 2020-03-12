@@ -19,7 +19,7 @@
         name: 'NotFound',
         meta,
         head () {
-            return setMeta(meta, this.$nuxt.context);
+            return setMeta(meta, this);
         },
     };
 </script>
