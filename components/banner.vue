@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <div class="banner">
         <p>Help support cdnjs</p>
         <p>
             You can <a href="https://github.com/cdnjs/">contribute on <i class="fab fa-github"></i> GitHub</a> to help
@@ -11,11 +11,11 @@
                 Sponsor Us page
             </nuxt-link>.
         </p>
-    </footer>
+    </div>
 </template>
 
 <script>
     export default {
-        name: 'Footer',
+        name: 'Banner',
     };
 </script>

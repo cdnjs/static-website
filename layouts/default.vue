@@ -4,7 +4,7 @@
             <InlineSearch ref="inlineSearch"></InlineSearch>
         </Nav>
         <nuxt />
-        <Footer></Footer>
+        <Banner></Banner>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
@@ -21,14 +21,14 @@
 <script>
     import Nav from '../components/nav';
     import InlineSearch from '../components/inline_search';
-    import Footer from '../components/footer';
+    import Banner from '../components/banner';
 
     export default {
         name: 'App',
         components: {
             Nav,
             InlineSearch,
-            Footer,
+            Banner,
         },
         data () {
             return {

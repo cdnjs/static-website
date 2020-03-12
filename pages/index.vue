@@ -22,15 +22,17 @@
     import InlineSearch from '../components/inline_search';
     import setMeta from '../util/set_meta';
 
+    const meta = {
+        title: '',
+        breadcrumb: '',
+        classes: ['landing'],
+    };
+
     export default {
         name: 'Index',
-        meta: {
-            title: '',
-            breadcrumb: '',
-            classes: ['landing'],
-        },
+        meta,
         head () {
-            return setMeta(this.$nuxt.context);
+            return setMeta(meta, this.$nuxt.context);
         },
         components: {
             Corner,

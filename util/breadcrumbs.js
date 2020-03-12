@@ -20,7 +20,7 @@ export default (context) => {
 
             // Try getting router meta data
             const match = context.app.router.getMatchedComponents(nowUrl);
-            if (match.length && match[0].options.meta && match[0].options.meta.breadcrumb) {
+            if (match.length && match[0].options && match[0].options.meta && match[0].options.meta.breadcrumb) {
                 name = match[0].options.meta.breadcrumb;
                 if (typeof name === 'function') { name = name(context); }
             }

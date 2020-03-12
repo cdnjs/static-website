@@ -57,15 +57,17 @@
     import Breadcrumbs from '../components/breadcrumbs';
     import setMeta from '../util/set_meta';
 
+    const meta = {
+        title: 'API',
+        breadcrumb: 'API',
+        classes: [],
+    };
+
     export default {
         name: 'API',
-        meta: {
-            title: 'API',
-            breadcrumb: 'API',
-            classes: [],
-        },
+        meta,
         head () {
-            return setMeta(this.$nuxt.context);
+            return setMeta(meta, this.$nuxt.context);
         },
         components: {
             Breadcrumbs,

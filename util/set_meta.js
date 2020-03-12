@@ -1,8 +1,7 @@
 export const defaultTitle = 'cdnjs - The #1 free and open source CDN built to make life easier for developers';
 export const defaultDesc = 'Simple. Fast. Reliable. Content delivery at its finest. cdnjs is a web CDN service, trusted by over 985,000,000 websites, working to make it faster and easier to load library files to your websites.';
 
-export default (context) => {
-    const meta = Array.isArray(context.route.meta) ? context.route.meta[0] : context.route.meta;
+export default (meta, context) => {
     let contextTitle = meta.title || '';
     if (typeof contextTitle === 'function') { contextTitle = contextTitle(context); }
     let contextDesc = meta.desc || '';

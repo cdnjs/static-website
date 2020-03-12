@@ -58,19 +58,21 @@
     const { VueSelect } = require('vue-select');
     const firstBy = require('thenby');
 
+    const meta = {
+        title (context) {
+            return `${context.route.params.id} - Libraries`;
+        },
+        breadcrumb (context) {
+            return context.route.params.id;
+        },
+        classes: [],
+    };
+
     export default {
         name: 'Library',
-        meta: {
-            title (context) {
-                return `${context.route.params.id} - Libraries`;
-            },
-            breadcrumb (context) {
-                return context.route.params.id;
-            },
-            classes: [],
-        },
+        meta,
         head () {
-            return setMeta(this.$nuxt.context);
+            return setMeta(meta, this.$nuxt.context);
         },
         components: {
             Breadcrumbs,

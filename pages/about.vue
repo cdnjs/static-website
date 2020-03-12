@@ -212,15 +212,17 @@
     import Breadcrumbs from '../components/breadcrumbs';
     import setMeta from '../util/set_meta';
 
+    const meta = {
+        title: 'About',
+        breadcrumb: 'About',
+        classes: [],
+    };
+
     export default {
         name: 'About',
-        meta: {
-            title: 'About',
-            breadcrumb: 'About',
-            classes: [],
-        },
+        meta,
         head () {
-            return setMeta(this.$nuxt.context);
+            return setMeta(meta, this.$nuxt.context);
         },
         components: {
             Breadcrumbs,

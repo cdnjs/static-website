@@ -12,15 +12,17 @@
     import PrimarySearch from '../../components/primary_search';
     import setMeta from '../../util/set_meta';
 
+    const meta = {
+        title: 'Libraries',
+        breadcrumb: 'Libraries',
+        classes: [],
+    };
+
     export default {
         name: 'Libraries',
-        meta: {
-            title: 'Libraries',
-            breadcrumb: 'Libraries',
-            classes: [],
-        },
+        meta,
         head () {
-            return setMeta(this.$nuxt.context);
+            return setMeta(meta, this.$nuxt.context);
         },
         components: {
             Breadcrumbs,
