@@ -79,6 +79,7 @@ module.exports = {
     ** Load in modules that we're using in the app
     */
     modules: [
+        'nuxt-trailingslash-module',
         '@nuxtjs/sitemap',
     ],
     /*
@@ -121,6 +122,12 @@ module.exports = {
             routes.push(...libs);
             return routes;
         },
+    },
+    /*
+    ** Configure the router to not use trailing slashes
+    */
+    router: {
+        trailingSlash: false,
     },
     /*
     ** Transpile instant search for SSR
