@@ -1,11 +1,9 @@
 export default async (route, router, data) => {
     // Split the url into parts
     let breadcrumbList = route.path.split('/');
-    console.log(breadcrumbList);
 
     // If the originalUrl ended with '/', pop last item, which will be empty
     if (breadcrumbList[breadcrumbList.length - 1] === '') { breadcrumbList.pop(); }
-    console.log(breadcrumbList);
 
     // Generate the breadcrumbs
     breadcrumbList = await Promise.all(breadcrumbList.map(async (path, index) => {
@@ -58,6 +56,5 @@ export default async (route, router, data) => {
 
     // Mark the last item
     breadcrumbList[breadcrumbList.length - 1].last = true;
-    console.log(breadcrumbList);
     return breadcrumbList;
 };
