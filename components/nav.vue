@@ -23,13 +23,18 @@
                 API
             </nuxt-link>
             <a href="https://github.com/cdnjs">GitHub</a>
-            <a href="https://status.cdnjs.com">Status</a>
+            <a href="https://status.cdnjs.com">Status <StatusIndicator page-id="1fkb7yl9sw87"></StatusIndicator></a>
         </div>
     </nav>
 </template>
 
 <script>
+    import StatusIndicator from '../components/status_indicator';
+
     export default {
         name: 'Nav',
+        components: {
+            StatusIndicator,
+        },
     };
 </script>

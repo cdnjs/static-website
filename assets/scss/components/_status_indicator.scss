@@ -1,0 +1,23 @@
+.status-indicator {
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin: 0 0 0 5px;
+  width: 10px;
+
+  &.status-indicator-critical {
+    background-color: #e74c3c;
+  }
+
+  &.status-indicator-major {
+    background-color: #e67e22;
+  }
+
+  &.status-indicator-minor {
+    background-color: #f1c40f;
+  }
+
+  &.status-indicator-none {
+    background-color: #2ecc71;
+  }
+}
