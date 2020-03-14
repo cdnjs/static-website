@@ -76,6 +76,53 @@ module.exports = {
         '~/plugins/vue-tippy.js',
     ],
     /*
+    ** Load in modules that we're using in the app
+    */
+    modules: [
+        '@nuxtjs/sitemap',
+    ],
+    /*
+    ** Configure the sitemap and let it know about all the dynamic routes
+    */
+    sitemap: {
+        gzip: true,
+        async routes() {
+            const routes = [
+                {
+                    url: '/',
+                    priority: 1,
+                },
+                {
+                    url: '/libraries',
+                    priority: 0.9,
+                },
+                {
+                    url: '/about',
+                    priority: 0.8,
+                },
+                {
+                    url: '/api',
+                    priority: 0.8,
+                },
+                {
+                    url: '/sponsor-us',
+                    priority: 0.7,
+                },
+            ];
+
+            const libsRaw = await fetch(`https://api.cdnjs.com/libraries`);
+            const libs = (await libsRaw.json()).results.map((lib) => {
+                return {
+                    url: '/libraries/' + lib.name,
+                    priority: 0.6,
+                }
+            });
+
+            routes.push(...libs);
+            return routes;
+        },
+    },
+    /*
     ** Transpile instant search for SSR
     */
     build: {

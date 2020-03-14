@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/MattIPv4/cdnjs.dev#readme",
   "dependencies": {
+    "@nuxtjs/sitemap": "^2.0.1",
     "algoliasearch": "^4.0.3",
     "babel-polyfill": "^6.26.0",
     "glob-to-regexp": "^0.4.1",
