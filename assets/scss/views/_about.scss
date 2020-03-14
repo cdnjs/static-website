@@ -105,46 +105,6 @@ main {
               background: $darker;
               border-radius: $radius;
 
-              &.cloudflare {
-                background: $cloudflare;
-
-                p {
-                  color: $dark;
-                }
-              }
-
-              &.algolia {
-                background: $algolia;
-              }
-
-              &.digitalocean {
-                background: $digitalocean;
-              }
-
-              &.heroku {
-                background: $heroku;
-
-                p {
-                  color: $dark;
-                }
-              }
-
-              &.statuspage {
-                background: $statuspage;
-
-                p {
-                  color: $dark;
-                }
-              }
-
-              &.discourse {
-                background: $discourse;
-
-                p {
-                  color: $dark;
-                }
-              }
-
               &.contact {
                 @include flex-column;
 
@@ -175,6 +135,61 @@ main {
                 color: $light;
               }
 
+              &.dark {
+                p {
+                  color: $dark;
+                }
+              }
+
+              &.words {
+                a {
+                  &:hover,
+                  &:focus {
+                    img {
+                      opacity: .05;
+                    }
+
+                    > div {
+                      opacity: 1;
+                      pointer-events: initial;
+                    }
+                  }
+
+                  > div {
+                    @include flex-column;
+
+                    height: 100%;
+                    justify-content: center;
+                    left: 0;
+                    max-height: 100%;
+                    opacity: 0;
+                    pointer-events: none;
+                    position: absolute;
+                    top: 0;
+                    transition: background $transition-duration $transition-timing-function, opacity $transition-duration $transition-timing-function;
+                    width: 100%;
+
+                    p {
+                      @include font-medium;
+
+                      font-size: 14px;
+                      margin: 0;
+                      padding: $whitespace / 2;
+                      text-align: center;
+                    }
+                  }
+                }
+              }
+
+              &:not(.words) {
+                a {
+                  > div {
+                    display: none;
+                    visibility: hidden;
+                  }
+                }
+              }
+
               a {
                 @include flex-column;
 
@@ -183,49 +198,13 @@ main {
                 position: relative;
                 width: 100%;
 
-                &:hover,
-                &:focus {
-                  img {
-                    opacity: .05;
-                  }
-
-                  > div {
-                    opacity: 1;
-                    pointer-events: initial;
-                  }
-                }
-
                 img {
                   max-height: 100%;
                   max-width: 100%;
                   opacity: 1;
                   padding: 0 ($whitespace);
-                  transition: opacity .2s ease-in-out;
+                  transition: opacity $transition-duration $transition-timing-function;
                   width: 100%;
-                }
-
-                > div {
-                  @include flex-column;
-
-                  height: 100%;
-                  justify-content: center;
-                  left: 0;
-                  max-height: 100%;
-                  opacity: 0;
-                  pointer-events: none;
-                  position: absolute;
-                  top: 0;
-                  transition: background .2s ease-in-out, opacity .2s ease-in-out;
-                  width: 100%;
-
-                  p {
-                    @include font-medium;
-
-                    font-size: 14px;
-                    margin: 0;
-                    padding: $whitespace / 2;
-                    text-align: center;
-                  }
                 }
               }
             }
@@ -257,7 +236,7 @@ main {
         a {
           color: $primary;
           text-decoration: underline;
-          transition: color .2s ease-in-out;
+          transition: color $transition-duration $transition-timing-function;
 
           &:hover,
           &:focus {

@@ -14,7 +14,7 @@ main {
           font-size: 18px;
           padding: ($whitespace * .75) ($whitespace * 2.5);
           text-decoration: none;
-          transition: background .2s ease-in-out;
+          transition: background $transition-duration $transition-timing-function;
 
           &:hover,
           &:focus {

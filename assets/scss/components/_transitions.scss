@@ -1,7 +1,7 @@
 @mixin opacity-vue-transition($selector) {
   .#{$selector}-enter-active,
   .#{$selector}-leave-active {
-    transition: opacity .5s;
+    transition: opacity $transition-duration-large $transition-timing-function-large;
   }
 
   .#{$selector}-enter,

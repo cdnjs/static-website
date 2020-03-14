@@ -6,7 +6,7 @@
     cursor: pointer;
     font-size: 1.2rem;
     margin: 0 0 0 ($whitespace / 2);
-    transition: color .2s ease-in-out;
+    transition: color $transition-duration $transition-timing-function;
 
     &:hover {
       color: $alt;

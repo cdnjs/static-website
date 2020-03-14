@@ -49,7 +49,7 @@ main {
 
               background: transparent;
               color: $darker;
-              transition: background .2s ease-in-out, color .2s ease-in-out;
+              transition: background $transition-duration $transition-timing-function, color $transition-duration $transition-timing-function;
 
               &.vs__dropdown-option--selected {
                 color: $primary;

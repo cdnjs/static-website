@@ -11,14 +11,11 @@ $alt: #a6a6a6;
 $notice: #1eadae;
 $whitespace: 16px;
 $radius: 4.5px;
+$transition-duration: .2s;
+$transition-duration-large: $transition-duration * 2;
+$transition-timing-function: ease-in-out;
+$transition-timing-function-large: ease;
 
 $vs-border-width: 0;
 $vs-border-radius: $radius;
 $vs-controls-color: $darker;
-
-$cloudflare: $light;
-$algolia: #182359;
-$digitalocean: #0069ff;
-$heroku: #c3c5c8;
-$statuspage: #f4f5f7;
-$discourse: $white;

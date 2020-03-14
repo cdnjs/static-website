@@ -143,61 +143,22 @@
 
             <div class="sponsors">
                 <h1>Sponsors</h1>
+                <div v-for="group in sponsors" class="sponsor-blocks">
+                    <div v-for="sponsor in group"
+                         :class="`sponsor ${sponsor.text}${sponsor.words ? ' words' : ''}`"
+                         :style="{ background: sponsor.color }"
+                    >
+                        <a :href="`${sponsor.site}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about`">
+                            <img :src="require(`../assets/img/sponsors/${sponsor.image}`)" :alt="sponsor.name" />
+                            <div>
+                                <p>
+                                    {{ sponsor.words }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
                 <div class="sponsor-blocks">
-                    <div class="sponsor cloudflare">
-                        <a href="https://www.cloudflare.com/?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about">
-                            <img src="../assets/img/sponsors/cloudflare.svg" alt="Cloudflare" />
-                            <div>
-                                <p>
-                                    Believing cdnjs is part of the open-source community-driven tools that will build
-                                    the future of the internet, Cloudflare supports cdnjs by providing the global CDN
-                                    infrastructure and project maintenance.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="sponsor algolia">
-                        <a href="https://www.algolia.com/?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about">
-                            <img src="../assets/img/sponsors/algolia.svg" alt="Algolia" />
-                            <div>
-                                <p>
-                                    Algolia provides a developer-friendly SaaS API for searching.
-                                    With Algolia's unique find as you type experience, you can find cdnjs libraries in
-                                    just a few key strokes.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="sponsor digitalocean">
-                        <a href="https://www.digitalocean.com/?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about">
-                            <img src="../assets/img/sponsors/digitalocean.svg" alt="DigialOcean" />
-                            <div>
-                                <p>
-                                    DigitalOcean is simplifying the cloud by providing an infrastructure experience that
-                                    developers love. DigitalOcean is proud to give back to open-source and
-                                    community-driven projects like cdnjs.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="sponsor heroku">
-                        <a href="https://www.heroku.com/?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about">
-                            <img src="../assets/img/sponsors/heroku.svg" alt="Heroku" />
-                            <div><p>Hello there</p></div>
-                        </a>
-                    </div>
-                    <div class="sponsor statuspage">
-                        <a href="https://www.statuspage.io/?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about">
-                            <img src="../assets/img/sponsors/statuspage.svg" alt="Statuspage" />
-                            <div><p>Hello there</p></div>
-                        </a>
-                    </div>
-                    <div class="sponsor discourse">
-                        <a href="https://www.discourse.org/?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about">
-                            <img src="../assets/img/sponsors/discourse.svg" alt="Discourse" />
-                            <div><p>Hello there</p></div>
-                        </a>
-                    </div>
                     <div class="sponsor contact">
                         <h3>Want to become a Sponsor?</h3>
                         <p><a href="">Contact Us</a></p>
@@ -212,6 +173,7 @@
     import Breadcrumbs from '../components/breadcrumbs';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
+    import sponsors from '../util/sponsors';
 
     const meta = {
         title: 'About',
@@ -227,6 +189,11 @@
         },
         components: {
             Breadcrumbs,
+        },
+        data () {
+            return {
+                sponsors,
+            };
         },
         async asyncData (data) {
             return {

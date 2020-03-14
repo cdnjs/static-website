@@ -41,7 +41,7 @@
       justify-content: center;
       margin: 0 $whitespace;
       text-decoration: none;
-      transition: color .2s ease-in-out;
+      transition: color $transition-duration $transition-timing-function;
 
       &:hover,
       &:focus {
@@ -56,7 +56,7 @@
         color: $alt;
         font-size: 26px;
         margin-top: 2px;
-        transition: color .2s ease-in-out;
+        transition: color $transition-duration $transition-timing-function;
       }
 
       img {

@@ -7,7 +7,7 @@ main {
         a {
           color: $alt;
           text-decoration: none;
-          transition: color .2s ease-in-out;
+          transition: color $transition-duration $transition-timing-function;
 
           &:hover,
           &:focus {

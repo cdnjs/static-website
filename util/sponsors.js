@@ -1,0 +1,62 @@
+export default [
+    [
+        {
+            name: 'Cloudflare',
+            color: '#ebebeb',
+            text: 'dark',
+            image: 'cloudflare.svg',
+            site: 'https://www.cloudflare.com/',
+            words: 'Believing cdnjs is part of the open-source community-driven tools that will build the future of the internet, Cloudflare supports cdnjs by providing the global CDN infrastructure and project maintenance.',
+        },
+        {
+            name: 'Algolia',
+            color: '#182359',
+            text: 'light',
+            image: 'algolia.svg',
+            site: 'https://www.algolia.com/',
+            words: 'Algolia provides a developer-friendly SaaS API for searching. With Algolia\'s unique find as you type experience, you can find cdnjs libraries in just a few key strokes.',
+        },
+        {
+            name: 'DigitalOcean',
+            color: '#0069ff',
+            text: 'light',
+            image: 'digitalocean.svg',
+            site: 'https://www.digitalocean.com/',
+            words: 'DigitalOcean is simplifying the cloud by providing an infrastructure experience that developers love. DigitalOcean is proud to give back to open-source and community-driven projects like cdnjs.',
+        },
+    ],
+    [
+        {
+            name: 'Heroku',
+            color: '#c3c5c8',
+            text: 'dark',
+            image: 'heroku.svg',
+            site: 'https://www.heroku.com/',
+            words: '',
+        },
+        {
+            name: 'StatusPage',
+            color: '#f4f5f7',
+            text: 'dark',
+            image: 'statuspage.svg',
+            site: 'https://www.statuspage.io/',
+            words: '',
+        },
+        {
+            name: 'Discourse',
+            color: '#fff',
+            text: 'dark',
+            image: 'discourse.svg',
+            site: 'https://www.discourse.org/',
+            words: '',
+        },
+        {
+            name: 'SolarWinds',
+            color: '#666',
+            text: 'light',
+            image: 'solarwinds.svg',
+            site: 'https://www.solarwinds.com/',
+            words: '',
+        },
+    ],
+];
