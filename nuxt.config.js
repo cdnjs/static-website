@@ -166,8 +166,8 @@ module.exports = {
                     })
                 }))
         },
-        concurrency: 250,
-        interval: 50,
+        concurrency: 200,
+        interval: 100,
         fallback: true
     }
 };
