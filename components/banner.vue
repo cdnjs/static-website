@@ -7,7 +7,7 @@
 
             Or, donate $5 to cdnjs via <a href="https://opencollective.com/cdnjs">Open Collective</a>,
             <a href="https://www.patreon.com/cdnjs">Patreon</a>, or find out more on our
-            <nuxt-link :to="{ name: 'sponsor-us' }">
+            <nuxt-link :to="{ name: 'sponsor' }">
                 Sponsor Us page
             </nuxt-link>.
         </p>

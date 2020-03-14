@@ -4,8 +4,9 @@
 
 html,
 body,
-#__nuxt,
-#__layout {
+#__nuxt, // sass-lint:disable-line no-ids
+#__layout, // sass-lint:disable-line no-ids
+#__app { // sass-lint:disable-line no-ids
   @include font-light;
 
   background-color: $dark;

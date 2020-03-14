@@ -41,7 +41,7 @@
                     <p>
                         As a public OSS project, cdnjs relies on contributions and donations from the community.
                         You can get get involved on <a href="https://github.com/cdnjs">GitHub</a> or find out more about
-                        <nuxt-link :to="{ name: 'sponsor-us' }">
+                        <nuxt-link :to="{ name: 'sponsor' }">
                             donating here
                         </nuxt-link>.
                     </p>

@@ -5,17 +5,17 @@ main {
     align-items: center;
     background: $primary;
     justify-content: flex-start;
-    padding: ($whitespace * .75) (250px + ($whitespace * 2)) ($whitespace * .75) ($whitespace * 2);
+    padding: ($whitespace * .5) ($corner + ($whitespace * 2)) ($whitespace * .5) ($whitespace * 2);
     width: 100%;
 
     p {
-      color: $white;
+      color: $banner;
 
       &:first-child {
         @include font-regular;
 
-        border-right: 2px solid $white;
-        font-size: 20px;
+        border-right: 2px solid $banner;
+        font-size: 18px;
         line-height: 1.3;
         margin: 0 ($whitespace * .5) 0 0;
         padding: 0 ($whitespace * .5) 0 0;
@@ -27,13 +27,13 @@ main {
         margin: ($whitespace * .125) 0 0;
 
         a {
-          color: $darker;
-          text-decoration: none;
-          transition: color .2s ease-in-out;
+          color: darken($banner, 7%);
+          text-decoration: underline;
+          transition: color $transition-duration $transition-timing-function;
 
           &:hover,
           &:focus {
-            color: mix($darker, $alt, 70%);
+            color: $darker;
           }
         }
       }

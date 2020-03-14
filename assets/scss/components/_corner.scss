@@ -1,16 +1,16 @@
 aside {
   &.corner {
     bottom: 0;
-    height: 250px;
+    height: $corner;
     overflow: hidden;
     position: absolute;
     right: 0;
-    width: 250px;
+    width: $corner;
 
     &::after {
-      border-bottom: 250px solid $darker;
-      border-left: 250px solid transparent;
-      border-top: 250px solid transparent;
+      border-bottom: $corner solid $darker;
+      border-left: $corner solid transparent;
+      border-top: $corner solid transparent;
       bottom: 0;
       content: "";
       display: block;
@@ -37,9 +37,9 @@ aside {
         @include flex-column;
 
         color: $white;
-        font-size: 20px;
-        margin: 0 0 (-$whitespace);
-        padding: $whitespace * 2;
+        font-size: $corner * .08;
+        margin: 0 0 ($corner * -.064);
+        padding: ($corner * .128);
         text-decoration: none;
         transition: color $transition-duration $transition-timing-function;
 
@@ -49,11 +49,11 @@ aside {
         }
 
         p {
-          margin: 0 0 $whitespace;
+          margin: 0 0 ($corner * .064);
         }
 
         i {
-          font-size: 2.5rem;
+          font-size: $corner * .16;
         }
       }
     }

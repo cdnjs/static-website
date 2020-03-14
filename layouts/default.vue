@@ -1,29 +1,33 @@
 <template>
-    <main :class="classes">
-        <Nav>
-            <transition name="search" type="out-in">
-                <InlineSearch v-if="showSearch"></InlineSearch>
-            </transition>
-        </Nav>
-        <nuxt ref="nuxt" />
-        <Banner></Banner>
+    <div id="__app">
+        <main :class="classes">
+            <Nav>
+                <transition name="search" type="out-in">
+                    <InlineSearch v-if="showSearch"></InlineSearch>
+                </transition>
+            </Nav>
+            <nuxt ref="nuxt" />
+            <Banner></Banner>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-            gtag('config', 'UA-139601399-3');
-        </script>
-    </main>
+                gtag('config', 'UA-139601399-3');
+            </script>
+        </main>
+        <Footer></Footer>
+    </div>
 </template>
 
 <script>
     import Nav from '../components/nav';
     import InlineSearch from '../components/inline_search';
     import Banner from '../components/banner';
+    import Footer from '../components/footer';
 
     export default {
         name: 'App',
@@ -31,6 +35,7 @@
             Nav,
             InlineSearch,
             Banner,
+            Footer,
         },
         data () {
             return {
