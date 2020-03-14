@@ -176,8 +176,8 @@
     import sponsors from '../util/sponsors';
 
     const meta = {
-        title: 'About',
-        breadcrumb: 'About',
+        title: 'About Us',
+        breadcrumb: 'About Us',
         classes: [],
     };
 

@@ -59,8 +59,8 @@
     import setMeta from '../util/set_meta';
 
     const meta = {
-        title: 'API',
-        breadcrumb: 'API',
+        title: 'API Documentation',
+        breadcrumb: 'API Documentation',
         classes: [],
     };
 
