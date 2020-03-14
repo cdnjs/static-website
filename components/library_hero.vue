@@ -22,7 +22,7 @@
             </p>
         </div>
         <div class="row">
-            <p v-if="library.licenses" class="license">
+            <p v-if="library.licenses && library.licenses.length" class="license">
                 <template v-for="(license, index) of library.licenses">
                     <a v-if="license.url" :href="`${license.url}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
                         {{ license.type }}

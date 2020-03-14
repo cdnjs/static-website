@@ -1,3 +1,5 @@
+const fetch = require('node-fetch');
+
 module.exports = {
     mode: 'universal',
     /*
@@ -60,13 +62,13 @@ module.exports = {
     */
     loading: { color: '#d9643a' },
     /*
-    ** Global CSS
+    ** Load in our styling for the entire app
     */
     css: [
         '~/assets/scss/style.scss',
     ],
     /*
-    ** Plugins to load before mounting the App
+    ** Load in plugins before the app starts
     */
     plugins: [
         '~/plugins/vue-clipboard2.js',
@@ -74,22 +76,25 @@ module.exports = {
         '~/plugins/vue-tippy.js',
     ],
     /*
-    ** Nuxt.js dev-modules
-    */
-    buildModules: [],
-    /*
-    ** Nuxt.js modules
-    */
-    modules: [],
-    /*
-    ** Build configuration
+    ** Transpile instant search for SSR
     */
     build: {
-        /*
-        ** You can extend webpack config here
-        */
-        extend(config, ctx) {
-        },
         transpile: ['vue-instantsearch', 'instantsearch.js/es'],
     },
+    /*
+    ** Fetch dynamic routes for static generation
+    */
+    generate: {
+        routes() {
+            return fetch(`https://api.cdnjs.com/libraries`)
+                .then(res => res.json().then(data => {
+                    return data.results.map((lib) => {
+                        return '/libraries/' + lib.name
+                    })
+                }))
+        },
+        concurrency: 250,
+        interval: 50,
+        fallback: true
+    }
 };

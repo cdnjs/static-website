@@ -183,10 +183,12 @@
                 data.library = lib;
                 data.version = lib.version;
 
-                const { assets, hasHidden, categories } = getAssets(data);
-                data.assets = assets;
-                data.hasHidden = hasHidden;
-                data.categories = categories;
+                if (lib.assets && lib.assets.length) {
+                    const { assets, hasHidden, categories } = getAssets(data);
+                    data.assets = assets;
+                    data.hasHidden = hasHidden;
+                    data.categories = categories;
+                }
 
                 data.ready = true;
             }
@@ -196,10 +198,31 @@
 
             return data;
         },
+        async mounted () {
+            // If we're missing data (too big to load server-side), get it client side.
+            if (!this.$data.library || !this.$data.library.assets || !this.$data.library.assets.length) {
+                const lib = await getLibrary(this.$data.libraryName, false);
+                if (lib) {
+                    this.$data.library = lib;
+                    this.$data.version = lib.version;
+
+                    if (lib.assets && lib.assets.length) {
+                        const { assets, hasHidden, categories } = getAssets(this.$data);
+                        this.$data.assets = assets;
+                        this.$data.hasHidden = hasHidden;
+                        this.$data.categories = categories;
+                    }
+
+                    this.$data.ready = true;
+                }
+            }
+        },
         methods: {
             formatUnits,
             isWhitelisted,
             versions () {
+                if (!this.$data.library.assets || !this.$data.library.assets.length) { return []; }
+
                 const versions = this.$data.library.assets.map(a => a.version);
                 try {
                     return semverSort.desc(versions);
