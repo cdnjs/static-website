@@ -1,17 +1,15 @@
 export default async (route, router, data) => {
     // Split the url into parts
     let breadcrumbList = route.path.split('/');
+    console.log(breadcrumbList);
 
     // If the originalUrl ended with '/', pop last item, which will be empty
     if (breadcrumbList[breadcrumbList.length - 1] === '') { breadcrumbList.pop(); }
+    console.log(breadcrumbList);
 
     // Generate the breadcrumbs
-    const lastIndex = breadcrumbList.length - 1;
-    let nowUrl = '';
-    let position;
-    breadcrumbList = await Promise.all(breadcrumbList.map(async (path) => {
-        position = breadcrumbList.indexOf(path);
-        nowUrl += path + (position === lastIndex ? '' : '/'); // don't append / to last item
+    breadcrumbList = await Promise.all(breadcrumbList.map(async (path, index) => {
+        const nowUrl = breadcrumbList.slice(0, index + 1).join('/') || '/';
 
         // Get the display name of the route
         let name = 'Home';
@@ -54,11 +52,12 @@ export default async (route, router, data) => {
         return {
             index: name,
             url: nowUrl,
-            position: position + 1,
+            position: index + 1,
         };
     }));
 
     // Mark the last item
-    breadcrumbList[lastIndex].last = true;
+    breadcrumbList[breadcrumbList.length - 1].last = true;
+    console.log(breadcrumbList);
     return breadcrumbList;
 };
