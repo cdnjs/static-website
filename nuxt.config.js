@@ -106,6 +106,7 @@ module.exports = {
     */
     sitemap: {
         gzip: true,
+        hostname: process.env.NODE_ENV === 'prod' ? 'https://cdnjs.dev' : undefined,
         async routes() {
             const routes = [
                 {
@@ -125,7 +126,7 @@ module.exports = {
                     priority: 0.8,
                 },
                 {
-                    url: '/sponsor-us',
+                    url: '/sponsor',
                     priority: 0.7,
                 },
             ];
@@ -168,6 +169,6 @@ module.exports = {
         },
         concurrency: 200,
         interval: 100,
-        fallback: true
+        fallback: true,
     }
 };
