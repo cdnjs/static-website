@@ -4,7 +4,7 @@
   "description": "The new cdnjs website, using Vue & VueRouter",
   "main": "index.js",
   "scripts": {
-    "dev": "node server/index.js",
+    "dev": "nodemon server/index.js --watch server --watch nuxt.config.js",
     "build": "nuxt generate",
     "test": "npm run test:eslint && npm run test:scss",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",

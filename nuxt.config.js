@@ -62,6 +62,25 @@ module.exports = {
     */
     loading: { color: '#d9643a' },
     /*
+    ** Set a transition for pages to avoid classes switching too early etc.
+    */
+    pageTransition: {
+        name: 'page',
+        mode: 'out-in',
+        beforeLeave (el) {
+            this.$emit('beforeLeave', el);
+        },
+        afterLeave (el) {
+            this.$emit('afterLeave', el);
+        },
+        beforeEnter (el) {
+            this.$emit('beforeEnter', el);
+        },
+        afterEnter (el) {
+            this.$emit('afterEnter', el);
+        },
+    },
+    /*
     ** Load in our styling for the entire app
     */
     css: [

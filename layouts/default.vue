@@ -1,9 +1,11 @@
 <template>
     <main :class="classes">
         <Nav>
-            <InlineSearch v-if="showSearch"></InlineSearch>
+            <transition name="search" type="out-in">
+                <InlineSearch v-if="showSearch"></InlineSearch>
+            </transition>
         </Nav>
-        <nuxt />
+        <nuxt ref="nuxt" />
         <Banner></Banner>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -36,26 +38,36 @@
                 showSearch: true,
             };
         },
-        created () {
-            this.$nuxt.$router.afterEach(() => {
+        mounted () {
+            this.$refs.nuxt.$on('beforeLeave', () => {
+                this.$data.showSearch = false;
+            });
+            this.$refs.nuxt.$on('afterLeave', () => {
+                this.$data.classes = [];
+            });
+            this.$refs.nuxt.$on('beforeEnter', () => {
                 this.setClasses();
                 this.checkInlineSearch();
             });
-        },
-        mounted () {
             this.setClasses();
             this.checkInlineSearch();
         },
         methods: {
             checkInlineSearch () {
-                // Show before we do anything
-                this.$data.showSearch = true;
-
                 // Hide search on landing
-                if (this.$nuxt.context.route.name === 'index') { this.$data.showSearch = false; }
+                if (this.$nuxt.context.route.name === 'index') {
+                    this.$data.showSearch = false;
+                    return;
+                }
 
                 // Hide search on libraries
-                if (this.$nuxt.context.route.name === 'libraries') { this.$data.showSearch = false; }
+                if (this.$nuxt.context.route.name === 'libraries') {
+                    this.$data.showSearch = false;
+                    return;
+                }
+
+                // Otherwise, show it
+                this.$data.showSearch = true;
             },
             setClasses () {
                 // Handle the error page which isn't a route

@@ -1,0 +1,14 @@
+@mixin opacity-vue-transition($selector) {
+  .#{$selector}-enter-active,
+  .#{$selector}-leave-active {
+    transition: opacity .5s;
+  }
+
+  .#{$selector}-enter,
+  .#{$selector}-leave-to {
+    opacity: 0;
+  }
+}
+
+@include opacity-vue-transition("page");
+@include opacity-vue-transition("search");
