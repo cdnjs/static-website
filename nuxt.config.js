@@ -111,7 +111,7 @@ module.exports = {
                 },
             ];
 
-            const libsRaw = await fetch(`https://api.cdnjs.com/libraries`);
+            const libsRaw = await fetch(`https://api.cdnjs.com/libraries?fields=name`);
             const libs = (await libsRaw.json()).results.map((lib) => {
                 return {
                     url: '/libraries/' + lib.name,
@@ -140,7 +140,7 @@ module.exports = {
     */
     generate: {
         routes() {
-            return fetch(`https://api.cdnjs.com/libraries`)
+            return fetch(`https://api.cdnjs.com/libraries?fields=name`)
                 .then(res => res.json().then(data => {
                     return data.results.map((lib) => {
                         return '/libraries/' + lib.name
