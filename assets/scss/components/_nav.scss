@@ -26,9 +26,20 @@
         max-width: 600px;
         padding: 0 $whitespace;
 
-        .ais-StateResults { // sass-lint:disable-line class-name-format
+        // sass-lint:disable class-name-format
+        .ais-SearchBox {
+          .ais-SearchBox-form {
+            .ais-SearchBox-input {
+              height: $whitespace * 2.5;
+              padding: ($whitespace * .25) ($whitespace * 3.25) ($whitespace * .25) ($whitespace);
+            }
+          }
+        }
+
+        .ais-StateResults {
           width: calc(100% - #{$whitespace * 2});
         }
+        // sass-lint:enable class-name-format
       }
     }
 
