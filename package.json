@@ -1,11 +1,11 @@
 {
   "name": "cdnjs.dev",
   "version": "1.0.0",
-  "description": "The new cdnjs website, using Vue & VueRouter",
+  "description": "The new cdnjs website, using Vue & Nuxt",
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev nodemon server/index.js --watch server --watch nuxt.config.js",
-    "build": "NODE_ENV=prod nuxt generate",
+    "build": "NODE_ENV=production nuxt generate",
     "test": "npm run test:eslint && npm run test:scss",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
     "test:eslint:fix": "npm run test:eslint -- --fix",

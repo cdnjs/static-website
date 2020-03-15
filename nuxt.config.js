@@ -106,7 +106,7 @@ module.exports = {
     */
     sitemap: {
         gzip: true,
-        hostname: process.env.NODE_ENV === 'prod' ? 'https://cdnjs.dev' : undefined,
+        hostname: process.env.NODE_ENV === 'production' ? 'https://cdnjs.dev' : undefined,
         async routes() {
             const routes = [
                 {
@@ -154,6 +154,20 @@ module.exports = {
     */
     build: {
         transpile: ['vue-instantsearch', 'instantsearch.js/es'],
+        html: {
+            minify: {
+                collapseBooleanAttributes: true, // Default
+                decodeEntities: true, // Default
+                minifyCSS: true, // Default
+                minifyJS: true, // Default
+                processConditionalComments: true, // Default
+                removeEmptyAttributes: true, // Default
+                removeRedundantAttributes: true, // Default
+                trimCustomFragments: true, // Default
+                useShortDoctype: true, // Default
+                removeComments: true, // Custom
+            },
+        },
     },
     /*
     ** Fetch dynamic routes for static generation
