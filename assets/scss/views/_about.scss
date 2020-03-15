@@ -209,6 +209,13 @@ main {
 
               &:not(.words) {
                 a {
+                  &:hover,
+                  &:focus {
+                    img {
+                      opacity: .25;
+                    }
+                  }
+
                   > div {
                     display: none;
                     visibility: hidden;
