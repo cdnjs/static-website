@@ -1,25 +1,22 @@
+const path = require('path');
 const express = require('express');
-const { Nuxt, Builder } = require('nuxt');
+const { Nuxt } = require('nuxt');
 const app = express();
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js');
 config.dev = process.env.NODE_ENV !== 'production';
 
-const start = async () => {
+const start = () => {
     // Init Nuxt.js
     const nuxt = new Nuxt(config);
     const { host, port } = nuxt.options.server;
-    await nuxt.ready();
 
-    // Build only in dev mode
-    if (config.dev) {
-        const builder = new Builder(nuxt);
-        await builder.build();
-    }
+    // Serve the app
+    app.use(express.static(path.join(__dirname, '..', 'dist')));
 
-    // Tell express to use Nuxt
-    app.use(nuxt.render);
+    // Catch-all
+    app.get('*', (req, res) => res.sendFile(path.join(__dirname, '..', 'dist', '404.html')));
 
     // Listen
     app.listen(port, host);

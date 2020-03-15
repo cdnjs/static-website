@@ -30,6 +30,8 @@
     import Banner from '../components/banner';
     import Footer from '../components/footer';
 
+    let lastRoute;
+
     export default {
         name: 'App',
         components: {
@@ -43,6 +45,15 @@
                 classes: [],
                 showSearch: true,
             };
+        },
+        created () {
+            // Client-side only, trim trailing slashes
+            if (!process.server) {
+                this.$nuxt.$router.afterEach(() => {
+                    this.checkTrailingSlash();
+                });
+                this.checkTrailingSlash();
+            }
         },
         mounted () {
             this.$refs.nuxt.$on('beforeLeave', () => {
@@ -59,6 +70,21 @@
             this.checkInlineSearch();
         },
         methods: {
+            checkTrailingSlash () {
+                // Don't loop if trimming the slash doesn't work
+                if (lastRoute === this.$nuxt.$route.path) { return; }
+                lastRoute = this.$nuxt.$route.path;
+
+                // If we end with a slash, remove it and preserve all other data
+                if (this.$nuxt.$route.path.endsWith('/')) {
+                    this.$router.replace({
+                        path: this.$nuxt.$route.path.slice(0, -1),
+                        hash: this.$nuxt.$route.hash,
+                        query: this.$nuxt.$route.query,
+                        params: this.$nuxt.$route.params,
+                    });
+                }
+            },
             checkInlineSearch () {
                 // Hide search on landing
                 if (this.$nuxt.context.route.name === 'index') {

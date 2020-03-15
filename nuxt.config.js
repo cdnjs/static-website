@@ -98,7 +98,6 @@ module.exports = {
     ** Load in modules that we're using in the app
     */
     modules: [
-        'nuxt-trailingslash-module',
         '@nuxtjs/sitemap',
     ],
     /*
@@ -106,7 +105,7 @@ module.exports = {
     */
     sitemap: {
         gzip: true,
-        hostname: process.env.NODE_ENV === 'production' ? 'https://cdnjs.dev' : undefined,
+        hostname: process.env.SITEMAP_HOST || undefined,
         async routes() {
             const routes = [
                 {
@@ -174,12 +173,15 @@ module.exports = {
     */
     generate: {
         routes() {
-            return fetch(`https://api.cdnjs.com/libraries?fields=name`)
-                .then(res => res.json().then(data => {
-                    return data.results.map((lib) => {
-                        return '/libraries/' + lib.name
-                    })
-                }))
+            if (process.env.NODE_ENV === 'production') {
+                return fetch(`https://api.cdnjs.com/libraries?fields=name`)
+                    .then(res => res.json().then(data => {
+                        return data.results.map((lib) => {
+                            return '/libraries/' + lib.name
+                        })
+                    }))
+            }
+            return [];
         },
         concurrency: 200,
         interval: 100,
