@@ -5,7 +5,7 @@
                 <nuxt-link :to="{ path: item.url}" itemprop="item">
                     <span itemprop="name">{{ item.index }}</span>
                 </nuxt-link>
-                <meta itemprop="position" :content="item.position" />
+                <meta :content="item.position" itemprop="position" />
             </li>
         </ol>
     </div>

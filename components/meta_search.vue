@@ -1,11 +1,11 @@
 <template>
-    <div itemscope
+    <div :style="{ display: 'none', visibility: 'hidden' }"
+         itemscope
          itemtype="https://schema.org/WebSite"
-         :style="{ display: 'none', visibility: 'hidden' }"
     >
-        <meta itemprop="url" :content="base()" />
+        <meta :content="base()" itemprop="url" />
         <form itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-            <meta itemprop="target" :content="`${base()}libraries?q={search_term_string}`" />
+            <meta :content="`${base()}libraries?q={search_term_string}`" itemprop="target" />
             <input itemprop="query-input" type="text" name="search_term_string" required />
             <input type="submit" />
         </form>
@@ -16,9 +16,9 @@
     export default {
         name: 'MetaSearch',
         methods: {
-            base() {
+            base () {
                 const origin = process.env.SITE_HOST ||
-                    (typeof(window) !== "undefined" ? window.location.origin : '/');
+                    (typeof (window) !== 'undefined' ? window.location.origin : '/');
                 return origin + (origin.endsWith('/') ? '' : '/');
             },
         },
