@@ -26,19 +26,24 @@ section,
   width: 100%;
 }
 
-main {
-  min-height: 100%;
-  position: relative;
-
+main,
+footer {
   .content {
     align-items: flex-start;
     justify-content: flex-start;
-    padding: ($whitespace * 2) ($whitespace * 12) 0;
+    margin: 0 auto;
+    max-width: 1550px;
+    padding: ($whitespace * 2) $whitespace 0;
 
     @media screen and (max-width: $breakpoint) {
       padding: $whitespace $whitespace 0;
     }
   }
+}
+
+main {
+  min-height: 100%;
+  position: relative;
 
   .row {
     @include flex-row;

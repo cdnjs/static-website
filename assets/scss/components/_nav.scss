@@ -1,72 +1,81 @@
 .nav {
-  @include flex-row;
-
   background: $darker;
-  height: auto;
-  min-height: 75px;
-  padding: $whitespace 0;
   width: 100%;
 
-  .left {
-    margin: 0 auto 0 ($whitespace * 8);
-  }
-
-  .right {
-    margin: 0 ($whitespace * 8) 0 auto;
-  }
-
-  .middle {
-    flex-grow: 1;
-
-    .inline-search {
-      margin: 0 ($whitespace * 8);
-
-      @media screen and (max-width: $breakpoint) {
-        margin: $whitespace;
-      }
-    }
-  }
-
-  .left,
-  .right,
-  .middle {
+  .content {
     @include flex-row;
-    align-content: center;
 
-    @media screen and (max-width: $breakpoint) {
-      margin: 0;
+    align-items: center;
+    height: auto;
+    min-height: 75px;
+    padding: $whitespace 0;
+
+    .left {
+      margin: 0 auto 0 0;
     }
 
-    a {
-      @include font-regular;
+    .right {
+      margin: 0 0 0 auto;
+    }
 
-      align-items: center;
-      color: $light;
-      display: flex;
-      font-size: 20px;
-      justify-content: center;
-      margin: ($whitespace * .25) $whitespace;
-      text-decoration: none;
-      transition: color $transition-duration $transition-timing-function;
+    .middle {
+      flex-grow: 1;
 
-      &:hover,
-      &:focus {
-        color: $alt;
+      .inline-search {
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 0 $whitespace;
 
-        i {
-          color: $light;
+        .ais-StateResults { // sass-lint:disable-line class-name-format
+          width: calc(100% - #{$whitespace * 2});
         }
       }
+    }
 
-      i {
-        color: $alt;
-        font-size: 26px;
-        margin-top: 2px;
-        transition: color $transition-duration $transition-timing-function;
+    .left,
+    .right,
+    .middle {
+      @include flex-row;
+      align-content: center;
+
+      @media screen and (max-width: $breakpoint) {
+        margin: 0;
       }
+    }
 
-      img {
-        height: $whitespace * 2.25;
+    .left,
+    .right {
+      a {
+        @include font-regular;
+
+        align-items: center;
+        color: $light;
+        display: flex;
+        font-size: 20px;
+        justify-content: center;
+        margin: ($whitespace * .25) $whitespace;
+        text-decoration: none;
+        transition: color $transition-duration $transition-timing-function;
+
+        &:hover,
+        &:focus {
+          color: $alt;
+
+          i {
+            color: $light;
+          }
+        }
+
+        i {
+          color: $alt;
+          font-size: 26px;
+          margin-top: 2px;
+          transition: color $transition-duration $transition-timing-function;
+        }
+
+        img {
+          height: $whitespace * 2.25;
+        }
       }
     }
   }

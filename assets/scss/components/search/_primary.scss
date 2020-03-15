@@ -8,7 +8,7 @@
   header {
     @include flex-column;
 
-    padding: ($whitespace * 4) 0 $whitespace;
+    padding: ($whitespace * 4) $whitespace $whitespace;
 
     @media screen and (max-width: $breakpoint) {
       padding: $whitespace $whitespace 0;

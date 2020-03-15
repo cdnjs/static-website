@@ -2,8 +2,9 @@ header {
   div {
     &.breadcrumbs {
       align-items: flex-start;
-      max-width: none;
-      padding: ($whitespace * 2) ($whitespace * 12) 0;
+      margin: 0 auto;
+      max-width: 1550px;
+      padding: ($whitespace * 2) $whitespace 0;
 
       @media screen and (max-width: $breakpoint) {
         padding: $whitespace $whitespace 0;

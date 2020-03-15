@@ -1,76 +1,68 @@
 footer {
-  @include flex-row;
-
   background: $footer;
   color: $light;
-  margin: 0;
-  padding: ($whitespace * 3) ($whitespace * 7);
 
-  @media screen and (max-width: $breakpoint) {
-    padding: ($whitespace * 2) 0 ($whitespace);
-  }
+  .content {
+    @include flex-row;
 
-  dl {
-    flex-grow: 1;
-    margin: 0 $whitespace;
-
-    @media screen and (max-width: $breakpoint) {
+    dl {
+      flex-grow: 1;
       margin: 0 $whitespace $whitespace;
-    }
 
-    dt {
-      color: $alt;
-      font-size: 14px;
-      margin: 0 0 $whitespace;
-      text-transform: uppercase;
+      dt {
+        color: $alt;
+        font-size: 14px;
+        margin: 0 0 $whitespace;
+        text-transform: uppercase;
 
-      &:not(:first-of-type) {
-        margin: ($whitespace * 1.5) 0 $whitespace;
-      }
-    }
-
-    dd {
-      margin: 0 0 ($whitespace * .25);
-
-      a {
-        color: $light;
-        text-decoration: none;
-        transition: color $transition-duration $transition-timing-function;
-
-        &:hover,
-        &:focus {
-          color: $primary;
+        &:not(:first-of-type) {
+          margin: ($whitespace * 1.5) 0 $whitespace;
         }
       }
 
-      &.logo {
-        img {
-          width: 200px;
-        }
-      }
-
-      &.copy-social {
-        @include flex-row;
-
-        font-size: 22px;
-        line-height: 22px;
-        margin: $whitespace 0 0;
-
-        span {
-          border-right: 1px solid $alt;
-          font-size: 16px;
-          line-height: 22px;
-          margin: 0 ($whitespace * .5) 0 0;
-          padding: 0 ($whitespace) 0 0;
-        }
+      dd {
+        margin: 0 0 ($whitespace * .25);
 
         a {
-          margin: 0 ($whitespace * .5);
-        }
-      }
+          color: $light;
+          text-decoration: none;
+          transition: color $transition-duration $transition-timing-function;
 
-      &.break {
-        height: $whitespace * .75;
+          &:hover,
+          &:focus {
+            color: $primary;
+          }
+        }
+
+        &.logo {
+          img {
+            width: 200px;
+          }
+        }
+
+        &.copy-social {
+          @include flex-row;
+
+          font-size: 22px;
+          line-height: 22px;
+          margin: $whitespace 0 0;
+
+          span {
+            border-right: 1px solid $alt;
+            font-size: 16px;
+            line-height: 22px;
+            margin: 0 ($whitespace * .5) 0 0;
+            padding: 0 ($whitespace) 0 0;
+          }
+
+          a {
+            margin: 0 ($whitespace * .5);
+          }
+        }
+
+        &.break {
+          height: $whitespace * .75;
+        }
       }
     }
   }

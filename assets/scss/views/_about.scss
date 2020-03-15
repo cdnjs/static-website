@@ -13,12 +13,20 @@ main {
         grid-template-columns: 3fr 1fr;
         grid-template-rows: auto;
 
+        @media screen and (max-width: $breakpoint) {
+          display: block;
+        }
+
         .left {
           display: grid;
           grid-column-gap: $whitespace * 2;
           grid-row-gap: $whitespace * 2;
           grid-template-columns: 6fr 4fr;
           grid-template-rows: auto;
+
+          @media screen and (max-width: $breakpoint) {
+            display: block;
+          }
 
           .members {
             grid-column: 1 / -1;
@@ -32,6 +40,10 @@ main {
                 flex-basis: 50%;
                 flex-wrap: nowrap;
                 padding: 0 ($whitespace * 1.5) ($whitespace) 0;
+
+                @media screen and (max-width: $breakpoint) {
+                  flex-basis: 100%;
+                }
 
                 &.you {
                   a {
@@ -101,9 +113,19 @@ main {
             grid-template-columns: 200px 200px;
             margin: 0 0 ($whitespace * 2);
 
+            @media screen and (max-width: $breakpoint) {
+              display: block;
+            }
+
             .sponsor {
               background: $darker;
               border-radius: $radius;
+
+              @media screen and (max-width: $breakpoint) {
+                height: 200px;
+                margin: 0 0 $whitespace;
+                width: 200px;
+              }
 
               &.contact {
                 @include flex-column;
@@ -114,6 +136,10 @@ main {
                 height: 100%;
                 justify-content: center;
                 width: 100%;
+
+                @media screen and (max-width: $breakpoint) {
+                  height: 200px;
+                }
 
                 h3 {
                   @include font-medium;
