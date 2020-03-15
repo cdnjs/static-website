@@ -20,6 +20,10 @@
 
     .inline-search {
       margin: 0 ($whitespace * 8);
+
+      @media screen and (max-width: $breakpoint) {
+        margin: $whitespace;
+      }
     }
   }
 
