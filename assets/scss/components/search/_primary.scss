@@ -10,6 +10,10 @@
 
     padding: ($whitespace * 4) 0 $whitespace;
 
+    @media screen and (max-width: $breakpoint) {
+      padding: $whitespace $whitespace 0;
+    }
+
     .content {
       align-items: center;
       max-width: 1100px;
@@ -46,6 +50,9 @@
       margin: $whitespace 0;
       padding: 0;
 
+      @media screen and (max-width: $breakpoint) {
+        margin: ($whitespace / 2) 0;
+      }
 
       li {
         &.show-more,
@@ -68,6 +75,10 @@
             font-size: 16px;
             margin: ($whitespace * .25) 0;
             text-align: center;
+
+            @media screen and (max-width: $breakpoint) {
+              text-align: left;
+            }
 
             &:first-child {
               font-size: 18px;

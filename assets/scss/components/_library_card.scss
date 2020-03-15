@@ -9,6 +9,11 @@ li {
     margin: ($whitespace / 2) ($whitespace * 2);
     padding: $whitespace ($whitespace * 1.5);
 
+    @media screen and (max-width: $breakpoint) {
+      flex-basis: 100%;
+      margin: ($whitespace / 2) $whitespace;
+    }
+
     .title {
       @include flex-row;
 

@@ -5,6 +5,10 @@ header {
       max-width: none;
       padding: ($whitespace * 2) ($whitespace * 12) 0;
 
+      @media screen and (max-width: $breakpoint) {
+        padding: $whitespace $whitespace 0;
+      }
+
       ol {
         @include flex-row;
 
