@@ -13,7 +13,7 @@ module.exports = {
 
             { name: 'mobile-web-app-capable', content: 'yes' },
             { name: 'apple-mobile-web-app-capable', content: 'yes' },
-            { name: 'theme-color', content: '#D9643A' },
+            { name: 'theme-color', content: '#d9643a' },
 
             { hid: 'title', name: 'title', content: 'cdnjs' },
             { hid: 'description', name: 'description', content: 'cdnjs' },
@@ -23,7 +23,8 @@ module.exports = {
             { name: 'twitter:creator', content: '@MattIPv4' },
             { hid: 'twitter:title', name: 'twitter:title', content: 'cdnjs' },
             { hid: 'twitter:description', name: 'twitter:description', content: 'cdnjs' },
-            { name: 'twitter:image', content: '/banner.png' },
+            { name: 'twitter:image', content: 'https://cdnjs.dev/banner.png' },
+            { name: 'twitter:image:alt', content: 'cdnjs banner image' },
             { name: 'twitter:url', content: 'https://cdnjs.dev' },
 
             { name: 'canonicalURL', content: 'https://cdnjs.dev' },
@@ -39,8 +40,8 @@ module.exports = {
                 content: 'cdnjs'
             },
             { prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: 'https://cdnjs.dev' },
-            { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: '/banner.png' },
-            { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: '/banner.png' },
+            { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: 'https://cdnjs.dev/banner.png' },
+            { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: 'https://cdnjs.dev/banner.png' },
         ],
         link: [
             { rel: 'icon', type: 'image/png', href: '/favicon.png' },

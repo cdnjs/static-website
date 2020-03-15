@@ -10,10 +10,14 @@
                 <span>
                     &copy; {{ (new Date()).getFullYear().toString() }} cdnjs.
                 </span>
-                <a href="https://twitter.com/cdnjs" aria-label="cdnjs on Twitter">
+                <a href="https://twitter.com/cdnjs?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_footer"
+                   aria-label="cdnjs on Twitter"
+                >
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
-                <a href="https://github.com/cdnjs" aria-label="cdnjs on GitHub">
+                <a href="https://github.com/cdnjs?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_footer"
+                   aria-label="cdnjs on GitHub"
+                >
                     <i class="fab fa-github" aria-hidden="true"></i>
                 </a>
             </dd>
@@ -32,6 +36,11 @@
                 <nuxt-link :to="{ name: 'sponsor' }">
                     Sponsor Us
                 </nuxt-link>
+            </dd>
+            <dd>
+                <a href="https://swag.cdnjs.com?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_footer">
+                    Swag Store
+                </a>
             </dd>
 
             <dd class="break"></dd>
@@ -73,12 +82,12 @@
 
             <dt>Status</dt>
             <dd>
-                <a href="https://status.cdnjs.com">
+                <a href="https://status.cdnjs.com?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_footer">
                     Status Page
                 </a>
             </dd>
             <dd>
-                <a href="https://twitter.com/cdnjsStatus">
+                <a href="https://twitter.com/cdnjsStatus?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_footer">
                     cdnjsStatus on Twitter
                 </a>
             </dd>

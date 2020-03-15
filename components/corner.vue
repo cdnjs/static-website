@@ -3,7 +3,7 @@
         <div>
             <a href="https://github.com/cdnjs">
                 <p>View on GitHub</p>
-                <i class="fab fa-github"></i>
+                <i class="fab fa-github" aria-hidden="true"></i>
             </a>
         </div>
     </aside>
