@@ -6,9 +6,17 @@ footer {
   margin: 0;
   padding: ($whitespace * 3) ($whitespace * 7);
 
+  @media screen and (max-width: $breakpoint) {
+    padding: ($whitespace * 2) 0 ($whitespace);
+  }
+
   dl {
     flex-grow: 1;
     margin: 0 $whitespace;
+
+    @media screen and (max-width: $breakpoint) {
+      margin: 0 $whitespace $whitespace;
+    }
 
     dt {
       color: $alt;

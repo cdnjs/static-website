@@ -7,6 +7,10 @@ aside {
     right: 0;
     width: $corner;
 
+    @media screen and (max-width: $breakpoint) {
+      display: none;
+    }
+
     &::after {
       border-bottom: $corner solid $darker;
       border-left: $corner solid transparent;

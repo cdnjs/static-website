@@ -18,6 +18,7 @@ $transition-duration: .2s;
 $transition-duration-large: $transition-duration * 2;
 $transition-timing-function: ease-in-out;
 $transition-timing-function-large: ease;
+$breakpoint: 960px;
 
 $vs-border-width: 0;
 $vs-border-radius: $radius;

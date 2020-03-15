@@ -2,7 +2,9 @@
   @include flex-row;
 
   background: $darker;
-  height: 75px;
+  height: auto;
+  min-height: 75px;
+  padding: $whitespace 0;
   width: 100%;
 
   .left {
@@ -27,8 +29,8 @@
     @include flex-row;
     align-content: center;
 
-    @media only screen and (max-width: 768px) {
-      margin: 0 $whitespace;
+    @media screen and (max-width: $breakpoint) {
+      margin: 0;
     }
 
     a {
@@ -39,7 +41,7 @@
       display: flex;
       font-size: 20px;
       justify-content: center;
-      margin: 0 $whitespace;
+      margin: ($whitespace * .25) $whitespace;
       text-decoration: none;
       transition: color $transition-duration $transition-timing-function;
 
