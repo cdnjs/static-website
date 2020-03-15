@@ -105,7 +105,7 @@ module.exports = {
     */
     sitemap: {
         gzip: true,
-        hostname: process.env.SITEMAP_HOST || undefined,
+        hostname: process.env.SITE_HOST || undefined,
         async routes() {
             const routes = [
                 {

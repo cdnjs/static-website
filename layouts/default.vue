@@ -11,16 +11,8 @@
         </main>
 
         <Footer></Footer>
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-139601399-3');
-        </script>
+        <MetaSearch></MetaSearch>
+        <GoogleAnalytics></GoogleAnalytics>
     </div>
 </template>
 
@@ -29,6 +21,8 @@
     import InlineSearch from '../components/inline_search';
     import Banner from '../components/banner';
     import Footer from '../components/footer';
+    import MetaSearch from '../components/meta_search';
+    import GoogleAnalytics from '../components/google_analytics';
 
     let lastRoute;
 
@@ -39,6 +33,8 @@
             InlineSearch,
             Banner,
             Footer,
+            MetaSearch,
+            GoogleAnalytics,
         },
         data () {
             return {
