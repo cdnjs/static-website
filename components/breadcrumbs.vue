@@ -1,12 +1,13 @@
 <template>
     <div class="content breadcrumbs">
-        <ul>
-            <li v-for="item in crumbs">
-                <nuxt-link :to="{ path: item.url}">
-                    {{ item.index }}
+        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li v-for="item in crumbs" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <nuxt-link :to="{ path: item.url}" itemprop="item">
+                    <span itemprop="name">{{ item.index }}</span>
                 </nuxt-link>
+                <meta itemprop="position" :content="item.position" />
             </li>
-        </ul>
+        </ol>
     </div>
 </template>
 
