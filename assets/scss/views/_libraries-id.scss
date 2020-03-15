@@ -3,20 +3,30 @@ main {
     .content {
       .filter {
         align-items: center;
-        margin: 0 0 $whitespace;
+        margin: 0 0 ($whitespace * .5);
+
+        @media screen and (max-width: $breakpoint) {
+          align-items: flex-start;
+          flex-direction: column;
+          margin: 0;
+        }
 
         p {
           @include font-regular;
 
           color: $light;
           font-size: 20px;
-          margin: 0 ($whitespace * .75) 0 0;
+          margin: 0 ($whitespace * .75) ($whitespace * .5) 0;
         }
 
         br {
           display: inline-block;
           margin: 0 ($whitespace * .75);
           white-space: normal;
+
+          @media screen and (max-width: $breakpoint) {
+            display: none;
+          }
 
           &::before,
           &::after {
@@ -30,6 +40,7 @@ main {
           background: $light;
           border: 0;
           border-radius: $radius;
+          margin: 0 0 ($whitespace * .5);
           width: 300px;
 
           &.vs--open {

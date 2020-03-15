@@ -34,6 +34,10 @@ main {
     align-items: flex-start;
     justify-content: flex-start;
     padding: ($whitespace * 2) ($whitespace * 12) 0;
+
+    @media screen and (max-width: $breakpoint) {
+      padding: $whitespace $whitespace 0;
+    }
   }
 
   .row {
