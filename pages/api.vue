@@ -146,6 +146,72 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><code class="key">results[].filename</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The will be the name of the default file for the library.
+                                    </p>
+                                    <p>
+                                        <small>
+                                            <i>
+                                                There is no validation that this file actually exists in each version
+                                                of the library.
+                                            </i>
+                                        </small>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].description</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The description of the library if it has been provided in the cdnjs
+                                        package.json file
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].version</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The latest version of the library that is available on cdnjs.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].keywords</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">array&lt;string&gt;</code>
+                                    <p>
+                                        An array of keywords provided in the cdnjs package.json for the library.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].alternativeNames</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">array&lt;string&gt;</code>
+                                    <p>
+                                        An array of other names that might be used for the library. These cannot be
+                                        substituted for the actual library name when navigating the cdnjs API and
+                                        website.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].fileType</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The file type (extension) for the default file defined for the library in the
+                                        cdnjs package.json
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><code class="key">total</code></td>
                                 <td>
                                     <code class="key">integer</code>
