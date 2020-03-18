@@ -212,6 +212,159 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><code class="key">results[].github</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">object</code>
+                                    <p>
+                                        Some meta data from the relevant GitHub repository for the library, if
+                                        available and configured in the cdnjs package.json for the library.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].github.user</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The username or organisation name for the repository on GitHub.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].github.repo</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The name of the repository on GitHub.
+                                    </p>
+                                    <p>
+                                        <small>
+                                            <i>
+                                                The full repository name can be constructed in the form
+                                                <code>user/repo</code>.
+                                            </i>
+                                        </small>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].github.stargazers_count</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">integer</code>
+                                    <p>
+                                        The number of stars that the repository has on GitHub.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].github.stargazers_count</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">forks</code>
+                                    <p>
+                                        The number of forks the repository currently has (at time of indexing) on GitHub.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].github.subscribers_count</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">integer</code>
+                                    <p>
+                                        The number of users on GitHub who are watching the repository.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].objectID</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The ID used internally within Algolia to track this entry, this will be the name
+                                        of the library as seen on cdnjs.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].license</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The license defined for the library on cdnjs, as a string. If the library has a
+                                        custom license, it may not be shown here.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].homepage</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        A link to the homepage of the package, if one is defined in the cdnjs
+                                        package.json file. Normally, this is either the package repository or the
+                                        package website.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].repository</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">object</code>
+                                    <p>
+                                        The repository for the library, if known, in standard repository format.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].repository.type</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The type of repository for the library, normally <code>git</code>.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].repository.url</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The url for repository associated with the library, if provided in the library's
+                                        cdnjs package.json file.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].author</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The attributed author for the library, as defined in the cdnjs package.json file
+                                        for this library.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].originalName</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        If the library on cdnjs was every renamed, this value will contain the original
+                                        name for this library. If it hasn't been renamed, this value will match the
+                                        current name.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code class="key">results[].sri</code></td>
+                                <td>
+                                    <code class="key">optional</code> <code class="key">string</code>
+                                    <p>
+                                        The SRI hash value for the file provided in the <code>latest</code> property, if
+                                        it exists and is valid (i.e. if the SRI hash could be calculated for it).
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><code class="key">total</code></td>
                                 <td>
                                     <code class="key">integer</code>
@@ -224,11 +377,13 @@
                     </table>
                 </div>
                 <div class="right">
-                    <h3>
+                    <h3>Example Requests</h3>
+
+                    <h4>
                         <a href="https://api.cdnjs.com/libraries">
                             <code class="key">https://api.cdnjs.com/libraries</code>
                         </a>
-                    </h3>
+                    </h4>
                     <p>
                         <code class="example">{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"}, ...],"total":3451}</code>
                     </p>
@@ -238,11 +393,11 @@
                         </small>
                     </p>
 
-                    <h3>
+                    <h4>
                         <a href="https://api.cdnjs.com/libraries?search=jquery">
                             <code class="key">https://api.cdnjs.com/libraries?search=jquery</code>
                         </a>
-                    </h3>
+                    </h4>
                     <p>
                         <code class="example">{"results":[{"name":"jquery","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"},{"name":"jquery-compat","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"},{"name":"blueimp-file-upload","latest":"https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.8.0/js/jquery.fileupload.min.js"},{"name":"fullPage.js","latest":"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.css"},{"name":"select2","latest":"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"},{"name":"chosen","latest":"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"},{"name":"Sortable","latest":"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js"},{"name":"popmotion","latest":"https://cdnjs.cloudflare.com/ajax/libs/popmotion/8.7.1/popmotion.global.min.js"}, ...],"total":846}</code>
                     </p>
@@ -252,6 +407,21 @@
                         </small>
                     </p>
 
+                    <h4>
+                        <a href="https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github">
+                            <code class="key">https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github</code>
+                        </a>
+                    </h4>
+                    <p>
+                        <code class="example">{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js","filename":"vue.min.js","description":"Simple, Fast & Composable MVVM for building interactive interfaces","version":"2.6.11","github":{"user":"vuejs","repo":"vue","stargazers_count":159549,"forks":24084,"subscribers_count":6057}},{"name":"element-ui","latest":"https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/index.js","filename":"index.js","description":"A Component Library for Vue.js.","version":"2.13.0","github":{"user":"ElemeFE","repo":"element","stargazers_count":44222,"forks":10050,"subscribers_count":1365}},{"name":"vuetify","latest":"https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.2.18/vuetify.min.js","filename":"vuetify.min.js","description":"Vue.js 2 Semantic Component Framework","version":"2.2.18","github":{"user":"vuetifyjs","repo":"vuetify","stargazers_count":24289,"forks":3848,"subscribers_count":569}}, ...],"total":46}</code>
+                    </p>
+                    <p>
+                        <small>
+                            <i>Example response has been trimmed to remove items in the results array.</i>
+                        </small>
+                    </p>
+
+                    <br/>
                     <p>
                         This endpoint is directly powered by our Algolia index, the same one that is used on this
                         website for the search box at the top and on the
