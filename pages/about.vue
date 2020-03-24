@@ -173,7 +173,7 @@
     import Breadcrumbs from '../components/breadcrumbs';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
-    import sponsors from '../util/sponsors';
+    import sponsors from '../data/sponsors';
 
     const meta = {
         title: 'About Us',

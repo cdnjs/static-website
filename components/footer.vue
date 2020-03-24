@@ -112,7 +112,7 @@
 </template>
 
 <script>
-    import sponsors from '../util/sponsors';
+    import sponsors from '../data/sponsors';
 
     export default {
         name: 'Footer',
