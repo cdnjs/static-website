@@ -44,56 +44,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><code class="key">search</code></td>
+                            <tr v-for="field in api.browse.query">
+                                <td><code class="key">{{ field.param }}</code></td>
                                 <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The value to use when searching the libraries index on cdnjs.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">fields</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">comma-separated string</code>
-                                    <p>
-                                        Provide a comma-separated string of fields to return in each library object
-                                        from the cdnjs Algolia index.
-                                    </p>
-                                    <p>
-                                        <code>name</code> and <code>latest</code> will always be present in every
-                                        object. Any field requested that does not exist will be included in each
-                                        object with a <code>null</code> value.
-                                    </p>
-                                    <p>
-                                        Currently, the following fields (case-sensitive) are published in the Algolia
-                                        index for each library and can be requested via this parameter:
-                                        <code>filename</code>, <code>description</code>, <code>version</code>,
-                                        <code>keywords</code>, <code>alternativeNames</code>, <code>fileType</code>,
-                                        <code>github</code>, <code>objectID</code>, <code>license</code>,
-                                        <code>homepage</code>, <code>repository</code>, <code>author</code>,
-                                        <code>originalName</code>, <code>sri</code>.
-                                    </p>
-                                    <p>
-                                        <small>
-                                            <i>
-                                                The available fields are based on the
-                                                <a href="https://github.com/cdnjs/tools/blob/master/cmd/algolia/main.go">
-                                                    SearchEntry structure in our tools repo</a>.
-                                            </i>
-                                        </small>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">output</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        Use the output value <code>human</code> to receive the JSON results in pretty
-                                        print format, presented on a HTML page.
-                                    </p>
+                                    <template v-for="type in field.type">
+                                        <code class="key">{{ type }}</code>&nbsp;
+                                    </template>
+                                    <p v-for="desc in field.desc" v-html="desc"></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -108,269 +65,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><code class="key">results</code></td>
+                            <tr v-for="field in api.browse.response">
+                                <td><code class="key">{{ field.prop }}</code></td>
                                 <td>
-                                    <code class="key">array&lt;object&gt;</code>
-                                    <p>
-                                        This property will contain an object for every library that cdnjs has available.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].name</code></td>
-                                <td>
-                                    <code class="key">string</code>
-                                    <p>
-                                        This will be the full name of the library, as stored on cdnjs.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].latest</code></td>
-                                <td>
-                                    <code class="key">string</code>
-                                    <p>
-                                        This will be the URL of the default file on the latest version of the library.
-                                    </p>
-                                    <p>
-                                        <small>
-                                            <i>
-                                                It is important to note that this URL is based on the latest version
-                                                number of the library and the default file name configured, there is
-                                                no validation in place to ensure that this URL will actually serve a
-                                                valid asset.
-                                            </i>
-                                        </small>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].filename</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The will be the name of the default file for the library.
-                                    </p>
-                                    <p>
-                                        <small>
-                                            <i>
-                                                There is no validation that this file actually exists in each version
-                                                of the library.
-                                            </i>
-                                        </small>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].description</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The description of the library if it has been provided in the cdnjs
-                                        package.json file
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].version</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The latest version of the library that is available on cdnjs.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].keywords</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">array&lt;string&gt;</code>
-                                    <p>
-                                        An array of keywords provided in the cdnjs package.json for the library.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].alternativeNames</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">array&lt;string&gt;</code>
-                                    <p>
-                                        An array of other names that might be used for the library. These cannot be
-                                        substituted for the actual library name when navigating the cdnjs API and
-                                        website.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].fileType</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The file type (extension) for the default file defined for the library in the
-                                        cdnjs package.json
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].github</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">object</code>
-                                    <p>
-                                        Some meta data from the relevant GitHub repository for the library, if
-                                        available and configured in the cdnjs package.json for the library.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].github.user</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The username or organisation name for the repository on GitHub.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].github.repo</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The name of the repository on GitHub.
-                                    </p>
-                                    <p>
-                                        <small>
-                                            <i>
-                                                The full repository name can be constructed in the form
-                                                <code>user/repo</code>.
-                                            </i>
-                                        </small>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].github.stargazers_count</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">integer</code>
-                                    <p>
-                                        The number of stars that the repository has on GitHub.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].github.stargazers_count</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">forks</code>
-                                    <p>
-                                        The number of forks the repository currently has (at time of indexing) on GitHub.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].github.subscribers_count</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">integer</code>
-                                    <p>
-                                        The number of users on GitHub who are watching the repository.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].objectID</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The ID used internally within Algolia to track this entry, this will be the name
-                                        of the library as seen on cdnjs.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].license</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The license defined for the library on cdnjs, as a string. If the library has a
-                                        custom license, it may not be shown here.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].homepage</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        A link to the homepage of the package, if one is defined in the cdnjs
-                                        package.json file. Normally, this is either the package repository or the
-                                        package website.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].repository</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">object</code>
-                                    <p>
-                                        The repository for the library, if known, in standard repository format.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].repository.type</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The type of repository for the library, normally <code>git</code>.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].repository.url</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The url for repository associated with the library, if provided in the library's
-                                        cdnjs package.json file.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].author</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The attributed author for the library, as defined in the cdnjs package.json file
-                                        for this library.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].originalName</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        If the library on cdnjs was every renamed, this value will contain the original
-                                        name for this library. If it hasn't been renamed, this value will match the
-                                        current name.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">results[].sri</code></td>
-                                <td>
-                                    <code class="key">optional</code> <code class="key">string</code>
-                                    <p>
-                                        The SRI hash value for the file provided in the <code>latest</code> property, if
-                                        it exists and is valid (i.e. if the SRI hash could be calculated for it).
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code class="key">total</code></td>
-                                <td>
-                                    <code class="key">integer</code>
-                                    <p>
-                                        The total number of libraries returned in the request.
-                                    </p>
+                                    <template v-for="type in field.type">
+                                        <code class="key">{{ type }}</code>&nbsp;
+                                    </template>
+                                    <p v-for="desc in field.desc" v-html="desc"></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -421,7 +122,7 @@
                         </small>
                     </p>
 
-                    <br/>
+                    <br />
                     <p>
                         This endpoint is directly powered by our Algolia index, the same one that is used on this
                         website for the search box at the top and on the
@@ -528,6 +229,7 @@
     import Breadcrumbs from '../components/breadcrumbs';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
+    import api from '../data/api';
 
     const meta = {
         title: 'API Documentation',
@@ -543,6 +245,11 @@
         },
         components: {
             Breadcrumbs,
+        },
+        data () {
+            return {
+                api,
+            };
         },
         async asyncData (data) {
             return {
