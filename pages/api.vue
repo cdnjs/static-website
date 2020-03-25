@@ -96,9 +96,7 @@
                         <code class="key">https://api.cdnjs.com/libraries</code>
                     </a>
                 </h4>
-                <p>
-                    <code class="example">{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"}, ...],"total":3451}</code>
-                </p>
+                <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"}, "..."],"total":3451}</JSONExample>
                 <p>
                     <small>
                         <i>Example response has been trimmed to remove items in the results array.</i>
@@ -110,9 +108,7 @@
                         <code class="key">https://api.cdnjs.com/libraries?search=jquery</code>
                     </a>
                 </h4>
-                <p>
-                    <code class="example">{"results":[{"name":"jquery","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"},{"name":"jquery-compat","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"},{"name":"blueimp-file-upload","latest":"https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.8.0/js/jquery.fileupload.min.js"},{"name":"fullPage.js","latest":"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.css"},{"name":"select2","latest":"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"},{"name":"chosen","latest":"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"},{"name":"Sortable","latest":"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js"},{"name":"popmotion","latest":"https://cdnjs.cloudflare.com/ajax/libs/popmotion/8.7.1/popmotion.global.min.js"}, ...],"total":846}</code>
-                </p>
+                <JSONExample>{"results":[{"name":"jquery","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"},{"name":"jquery-compat","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"},{"name":"blueimp-file-upload","latest":"https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.8.0/js/jquery.fileupload.min.js"},{"name":"fullPage.js","latest":"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.css"},{"name":"select2","latest":"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"},{"name":"chosen","latest":"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"},{"name":"Sortable","latest":"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js"},{"name":"popmotion","latest":"https://cdnjs.cloudflare.com/ajax/libs/popmotion/8.7.1/popmotion.global.min.js"}, "..."],"total":846}</JSONExample>
                 <p>
                     <small>
                         <i>Example response has been trimmed to remove items in the results array.</i>
@@ -124,9 +120,7 @@
                         <code class="key">https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github</code>
                     </a>
                 </h4>
-                <p>
-                    <code class="example">{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js","filename":"vue.min.js","description":"Simple, Fast & Composable MVVM for building interactive interfaces","version":"2.6.11","github":{"user":"vuejs","repo":"vue","stargazers_count":159549,"forks":24084,"subscribers_count":6057}},{"name":"element-ui","latest":"https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/index.js","filename":"index.js","description":"A Component Library for Vue.js.","version":"2.13.0","github":{"user":"ElemeFE","repo":"element","stargazers_count":44222,"forks":10050,"subscribers_count":1365}},{"name":"vuetify","latest":"https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.2.18/vuetify.min.js","filename":"vuetify.min.js","description":"Vue.js 2 Semantic Component Framework","version":"2.2.18","github":{"user":"vuetifyjs","repo":"vuetify","stargazers_count":24289,"forks":3848,"subscribers_count":569}}, ...],"total":46}</code>
-                </p>
+                <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js","filename":"vue.min.js","description":"Simple, Fast & Composable MVVM for building interactive interfaces","version":"2.6.11","github":{"user":"vuejs","repo":"vue","stargazers_count":159549,"forks":24084,"subscribers_count":6057}},{"name":"element-ui","latest":"https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/index.js","filename":"index.js","description":"A Component Library for Vue.js.","version":"2.13.0","github":{"user":"ElemeFE","repo":"element","stargazers_count":44222,"forks":10050,"subscribers_count":1365}},{"name":"vuetify","latest":"https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.2.18/vuetify.min.js","filename":"vuetify.min.js","description":"Vue.js 2 Semantic Component Framework","version":"2.2.18","github":{"user":"vuetifyjs","repo":"vuetify","stargazers_count":24289,"forks":3848,"subscribers_count":569}}, "..."],"total":46}</JSONExample>
                 <p>
                     <small>
                         <i>Example response has been trimmed to remove items in the results array.</i>
@@ -203,9 +197,7 @@
                         <code class="key">https://api.cdnjs.com/libraries</code>
                     </a>
                 </h3>
-                <p>
-                    <code class="example">{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"}, ...],"total":3451}</code>
-                </p>
+                <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"}, "..."],"total":3451}</JSONExample>
                 <p>
                     <small>
                         <i>Example response has been trimmed to remove items in the results array.</i>
@@ -225,6 +217,7 @@
 
 <script>
     import Breadcrumbs from '../components/breadcrumbs';
+    import JSONExample from '../components/json_example';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
     import api from '../data/api';
@@ -243,6 +236,7 @@
         },
         components: {
             Breadcrumbs,
+            JSONExample,
         },
         data () {
             return {

@@ -52,25 +52,15 @@ main {
         }
       }
 
-      code {
-        background: $darker;
-        border-radius: $radius;
-        color: $primary;
-        display: inline-block;
-        font-size: .85em;
-        margin: ($whitespace * .125) 0;
-        max-width: 100%;
-        padding: ($whitespace * .25) ($whitespace * .5);
-        word-break: break-word;
+      :not(pre) {
+        > code {
+          font-size: .85em;
+          padding: ($whitespace * .25) ($whitespace * .5);
 
-        &.key {
-          background: $footer;
-          font-size: .95em;
-        }
-
-        &.example {
-          font-size: 1em;
-          padding: $whitespace;
+          &.key {
+            background: $footer;
+            font-size: .95em;
+          }
         }
       }
 

@@ -1,0 +1,55 @@
+.json-example {
+  .select {
+    @include flex-row;
+
+    a {
+      @include font-regular;
+
+      background: $primary;
+      color: $banner;
+      cursor: pointer;
+      display: inline-block;
+      font-size: .9em;
+      padding: ($whitespace / 8) ($whitespace / 2);
+      text-decoration: none;
+      transition: background $transition-duration $transition-timing-function;
+
+      &:first-child {
+        border-radius: $radius 0 0 $radius;
+      }
+
+      &:last-child {
+        border-radius: 0 $radius $radius 0;
+      }
+
+      &:hover,
+      &:focus,
+      &.active {
+        background: $primary-hover;
+      }
+    }
+  }
+
+  pre {
+    margin: 0;
+
+    &[class*="language-"] {
+      background: $darker;
+      border-radius: $radius;
+      margin: ($whitespace / 2) 0 0;
+      padding: 0;
+
+      code {
+        line-height: normal;
+        margin: 0;
+        white-space: pre;
+      }
+    }
+
+    code {
+      font-size: 14px;
+      margin: ($whitespace / 2) 0 0;
+      white-space: normal;
+    }
+  }
+}
