@@ -1,122 +1,155 @@
 main {
   &.api {
-    header {
-      .content {
-        padding: ($whitespace * 2) $whitespace 0;
+    section {
+      header {
+        .content {
+          padding: ($whitespace * 2) $whitespace 0;
 
-        h1 {
-          @include font-medium;
+          h1 {
+            @include font-medium;
 
-          color: $light;
-          font-size: 24px;
-          margin: 0 0 $whitespace;
-        }
-
-        p {
-          color: $text;
-          font-size: 16px;
-          margin: 0 0 $whitespace;
-        }
-      }
-    }
-
-    code {
-      background: $darker;
-      border-radius: $radius;
-      color: $primary;
-      display: inline-block;
-      font-size: .85em;
-      margin: ($whitespace * .125) 0;
-      max-width: 100%;
-      padding: ($whitespace * .25) ($whitespace * .5);
-      word-break: break-word;
-
-      &.key {
-        background: $footer;
-        font-size: .95em;
-      }
-
-      &.example {
-        font-size: 1em;
-        padding: $whitespace;
-      }
-    }
-
-    .content {
-      padding: 0 $whitespace $whitespace;
-
-      h2 {
-        @include font-medium;
-
-        color: $light;
-        margin: ($whitespace * 2) 0 $whitespace;
-      }
-
-      .doc {
-        @include flex-row;
-
-        margin: 0 ($whitespace * -1);
-
-        @media screen and (max-width: $breakpoint) {
-          flex-direction: column;
-          max-width: 100%;
-        }
-
-        p {
-          color: $text;
-          margin: ($whitespace * .5) 0;
-
-          + h3 {
-            margin: ($whitespace * 1.5) 0 ($whitespace * .5);
+            color: $light;
+            font-size: 24px;
+            margin: 0 0 $whitespace;
           }
 
-          a {
-            color: $primary;
-            transition: color $transition-duration $transition-timing-function;
+          p {
+            color: $text;
+            font-size: 16px;
+            margin: 0 0 $whitespace;
+          }
 
-            &:hover,
-            &:focus {
-              color: $primary-hover;
+          ul {
+            margin: ($whitespace / 2) 0 ($whitespace * 2);
+            padding: 0;
+
+            li {
+              list-style: none;
+
+              small {
+                @include font-light;
+
+                color: $alt;
+                display: inline-block;
+                font-size: .75em;
+                margin: 0 0 ($whitespace / 2);
+                text-transform: uppercase;
+              }
+
+              a {
+                color: $light;
+                display: inline-block;
+                margin: 0 0 ($whitespace / 4) ($whitespace / 2);
+                transition: color $transition-duration $transition-timing-function;
+
+                &:hover,
+                &:focus {
+                  color: $alt;
+                }
+              }
             }
           }
         }
+      }
 
-        h3 {
-          @include font-regular;
+      code {
+        background: $darker;
+        border-radius: $radius;
+        color: $primary;
+        display: inline-block;
+        font-size: .85em;
+        margin: ($whitespace * .125) 0;
+        max-width: 100%;
+        padding: ($whitespace * .25) ($whitespace * .5);
+        word-break: break-word;
+
+        &.key {
+          background: $footer;
+          font-size: .95em;
+        }
+
+        &.example {
+          font-size: 1em;
+          padding: $whitespace;
+        }
+      }
+
+      .content {
+        padding: 0 $whitespace $whitespace;
+
+        h2 {
+          @include font-medium;
 
           color: $light;
-          margin: ($whitespace * .5) 0;
+          margin: ($whitespace * 2) 0 $whitespace;
         }
 
-        .left,
-        .right {
-          flex-basis: calc(50% - #{$whitespace * 2});
-          margin: 0 ($whitespace);
+        .doc {
+          @include flex-row;
+
+          margin: 0 ($whitespace * -1);
 
           @media screen and (max-width: $breakpoint) {
-            flex-basis: 100%;
+            flex-direction: column;
             max-width: 100%;
           }
-        }
 
-        table {
-          code {
-            word-break: initial;
+          p {
+            color: $text;
+            margin: ($whitespace * .5) 0;
+
+            + h3 {
+              margin: ($whitespace * 1.5) 0 ($whitespace * .5);
+            }
+
+            a {
+              color: $primary;
+              transition: color $transition-duration $transition-timing-function;
+
+              &:hover,
+              &:focus {
+                color: $primary-hover;
+              }
+            }
           }
 
-          th {
-            @include font-light;
+          h3 {
+            @include font-regular;
 
-            color: $alt;
-            font-size: .75em;
-            padding: 0 ($whitespace * .25) ($whitespace * .5);
-            text-align: left;
-            text-transform: uppercase;
+            color: $light;
+            margin: ($whitespace * .5) 0;
           }
 
-          td {
-            padding: 0 ($whitespace * .25);
-            vertical-align: top;
+          .left,
+          .right {
+            flex-basis: calc(50% - #{$whitespace * 2});
+            margin: 0 ($whitespace);
+
+            @media screen and (max-width: $breakpoint) {
+              flex-basis: 100%;
+              max-width: 100%;
+            }
+          }
+
+          table {
+            code {
+              word-break: initial;
+            }
+
+            th {
+              @include font-light;
+
+              color: $alt;
+              font-size: .75em;
+              padding: 0 ($whitespace * .25) ($whitespace * .5);
+              text-align: left;
+              text-transform: uppercase;
+            }
+
+            td {
+              padding: 0 ($whitespace * .25);
+              vertical-align: top;
+            }
           }
         }
       }

@@ -12,6 +12,7 @@
                     allows for detailed data to be ascertained for a specific library.
                 </p>
                 <ul>
+                    <li><small>Endpoints</small></li>
                     <li>
                         <a href="#browse">Browsing all libraries on cdnjs</a>
                     </li>
