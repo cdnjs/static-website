@@ -3,33 +3,27 @@ export default {
         query: [
             {
                 param: 'search',
-                type: [
-                    'optional',
-                    'string',
-                ],
+                type: 'string',
+                req: false,
                 desc: [
                     'The value to use when searching the libraries index on cdnjs.',
                 ],
             },
             {
                 param: 'fields',
-                type: [
-                    'optional',
-                    'comma-separated string',
-                ],
+                type: 'comma-separated string',
+                req: false,
                 desc: [
                     'Provide a comma-separated string of fields to return in each library object from the cdnjs Algolia index.',
                     '<code>name</code> and <code>latest</code> will always be present in every object. Any field requested that does not exist will be included in each object with a <code>null</code> value.',
                     'Currently, the following fields (case-sensitive) are published in the Algolia index for each library and can be requested via this parameter: <code>filename</code>, <code>description</code>, <code>version</code>, <code>keywords</code>, <code>alternativeNames</code>, <code>fileType</code>, <code>github</code>, <code>objectID</code>, <code>license</code>, <code>homepage</code>, <code>repository</code>, <code>author</code>, <code>originalName</code>, <code>sri</code>.',
-                    '<small><i>The available fields are based on the <a href="https://github.com/cdnjs/tools/blob/master/cmd/algolia/main.go"> SearchEntry structure in our tools repo</a>.</i></small>',
+                    '<small><i>The available fields are based on the <a href="https://github.com/cdnjs/tools/blob/master/cmd/algolia/main.go">SearchEntry structure in our tools repo</a>.</i></small>',
                 ],
             },
             {
                 param: 'output',
-                type: [
-                    'optional',
-                    'string',
-                ],
+                type: 'string',
+                req: false,
                 desc: [
                     'Use the output value <code>human</code> to receive the JSON results in pretty print format, presented on a HTML page.',
                 ],

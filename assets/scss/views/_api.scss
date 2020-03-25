@@ -85,15 +85,6 @@ main {
         }
 
         .doc {
-          @include flex-row;
-
-          margin: 0 ($whitespace * -1);
-
-          @media screen and (max-width: $breakpoint) {
-            flex-direction: column;
-            max-width: 100%;
-          }
-
           p {
             color: $text;
             margin: ($whitespace * .5) 0;
@@ -120,17 +111,6 @@ main {
             margin: ($whitespace * .5) 0;
           }
 
-          .left,
-          .right {
-            flex-basis: calc(50% - #{$whitespace * 2});
-            margin: 0 ($whitespace);
-
-            @media screen and (max-width: $breakpoint) {
-              flex-basis: 100%;
-              max-width: 100%;
-            }
-          }
-
           table {
             code {
               word-break: initial;
@@ -147,8 +127,14 @@ main {
             }
 
             td {
-              padding: 0 ($whitespace * .25);
+              padding: ($whitespace * .25);
               vertical-align: top;
+
+              p {
+                &:first-child {
+                  margin-top: 0;
+                }
+              }
             }
           }
         }
