@@ -65,65 +65,19 @@
                 <div class="members">
                     <h2>Members</h2>
                     <div class="member-blocks">
-                        <div class="member">
-                            <a :href="utm('https://github.com/ryankirkman', 'about')">
-                                <img src="../assets/img/members/ryankirkman.jpg" alt="ryankirkman" />
+                        <div v-for="member in members" class="member">
+                            <a :href="utm(`https://github.com/${member.github}`, 'about')">
+                                <img :src="require(`../assets/img/members/${member.image}`)" :alt="member.github" />
                             </a>
                             <div class="info">
                                 <p class="name">
-                                    Ryan Kirkman
+                                    {{ member.name }}
                                 </p>
                                 <p class="role">
-                                    Founder
-                                    <a :href="utm('https://twitter.com/ryan_kirkman', 'about')">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <a :href="utm('https://github.com/thomasdavis', 'about')">
-                                <img src="../assets/img/members/thomasdavis.jpg" alt="thomasdavis" />
-                            </a>
-                            <div class="info">
-                                <p class="name">
-                                    Thomas Davis
-                                </p>
-                                <p class="role">
-                                    Founder
-                                    <a :href="utm('https://twitter.com/ajaxdavis', 'about')">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <a :href="utm('https://github.com/MattIPv4', 'about')">
-                                <img src="../assets/img/members/mattcowley.jpg" alt="MattIPv4" />
-                            </a>
-                            <div class="info">
-                                <p class="name">
-                                    Matt Cowley
-                                </p>
-                                <p class="role">
-                                    Community Manager
-                                    <a :href="utm('https://twitter.com/MattIPv4', 'about')">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="member">
-                            <a :href="utm('https://github.com/xtuc', 'about')">
-                                <img src="../assets/img/members/svensauleau.jpg" alt="xtuc" />
-                            </a>
-                            <div class="info">
-                                <p class="name">
-                                    Sven Sauleau
-                                </p>
-                                <p class="role">
-                                    Maintainer (Cloudflare)
-                                    <a :href="utm('https://twitter.com/svensauleau', 'about')">
+                                    {{ member.role }}
+                                    <a v-if="member.twitter"
+                                       :href="utm(`https://twitter.com/${member.twitter}`, 'about')"
+                                    >
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </p>
@@ -179,6 +133,7 @@
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
     import utm from '../util/utm';
+    import members from '../data/members';
     import sponsors from '../data/sponsors';
 
     const meta = {
@@ -198,6 +153,7 @@
         },
         data () {
             return {
+                members,
                 sponsors,
             };
         },
