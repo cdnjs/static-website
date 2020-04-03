@@ -1,7 +1,7 @@
 <template>
     <li class="library-card">
         <div class="title">
-            <nuxt-link :to="{ name: 'libraries-id', params: { id: library.name } }">
+            <nuxt-link :to="{ name: 'libraries-library', params: { id: library.name } }">
                 {{ library.name }}
                 <span class="version">@ {{ library.version }}</span>
             </nuxt-link>

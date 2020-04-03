@@ -45,15 +45,15 @@
 </template>
 
 <script>
-    import formatUnits from '../../util/format_units';
-    import getLibrary from '../../util/get_library';
-    import getAsset from '../../util/get_asset';
-    import setMeta from '../../util/set_meta';
-    import breadcrumbs from '../../util/breadcrumbs';
-    import { isWhitelisted, category } from '../../util/file_type';
-    import Breadcrumbs from '../../components/breadcrumbs';
-    import LibraryHero from '../../components/library_hero';
-    import LibraryAssetButtons from '../../components/library_asset_buttons';
+    import formatUnits from '../../../util/format_units';
+    import getLibrary from '../../../util/get_library';
+    import getAsset from '../../../util/get_asset';
+    import setMeta from '../../../util/set_meta';
+    import breadcrumbs from '../../../util/breadcrumbs';
+    import { isWhitelisted, category } from '../../../util/file_type';
+    import Breadcrumbs from '../../../components/breadcrumbs';
+    import LibraryHero from '../../../components/library_hero';
+    import LibraryAssetButtons from '../../../components/library_asset_buttons';
     const semverSort = require('semver-sort');
     const globToRegExp = require('glob-to-regexp');
     const { VueSelect } = require('vue-select');
@@ -144,7 +144,7 @@
         },
         async asyncData ({ params, route, app, error }) {
             const data = {
-                libraryName: params.id,
+                libraryName: params.library,
                 library: null,
                 ready: false,
                 message: 'Loading...',
@@ -154,6 +154,7 @@
                 assets: [],
                 hasHidden: false,
                 showHidden: false,
+                crumbs: [],
             };
 
             // Attempt to get data for the lib
