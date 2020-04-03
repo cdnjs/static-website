@@ -2,7 +2,7 @@
     <section>
         <header>
             <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-            <TutorialHero :library="library" :tutorial="tutorial"></TutorialHero>
+            <TutorialHero :library="libraryName" :tutorial="tutorial"></TutorialHero>
         </header>
         <div class="content row">
             <div class="contents"></div>
@@ -24,7 +24,6 @@
     import 'prismjs/plugins/match-braces/prism-match-braces';
     import 'prismjs/plugins/match-braces/prism-match-braces.css';
 
-    import getLibrary from '../../../../util/get_library';
     import { getTutorial } from '../../../../util/get_tutorial';
     import setMeta from '../../../../util/set_meta';
     import breadcrumbs from '../../../../util/breadcrumbs';
@@ -67,36 +66,10 @@
         async asyncData ({ params, route, app, error }) {
             const data = {
                 libraryName: params.library,
-                library: null,
                 tutorialName: params.tutorial,
                 tutorial: null,
                 crumbs: [],
             };
-
-            // Attempt to get data for the lib
-            let lib;
-            try {
-                lib = await getLibrary(data.libraryName);
-            } catch (e) {
-                // If we fail to find it, let the user know
-                if (e.message === 'Library not found') {
-                    error({
-                        statusCode: 404,
-                        customMsg: true,
-                        message: `Sorry, we could not find the library you requested, ${data.libraryName}.`,
-                    });
-                } else {
-                    error({
-                        statusCode: 500,
-                        customMsg: true,
-                        message: `Sorry, an error occurred whilst loading the library ${data.libraryName}.`,
-                    });
-                }
-                return;
-            }
-
-            // Save the lib data
-            data.library = lib;
 
             // Attempt to get data for the tut
             let tut;

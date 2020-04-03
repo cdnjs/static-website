@@ -9,14 +9,15 @@
                     <h1>Who are we?</h1>
                     <p>
                         We are cdnjs, the #1 free and open source CDN built to make life easier for developers
-                        serving <a href="https://w3techs.com/technologies/details/cd-cdnjs/all/all">over 10.4% of
-                            all websites</a>.
+                        serving
+                        <a :href="utm('https://w3techs.com/technologies/details/cd-cdnjs/all/all', 'about')">
+                            over 10.4% of all websites</a>.
                     </p>
                     <p>
                         We believe in the open-source mission, and want to support a fast and free web. To do that,
                         we’ve built our service to be free, public, and developer/web friendly since 2011.
-                        We handle <a href="https://github.com/cdnjs/cf-stats">over 170 billion requests a month</a> and
-                        support HTTP/3, HTTP/2, QUIC, SPDY, HSTS & HTTPS!
+                        We handle <a :href="utm('https://github.com/cdnjs/cf-stats', 'about')">over
+                            170 billion requests a month</a> and support HTTP/3, HTTP/2, QUIC, SPDY, HSTS & HTTPS!
                     </p>
                     <p>
                         While a CDN isn’t perfect for every occasion, when it is we’re here for you.
@@ -25,7 +26,9 @@
                         <nuxt-link :to="{ name: 'libraries' }" class="button">
                             View our libraries
                         </nuxt-link>
-                        <a href="https://github.com/cdnjs" class="button">We're on GitHub</a>
+                        <a :href="utm('https://github.com/cdnjs', 'about')" class="button">
+                            We're on GitHub
+                        </a>
                     </p>
                     <p>
                         <small>
@@ -40,8 +43,9 @@
                     <h1>Contribute</h1>
                     <p>
                         As a public OSS project, cdnjs relies on contributions and donations from the community.
-                        You can get get involved on <a href="https://github.com/cdnjs">GitHub</a> or find out more about
-                        <nuxt-link :to="{ name: 'sponsor' }">
+                        You can get get involved on
+                        <a :href="utm('https://github.com/cdnjs', 'about')">GitHub</a> or find out more
+                        about <nuxt-link :to="{ name: 'sponsor' }">
                             donating here
                         </nuxt-link>.
                     </p>
@@ -53,7 +57,8 @@
                     </p>
                     <p>
                         As Cloudflare provides the core cdnjs service, please take a read of
-                        <a href="https://www.cloudflare.com/privacypolicy/">their privacy policy</a>.
+                        <a :href="utm('https://www.cloudflare.com/privacypolicy/', 'about')">
+                            their privacy policy</a>.
                     </p>
                 </div>
 
@@ -61,7 +66,7 @@
                     <h2>Members</h2>
                     <div class="member-blocks">
                         <div class="member">
-                            <a href="https://github.com/ryankirkman">
+                            <a :href="utm('https://github.com/ryankirkman', 'about')">
                                 <img src="../assets/img/members/ryankirkman.jpg" alt="ryankirkman" />
                             </a>
                             <div class="info">
@@ -70,14 +75,14 @@
                                 </p>
                                 <p class="role">
                                     Founder
-                                    <a href="https://twitter.com/ryan_kirkman">
+                                    <a :href="utm('https://twitter.com/ryan_kirkman', 'about')">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </p>
                             </div>
                         </div>
                         <div class="member">
-                            <a href="https://github.com/thomasdavis">
+                            <a :href="utm('https://github.com/thomasdavis', 'about')">
                                 <img src="../assets/img/members/thomasdavis.jpg" alt="thomasdavis" />
                             </a>
                             <div class="info">
@@ -86,14 +91,14 @@
                                 </p>
                                 <p class="role">
                                     Founder
-                                    <a href="https://twitter.com/ajaxdavis">
+                                    <a :href="utm('https://twitter.com/ajaxdavis', 'about')">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </p>
                             </div>
                         </div>
                         <div class="member">
-                            <a href="https://github.com/MattIPv4">
+                            <a :href="utm('https://github.com/MattIPv4', 'about')">
                                 <img src="../assets/img/members/mattcowley.jpg" alt="MattIPv4" />
                             </a>
                             <div class="info">
@@ -102,14 +107,14 @@
                                 </p>
                                 <p class="role">
                                     Community Manager
-                                    <a href="https://twitter.com/MattIPv4">
+                                    <a :href="utm('https://twitter.com/MattIPv4', 'about')">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </p>
                             </div>
                         </div>
                         <div class="member">
-                            <a href="https://github.com/xtuc">
+                            <a :href="utm('https://github.com/xtuc', 'about')">
                                 <img src="../assets/img/members/svensauleau.jpg" alt="xtuc" />
                             </a>
                             <div class="info">
@@ -118,14 +123,14 @@
                                 </p>
                                 <p class="role">
                                     Maintainer (Cloudflare)
-                                    <a href="https://twitter.com/svensauleau">
+                                    <a :href="utm('https://twitter.com/svensauleau', 'about')">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </p>
                             </div>
                         </div>
                         <div class="member you">
-                            <a href="https://github.com/cdnjs">
+                            <a :href="utm('https://github.com/cdnjs', 'about')">
                                 <i class="fab fa-github"></i>
                             </a>
                             <div class="info">
@@ -148,7 +153,7 @@
                          :class="`sponsor ${sponsor.text}${sponsor.words ? ' words' : ''}`"
                          :style="{ background: sponsor.color }"
                     >
-                        <a :href="`${sponsor.site}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_about`">
+                        <a :href="utm(sponsor.site, 'about')">
                             <img :src="require(`../assets/img/sponsors/${sponsor.image}`)" :alt="sponsor.name" />
                             <div>
                                 <p>
@@ -161,7 +166,7 @@
                 <div class="sponsor-blocks">
                     <div class="sponsor contact">
                         <h3>Want to become a Sponsor?</h3>
-                        <p><a href="">Contact Us</a></p>
+                        <p><a href="">Contact Us</a></p> <!-- FIXME -->
                     </div>
                 </div>
             </div>
@@ -173,6 +178,7 @@
     import Breadcrumbs from '../components/breadcrumbs';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
+    import utm from '../util/utm';
     import sponsors from '../data/sponsors';
 
     const meta = {
@@ -199,6 +205,9 @@
             return {
                 crumbs: await breadcrumbs(data.route, data.app.router, {}),
             };
+        },
+        methods: {
+            utm,
         },
     };
 </script>

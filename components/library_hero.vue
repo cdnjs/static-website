@@ -9,13 +9,13 @@
                 {{ formatUnits(library.algolia.github.stargazers_count, 0) }}
             </p>
             <p v-if="repo()" class="repo">
-                <a :href="`https://github.com/${repo()}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
+                <a :href="utm(`https://github.com/${repo()}`, 'library')">
                     <i class="fab fa-github"></i>
                     GitHub
                 </a>
             </p>
             <p v-if="library.autoupdate && library.autoupdate.source === 'npm'" class="auto-update">
-                <a :href="`https://npmjs.com/package/${library.autoupdate.target}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
+                <a :href="utm(`https://npmjs.com/package/${library.autoupdate.target}`, 'library')">
                     <i class="fab fa-npm" aria-label="NPM"></i>
                     package
                 </a>
@@ -24,7 +24,7 @@
         <div class="row">
             <p v-if="library.licenses && library.licenses.length" class="license">
                 <template v-for="(license, index) of library.licenses">
-                    <a v-if="license.url" :href="`${license.url}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
+                    <a v-if="license.url" :href="utm(license.url, 'library')">
                         {{ license.type }}
                     </a>
                     <template v-else>
@@ -35,7 +35,7 @@
                 licensed
             </p>
             <p v-if="library.homepage" class="homepage">
-                <a :href="`${library.homepage}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_library`">
+                <a :href="utm(library.homepage, 'library')">
                     {{ library.homepage }}
                 </a>
             </p>
@@ -51,6 +51,7 @@
 
 <script>
     import formatUnits from '../util/format_units';
+    import utm from '../util/utm';
 
     export default {
         name: 'LibraryHero',
@@ -59,6 +60,7 @@
         },
         methods: {
             formatUnits,
+            utm,
             repo () {
                 if (this.$props.library.algolia && this.$props.library.algolia.github &&
                     this.$props.library.algolia.github.user && this.$props.library.algolia.github.repo) {

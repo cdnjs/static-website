@@ -3,8 +3,8 @@
         <h1>{{ tutorial.name }}</h1>
         <h2>
             For
-            <nuxt-link :to="{ name: 'libraries-library', params: { library: library.name } }">
-                {{ library.name }}
+            <nuxt-link :to="{ name: 'libraries-library', params: { library } }">
+                {{ library }}
             </nuxt-link>
         </h2>
 
@@ -15,7 +15,7 @@
         <div class="author row">
             <p>
                 By
-                <a v-if="tutorial.author.homepage" :href="tutorial.author.homepage">
+                <a v-if="tutorial.author.homepage" :href="utm(tutorial.author.homepage, 'tutorial')">
                     {{ tutorial.author.name }}
                 </a>
                 <template v-else>
@@ -24,7 +24,7 @@
             </p>
 
             <p v-if="tutorial.author.twitter" class="twitter">
-                <a :href="`https://twitter.com/${tutorial.author.twitter}?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_tutorial`">
+                <a :href="utm(`https://twitter.com/${tutorial.author.twitter}`, 'tutorial')">
                     <i class="fab fa-twitter"></i>
                 </a>
             </p>
@@ -40,15 +40,17 @@
 
 <script>
     import formatUnits from '../util/format_units';
+    import utm from '../util/utm';
 
     export default {
         name: 'TutorialHero',
         props: {
-            library: Object,
+            library: String,
             tutorial: Object,
         },
         methods: {
             formatUnits,
+            utm,
         },
     };
 </script>

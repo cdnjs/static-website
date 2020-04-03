@@ -1,7 +1,7 @@
 <template>
     <aside class="corner">
         <div>
-            <a href="https://github.com/cdnjs">
+            <a :href="utm('https://github.com/cdnjs', 'corner')">
                 <p>View on GitHub</p>
                 <i class="fab fa-github" aria-hidden="true"></i>
             </a>
@@ -10,7 +10,12 @@
 </template>
 
 <script>
+    import utm from '../util/utm';
+
     export default {
         name: 'Corner',
+        methods: {
+            utm,
+        },
     };
 </script>

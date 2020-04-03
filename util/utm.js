@@ -6,4 +6,4 @@ export default (url, campaign, medium = 'link') => {
     parsed.query.utm_medium = `cdnjs_${medium}`;
     parsed.query.utm_campaign = `cdnjs_${campaign}`;
     return parsed.toString();
-}
+};

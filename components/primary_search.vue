@@ -41,7 +41,7 @@
                                 </p>
                                 <p>
                                     You can make a request to have it added on our
-                                    <a href="https://github.com/cdnjs/cdnjs">GitHub repository</a>.
+                                    <a :href="utm('https://github.com/cdnjs/cdnjs', 'search')">GitHub repository</a>.
                                 </p>
                                 <p>
                                     Please make sure to <a :href="cdnjsSearch(query)">search and see if there is already an
@@ -68,6 +68,7 @@
     } from 'vue-instantsearch';
 
     import searchClient from '../util/search_client';
+    import utm from '../util/utm';
     import LibraryCard from './library_card';
 
     export default {
@@ -94,8 +95,9 @@
                 .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`; });
         },
         methods: {
+            utm,
             cdnjsSearch (query) {
-                return `https://github.com/cdnjs/cdnjs/issues?utf8=✓&q=${encodeURIComponent(query)}`;
+                return utm(`https://github.com/cdnjs/cdnjs/issues?utf8=✓&q=${encodeURIComponent(query)}`, 'search');
             },
         },
     };
