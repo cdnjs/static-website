@@ -3,7 +3,7 @@
         <h1>{{ tutorial.name }}</h1>
         <h2>
             For
-            <nuxt-link :to="{ name: 'libraries-library', params: { id: library.name } }">
+            <nuxt-link :to="{ name: 'libraries-library', params: { library: library.name } }">
                 {{ library.name }}
             </nuxt-link>
         </h2>

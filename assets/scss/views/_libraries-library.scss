@@ -40,8 +40,9 @@ main {
           background: $light;
           border: 0;
           border-radius: $radius;
+          flex-grow: 1;
           margin: 0 0 ($whitespace * .5);
-          width: 300px;
+          min-width: 200px;
 
           &.vs--open {
             border-radius: $radius $radius 0 0;

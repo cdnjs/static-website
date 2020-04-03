@@ -9,37 +9,41 @@
         </header>
         <div v-if="!ready" class="content">
         </div>
-        <div v-else class="content">
-            <div class="row filter">
-                <p>Version</p>
-                <VueSelect v-model="version" :options="versions()" :clearable="false"></VueSelect>
-                <br />
-                <p>Asset Type</p>
-                <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
+        <div v-else class="content row has-columns">
+            <div class="column-half">
+                <div class="row filter">
+                    <p>Version</p>
+                    <VueSelect v-model="version" :options="versions()" :clearable="false"></VueSelect>
+                    <br />
+                    <p>Asset Type</p>
+                    <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
+                </div>
+                <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
+                    {{ showHidden ? 'All files are shown, click to hide non-essential files'
+                        : 'Some files are hidden, click to show all files' }}
+                </a>
+                <ul class="assets">
+                    <li v-for="asset of assets"
+                        :key="asset.url"
+                        :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
+                        :style="{ display: hideAsset(asset) ? 'none' : undefined }"
+                    >
+                        <span class="url">{{ asset.url }}</span>
+                        <LibraryAssetButtons :asset="asset">
+                            <template slot="before">
+                                <i v-if="!isWhitelisted(asset.type)"
+                                   v-tippy
+                                   content="This file type is not whitelisted on the CDN and will not be available."
+                                   class="fas fa-exclamation-triangle"
+                                ></i>
+                            </template>
+                        </LibraryAssetButtons>
+                    </li>
+                </ul>
             </div>
-            <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
-                {{ showHidden ? 'All files are shown, click to hide non-essential files'
-                    : 'Some files are hidden, click to show all files' }}
-            </a>
-            <ul class="assets">
-                <li v-for="asset of assets"
-                    :key="asset.url"
-                    :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
-                    :style="{ display: hideAsset(asset) ? 'none' : undefined }"
-                >
-                    <span class="url">{{ asset.url }}</span>
-                    <LibraryAssetButtons :asset="asset">
-                        <template slot="before">
-                            <i v-if="!isWhitelisted(asset.type)"
-                               v-tippy
-                               content="This file type is not whitelisted on the CDN and will not be available."
-                               class="fas fa-exclamation-triangle"
-                            ></i>
-                        </template>
-                    </LibraryAssetButtons>
-                </li>
-            </ul>
-            <!-- TODO: Tutorials? -->
+            <div class="column-half">
+                <TutorialsList :library="libraryName" :tutorials="tutorials"></TutorialsList>
+            </div>
         </div>
     </section>
 </template>
@@ -47,6 +51,7 @@
 <script>
     import formatUnits from '../../../util/format_units';
     import getLibrary from '../../../util/get_library';
+    import { getTutorials } from '../../../util/get_tutorial';
     import getAsset from '../../../util/get_asset';
     import setMeta from '../../../util/set_meta';
     import breadcrumbs from '../../../util/breadcrumbs';
@@ -54,6 +59,7 @@
     import Breadcrumbs from '../../../components/breadcrumbs';
     import LibraryHero from '../../../components/library_hero';
     import LibraryAssetButtons from '../../../components/library_asset_buttons';
+    import TutorialsList from '../../../components/tutorial_list';
     const semverSort = require('semver-sort');
     const globToRegExp = require('glob-to-regexp');
     const { VueSelect } = require('vue-select');
@@ -135,6 +141,7 @@
             Breadcrumbs,
             LibraryHero,
             LibraryAssetButtons,
+            TutorialsList,
             VueSelect,
         },
         watch: {
@@ -146,6 +153,7 @@
             const data = {
                 libraryName: params.library,
                 library: null,
+                tutorials: {},
                 ready: false,
                 message: 'Loading...',
                 version: null,
@@ -177,6 +185,19 @@
                     });
                 }
                 return;
+            }
+
+            // Attempt to get tutorial data for the lib
+            let tuts;
+            try {
+                tuts = await getTutorials(data.libraryName);
+            } catch (_) {
+                // If we fail to load them, who cares
+            }
+
+            // Save tutorials
+            if (tuts) {
+                data.tutorials = tuts;
             }
 
             // Save the lib data

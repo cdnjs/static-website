@@ -47,6 +47,21 @@ main {
 
   .row {
     @include flex-row;
+
+    &.has-columns {
+      padding: $whitespace 0 0;
+
+      .column-half {
+        flex-basis: 50%;
+        max-width: 50%;
+        padding: $whitespace;
+
+        @media screen and (max-width: $breakpoint) {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+      }
+    }
   }
 
   .column {
