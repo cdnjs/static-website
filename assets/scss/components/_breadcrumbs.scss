@@ -31,16 +31,9 @@ header {
 
           a {
             @include font-regular;
+            @include primary-link;
 
-            color: $primary;
             font-size: 24px;
-            text-decoration: none;
-            transition: color $transition-duration $transition-timing-function;
-
-            &:hover,
-            &:focus {
-              color: $primary-hover;
-            }
           }
         }
       }

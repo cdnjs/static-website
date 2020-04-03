@@ -1,0 +1,44 @@
+.tutorial-hero {
+  h1 {
+    @include font-medium;
+
+    color: $light;
+    font-size: 45px;
+    margin: ($whitespace * .5) 0 0;
+  }
+
+  h2 {
+    @include font-medium;
+
+    color: $light;
+    font-size: 25px;
+    margin: ($whitespace * .125) 0 ($whitespace * 1.5);
+
+    a {
+      @include primary-link;
+    }
+  }
+
+  p {
+    @include font-regular;
+
+    color: $light;
+    font-size: 18px;
+  }
+
+  .description {
+    margin: ($whitespace * 1) 0 ($whitespace * .5);
+  }
+
+  .author {
+    margin: 0 0 ($whitespace * 1);
+
+    p {
+      margin: ($whitespace * .25) $whitespace ($whitespace * .5) 0;
+
+      a {
+        @include primary-link;
+      }
+    }
+  }
+}

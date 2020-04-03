@@ -55,7 +55,6 @@ main {
       :not(pre) {
         > code {
           font-size: .85em;
-          padding: ($whitespace * .25) ($whitespace * .5);
 
           &.key {
             background: $footer;
@@ -84,13 +83,9 @@ main {
             }
 
             a {
-              color: $primary;
-              transition: color $transition-duration $transition-timing-function;
+              @include primary-link;
 
-              &:hover,
-              &:focus {
-                color: $primary-hover;
-              }
+              text-decoration: underline;
             }
           }
 

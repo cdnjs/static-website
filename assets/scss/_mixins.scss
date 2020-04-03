@@ -29,3 +29,14 @@
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
 }
+
+@mixin primary-link {
+  color: $primary;
+  text-decoration: none;
+  transition: color $transition-duration $transition-timing-function;
+
+  &:hover,
+  &:focus {
+    color: $primary-hover;
+  }
+}

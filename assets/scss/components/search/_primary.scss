@@ -86,13 +86,7 @@
             }
 
             a {
-              color: $primary;
-              transition: color $transition-duration $transition-timing-function;
-
-              &:hover,
-              &:focus {
-                color: $primary-hover;
-              }
+              @include primary-link;
             }
           }
         }

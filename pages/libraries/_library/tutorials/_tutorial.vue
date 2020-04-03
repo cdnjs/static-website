@@ -2,20 +2,34 @@
     <section>
         <header>
             <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-            <LibraryHero :library="library"></LibraryHero>
+            <TutorialHero :library="library" :tutorial="tutorial"></TutorialHero>
         </header>
-        <div class="content" v-html="tutorial.html">
+        <div class="content row">
+            <div class="contents"></div>
+            <div class="tutorial" v-html="rendered"></div>
         </div>
     </section>
 </template>
 
 <script>
+    import MarkdownIt from 'markdown-it';
+    import MarkdownItPrism from 'markdown-it-prism';
+    import 'prismjs/themes/prism-tomorrow.css';
+    import 'prismjs/plugins/autolinker/prism-autolinker';
+    import 'prismjs/plugins/autolinker/prism-autolinker.css';
+    import 'prismjs/plugins/normalize-whitespace/prism-normalize-whitespace';
+    import 'prismjs/plugins/toolbar/prism-toolbar';
+    import 'prismjs/plugins/toolbar/prism-toolbar.css';
+    import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+    import 'prismjs/plugins/match-braces/prism-match-braces';
+    import 'prismjs/plugins/match-braces/prism-match-braces.css';
+
     import getLibrary from '../../../../util/get_library';
     import { getTutorial } from '../../../../util/get_tutorial';
     import setMeta from '../../../../util/set_meta';
     import breadcrumbs from '../../../../util/breadcrumbs';
     import Breadcrumbs from '../../../../components/breadcrumbs';
-    import LibraryHero from '../../../../components/library_hero';
+    import TutorialHero from '../../../../components/tutorial_hero';
 
     const tutorialName = data => (data.tutorial && data.tutorial.name) || data.tutorialName;
 
@@ -37,7 +51,7 @@
         },
         components: {
             Breadcrumbs,
-            LibraryHero,
+            TutorialHero,
         },
         async asyncData ({ params, route, app, error }) {
             const data = {
@@ -103,8 +117,16 @@
 
             return data;
         },
-        mounted() {
-            console.log(this.$data.tutorial);
+        computed: {
+            rendered() {
+                const md = MarkdownIt({
+                    html: true,
+                    linkify: true,
+                    typographer: true,
+                    langPrefix: 'match-braces language-',
+                }).use(MarkdownItPrism);
+                return md.render(this.$data.tutorial.markdown);
+            },
         },
     };
 </script>

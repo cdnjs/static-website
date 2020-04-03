@@ -267,14 +267,9 @@ main {
         font-size: 18px;
 
         a {
-          color: $primary;
-          text-decoration: underline;
-          transition: color $transition-duration $transition-timing-function;
+          @include primary-link;
 
-          &:hover,
-          &:focus {
-            color: $primary-hover;
-          }
+          text-decoration: underline;
         }
       }
     }

@@ -1,0 +1,18 @@
+main {
+  &.libraries-library-tutorials-tutorial {
+    .tutorial {
+      color: $light;
+
+      p {
+        line-height: 1.5;
+        margin: 0 0 ($whitespace * .5);
+      }
+
+      a {
+        @include primary-link;
+
+        text-decoration: underline;
+      }
+    }
+  }
+}

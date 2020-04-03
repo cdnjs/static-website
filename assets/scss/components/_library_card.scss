@@ -22,19 +22,12 @@ li {
 
       a {
         @include font-regular;
+        @include primary-link;
 
-        color: $primary;
         display: block;
         font-size: 24px;
         margin: 0;
         padding: 0;
-        text-decoration: none;
-        transition: color $transition-duration $transition-timing-function;
-
-        &:hover,
-        &:focus {
-          color: $primary-hover;
-        }
 
         .version {
           font-size: 14px;

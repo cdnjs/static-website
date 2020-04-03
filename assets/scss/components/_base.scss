@@ -60,15 +60,3 @@ header {
   background: $header;
   width: 100%;
 }
-
-
-code {
-  background: $darker;
-  border-radius: $radius;
-  color: $primary;
-  display: inline-block;
-  margin: ($whitespace * .125) 0;
-  max-width: 100%;
-  padding: $whitespace;
-  word-break: break-word;
-}

@@ -19,14 +19,7 @@
       margin: ($whitespace * .5) $whitespace ($whitespace * .5) 0;
 
       a {
-        color: $primary;
-        text-decoration: none;
-        transition: color $transition-duration $transition-timing-function;
-
-        &:hover,
-        &:focus {
-          color: $primary-hover;
-        }
+        @include primary-link;
       }
     }
   }

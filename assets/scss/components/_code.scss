@@ -1,0 +1,45 @@
+code {
+  background: $darker;
+  border-radius: $radius;
+  color: $primary;
+  display: inline-block;
+  margin: ($whitespace * .125) 0;
+  max-width: 100%;
+  padding: $whitespace;
+  word-break: break-word;
+}
+
+:not(pre) {
+  > code {
+    padding: ($whitespace * .25) ($whitespace * .5);
+  }
+}
+
+pre {
+  &[class*="language-"] {
+    border-radius: $radius;
+  }
+}
+
+.code-toolbar {
+  .toolbar {
+    .toolbar-item {
+      a,
+      button,
+      span {
+        background: $dark;
+        border-radius: $border-radius;
+        box-shadow: none;
+        color: $light;
+        cursor: pointer;
+        padding: ($whitespace * .25) ($whitespace * .75);
+        transition: color $transition-duration $transition-timing-function;
+
+        &:hover,
+        &:focus {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

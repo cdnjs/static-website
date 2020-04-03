@@ -5,6 +5,7 @@
 @import "../../node_modules/vue-select/src/scss/vue-select";
 
 @import "components/base";
+@import "components/code";
 @import "components/transitions";
 @import "components/nav";
 @import "components/status_indicator";
@@ -15,6 +16,7 @@
 @import "components/library_card";
 @import "components/library_hero";
 @import "components/library_asset_buttons";
+@import "components/tutorial_hero";
 @import "components/search";
 @import "components/banner";
 @import "components/footer";
@@ -22,5 +24,6 @@
 
 @import "views/index";
 @import "views/libraries-library";
+@import "views/libraries-library-tutorials-tutorial";
 @import "views/about";
 @import "views/api";
