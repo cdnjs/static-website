@@ -42,7 +42,7 @@
                 </ul>
             </div>
             <div class="column-half">
-                <TutorialsList :library="libraryName" :tutorials="tutorials"></TutorialsList>
+                <TutorialList :library="libraryName" :tutorials="tutorials"></TutorialList>
             </div>
         </div>
     </section>
@@ -59,7 +59,7 @@
     import Breadcrumbs from '../../../components/breadcrumbs';
     import LibraryHero from '../../../components/library_hero';
     import LibraryAssetButtons from '../../../components/library_asset_buttons';
-    import TutorialsList from '../../../components/tutorial_list';
+    import TutorialList from '../../../components/tutorial_list';
     const semverSort = require('semver-sort');
     const globToRegExp = require('glob-to-regexp');
     const { VueSelect } = require('vue-select');
@@ -141,7 +141,7 @@
             Breadcrumbs,
             LibraryHero,
             LibraryAssetButtons,
-            TutorialsList,
+            TutorialList,
             VueSelect,
         },
         watch: {

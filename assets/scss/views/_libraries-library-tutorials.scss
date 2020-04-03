@@ -1,0 +1,17 @@
+main {
+  &.libraries-library-tutorials {
+    .tutorials-hero {
+      h1 {
+        @include font-medium;
+
+        color: $light;
+        font-size: 45px;
+        margin: ($whitespace * .5) 0 ($whitespace * 1.5);
+
+        a {
+          @include primary-link;
+        }
+      }
+    }
+  }
+}

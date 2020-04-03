@@ -1,18 +1,19 @@
 <template>
-    <div class="tutorials-list">
-        <h3>Library Tutorials</h3>
+    <div class="tutorial-list">
+        <h3 v-if="!singlePage">Library Tutorials</h3>
         <p>
             Want to write your own awesome tutorials?
-            <a href="https://github.com/cdnjs/tutorials?utm_source=cdnjs&utm_medium=link&utm_campaign=cdnjs_tutorials">
+            <a :href="githubLink">
                 Make and submit them today
             </a>
         </p>
         <ul>
+            <template v-if="Object.keys(tutorials).length">
             <li v-for="(data, id) in tutorials">
                 <p>
                     <nuxt-link :to="{
                         name: 'libraries-library-tutorials-tutorial',
-                        params: { library: library.name, tutorial: id }
+                        params: { library: library, tutorial: id }
                     }"
                     >
                         {{ data.name }}
@@ -28,16 +29,40 @@
                     </template>
                 </p>
             </li>
+            </template>
+            <li v-else>
+                <p>
+                    No tutorials found, <a :href="githubLink">want to write one</a>?
+                </p>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
+    import utm from '../util/utm';
+
     export default {
         name: 'TutorialList',
         props: {
-            library: String,
-            tutorials: Object,
+            library: {
+                type: String,
+                required: true,
+            },
+            tutorials: {
+                type: Object,
+                required: true,
+            },
+            singlePage: {
+                type: Boolean,
+                required: false,
+                default: false,
+            }
+        },
+        data() {
+            return {
+                githubLink: utm('https://github.com/cdnjs/tutorials', 'tutorials'),
+            };
         },
     };
 </script>

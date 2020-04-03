@@ -54,7 +54,7 @@ main {
       .column-half {
         flex-basis: 50%;
         max-width: 50%;
-        padding: $whitespace;
+        padding: $whitespace ($whitespace * 2);
 
         @media screen and (max-width: $breakpoint) {
           flex-basis: 100%;
