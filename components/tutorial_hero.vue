@@ -18,7 +18,9 @@
                 <a v-if="tutorial.author.homepage" :href="tutorial.author.homepage">
                     {{ tutorial.author.name }}
                 </a>
-                <template v-else>{{ tutorial.author.name }}</template>
+                <template v-else>
+                    {{ tutorial.author.name }}
+                </template>
             </p>
 
             <p v-if="tutorial.author.twitter" class="twitter">

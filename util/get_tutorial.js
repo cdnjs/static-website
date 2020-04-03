@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-export const getTutorials = async lib => {
+export const getTutorials = async (lib) => {
     // Get data from cdnjs API
     const res = await fetch(`https://api.cdnjs.com/libraries/${encodeURIComponent(lib)}/tutorials`);
     const apiData = await res.json();

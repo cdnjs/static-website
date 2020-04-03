@@ -13,7 +13,8 @@
                     <nuxt-link :to="{
                         name: 'libraries-library-tutorials-tutorial',
                         params: { library: library.name, tutorial: id }
-                    }">
+                    }"
+                    >
                         {{ data.name }}
                     </nuxt-link>
                 </p>
@@ -22,7 +23,9 @@
                     <a v-if="data.author.homepage" :href="data.author.homepage">
                         {{ data.author.name }}
                     </a>
-                    <template v-else>{{ data.author.name }}</template>
+                    <template v-else>
+                        {{ data.author.name }}
+                    </template>
                 </p>
             </li>
         </ul>

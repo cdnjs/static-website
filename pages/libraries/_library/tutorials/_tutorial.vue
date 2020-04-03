@@ -6,7 +6,7 @@
         </header>
         <div class="content row">
             <div class="contents"></div>
-            <div class="tutorial" v-html="rendered"></div>
+            <div v-html="rendered" class="tutorial"></div>
         </div>
     </section>
 </template>
@@ -52,6 +52,17 @@
         components: {
             Breadcrumbs,
             TutorialHero,
+        },
+        computed: {
+            rendered () {
+                const md = MarkdownIt({
+                    html: true,
+                    linkify: true,
+                    typographer: true,
+                    langPrefix: 'match-braces language-',
+                }).use(MarkdownItPrism);
+                return md.render(this.$data.tutorial.markdown);
+            },
         },
         async asyncData ({ params, route, app, error }) {
             const data = {
@@ -116,17 +127,6 @@
             data.crumbs = await breadcrumbs(route, app.router, data);
 
             return data;
-        },
-        computed: {
-            rendered() {
-                const md = MarkdownIt({
-                    html: true,
-                    linkify: true,
-                    typographer: true,
-                    langPrefix: 'match-braces language-',
-                }).use(MarkdownItPrism);
-                return md.render(this.$data.tutorial.markdown);
-            },
         },
     };
 </script>
