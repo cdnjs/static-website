@@ -49,6 +49,10 @@
 </template>
 
 <script>
+    import semverSort from 'semver-sort';
+    import globToRegExp from 'glob-to-regexp';
+    import { VueSelect } from 'vue-select';
+    import firstBy from 'thenby';
     import formatUnits from '../../../util/format_units';
     import getLibrary from '../../../util/get_library';
     import { getTutorials } from '../../../util/get_tutorial';
@@ -60,10 +64,6 @@
     import LibraryHero from '../../../components/library_hero';
     import LibraryAssetButtons from '../../../components/library_asset_buttons';
     import TutorialList from '../../../components/tutorial_list';
-    const semverSort = require('semver-sort');
-    const globToRegExp = require('glob-to-regexp');
-    const { VueSelect } = require('vue-select');
-    const firstBy = require('thenby');
 
     const meta = {
         title (data) {
@@ -220,10 +220,9 @@
 
             return data;
         },
-        async mounted () {
-            // If we're missing data (too big to load server-side), get it client side.
-            if (!this.$data.library || !this.$data.library.assets || !this.$data.library.assets.length) {
-                const lib = await getLibrary(this.$data.libraryName, false);
+        mounted () {
+            // Get latest data in the background (SSR may be old or incomplete)
+            getLibrary(this.$data.libraryName, false).then(lib => {
                 if (lib) {
                     this.$data.library = lib;
                     this.$data.version = lib.version;
@@ -237,7 +236,12 @@
 
                     this.$data.ready = true;
                 }
-            }
+            }).catch(() => {});
+            getTutorials(this.$data.libraryName).then(tuts => {
+                if (tuts) {
+                    this.$data.tutorials = tuts;
+                }
+            }).catch(() => {});
         },
         methods: {
             formatUnits,
