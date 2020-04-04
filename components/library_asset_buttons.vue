@@ -1,27 +1,27 @@
 <template>
-    <div class="library-asset-buttons" name="copied">
-        <Tippy :visible="tippyShow" to="copied" trigger="manual" hide-on-click="false">
-            {{ tippyText }}
-        </Tippy>
+    <div class="library-asset-buttons">
         <slot name="before"></slot>
         <i v-clipboard:copy="asset.url"
-           v-clipboard:success="onCopy"
-           v-tippy
-           content="Copy URL"
+           v-clipboard:success="tooltipCopied"
+           @mouseenter="tooltipShow"
+           @mouseleave="tooltipHide"
+           data-tooltip="Copy URL"
            class="fas fa-link"
         ></i>
         <i v-if="asset.code"
            v-clipboard:copy="asset.code"
-           v-clipboard:success="onCopy"
-           v-tippy
-           :content="asset.codeTitle"
+           v-clipboard:success="tooltipCopied"
+           @mouseenter="tooltipShow"
+           @mouseleave="tooltipHide"
+           :data-tooltip="asset.codeTitle"
            class="fas fa-code"
         ></i>
         <i v-if="asset.sri"
            v-clipboard:copy="asset.sri"
-           v-clipboard:success="onCopy"
-           v-tippy
-           content="Copy SRI Hash"
+           v-clipboard:success="tooltipCopied"
+           @mouseenter="tooltipShow"
+           @mouseleave="tooltipHide"
+           data-tooltip="Copy SRI Hash"
            class="fas fa-shield-alt"
         ></i>
         <slot name="after"></slot>
@@ -29,30 +29,30 @@
 </template>
 
 <script>
-    import { TippyComponent } from 'vue-tippy';
+    import tlite from 'tlite';
+    import 'tlite/tlite.css';
 
     export default {
         name: 'LibraryAssetButtons',
-        components: {
-            Tippy: TippyComponent,
-        },
         props: {
             asset: Object,
         },
-        data () {
-            return {
-                tippyText: null,
-                tippyShow: false,
-            };
-        },
         methods: {
-            onCopy () {
-                this.$data.tippyText = 'Copied!';
-                this.$data.tippyShow = true;
+            tooltipCopied (evt) {
+                tlite.hide(evt.trigger);
+                evt.trigger.setAttribute('data-tlite', 'Copied!');
+                tlite.show(evt.trigger);
                 setTimeout(() => {
-                    this.$data.tippyShow = false;
+                    tlite.hide(evt.trigger);
                 }, 1000);
             },
+            tooltipShow (evt) {
+                evt.target.setAttribute('data-tlite', evt.target.getAttribute('data-tooltip'));
+                tlite.show(evt.target);
+            },
+            tooltipHide (evt) {
+                tlite.hide(evt.target);
+            }
         },
     };
 </script>

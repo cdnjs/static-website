@@ -93,7 +93,6 @@ module.exports = {
     */
     plugins: [
         '~/plugins/vue-clipboard2.js',
-        '~/plugins/vue-tippy.js',
     ],
     /*
     ** Load in modules that we're using in the app

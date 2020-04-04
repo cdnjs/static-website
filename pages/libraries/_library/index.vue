@@ -32,8 +32,9 @@
                         <LibraryAssetButtons :asset="asset">
                             <template slot="before">
                                 <i v-if="!isWhitelisted(asset.type)"
-                                   v-tippy
-                                   content="This file type is not whitelisted on the CDN and will not be available."
+                                   @mouseenter="tooltipShow"
+                                   @mouseleave="tooltipHide"
+                                   data-tlite="This file type is not whitelisted on the CDN and will not be available."
                                    class="fas fa-exclamation-triangle"
                                 ></i>
                             </template>
@@ -53,6 +54,8 @@
     import globToRegExp from 'glob-to-regexp';
     import { VueSelect } from 'vue-select';
     import firstBy from 'thenby';
+    import tlite from 'tlite';
+    import 'tlite/tlite.css';
 
     import formatUnits from '../../../util/format_units';
     import getLibrary from '../../../util/get_library';
@@ -248,8 +251,10 @@
         methods: {
             formatUnits,
             isWhitelisted,
-            versions () {
-                if (!this.$data.library.assets || !this.$data.library.assets.length) { return []; }
+            versions() {
+                if (!this.$data.library.assets || !this.$data.library.assets.length) {
+                    return [];
+                }
 
                 const versions = this.$data.library.assets.map(a => a.version);
                 try {
@@ -258,16 +263,26 @@
                     return versions;
                 }
             },
-            hideAsset (asset) {
-                if (asset.hidden && !this.$data.showHidden) { return true; }
-                if (this.$data.category !== 'All') { return category(asset.type) !== this.$data.category; }
+            hideAsset(asset) {
+                if (asset.hidden && !this.$data.showHidden) {
+                    return true;
+                }
+                if (this.$data.category !== 'All') {
+                    return category(asset.type) !== this.$data.category;
+                }
                 return false;
             },
-            getAssets () {
+            getAssets() {
                 const { assets, hasHidden, categories } = getAssets(this.$data);
                 this.$data.assets = assets;
                 this.$data.hasHidden = hasHidden;
                 this.$data.categories = categories;
+            },
+            tooltipShow(evt) {
+                tlite.show(evt.target);
+            },
+            tooltipHide(evt) {
+                tlite.hide(evt.target);
             },
         },
     };
