@@ -251,7 +251,7 @@
         methods: {
             formatUnits,
             isWhitelisted,
-            versions() {
+            versions () {
                 if (!this.$data.library.assets || !this.$data.library.assets.length) {
                     return [];
                 }
@@ -263,7 +263,7 @@
                     return versions;
                 }
             },
-            hideAsset(asset) {
+            hideAsset (asset) {
                 if (asset.hidden && !this.$data.showHidden) {
                     return true;
                 }
@@ -272,16 +272,16 @@
                 }
                 return false;
             },
-            getAssets() {
+            getAssets () {
                 const { assets, hasHidden, categories } = getAssets(this.$data);
                 this.$data.assets = assets;
                 this.$data.hasHidden = hasHidden;
                 this.$data.categories = categories;
             },
-            tooltipShow(evt) {
+            tooltipShow (evt) {
                 tlite.show(evt.target);
             },
-            tooltipHide(evt) {
+            tooltipHide (evt) {
                 tlite.hide(evt.target);
             },
         },

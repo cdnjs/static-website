@@ -6,14 +6,15 @@
         </header>
         <div class="content row">
             <div class="contents"></div>
-            <div v-html="rendered" class="tutorial"></div>
+            <div ref="tutorial" v-html="rendered" class="tutorial"></div>
         </div>
     </section>
 </template>
 
 <script>
     import MarkdownIt from 'markdown-it';
-    import MarkdownItPrism from 'markdown-it-prism';
+    import Prism from 'prismjs';
+    import loadLanguages from 'prismjs/components';
     import 'prismjs/themes/prism-tomorrow.css';
     import 'prismjs/plugins/autolinker/prism-autolinker';
     import 'prismjs/plugins/autolinker/prism-autolinker.css';
@@ -58,9 +59,31 @@
                     html: true,
                     linkify: true,
                     typographer: true,
-                    langPrefix: 'match-braces language-',
-                }).use(MarkdownItPrism);
+                    highlight (str, lang) {
+                        let highlighted;
+
+                        try {
+                            if (!(lang in Prism.languages)) { loadLanguages([lang]); }
+                            highlighted = Prism.highlight(str, Prism.languages[lang]);
+                        } catch (e) {
+                            console.error(e);
+                            highlighted = md.utils.escapeHtml(str);
+                        }
+
+                        const langClass = `match-braces language-${lang}`;
+                        return `<pre class="${langClass}"><code class="${langClass}">${highlighted}</code></pre>`;
+                    },
+                });
                 return md.render(this.$data.tutorial.markdown);
+            },
+        },
+        watch: {
+            rendered () {
+                // Highlight whenever rendered changes (including initial value) to bind event-based plugins
+                this.$nextTick(() => {
+                    this.$refs.tutorial.querySelectorAll('code[class*="language-"]')
+                        .forEach(elm => Prism.highlightElement(elm));
+                });
             },
         },
         async asyncData ({ params, route, app, error }) {

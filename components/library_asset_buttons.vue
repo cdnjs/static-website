@@ -52,7 +52,7 @@
             },
             tooltipHide (evt) {
                 tlite.hide(evt.target);
-            }
+            },
         },
     };
 </script>

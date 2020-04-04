@@ -30,7 +30,6 @@
     "glob-to-regexp": "^0.4.1",
     "instantsearch.css": "^7.4.2",
     "markdown-it": "^10.0.0",
-    "markdown-it-prism": "^2.0.5",
     "node-fetch": "^2.6.0",
     "nuxt": "^2.11.0",
     "prismjs": "^1.19.0",
