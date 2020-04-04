@@ -31,13 +31,11 @@
 
 <script>
     import ClientOnly from 'vue-client-only';
-    import {
-        AisInstantSearch,
-        AisConfigure,
-        AisSearchBox,
-        AisStateResults,
-        AisHits,
-    } from 'vue-instantsearch';
+    import AisInstantSearch from 'vue-instantsearch/src/components/InstantSearch';
+    import AisConfigure from 'vue-instantsearch/src/components/Configure';
+    import AisSearchBox from 'vue-instantsearch/src/components/SearchBox';
+    import AisStateResults from 'vue-instantsearch/src/components/StateResults';
+    import AisHits from 'vue-instantsearch/src/components/Hits';
 
     import searchClient from '../util/search_client';
     import LibraryCard from './library_card';

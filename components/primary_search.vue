@@ -58,14 +58,12 @@
 
 <script>
     import ClientOnly from 'vue-client-only';
-    import {
-        AisInstantSearch,
-        AisConfigure,
-        AisSearchBox,
-        AisStats,
-        AisStateResults,
-        AisInfiniteHits,
-    } from 'vue-instantsearch';
+    import AisInstantSearch from 'vue-instantsearch/src/components/InstantSearch';
+    import AisConfigure from 'vue-instantsearch/src/components/Configure';
+    import AisSearchBox from 'vue-instantsearch/src/components/SearchBox';
+    import AisStats from 'vue-instantsearch/src/components/Stats';
+    import AisStateResults from 'vue-instantsearch/src/components/StateResults';
+    import AisInfiniteHits from 'vue-instantsearch/src/components/InfiniteHits';
 
     import searchClient from '../util/search_client';
     import utm from '../util/utm';
