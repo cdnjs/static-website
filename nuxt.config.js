@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+const routes = require('./util/build/routes');
+let cachedRoutes;
 
 module.exports = {
     mode: 'universal',
@@ -108,7 +109,7 @@ module.exports = {
         gzip: true,
         hostname: process.env.SITE_HOST || undefined,
         async routes() {
-            const routes = [
+            const urls = [
                 {
                     url: '/',
                     priority: 1,
@@ -131,16 +132,10 @@ module.exports = {
                 },
             ];
 
-            const libsRaw = await fetch(`https://api.cdnjs.com/libraries?fields=name`);
-            const libs = (await libsRaw.json()).results.map((lib) => {
-                return {
-                    url: '/libraries/' + lib.name,
-                    priority: 0.6,
-                }
-            });
+            if (!cachedRoutes) cachedRoutes = await routes();
+            urls.push(...cachedRoutes);
 
-            routes.push(...libs);
-            return routes;
+            return urls;
         },
     },
     /*
@@ -175,12 +170,11 @@ module.exports = {
     generate: {
         routes() {
             if (process.env.NODE_ENV === 'production') {
-                return fetch(`https://api.cdnjs.com/libraries?fields=name`)
-                    .then(res => res.json().then(data => {
-                        return data.results.map((lib) => {
-                            return '/libraries/' + lib.name
-                        })
-                    }))
+                if (cachedRoutes) return cachedRoutes.map(item => item.url);
+                return routes().then(data => {
+                    cachedRoutes = data;
+                    return data.map(item => item.url);
+                });
             }
             return [];
         },

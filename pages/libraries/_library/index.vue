@@ -223,7 +223,7 @@
         },
         mounted () {
             // Get latest data in the background (SSR may be old or incomplete)
-            getLibrary(this.$data.libraryName, false).then(lib => {
+            getLibrary(this.$data.libraryName, false).then((lib) => {
                 if (lib) {
                     this.$data.library = lib;
                     this.$data.version = lib.version;
@@ -238,7 +238,7 @@
                     this.$data.ready = true;
                 }
             }).catch(() => {});
-            getTutorials(this.$data.libraryName).then(tuts => {
+            getTutorials(this.$data.libraryName).then((tuts) => {
                 if (tuts) {
                     this.$data.tutorials = tuts;
                 }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev nodemon server/index.js --watch server --watch nuxt.config.js",
-    "dev:generate": "NODE_ENV=dev SITE_HOST=http://localhost:3000/ nuxt generate && node server/generate.js",
+    "dev:generate": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt generate && node server/generate.js",
     "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt generate",
     "test": "npm run test:eslint && npm run test:scss",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
@@ -26,6 +26,7 @@
     "@nuxtjs/sitemap": "^2.0.1",
     "algoliasearch": "^4.0.3",
     "babel-polyfill": "^6.26.0",
+    "chunk": "0.0.2",
     "glob-to-regexp": "^0.4.1",
     "instantsearch.css": "^7.4.2",
     "markdown-it": "^10.0.0",
