@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon server/index.js --watch server --watch nuxt.config.js",
     "dev:generate": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt generate && node server/generate.js",
+    "dev:analyze": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt build --analyze",
     "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt generate",
     "test": "npm run test:eslint && npm run test:scss",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
@@ -42,7 +43,7 @@
     "vue-client-only": "^2.0.0",
     "vue-clipboard2": "^0.3.1",
     "vue-hot-reload-api": "^2.3.4",
-    "vue-instantsearch": "^2.7.0",
+    "vue-instantsearch": "^3.0.0-beta.0",
     "vue-prism-component": "^1.1.1",
     "vue-router": "^3.1.6",
     "vue-select": "^3.4.0"

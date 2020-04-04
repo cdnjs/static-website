@@ -71,7 +71,7 @@
             focused () {
                 // Register a listener for results
                 if (!this.$data.listenerRegistered) {
-                    this.$refs.instantSearch.instantSearchInstance.helper.on('result', () => {
+                    this.$refs.instantSearch.instantSearchInstance.on('render', () => {
                         this.$nextTick(() => {
                             // Set a margin so it doesn't overflow the page (if enabled)
                             if (this.$props.margin) {
