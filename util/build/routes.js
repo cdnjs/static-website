@@ -32,7 +32,7 @@ module.exports = async () => {
             });
         };
     });
-    const tutsChunks = chunk(tutsAsync, 20);
+    const tutsChunks = chunk(tutsAsync, 50);
     const failed = [];
     const tuts = [];
     for (const tutsChunk of tutsChunks) {

@@ -176,8 +176,8 @@ module.exports = {
             }
             return [];
         },
-        concurrency: 200,
-        interval: 100,
+        concurrency: 500,
+        interval: 10,
         fallback: true,
     }
 };
