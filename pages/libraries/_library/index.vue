@@ -226,7 +226,6 @@
             getLibrary(this.$data.libraryName, false).then((lib) => {
                 if (lib) {
                     this.$data.library = lib;
-                    this.$data.version = lib.version;
 
                     if (lib.assets && lib.assets.length) {
                         const { assets, hasHidden, categories } = getAssets(this.$data);
@@ -235,6 +234,8 @@
                         this.$data.categories = categories;
                     }
 
+                    this.$data.version = this.versions().includes(this.$data.version)
+                        ? this.$data.version : lib.version;
                     this.$data.ready = true;
                 }
             }).catch(() => {});

@@ -37,7 +37,7 @@ module.exports = async () => {
     const tuts = [];
     for (const tutsChunk of tutsChunks) {
         const chunkRes = await Promise.all(tutsChunk.map(cb => cb().catch(() => failed.push(cb))));
-        tuts.push(...chunkRes.flat(1).filter(x => !!x));
+        tuts.push(...chunkRes.flat(1));
     }
     for (const failure of failed) {
         const result = await failure().catch(e => console.warn(e));
@@ -45,5 +45,5 @@ module.exports = async () => {
     }
 
     // Combine and sort
-    return [...libs, ...tuts].sort((a, b) => a.url.localeCompare(b.url));
+    return [...libs, ...tuts].filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
 };
