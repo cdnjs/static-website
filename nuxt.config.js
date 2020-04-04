@@ -93,7 +93,6 @@ module.exports = {
     */
     plugins: [
         '~/plugins/vue-clipboard2.js',
-        '~/plugins/vue-instantsearch.js',
         '~/plugins/vue-tippy.js',
     ],
     /*
@@ -148,7 +147,7 @@ module.exports = {
     ** Transpile instant search for SSR
     */
     build: {
-        transpile: ['vue-instantsearch', 'instantsearch.js/es'],
+        transpile: ['vue-instantsearch'],
         html: {
             minify: {
                 collapseBooleanAttributes: true, // Default
