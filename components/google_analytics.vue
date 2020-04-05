@@ -1,25 +1,23 @@
 <template>
-    <div :style="{ display: 'none', visibility: 'hidden' }">
-        <client-only>
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+    <div>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=UA-139601399-3"></Script>
+        <Script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-                gtag('config', 'UA-139601399-3');
-            </script>
-        </client-only>
+            gtag('config', 'UA-139601399-3');
+        </Script>
     </div>
 </template>
 
 <script>
-    import ClientOnly from 'vue-client-only';
+    import Script from './script';
 
     export default {
         name: 'GoogleAnalytics',
         components: {
-            ClientOnly,
+            Script,
         },
     };
 </script>

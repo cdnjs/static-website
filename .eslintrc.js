@@ -42,5 +42,6 @@ module.exports = {
         }],
         'vue/no-unused-vars': 0,
         'vue/html-self-closing': 0,
+        'vue/require-component-is': 0,
     },
 };
