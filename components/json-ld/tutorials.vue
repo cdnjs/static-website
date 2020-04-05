@@ -17,7 +17,7 @@
         },
         computed: {
             json () {
-                return Tutorials(this.base, this.$props.library, this.$props.tutorials, this.keywords);
+                return JSON.stringify(Tutorials(this.base, this.$props.library, this.$props.tutorials, this.keywords));
             },
             keywords () {
                 const tags = [];

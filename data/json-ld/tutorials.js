@@ -1,4 +1,6 @@
-export default (base, library, tutorials, keywords) => JSON.stringify({
+import Tutorial from './tutorial';
+
+export default (base, library, tutorials, keywords) => ({
     '@context': 'http://schema.org',
     '@type': 'CreativeWorkSeries',
     name: `${library} Tutorials`,
@@ -11,11 +13,7 @@ export default (base, library, tutorials, keywords) => JSON.stringify({
     accessModeSufficient: 'textual',
     isAccessibleForFree: true,
     isPartOf: `${base}libraries/${library}`,
-    hasPart: Object.entries(tutorials).map(d => ({
-        '@type': 'TechArticle',
-        name: d[1].name,
-        url: `${base}libraries/${library}/tutorials/${d[0]}`,
-    })),
+    hasPart: Object.entries(tutorials).map(d => Tutorial(base, d[1], d[0], library)),
     publisher: {
         '@type': 'Organization',
         name: 'cdnjs',

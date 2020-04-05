@@ -1,4 +1,4 @@
-export default (base, tutorial, tutorialName, library) => JSON.stringify({
+export default (base, tutorial, tutorialName, library) => ({
     '@context': 'http://schema.org',
     '@type': 'TechArticle',
     name: tutorial.name,
@@ -10,22 +10,28 @@ export default (base, tutorial, tutorialName, library) => JSON.stringify({
     accessMode: 'textual',
     accessModeSufficient: 'textual',
     isAccessibleForFree: true,
+    image: `${base}banner.png`,
     isPartOf: {
         '@type': 'CreativeWorkSeries',
         url: `${base}libraries/${library}/tutorials`,
     },
     author: {
         '@type': 'Person',
-        name: '{{ tutorial.author.name }}',
+        name: tutorial.author.name,
     },
     publisher: {
         '@type': 'Organization',
         name: 'cdnjs',
-        url: '{{ base() }}',
+        url: base,
+        logo: {
+            type: 'ImageObject',
+            url: `${base}favicon.png`,
+        },
     },
     sourceOrganization: {
         '@type': 'Organization',
         name: 'cdnjs',
-        url: '{{ base() }}',
+        url: base,
     },
+    datePublished: '2020-01-01', // FIXME: API needs this value!
 });

@@ -18,7 +18,12 @@
         },
         computed: {
             json () {
-                return Tutorial(this.base, this.$props.tutorial, this.$props.tutorialName, this.$props.library);
+                return JSON.stringify(Tutorial(
+                    this.base,
+                    this.$props.tutorial,
+                    this.$props.tutorialName,
+                    this.$props.library,
+                ));
             },
             base () {
                 const origin = process.env.SITE_HOST ||

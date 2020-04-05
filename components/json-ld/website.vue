@@ -13,7 +13,7 @@
         },
         computed: {
             json () {
-                return WebSite(this.base);
+                return JSON.stringify(WebSite(this.base));
             },
             base () {
                 const origin = process.env.SITE_HOST ||
