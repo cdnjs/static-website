@@ -46,21 +46,20 @@
                 <TutorialList :library="libraryName" :tutorials="tutorials"></TutorialList>
             </div>
         </div>
+        <JSONLDLibrary :library="library" :library-name="libraryName"></JSONLDLibrary>
     </section>
 </template>
 
 <script>
     import semverSort from 'semver-sort';
-    import globToRegExp from 'glob-to-regexp';
     import { VueSelect } from 'vue-select';
-    import firstBy from 'thenby';
     import tlite from 'tlite';
     import 'tlite/tlite.css';
 
     import formatUnits from '../../../util/format_units';
     import getLibrary from '../../../util/get_library';
     import { getTutorials } from '../../../util/get_tutorial';
-    import getAsset from '../../../util/get_asset';
+    import { getAssets } from '../../../util/get_asset';
     import setMeta from '../../../util/set_meta';
     import breadcrumbs from '../../../util/breadcrumbs';
     import { isWhitelisted, category } from '../../../util/file_type';
@@ -68,6 +67,7 @@
     import LibraryHero from '../../../components/library_hero';
     import LibraryAssetButtons from '../../../components/library_asset_buttons';
     import TutorialList from '../../../components/tutorial_list';
+    import JSONLDLibrary from '../../../components/json-ld/library';
 
     const meta = {
         title (data) {
@@ -77,62 +77,6 @@
             return data.libraryName;
         },
         classes: [],
-    };
-
-    const getAssets = (data) => {
-        // Generate the categories
-        const categories = new Set();
-        categories.add('All');
-
-        // Get the raw assets for this version
-        const rawAssets = data.library.assets.find(a => a.version === data.version);
-
-        // Convert them to asset objects and sort them
-        const sortedAssets = rawAssets.files
-            .map(asset => getAsset(
-                data.library.name,
-                data.version,
-                asset,
-                rawAssets.sri && asset in rawAssets.sri ? rawAssets.sri[asset] : null,
-            ))
-            .sort(
-                firstBy(v1 => v1.file === data.library.filename, -1)
-                    .thenBy((v1, v2) => v1.file.split('/').length - v2.file.split('/').length)
-                    .thenBy('file'),
-            );
-
-        // Determine if we have any minified files
-        const minFileRe = globToRegExp('*.min.*');
-        const hasMinifiedFiles = sortedAssets.reduce((prev, asset) => prev || minFileRe.test(asset.file), false);
-
-        // Use some glob regex to determine if each file should be hidden
-        const criticalFilesGlob = '{' + '*.min.js,' + '*.min.css,' + data.library.filename + '}';
-        const commonFileGlob = '{' + '*.js.*,' + '*.css.*,' + data.library.filename + '}';
-        const criticalFileRegExp = globToRegExp(criticalFilesGlob, { extended: true });
-        const commonFileRegExp = globToRegExp(commonFileGlob, { extended: true });
-        let hasHiddenFiles = false;
-        const hiddenAssets = sortedAssets.map((asset) => {
-            // Only hide things if we have lots of files and the current file isn't the default
-            asset.hidden = false;
-            if (sortedAssets.length > 20 && data.library.filename !== asset.file) {
-                asset.hidden = !(hasMinifiedFiles ? criticalFileRegExp : commonFileRegExp).test(asset.file);
-                hasHiddenFiles = hasHiddenFiles || asset.hidden;
-            }
-
-            // Generate the categories whilst we're here
-            const cat = category(asset.type);
-            categories.add(cat);
-
-            // Done!
-            return asset;
-        });
-
-        // Done!
-        return {
-            assets: hiddenAssets,
-            hasHidden: hasHiddenFiles,
-            categories: [...categories],
-        };
     };
 
     export default {
@@ -146,6 +90,7 @@
             LibraryHero,
             LibraryAssetButtons,
             TutorialList,
+            JSONLDLibrary,
             VueSelect,
         },
         watch: {
@@ -230,6 +175,9 @@
                 if (lib) {
                     this.$data.library = lib;
 
+                    this.$data.version = this.versions().includes(this.$data.version)
+                        ? this.$data.version : lib.version;
+
                     if (lib.assets && lib.assets.length) {
                         const { assets, hasHidden, categories } = getAssets(this.$data);
                         this.$data.assets = assets;
@@ -237,8 +185,6 @@
                         this.$data.categories = categories;
                     }
 
-                    this.$data.version = this.versions().includes(this.$data.version)
-                        ? this.$data.version : lib.version;
                     this.$data.ready = true;
                 }
             }).catch(() => {});

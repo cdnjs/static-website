@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import getAsset from '../util/get_asset';
+    import { getAsset } from '../util/get_asset';
     import formatUnits from '../util/format_units';
     import truncate from '../util/truncate';
     import LibraryAssetButtons from './library_asset_buttons';
