@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable-next-line vue/require-component-is -->
     <component is="script" v-html="content"></component>
 </template>
 

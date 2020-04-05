@@ -1,38 +1,10 @@
 <template>
-    <Script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "TechArticle",
-            "name": "{{ tutorial.name }}",
-            "headline": "{{ tutorial.name }}",
-            "description": "{{ tutorial.description }}",
-            "keywords": "{{ tutorial.keywords && tutorial.keywords.join(',') }}",
-            "url": "{{ base() }}{{ library }}/tutorials/{{ tutorialName }}",
-            "inLanguage": "en",
-            "accessMode": "textual",
-            "accessModeSufficient": "textual",
-            "isAccessibleForFree": true,
-            "isPartOf": "{{ base() }}{{ library }}/tutorials",
-            "author": {
-                "@type": "Person",
-                "name": "{{ tutorial.author.name }}"
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "cdnjs",
-                "url": "{{ base() }}"
-            },
-            "sourceOrganization": {
-                "@type": "Organization",
-                "name": "cdnjs",
-                "url": "{{ base() }}"
-            }
-        }
-    </Script>
+    <Script v-html="json" type="application/ld+json"></Script>
 </template>
 
 <script>
     import Script from '../script';
+    import Tutorial from '../../data/json-ld/tutorial';
 
     export default {
         name: 'JSONLDTutorial',
@@ -44,7 +16,10 @@
             tutorial: Object,
             tutorialName: String,
         },
-        methods: {
+        computed: {
+            json () {
+                return Tutorial(this.base, this.$props.tutorial, this.$props.tutorialName, this.$props.library);
+            },
             base () {
                 const origin = process.env.SITE_HOST ||
                     (typeof (window) !== 'undefined' ? window.location.origin : '/');

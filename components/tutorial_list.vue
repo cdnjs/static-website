@@ -44,7 +44,7 @@
 
 <script>
     import utm from '../util/utm';
-    import JSONLDTutorials from '../../../../components/json-ld/tutorials';
+    import JSONLDTutorials from './json-ld/tutorials';
 
     export default {
         name: 'TutorialList',

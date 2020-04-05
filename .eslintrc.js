@@ -23,12 +23,6 @@ module.exports = {
                 indent: 0,
             },
         },
-        {
-            files: ['components/json-ld/*.vue'],
-            rules: {
-                'vue/html-indent': 0,
-            },
-        },
     ],
     rules: {
         indent: ['error', 4],
@@ -48,6 +42,5 @@ module.exports = {
         }],
         'vue/no-unused-vars': 0,
         'vue/html-self-closing': 0,
-        'vue/require-component-is': 0,
     },
 };
