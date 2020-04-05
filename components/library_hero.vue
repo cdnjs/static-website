@@ -43,7 +43,7 @@
         <p class="description">
             {{ library.description }}
         </p>
-        <p class="tags">
+        <p v-if="library.keywords" class="tags">
             Tags: <span class="keywords">{{ library.keywords.join(', ') }}</span>
         </p>
     </div>

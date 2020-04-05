@@ -1,41 +1,45 @@
-.library-hero {
-  h1 {
-    @include font-medium;
+.content {
+  &.library-hero {
+    padding: ($whitespace * 2) $whitespace;
 
-    color: $light;
-    font-size: 45px;
-    margin: ($whitespace * .5) 0;
-  }
+    h1 {
+      @include font-medium;
 
-  p {
-    @include font-regular;
+      color: $light;
+      font-size: 45px;
+      margin: ($whitespace * .5) 0;
+    }
 
-    color: $light;
-    font-size: 18px;
-  }
-
-  .row {
     p {
-      margin: ($whitespace * .5) $whitespace ($whitespace * .5) 0;
+      @include font-regular;
 
-      a {
-        @include primary-link;
+      color: $light;
+      font-size: 18px;
+    }
+
+    .row {
+      p {
+        margin: ($whitespace * .5) $whitespace ($whitespace * .5) 0;
+
+        a {
+          @include primary-link;
+        }
       }
     }
-  }
 
-  .description {
-    margin: ($whitespace * 2) 0 ($whitespace * .5);
-  }
+    .description {
+      margin: ($whitespace * 2) 0 0;
+    }
 
-  .tags {
-    color: $alt;
-    font-size: 16px;
-    margin: ($whitespace * .5) 0 ($whitespace * 2);
+    .tags {
+      color: $alt;
+      font-size: 16px;
+      margin: ($whitespace) 0 0;
 
-    .keywords {
-      display: inline-block;
-      margin: 0 0 0 ($whitespace / 2);
+      .keywords {
+        display: inline-block;
+        margin: 0 0 0 ($whitespace / 2);
+      }
     }
   }
 }
