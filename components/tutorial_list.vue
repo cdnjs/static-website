@@ -38,14 +38,19 @@
                 </p>
             </li>
         </ul>
+        <JSONLDTutorials :library="library" :tutorials="tutorials"></JSONLDTutorials>
     </div>
 </template>
 
 <script>
     import utm from '../util/utm';
+    import JSONLDTutorials from '../../../../components/json-ld/tutorials';
 
     export default {
         name: 'TutorialList',
+        components: {
+            JSONLDTutorials,
+        },
         props: {
             library: {
                 type: String,

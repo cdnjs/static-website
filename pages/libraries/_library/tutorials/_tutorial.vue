@@ -8,6 +8,7 @@
             <div class="contents"></div>
             <div ref="tutorial" v-html="rendered" class="tutorial"></div>
         </div>
+        <JSONLDTutorial :library="libraryName" :tutorial="tutorial" :tutorial-name="tutorialName"></JSONLDTutorial>
     </section>
 </template>
 
@@ -30,15 +31,16 @@
     import breadcrumbs from '../../../../util/breadcrumbs';
     import Breadcrumbs from '../../../../components/breadcrumbs';
     import TutorialHero from '../../../../components/tutorial_hero';
+    import JSONLDTutorial from '../../../../components/json-ld/tutorial';
 
-    const tutorialName = data => (data.tutorial && data.tutorial.name) || data.tutorialName;
+    const tutorialPageName = data => (data.tutorial && data.tutorial.name) || data.tutorialName;
 
     const meta = {
         title (data) {
-            return `${tutorialName(data)} - ${data.libraryName} - Libraries`;
+            return `${tutorialPageName(data)} - ${data.libraryName} - Libraries`;
         },
         breadcrumb (data) {
-            return tutorialName(data);
+            return tutorialPageName(data);
         },
         classes: [],
     };
@@ -52,6 +54,7 @@
         components: {
             Breadcrumbs,
             TutorialHero,
+            JSONLDTutorial,
         },
         computed: {
             rendered () {
