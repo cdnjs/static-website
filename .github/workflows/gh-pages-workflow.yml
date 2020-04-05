@@ -10,7 +10,8 @@ jobs:
     runs-on: [self-hosted, linux]
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: AutoModality/action-clean@v1
+    - uses: actions/checkout@v2
 
     - name: Read .nvmrc
       run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
