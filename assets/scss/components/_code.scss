@@ -18,6 +18,7 @@ code {
 pre {
   &[class*="language-"] {
     border-radius: $radius;
+    box-shadow: $shadow;
   }
 }
 

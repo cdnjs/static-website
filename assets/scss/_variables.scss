@@ -6,6 +6,7 @@ $darker: #343535;
 $header: #3a3c3c;
 $footer: #242525;
 $banner: #141515;
+$black: #000;
 $white: #fff;
 $light: #ebebeb;
 $text: #c0c2c2;
@@ -19,6 +20,7 @@ $transition-duration-large: $transition-duration * 2;
 $transition-timing-function: ease-in-out;
 $transition-timing-function-large: ease;
 $breakpoint: 960px;
+$shadow: 0 0 $whitespace 0 rgba($black, .1);
 
 $vs-border-width: 0;
 $vs-border-radius: $radius;

@@ -63,10 +63,10 @@ footer {
     justify-content: flex-start;
     margin: 0 auto;
     max-width: 1550px;
-    padding: ($whitespace * 2) $whitespace 0;
+    padding: ($whitespace * 2) $whitespace;
 
     @media screen and (max-width: $breakpoint) {
-      padding: $whitespace $whitespace 0;
+      padding: $whitespace;
     }
   }
 }
@@ -75,5 +75,6 @@ header {
   @include flex-column;
 
   background: $header;
+  box-shadow: $shadow;
   width: 100%;
 }

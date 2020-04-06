@@ -137,79 +137,51 @@
                     requested and will return a JSON object with all library data properties by default.
                 </p>
 
+                <h3>Query Parameters</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="field in api.library.query">
+                            <td><code class="key">{{ field.param }}</code></td>
+                            <td><code class="key">{{ field.type }}</code></td>
+                            <td><code class="key">{{ field.req ? 'required' : 'optional' }}</code></td>
+                            <td>
+                                <p v-for="desc in field.desc" v-html="desc"></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <h3>JSON Response</h3>
                 <table>
                     <thead>
                         <tr>
                             <th>Property</th>
+                            <th>Type</th>
                             <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!--<tr>
-                            <td><code class="key">results</code></td>
+                        <tr v-for="field in api.library.response">
+                            <td><code class="key">{{ field.prop }}</code></td>
                             <td>
-                                <code class="key">array&lt;object&gt;</code>
-                                <p>
-                                    This property will contain an object for every library that cdnjs has available.
-                                </p>
+                                <template v-for="type in field.type">
+                                    <code class="key">{{ type }}</code>&nbsp;
+                                </template>
+                            </td>
+                            <td>
+                                <p v-for="desc in field.desc" v-html="desc"></p>
                             </td>
                         </tr>
-                        <tr>
-                            <td><code class="key">results[].name</code></td>
-                            <td>
-                                <code class="key">string</code>
-                                <p>
-                                    This will be the full name of the library, as stored on cdnjs.
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code class="key">results[].latest</code></td>
-                            <td>
-                                <code class="key">string</code>
-                                <p>
-                                    This will be the URL of the default file on the latest version of the library.
-                                </p>
-                                <p>
-                                    <i>
-                                        It is important to note that this URL is based on the latest version number of
-                                        the library and the default file name configured, there is no validation in
-                                        place to ensure that this URL will actually serve a valid asset.
-                                    </i>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code class="key">total</code></td>
-                            <td>
-                                <code class="key">integer</code>
-                                <p>
-                                    The total number of libraries returned in the request.
-                                </p>
-                            </td>
-                        </tr>-->
                     </tbody>
                 </table>
-
-                <!--<h3>
-                    <a href="https://api.cdnjs.com/libraries">
-                        <code class="key">https://api.cdnjs.com/libraries</code>
-                    </a>
-                </h3>
-                <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"}, "..."],"total":3451}</JSONExample>
-                <p>
-                    <small>
-                        <i>Example response has been trimmed to remove items in the results array.</i>
-                    </small>
-                </p>
-                <p>
-                    This endpoint is directly powered by our Algolia index, the same one that is used on this
-                    website for the search box at the top and on the
-                    <router-link :to="{ name: 'libraries' }">
-                        Libraries page
-                    </router-link>.
-                </p>-->
             </div>
         </div>
     </section>

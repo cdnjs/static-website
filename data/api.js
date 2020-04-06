@@ -281,4 +281,26 @@ export default {
             },
         ],
     },
+    library: {
+        query: [
+            {
+                param: 'fields',
+                type: 'comma-separated string',
+                req: false,
+                desc: [
+                    'Provide a comma-separated string of fields to return in the library object.',
+                    'The fields available here are based on the fields in each library\'s package.json file and are not guaranteed.',
+                ],
+            },
+            {
+                param: 'output',
+                type: 'string',
+                req: false,
+                desc: [
+                    'Use the output value <code>human</code> to receive the JSON results in pretty print format, presented on a HTML page.',
+                ],
+            },
+        ],
+        response: [],
+    },
 };

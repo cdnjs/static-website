@@ -4,9 +4,11 @@ main {
 
     align-items: center;
     background: $primary;
+    box-shadow: $shadow;
     justify-content: flex-start;
     padding: ($whitespace * .5) ($corner + ($whitespace * 2)) ($whitespace * .5) ($whitespace * 2);
     width: 100%;
+    z-index: 1;
 
     @media screen and (max-width: $breakpoint) {
       padding: ($whitespace * .5) ($whitespace);

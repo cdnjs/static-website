@@ -1,6 +1,8 @@
 .nav {
   background: $darker;
+  box-shadow: $shadow;
   width: 100%;
+  z-index: 1;
 
   .content {
     @include flex-row;

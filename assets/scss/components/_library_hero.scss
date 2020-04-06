@@ -1,7 +1,5 @@
 .content {
   &.library-hero {
-    padding: ($whitespace * 2) $whitespace;
-
     h1 {
       @include font-medium;
 

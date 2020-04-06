@@ -6,7 +6,7 @@ main {
 
         color: $light;
         font-size: 45px;
-        margin: ($whitespace * .5) 0 ($whitespace * 1.5);
+        margin: ($whitespace * .5) 0 0;
 
         a {
           @include primary-link;
