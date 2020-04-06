@@ -16,34 +16,21 @@ body,
   padding: 0;
 }
 
-main,
-section,
-.content {
+main {
   @include flex-column;
 
-  flex-grow: 1;
-  justify-content: center;
-  width: 100%;
-}
-
-main,
-footer {
-  .content {
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin: 0 auto;
-    max-width: 1550px;
-    padding: ($whitespace * 2) $whitespace 0;
-
-    @media screen and (max-width: $breakpoint) {
-      padding: $whitespace $whitespace 0;
-    }
-  }
-}
-
-main {
+  justify-content: space-between;
   min-height: 100%;
   position: relative;
+
+  section,
+  .content {
+    @include flex-column;
+
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+  }
 
   .row {
     @include flex-row;
@@ -66,6 +53,21 @@ main {
 
   .column {
     @include flex-column;
+  }
+}
+
+main,
+footer {
+  .content {
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 1550px;
+    padding: ($whitespace * 2) $whitespace 0;
+
+    @media screen and (max-width: $breakpoint) {
+      padding: $whitespace $whitespace 0;
+    }
   }
 }
 

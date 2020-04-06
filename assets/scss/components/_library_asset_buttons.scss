@@ -1,4 +1,7 @@
 .library-asset-buttons {
+  @include flex-row;
+
+  flex-wrap: nowrap;
   margin: 0 0 0 auto;
 
   i {

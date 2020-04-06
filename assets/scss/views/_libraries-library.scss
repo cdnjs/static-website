@@ -92,6 +92,7 @@ main {
           background: $alt;
           border-radius: $radius;
           color: $darker;
+          flex-wrap: nowrap;
           font-size: 18px;
           margin: ($whitespace * .75) 0;
           padding: ($whitespace * .75) ($whitespace * 1.25) ($whitespace * .875);
