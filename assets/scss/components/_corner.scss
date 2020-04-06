@@ -6,6 +6,7 @@ aside {
     position: absolute;
     right: 0;
     width: $corner;
+    z-index: 2;
 
     @media screen and (max-width: $breakpoint) {
       display: none;

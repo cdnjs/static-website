@@ -1,0 +1,9 @@
+main {
+  &.libraries {
+    > section {
+      > header {
+        box-shadow: none;
+      }
+    }
+  }
+}

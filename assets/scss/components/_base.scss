@@ -75,6 +75,6 @@ header {
   @include flex-column;
 
   background: $header;
-  box-shadow: $shadow;
+  box-shadow: $shadow-bottom;
   width: 100%;
 }

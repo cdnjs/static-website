@@ -40,6 +40,7 @@
       padding: 0;
 
       code {
+        box-shadow: none;
         line-height: normal;
         margin: 0;
         white-space: pre;
@@ -47,6 +48,7 @@
     }
 
     code {
+      box-shadow: $shadow;
       font-size: 14px;
       margin: ($whitespace / 2) 0 0;
       white-space: normal;

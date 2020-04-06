@@ -21,6 +21,7 @@ $transition-timing-function: ease-in-out;
 $transition-timing-function-large: ease;
 $breakpoint: 960px;
 $shadow: 0 0 $whitespace 0 rgba($black, .1);
+$shadow-bottom: 0 $whitespace $whitespace (-$whitespace) rgba($black, .1);
 
 $vs-border-width: 0;
 $vs-border-radius: $radius;
