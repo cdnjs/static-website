@@ -137,10 +137,17 @@ module.exports = {
         },
     },
     /*
-    ** Configure the router to not use trailing slashes
+    ** Configure the router to not use trailing slashes and to handle our custom routing
     */
     router: {
         trailingSlash: false,
+        extendRoutes (routes, resolve) {
+            routes.push({
+                name: 'libraries-library-version',
+                path: '/libraries/:library/:version?',
+                component: resolve(__dirname, 'pages/libraries/_library/index.vue'),
+            });
+        },
     },
     /*
     ** Transpile instant search for SSR

@@ -6,6 +6,9 @@ module.exports = async () => {
     const libsRaw = await fetch('https://api.cdnjs.com/libraries?fields=name');
     const libsJson = await libsRaw.json();
     const libs = libsJson.results.map((lib) => {
+        // TODO: Add all version routes to here!
+        // TODO: Add tutorials to api.cdnjs.com/libraries/:library, so that tutorial routes can also be done here.
+        //       So that we're only making one API call per library here, not two.
         return [
             {
                 url: `/libraries/${lib.name}`,

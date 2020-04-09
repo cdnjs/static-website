@@ -13,7 +13,7 @@
             <div class="column-half">
                 <div class="row filter">
                     <p>Version</p>
-                    <VueSelect v-model="version" :options="versions()" :clearable="false"></VueSelect>
+                    <VueSelect v-model="version" :options="versions(library.assets)" :clearable="false"></VueSelect>
                     <br />
                     <p>Asset Type</p>
                     <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
@@ -73,10 +73,23 @@
         title (data) {
             return `${data.libraryName} - Libraries`;
         },
-        breadcrumb (data) {
-            return data.libraryName;
+        breadcrumb (data, url) {
+            return url.endsWith(data.libraryName) ? data.libraryName : data.params.version;
         },
-        classes: [],
+        classes: ['library'],
+    };
+
+    const versions = (assets) => {
+        if (!assets || !assets.length) {
+            return [];
+        }
+
+        const vers = assets.map(a => a.version);
+        try {
+            return semverSort.desc(vers);
+        } catch (_) {
+            return vers;
+        }
     };
 
     export default {
@@ -94,8 +107,22 @@
             VueSelect,
         },
         watch: {
-            version () {
+            async version () {
+                // Update the asset list
                 this.getAssets();
+
+                // Update the URL without navigating
+                const newRoute = this.$router.resolve({
+                    name: 'libraries-library-version',
+                    params: { ...this.$route.params, version: this.$data.version },
+                    query: this.$route.query,
+                });
+                window.history.pushState({}, '', newRoute.href);
+
+                // Update the crumbs
+                // this.$route = newRoute.route;
+                this.$data.params = newRoute.route.params;
+                this.$data.crumbs = await breadcrumbs(newRoute.route, this.$router, this.$data);
             },
         },
         async asyncData ({ params, route, app, error }) {
@@ -112,6 +139,7 @@
                 hasHidden: false,
                 showHidden: false,
                 crumbs: [],
+                params,
             };
 
             // Attempt to get data for the lib
@@ -152,7 +180,9 @@
             // Save the lib data
             if (lib) {
                 data.library = lib;
-                data.version = lib.version;
+
+                data.version = params.version && versions(lib.assets).includes(params.version)
+                    ? params.version : lib.version;
 
                 if (lib.assets && lib.assets.length) {
                     const { assets, hasHidden, categories } = getAssets(data);
@@ -175,7 +205,7 @@
                 if (lib) {
                     this.$data.library = lib;
 
-                    this.$data.version = this.versions().includes(this.$data.version)
+                    this.$data.version = this.versions(lib.assets).includes(this.$data.version)
                         ? this.$data.version : lib.version;
 
                     if (lib.assets && lib.assets.length) {
@@ -197,18 +227,7 @@
         methods: {
             formatUnits,
             isWhitelisted,
-            versions () {
-                if (!this.$data.library.assets || !this.$data.library.assets.length) {
-                    return [];
-                }
-
-                const versions = this.$data.library.assets.map(a => a.version);
-                try {
-                    return semverSort.desc(versions);
-                } catch (_) {
-                    return versions;
-                }
-            },
+            versions,
             hideAsset (asset) {
                 if (asset.hidden && !this.$data.showHidden) {
                     return true;

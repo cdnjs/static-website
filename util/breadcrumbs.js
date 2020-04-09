@@ -41,7 +41,7 @@ export default async (route, router, data) => {
                 // Set the breadcrumb name, pass data if function
                 name = meta.breadcrumb;
                 if (typeof name === 'function') {
-                    name = name(data);
+                    name = name(data, nowUrl);
                 }
             }
         }
