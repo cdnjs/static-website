@@ -5,18 +5,18 @@
             <p v-if="library.algolia && library.algolia.github && library.algolia.github.stargazers_count"
                class="stars"
             >
-                <i class="fas fa-star"></i>
+                <font-awesome-icon :icon="faStar" aria-label="Stars" />
                 {{ formatUnits(library.algolia.github.stargazers_count, 0) }}
             </p>
             <p v-if="repo()" class="repo">
                 <a :href="utm(`https://github.com/${repo()}`, 'library')">
-                    <i class="fab fa-github"></i>
+                    <font-awesome-icon :icon="faGithub" aria-hidden="true" />
                     GitHub
                 </a>
             </p>
             <p v-if="library.autoupdate && library.autoupdate.source === 'npm'" class="auto-update">
                 <a :href="utm(`https://npmjs.com/package/${library.autoupdate.target}`, 'library')">
-                    <i class="fab fa-npm" aria-label="NPM"></i>
+                    <font-awesome-icon :icon="faNpm" aria-label="NPM" />
                     package
                 </a>
             </p>
@@ -50,13 +50,26 @@
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faStar } from '@fortawesome/free-solid-svg-icons';
+    import { faGithub, faNpm } from '@fortawesome/free-brands-svg-icons';
     import formatUnits from '../util/format_units';
     import utm from '../util/utm';
 
     export default {
         name: 'LibraryHero',
+        components: {
+            FontAwesomeIcon,
+        },
         props: {
             library: Object,
+        },
+        data () {
+            return {
+                faStar,
+                faGithub,
+                faNpm,
+            };
         },
         methods: {
             formatUnits,

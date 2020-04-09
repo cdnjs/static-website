@@ -31,12 +31,15 @@
                         <span class="url">{{ asset.url }}</span>
                         <LibraryAssetButtons :asset="asset">
                             <template slot="before">
-                                <i v-if="!isWhitelisted(asset.type)"
-                                   @mouseenter="tooltipShow"
-                                   @mouseleave="tooltipHide"
-                                   data-tlite="This file type is not whitelisted on the CDN and will not be available."
-                                   class="fas fa-exclamation-triangle"
-                                ></i>
+                                <span v-if="!isWhitelisted(asset.type)"
+                                      @mouseenter.raw="tooltipShow"
+                                      @mouseleave.raw="tooltipHide"
+                                      data-tlite="This file type is not whitelisted on the CDN and will not be available."
+                                >
+                                    <font-awesome-icon :icon="faExclamationTriangle"
+                                                       aria-label="This file type is not whitelisted on the CDN and will not be available."
+                                    />
+                                </span>
                             </template>
                         </LibraryAssetButtons>
                     </li>
@@ -51,6 +54,8 @@
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
     import semverSort from 'semver-sort';
     import { VueSelect } from 'vue-select';
     import tlite from 'tlite';
@@ -105,6 +110,7 @@
             TutorialList,
             JSONLDLibrary,
             VueSelect,
+            FontAwesomeIcon,
         },
         watch: {
             async version () {
@@ -140,6 +146,7 @@
                 showHidden: false,
                 crumbs: [],
                 params,
+                faExclamationTriangle,
             };
 
             // Attempt to get data for the lib

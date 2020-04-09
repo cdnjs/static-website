@@ -7,7 +7,7 @@
             </nuxt-link>
 
             <p v-if="library.github && library.github.stargazers_count" class="stars">
-                <i class="fas fa-star"></i>
+                <font-awesome-icon :icon="faStar" aria-label="Stars" />
                 {{ formatUnits(library.github.stargazers_count, 0) }}
             </p>
 
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faStar } from '@fortawesome/free-solid-svg-icons';
     import { getAsset } from '../util/get_asset';
     import formatUnits from '../util/format_units';
     import truncate from '../util/truncate';
@@ -32,11 +34,17 @@
     export default {
         name: 'LibraryCard',
         components: {
+            FontAwesomeIcon,
             LibraryAssetButtons,
         },
         props: {
             library: Object,
             small: Boolean,
+        },
+        data () {
+            return {
+                faStar,
+            };
         },
         computed: {
             asset () {

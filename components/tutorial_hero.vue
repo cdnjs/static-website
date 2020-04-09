@@ -24,14 +24,18 @@
             </p>
 
             <p v-if="tutorial.author.twitter" class="twitter">
-                <a :href="utm(`https://twitter.com/${tutorial.author.twitter}`, 'tutorial')">
-                    <i class="fab fa-twitter"></i>
+                <a :href="utm(`https://twitter.com/${tutorial.author.twitter}`, 'tutorial')"
+                   :aria-label="`${tutorial.author.twitter} on Twitter`"
+                >
+                    <font-awesome-icon :icon="faTwitter" aria-hidden="true" />
                 </a>
             </p>
 
             <p v-if="tutorial.author.email" class="email">
-                <a :href="`mailto:${tutorial.author.email}`">
-                    <i class="far fa-envelope-open"></i>
+                <a :href="`mailto:${tutorial.author.email}`"
+                   :aria-label="`${tutorial.author.name} via Email`"
+                >
+                    <font-awesome-icon :icon="faEnvelopeOpen" aria-hidden="true" />
                 </a>
             </p>
         </div>
@@ -39,14 +43,26 @@
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+    import { faTwitter } from '@fortawesome/free-brands-svg-icons';
     import formatUnits from '../util/format_units';
     import utm from '../util/utm';
 
     export default {
         name: 'TutorialHero',
+        components: {
+            FontAwesomeIcon,
+        },
         props: {
             library: String,
             tutorial: Object,
+        },
+        data () {
+            return {
+                faEnvelopeOpen,
+                faTwitter,
+            };
         },
         methods: {
             formatUnits,

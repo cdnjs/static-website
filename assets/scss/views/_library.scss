@@ -106,17 +106,8 @@ main {
           .library-asset-buttons {
             padding: 0 0 0 $whitespace;
 
-            i {
+            svg {
               color: $darker;
-
-              &.fa-exclamation-triangle {
-                color: $primary;
-
-                &:hover,
-                &:focus {
-                  color: $primary-hover;
-                }
-              }
 
               &:hover,
               &:focus {

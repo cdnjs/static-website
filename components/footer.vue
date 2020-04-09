@@ -14,12 +14,12 @@
                     <a :href="utm('https://twitter.com/cdnjs', 'footer')"
                        aria-label="cdnjs on Twitter"
                     >
-                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                        <font-awesome-icon :icon="faTwitter" aria-hidden="true" />
                     </a>
                     <a :href="utm('https://github.com/cdnjs', 'footer')"
                        aria-label="cdnjs on GitHub"
                     >
-                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <font-awesome-icon :icon="faGithub" aria-hidden="true" />
                     </a>
                 </dd>
             </dl>
@@ -112,13 +112,20 @@
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
     import utm from '../util/utm';
     import sponsors from '../data/sponsors';
 
     export default {
         name: 'Footer',
+        components: {
+            FontAwesomeIcon,
+        },
         data () {
             return {
+                faTwitter,
+                faGithub,
                 sponsors: sponsors.flat(1),
             };
         },

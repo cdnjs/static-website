@@ -1,14 +1,21 @@
 .library-asset-buttons {
   @include flex-row;
 
+  align-items: center;
   flex-wrap: nowrap;
   margin: 0 0 0 auto;
 
-  i {
+  button {
+    -webkit-appearance: button;
+    background: none;
+    border: 0;
     color: $light;
     cursor: pointer;
     font-size: 1.2rem;
     margin: 0 0 0 ($whitespace / 2);
+    overflow: visible;
+    padding: 0;
+    text-transform: none;
     transition: color $transition-duration $transition-timing-function;
 
     &:hover {

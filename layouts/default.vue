@@ -54,6 +54,7 @@
         mounted () {
             this.$refs.nuxt.$on('beforeLeave', () => {
                 this.$data.showSearch = false;
+                this.$data.classes = this.$data.classes.filter(c => c !== 'ready');
             });
             this.$refs.nuxt.$on('afterLeave', () => {
                 this.$data.classes = [];
@@ -62,8 +63,12 @@
                 this.setClasses();
                 this.checkInlineSearch();
             });
+            this.$refs.nuxt.$on('afterEnter', () => {
+                this.$data.classes.push('ready');
+            });
             this.setClasses();
             this.checkInlineSearch();
+            this.$nextTick(() => this.$data.classes.push('ready'));
         },
         methods: {
             checkTrailingSlash () {
@@ -101,6 +106,7 @@
                 // Handle the error page which isn't a route
                 if (this.$nuxt.context._errored) {
                     this.$data.classes = ['error', 'landing'];
+                    this.$nextTick(() => this.$data.classes.push('ready'));
                     return;
                 }
 
