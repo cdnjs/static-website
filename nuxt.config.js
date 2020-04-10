@@ -48,9 +48,7 @@ module.exports = {
             { rel: 'icon', type: 'image/png', href: '/favicon.png' },
             { rel: 'shortcut-icon', type: 'image/png', href: '/favicon.png' },
             { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
-
             { rel: 'canonical', href: 'https://cdnjs.dev' },
-            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap' },
         ]
     },
     /*

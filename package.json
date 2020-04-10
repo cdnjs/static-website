@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon server/index.js --watch server --watch nuxt.config.js",
     "dev:generate": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt generate && node server/generate.js",
+    "dev:generate:noroutes": "NODE_ENV=dev SITE_HOST=http://localhost:3000/ nuxt generate && node server/generate.js",
     "dev:analyze": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt build --analyze",
     "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt generate",
     "test": "npm run test:eslint && npm run test:scss",
@@ -43,6 +44,7 @@
     "spdx-license-ids": "^3.0.5",
     "thenby": "^1.3.0",
     "tlite": "^0.1.9",
+    "typeface-ubuntu": "0.0.65",
     "url-parse": "^1.4.7",
     "vue": "^2.6.11",
     "vue-client-only": "^2.0.0",
