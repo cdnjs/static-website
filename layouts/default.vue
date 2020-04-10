@@ -77,7 +77,7 @@
                 lastRoute = this.$nuxt.$route.path;
 
                 // If we end with a slash, remove it and preserve all other data
-                if (this.$nuxt.$route.path.endsWith('/')) {
+                if (this.$nuxt.$route.path.endsWith('/') && this.$nuxt.$route.path !== '/') {
                     this.$router.replace({
                         path: this.$nuxt.$route.path.slice(0, -1),
                         hash: this.$nuxt.$route.hash,

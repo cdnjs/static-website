@@ -14,7 +14,6 @@
                 <div class="row filter">
                     <p>Version</p>
                     <VueSelect v-model="version" :options="versions(library.assets)" :clearable="false"></VueSelect>
-                    <br />
                     <p>Asset Type</p>
                     <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
                 </div>

@@ -18,6 +18,12 @@ footer {
         &:not(:first-of-type) {
           margin: ($whitespace * 1.5) 0 $whitespace;
         }
+
+        &.logo {
+          img {
+            width: 200px;
+          }
+        }
       }
 
       dd {
@@ -31,12 +37,6 @@ footer {
           &:hover,
           &:focus {
             color: $primary;
-          }
-        }
-
-        &.logo {
-          img {
-            width: 200px;
           }
         }
 

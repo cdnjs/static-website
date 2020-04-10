@@ -17,21 +17,11 @@ main {
           color: $light;
           font-size: 20px;
           margin: 0 ($whitespace * .75) ($whitespace * .5) 0;
-        }
 
-        br {
-          display: inline-block;
-          margin: 0 ($whitespace * .75);
-          white-space: normal;
-
-          @media screen and (max-width: $breakpoint) {
-            display: none;
-          }
-
-          &::before,
-          &::after {
-            content: none;
-            display: none;
+          &:not(:first-child) {
+            @media screen and (min-width: $breakpoint) {
+              margin: 0 ($whitespace * .75) ($whitespace * .5) ($whitespace * .75);
+            }
           }
         }
 
@@ -100,7 +90,23 @@ main {
           width: 100%;
 
           &.default-asset {
+            color: $footer;
             background: mix($primary, $alt);
+
+            .library-asset-buttons {
+              svg {
+                color: $footer;
+
+                &:hover,
+                &:focus {
+                  color: $darker;
+                }
+              }
+            }
+          }
+
+          .url {
+            word-break: break-word;
           }
 
           .library-asset-buttons {

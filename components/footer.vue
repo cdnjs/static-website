@@ -2,11 +2,11 @@
     <footer>
         <div class="content">
             <dl>
-                <dd class="logo">
+                <dt class="logo">
                     <nuxt-link :to="{ name: 'index' }">
                         <img src="../assets/img/logo.svg" alt="< cdnjs >" />
                     </nuxt-link>
-                </dd>
+                </dt>
                 <dd class="copy-social">
                     <span>
                         &copy; {{ (new Date()).getFullYear().toString() }} cdnjs.
