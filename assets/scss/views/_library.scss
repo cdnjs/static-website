@@ -20,7 +20,7 @@ main {
 
           &:not(:first-child) {
             @media screen and (min-width: $breakpoint) {
-              margin: 0 ($whitespace * .75) ($whitespace * .5) ($whitespace * .75);
+              margin: 0 ($whitespace * .75) ($whitespace * .5);
             }
           }
         }
@@ -90,8 +90,8 @@ main {
           width: 100%;
 
           &.default-asset {
-            color: $footer;
             background: mix($primary, $alt);
+            color: $footer;
 
             .library-asset-buttons {
               svg {
