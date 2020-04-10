@@ -1,5 +1,6 @@
 const routes = require('./util/build/routes');
 const images = require('./util/build/images');
+const fonts = require('./util/build/fonts');
 let cachedRoutes;
 
 module.exports = {
@@ -186,7 +187,10 @@ module.exports = {
     */
     hooks: {
         generate: {
-            done: images,
+            async done (builder) {
+                await images(builder);
+                await fonts(builder);
+            },
         },
     },
 };

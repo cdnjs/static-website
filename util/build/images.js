@@ -53,7 +53,7 @@ const svg = async (builder) => {
 
 module.exports = async (builder) => {
     consola.info('Optimizing images');
-    await png(builder);
-    await jpg(builder);
-    await svg(builder);
+    await png(builder).catch(err => consola.error(err));
+    await jpg(builder).catch(err => consola.error(err));
+    await svg(builder).catch(err => consola.error(err));
 };

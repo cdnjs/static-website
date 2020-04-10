@@ -64,6 +64,7 @@
     "eslint-plugin-nuxt": "^0.5.1",
     "eslint-plugin-vue": "5.2.3",
     "express": "^4.17.1",
+    "fontmin": "^0.9.8",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-optipng": "^7.1.0",
