@@ -1,7 +1,5 @@
-const path = require('path');
-const imagemin = require('imagemin');
-const imageminOptipng = require('imagemin-optipng');
 const routes = require('./util/build/routes');
+const images = require('./util/build/images');
 let cachedRoutes;
 
 module.exports = {
@@ -187,20 +185,7 @@ module.exports = {
     */
     hooks: {
         generate: {
-            async done (builder) {
-                await imagemin(
-                    [path.join(builder.nuxt.options.generate.dir, '*.png')],
-                    {
-                        destination: builder.nuxt.options.generate.dir,
-                        plugins: [
-                            imageminOptipng({
-                                optimizationLevel: 4,
-                            }),
-                        ],
-                    },
-                );
-                console.info('Static images optimized!');
-            },
+            done: images,
         },
     },
 };
