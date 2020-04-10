@@ -35,6 +35,8 @@
     "babel-polyfill": "^6.26.0",
     "chunk": "0.0.2",
     "glob-to-regexp": "^0.4.1",
+    "imagemin": "^7.0.1",
+    "imagemin-optipng": "^7.1.0",
     "instantsearch.css": "^7.4.2",
     "markdown-it": "^10.0.0",
     "node-fetch": "^2.6.0",

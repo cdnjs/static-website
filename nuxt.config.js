@@ -1,3 +1,6 @@
+const path = require('path');
+const imagemin = require('imagemin');
+const imageminOptipng = require('imagemin-optipng');
 const routes = require('./util/build/routes');
 let cachedRoutes;
 
@@ -178,5 +181,26 @@ module.exports = {
         concurrency: 500,
         interval: 10,
         fallback: true,
-    }
+    },
+    /*
+    ** Use hooks to apply any optimizations to the final generated bundle
+    */
+    hooks: {
+        generate: {
+            async done (builder) {
+                await imagemin(
+                    [path.join(builder.nuxt.options.generate.dir, '*.png')],
+                    {
+                        destination: builder.nuxt.options.generate.dir,
+                        plugins: [
+                            imageminOptipng({
+                                optimizationLevel: 4,
+                            }),
+                        ],
+                    },
+                );
+                console.info('Static images optimized!');
+            },
+        },
+    },
 };
