@@ -2,6 +2,7 @@
   "name": "cdnjs.dev",
   "version": "1.0.0",
   "description": "The new cdnjs website, using Vue & Nuxt",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev nodemon server/index.js --watch server --watch nuxt.config.js",
@@ -16,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MattIPv4/cdnjs.dev.git"
+    "url": "git+https://github.com/cdnjs/static-website.git"
   },
-  "author": "Matt (IPv4) Cowley",
+  "author": "cdnjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MattIPv4/cdnjs.dev/issues"
+    "url": "https://github.com/cdnjs/static-website/issues"
   },
-  "homepage": "https://github.com/MattIPv4/cdnjs.dev#readme",
+  "homepage": "https://github.com/cdnjs/static-website#readme",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
