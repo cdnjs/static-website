@@ -7,10 +7,9 @@
   "type": "module",
   "scripts": {
     "dev": "NODE_ENV=dev nuxt",
-    "dev:generate": "NODE_ENV=production SITE_HOST=http://localhost:3000/ NODE_OPTIONS=--max-old-space-size=3072 nuxt generate && node server/generate.js",
-    "dev:generate:noroutes": "NODE_ENV=dev SITE_HOST=http://localhost:3000/ nuxt generate && node server/generate.js",
-    "dev:analyze": "NODE_ENV=production SITE_HOST=http://localhost:3000/ NODE_OPTIONS=--max-old-space-size=3072 nuxt build --analyze",
-    "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ NODE_OPTIONS=--max-old-space-size=3072 nuxt generate",
+    "dev:analyze": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt build --analyze",
+    "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt build",
+    "start": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt start",
     "test": "npm run test:eslint && npm run test:scss",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
     "test:eslint:fix": "npm run test:eslint -- --fix",

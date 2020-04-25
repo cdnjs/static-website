@@ -1,6 +1,6 @@
 import routes from './util/build/routes';
-import images from './util/build/images';
-import fonts from './util/build/fonts';
+// import images from './util/build/images';
+// import fonts from './util/build/fonts';
 let cachedRoutes;
 
 export default {
@@ -167,7 +167,7 @@ export default {
     /*
     ** Fetch dynamic routes for static generation
     */
-    generate: {
+    /*generate: {
         routes() {
             if (process.env.NODE_ENV === 'production') {
                 if (cachedRoutes) return cachedRoutes.map(item => item.url);
@@ -181,16 +181,16 @@ export default {
         concurrency: 500,
         interval: 10,
         fallback: true,
-    },
+    },*/
     /*
     ** Use hooks to apply any optimizations to the final generated bundle
     */
-    hooks: {
+    /*hooks: {
         generate: {
             async done (builder) {
                 await images(builder);
                 await fonts(builder);
             },
         },
-    },
+    },*/
 };
