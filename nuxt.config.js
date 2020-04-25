@@ -1,7 +1,6 @@
 import routes from './util/build/routes';
-// import images from './util/build/images';
-// import fonts from './util/build/fonts';
-let cachedRoutes;
+import images from './util/build/images';
+import fonts from './util/build/fonts';
 
 export default {
     mode: 'universal',
@@ -125,8 +124,7 @@ export default {
                 },
             ];
 
-            if (!cachedRoutes) cachedRoutes = await routes();
-            urls.push(...cachedRoutes.map(item => ({ url: item.url, priority: item.priority })));
+            urls.push(...(await routes()));
 
             return urls;
         },
@@ -165,32 +163,14 @@ export default {
         },
     },
     /*
-    ** Fetch dynamic routes for static generation
-    */
-    /*generate: {
-        routes() {
-            if (process.env.NODE_ENV === 'production') {
-                if (cachedRoutes) return cachedRoutes.map(item => item.url);
-                return routes().then(data => {
-                    cachedRoutes = data;
-                    return data.map(item => ({ route: item.url, payload: item.data }));
-                });
-            }
-            return [];
-        },
-        concurrency: 500,
-        interval: 10,
-        fallback: true,
-    },*/
-    /*
     ** Use hooks to apply any optimizations to the final generated bundle
     */
-    /*hooks: {
-        generate: {
+    hooks: {
+        build: {
             async done (builder) {
                 await images(builder);
                 await fonts(builder);
             },
         },
-    },*/
+    },
 };

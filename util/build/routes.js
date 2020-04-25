@@ -1,7 +1,6 @@
 import chunk from 'chunk';
 import fetch from 'node-fetch';
 import { baseApi } from '../../data/config';
-import getLibrary from '../get_library';
 
 export default async () => {
     // Create the lib promises
@@ -9,13 +8,13 @@ export default async () => {
     const libsJson = await libsRaw.json();
     const libsAsync = libsJson.results.map((lib) => {
         return async () => {
-            const libJson = await getLibrary(lib.name);
+            const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,assets`);
+            const libJson = await libRaw.json();
 
             const tutorials = libJson.tutorials.map((tut) => {
                 return {
                     url: `/libraries/${lib.name}/tutorials/${tut.id}`,
                     priority: 0.5,
-                    data: tut,
                 };
             });
 
@@ -24,7 +23,6 @@ export default async () => {
                 return {
                     url: `/libraries/${lib.name}/${version.version}`,
                     priority: 0.5,
-                    data: libJson,
                 };
             }) : [];
 
@@ -32,14 +30,12 @@ export default async () => {
                 {
                     url: `/libraries/${lib.name}`,
                     priority: 0.6,
-                    data: libJson,
                 },
                 ...tutorials,
                 ...versions,
                 {
                     url: `/libraries/${lib.name}/tutorials`,
                     priority: 0.4,
-                    data: libJson.tutorials,
                 },
             ];
         };

@@ -6,10 +6,11 @@ import imageminJpegtran from 'imagemin-jpegtran';
 import imageminSvgo from 'imagemin-svgo';
 
 const png = async (builder) => {
+    const nuxtImg = path.join(builder.nuxt.options.buildDir, 'dist', 'client', 'img');
     await imagemin(
-        [path.join(builder.nuxt.options.generate.dir, '*.png')],
+        [path.join(nuxtImg, '*.png')],
         {
-            destination: builder.nuxt.options.generate.dir,
+            destination: nuxtImg,
             plugins: [
                 imageminOptipng({
                     optimizationLevel: 4,
@@ -21,7 +22,7 @@ const png = async (builder) => {
 };
 
 const jpg = async (builder) => {
-    const nuxtImg = path.join(builder.nuxt.options.generate.dir, '_nuxt', 'img');
+    const nuxtImg = path.join(builder.nuxt.options.buildDir, 'dist', 'client', 'img');
     await imagemin(
         [path.join(nuxtImg, '*.jpg')],
         {
@@ -38,7 +39,7 @@ const jpg = async (builder) => {
 };
 
 const svg = async (builder) => {
-    const nuxtImg = path.join(builder.nuxt.options.generate.dir, '_nuxt', 'img');
+    const nuxtImg = path.join(builder.nuxt.options.buildDir, 'dist', 'client', 'img');
     await imagemin(
         [path.join(nuxtImg, '*.svg')],
         {

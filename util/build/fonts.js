@@ -3,7 +3,7 @@ import Fontmin from 'fontmin';
 import consola from 'consola';
 
 const optimize = builder => new Promise((resolve, reject) => {
-    const nuxtFonts = path.join(builder.nuxt.options.generate.dir, '_nuxt', 'fonts');
+    const nuxtFonts = path.join(builder.nuxt.options.buildDir, 'dist', 'client', 'fonts');
     const fontmin = new Fontmin()
         .src(path.join(nuxtFonts, '*.@(woff|woff2)'))
         .dest(nuxtFonts);
