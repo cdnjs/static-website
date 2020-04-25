@@ -27,7 +27,7 @@
                 <a :href="utm(`https://twitter.com/${tutorial.author.twitter}`, 'tutorial')"
                    :aria-label="`${tutorial.author.twitter} on Twitter`"
                 >
-                    <font-awesome-icon :icon="faTwitter" aria-hidden="true" />
+                    <Twitter class="icon" aria-hidden="true" />
                 </a>
             </p>
 
@@ -35,7 +35,7 @@
                 <a :href="`mailto:${tutorial.author.email}`"
                    :aria-label="`${tutorial.author.name} via Email`"
                 >
-                    <font-awesome-icon :icon="faEnvelopeOpen" aria-hidden="true" />
+                    <EnvelopeOpen class="icon" aria-hidden="true" />
                 </a>
             </p>
         </div>
@@ -43,26 +43,20 @@
 </template>
 
 <script>
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-    import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
-    import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+    import EnvelopeOpen from '@fortawesome/fontawesome-free/svgs/regular/envelope-open.svg?inline';
+    import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
     import formatUnits from '../util/format_units';
     import utm from '../util/utm';
 
     export default {
         name: 'TutorialHero',
         components: {
-            FontAwesomeIcon,
+            EnvelopeOpen,
+            Twitter,
         },
         props: {
             library: String,
             tutorial: Object,
-        },
-        data () {
-            return {
-                faEnvelopeOpen,
-                faTwitter,
-            };
         },
         methods: {
             formatUnits,

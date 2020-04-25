@@ -8,12 +8,12 @@
                 <a :href="utm('https://twitter.com/cdnjs', 'nav')"
                    aria-label="cdnjs on Twitter"
                 >
-                    <font-awesome-icon :icon="faTwitter" aria-hidden="true" />
+                    <Twitter class="icon" aria-hidden="true" />
                 </a>
                 <a :href="utm('https://cdnjs.discourse.group/', 'nav')"
                    aria-label="Community Discourse"
                 >
-                    <font-awesome-icon :icon="faDiscourse" aria-hidden="true" />
+                    <Discourse class="icon" aria-hidden="true" />
                 </a>
             </div>
 
@@ -43,22 +43,17 @@
 </template>
 
 <script>
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-    import { faTwitter, faDiscourse } from '@fortawesome/free-brands-svg-icons';
+    import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
+    import Discourse from '@fortawesome/fontawesome-free/svgs/brands/discourse.svg?inline';
     import utm from '../util/utm';
     import StatusIndicator from '../components/status_indicator';
 
     export default {
         name: 'Nav',
         components: {
-            FontAwesomeIcon,
+            Twitter,
+            Discourse,
             StatusIndicator,
-        },
-        data () {
-            return {
-                faTwitter,
-                faDiscourse,
-            };
         },
         methods: {
             utm,

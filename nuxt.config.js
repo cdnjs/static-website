@@ -93,6 +93,7 @@ export default {
     */
     modules: [
         '@nuxtjs/sitemap',
+        '@nuxtjs/svg',
     ],
     /*
     ** Configure the sitemap and let it know about all the dynamic routes
@@ -146,7 +147,7 @@ export default {
         },
     },
     /*
-    ** Transpile instant search for SSR
+    ** Customise our build process to handle additions we've made
     */
     build: {
         transpile: ['vue-instantsearch'],

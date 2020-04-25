@@ -8,7 +8,7 @@
                 data-tooltip="Copy URL"
                 aria-label="Copy URL"
         >
-            <font-awesome-icon :icon="faLink" aria-hidden="true" />
+            <Link class="icon" aria-hidden="true" />
         </button>
         <button v-if="asset.code"
                 v-clipboard:copy="asset.code"
@@ -18,7 +18,7 @@
                 :data-tooltip="asset.codeTitle"
                 :aria-label="asset.codeTitle"
         >
-            <font-awesome-icon :icon="faCode" aria-hidden="true" />
+            <Code class="icon" aria-hidden="true" />
         </button>
         <button v-if="asset.sri"
                 v-clipboard:copy="asset.sri"
@@ -28,32 +28,28 @@
                 data-tooltip="Copy SRI Hash"
                 aria-label="Copy SRI Hash"
         >
-            <font-awesome-icon :icon="faShieldAlt" aria-hidden="true" />
+            <ShieldAlt class="icon" aria-hidden="true" />
         </button>
         <slot name="after"></slot>
     </div>
 </template>
 
 <script>
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-    import { faCode, faLink, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+    import Code from '@fortawesome/fontawesome-free/svgs/solid/code.svg?inline';
+    import Link from '@fortawesome/fontawesome-free/svgs/solid/link.svg?inline';
+    import ShieldAlt from '@fortawesome/fontawesome-free/svgs/solid/shield-alt.svg?inline';
     import tlite from 'tlite';
     import 'tlite/tlite.css';
 
     export default {
         name: 'LibraryAssetButtons',
         components: {
-            FontAwesomeIcon,
+            Code,
+            Link,
+            ShieldAlt,
         },
         props: {
             asset: Object,
-        },
-        data () {
-            return {
-                faLink,
-                faCode,
-                faShieldAlt,
-            };
         },
         methods: {
             tooltipCopied (evt) {
