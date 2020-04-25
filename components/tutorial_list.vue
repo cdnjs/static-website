@@ -10,24 +10,24 @@
             </a>
         </p>
         <ul>
-            <template v-if="Object.keys(tutorials).length">
-                <li v-for="(data, id) in tutorials">
+            <template v-if="tutorials.length">
+                <li v-for="tutorial in tutorials">
                     <p>
                         <nuxt-link :to="{
                             name: 'libraries-library-tutorials-tutorial',
-                            params: { library: library, tutorial: id }
+                            params: { library: library, tutorial: tutorial.id }
                         }"
                         >
-                            {{ data.name }}
+                            {{ tutorial.name }}
                         </nuxt-link>
                     </p>
                     <p>
                         By
-                        <a v-if="data.author.homepage" :href="data.author.homepage">
-                            {{ data.author.name }}
+                        <a v-if="tutorial.author.homepage" :href="tutorial.author.homepage">
+                            {{ tutorial.author.name }}
                         </a>
                         <template v-else>
-                            {{ data.author.name }}
+                            {{ tutorial.author.name }}
                         </template>
                     </p>
                 </li>
@@ -57,7 +57,7 @@
                 required: true,
             },
             tutorials: {
-                type: Object,
+                type: Array,
                 required: true,
             },
             singlePage: {

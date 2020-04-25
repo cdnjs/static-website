@@ -13,7 +13,7 @@ export default (base, library, tutorials, keywords) => ({
     accessModeSufficient: 'textual',
     isAccessibleForFree: true,
     isPartOf: `${base}libraries/${library}`,
-    hasPart: Object.entries(tutorials).map(d => Tutorial(base, d[1], d[0], library)),
+    hasPart: tutorials.map(d => Tutorial(base, d, d.id, library)),
     publisher: {
         '@type': 'Organization',
         name: 'cdnjs',

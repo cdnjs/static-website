@@ -77,7 +77,7 @@
                         return `<pre class="${langClass}"><code class="${langClass}">${highlighted}</code></pre>`;
                     },
                 });
-                return md.render(this.$data.tutorial.markdown);
+                return md.render(this.$data.tutorial.content);
             },
         },
         watch: {

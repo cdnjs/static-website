@@ -13,7 +13,7 @@
         },
         props: {
             library: String,
-            tutorials: Object,
+            tutorials: Array,
         },
         computed: {
             json () {
@@ -21,7 +21,7 @@
             },
             keywords () {
                 const tags = [];
-                for (const tutorial of Object.values(this.$props.tutorials)) {
+                for (const tutorial of this.$props.tutorials) {
                     if (tutorial.keywords) {
                         tags.push(...tutorial.keywords);
                     }
