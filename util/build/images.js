@@ -1,9 +1,9 @@
-const path = require('path');
-const consola = require('consola');
-const imagemin = require('imagemin');
-const imageminOptipng = require('imagemin-optipng');
-const imageminJpegtran = require('imagemin-jpegtran');
-const imageminSvgo = require('imagemin-svgo');
+import path from 'path';
+import consola from 'consola';
+import imagemin from 'imagemin';
+import imageminOptipng from 'imagemin-optipng';
+import imageminJpegtran from 'imagemin-jpegtran';
+import imageminSvgo from 'imagemin-svgo';
 
 const png = async (builder) => {
     await imagemin(
@@ -51,7 +51,7 @@ const svg = async (builder) => {
     consola.success('Optimized bundled SVG images');
 };
 
-module.exports = async (builder) => {
+export default async (builder) => {
     consola.info('Optimizing images');
     await png(builder).catch(err => consola.error(err));
     await jpg(builder).catch(err => consola.error(err));

@@ -1,10 +1,10 @@
-const path = require('path');
-const express = require('express');
-const { Nuxt } = require('nuxt');
-const app = express();
+import path from 'path';
+import express from 'express';
+import { Nuxt } from 'nuxt';
 
 // Import and Set Nuxt.js options
-const config = require('../nuxt.config.js');
+import config from '../nuxt.config.js';
+const app = express();
 config.dev = process.env.NODE_ENV !== 'production';
 
 const start = () => {

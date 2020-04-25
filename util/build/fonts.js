@@ -1,6 +1,6 @@
-const path = require('path');
-const Fontmin = require('fontmin');
-const consola = require('consola');
+import path from 'path';
+import Fontmin from 'fontmin';
+import consola from 'consola';
 
 const optimize = builder => new Promise((resolve, reject) => {
     const nuxtFonts = path.join(builder.nuxt.options.generate.dir, '_nuxt', 'fonts');
@@ -15,7 +15,7 @@ const optimize = builder => new Promise((resolve, reject) => {
     });
 });
 
-module.exports = async (builder) => {
+export default async (builder) => {
     consola.info('Optimizing fonts');
     await optimize(builder).catch(err => consola.error(err));
     consola.success('Optimized bundled fonts');

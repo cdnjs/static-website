@@ -1,13 +1,13 @@
 import fetch from 'node-fetch';
-import searchClient from './search_client';
 import { baseApi } from '../data/config';
+import searchClient from './search_client';
 
 const spdxLicenseIds = require('spdx-license-ids/index.json');
 
 const index = searchClient.initIndex('libraries');
 
 const apiFields = () => new Set([
-    'name', 'autoupdate', 'licenses', 'license', 'homepage', 'description', 'keywords', 'version', 'filename', 'assets',
+    'name', 'autoupdate', 'licenses', 'license', 'homepage', 'description', 'keywords', 'version', 'filename', 'assets', 'versions', 'tutorials',
 ]);
 
 const apiFieldsQuery = fields => `?fields=${Array.from(fields).map(f => encodeURIComponent(f)).join(',')}`;

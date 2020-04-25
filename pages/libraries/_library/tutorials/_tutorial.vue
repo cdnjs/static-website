@@ -89,7 +89,7 @@
                 });
             },
         },
-        async asyncData ({ params, route, app, error }) {
+        async asyncData ({ params, route, app, error, payload }) {
             const data = {
                 libraryName: params.library,
                 tutorialName: params.tutorial,
@@ -98,29 +98,33 @@
             };
 
             // Attempt to get data for the tut
-            let tut;
-            try {
-                tut = await getTutorial(data.libraryName, data.tutorialName);
-            } catch (e) {
-                // If we fail to find it, let the user know
-                if (e.message === 'Tutorial not found') {
-                    error({
-                        statusCode: 404,
-                        customMsg: true,
-                        message: `Sorry, we could not find the tutorial you requested, ${data.tutorialName} (${data.libraryName}).`,
-                    });
-                } else {
-                    error({
-                        statusCode: 500,
-                        customMsg: true,
-                        message: `Sorry, an error occurred whilst loading the tutorial ${data.tutorialName} (${data.libraryName}).`,
-                    });
+            if (payload) {
+                data.tutorial = payload;
+            } else {
+                let tut;
+                try {
+                    tut = await getTutorial(data.libraryName, data.tutorialName);
+                } catch (e) {
+                    // If we fail to find it, let the user know
+                    if (e.message === 'Tutorial not found') {
+                        error({
+                            statusCode: 404,
+                            customMsg: true,
+                            message: `Sorry, we could not find the tutorial you requested, ${data.tutorialName} (${data.libraryName}).`,
+                        });
+                    } else {
+                        error({
+                            statusCode: 500,
+                            customMsg: true,
+                            message: `Sorry, an error occurred whilst loading the tutorial ${data.tutorialName} (${data.libraryName}).`,
+                        });
+                    }
+                    return;
                 }
-                return;
-            }
 
-            // Save the tut data
-            data.tutorial = tut;
+                // Save the tut data
+                data.tutorial = tut;
+            }
 
             // Breadcrumbs!
             data.crumbs = await breadcrumbs(route, app.router, data);

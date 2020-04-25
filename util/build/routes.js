@@ -1,53 +1,65 @@
-const chunk = require('chunk');
-const fetch = require('node-fetch');
-const { baseApi } = require('../../data/config');
+import chunk from 'chunk';
+import fetch from 'node-fetch';
+import { baseApi } from '../../data/config';
+import getLibrary from '../get_library';
 
-module.exports = async () => {
-    // Get the libs
+export default async () => {
+    // Create the lib promises
     const libsRaw = await fetch(`${baseApi}/libraries?fields=name`);
     const libsJson = await libsRaw.json();
-    const libs = libsJson.results.map((lib) => {
-        // TODO: Add all version routes to here!
-        // TODO: Add tutorials to api.cdnjs.com/libraries/:library, so that tutorial routes can also be done here.
-        //       So that we're only making one API call per library here, not two.
-        return [
-            {
-                url: `/libraries/${lib.name}`,
-                priority: 0.6,
-            },
-            {
-                url: `/libraries/${lib.name}/tutorials`,
-                priority: 0.4,
-            },
-        ];
-    }).flat(1);
-
-    // Get tutorials
-    // FIXME: Add tutorials meta data to api.cdnjs.com/libraries, so we don't need all this messy async chunking
-    const tutsAsync = libsJson.results.map((lib) => {
+    const libsAsync = libsJson.results.map((lib) => {
         return async () => {
-            const tutsRaw = await fetch(`${baseApi}/libraries/${lib.name}/tutorials`);
-            const tutsJson = await tutsRaw.json();
-            return Object.keys(tutsJson).map((tut) => {
+            const libJson = await getLibrary(lib.name);
+
+            const tutorials = libJson.tutorials.map((tut) => {
                 return {
-                    url: `/libraries/${lib.name}/tutorials/${tut}`,
+                    url: `/libraries/${lib.name}/tutorials/${tut.id}`,
                     priority: 0.5,
+                    data: tut,
                 };
             });
+
+            // FIXME: Use library.versions here, not library.assets
+            const versions = libJson.assets ? libJson.assets.map((version) => {
+                return {
+                    url: `/libraries/${lib.name}/${version.version}`,
+                    priority: 0.5,
+                    data: libJson,
+                };
+            }) : [];
+
+            return [
+                {
+                    url: `/libraries/${lib.name}`,
+                    priority: 0.6,
+                    data: libJson,
+                },
+                ...tutorials,
+                ...versions,
+                {
+                    url: `/libraries/${lib.name}/tutorials`,
+                    priority: 0.4,
+                    data: libJson.tutorials,
+                },
+            ];
         };
     });
-    const tutsChunks = chunk(tutsAsync, 50);
+
+    // Split into chunks and fetch
+    const libsChunks = chunk(libsAsync, 50);
     const failed = [];
-    const tuts = [];
-    for (const tutsChunk of tutsChunks) {
-        const chunkRes = await Promise.all(tutsChunk.map(cb => cb().catch(() => failed.push(cb))));
-        tuts.push(...chunkRes.flat(1));
+    const libs = [];
+    for (const libsChunk of libsChunks) {
+        const chunkRes = await Promise.all(libsChunk.map(cb => cb().catch(() => failed.push(cb))));
+        libs.push(...chunkRes.flat(1));
     }
     for (const failure of failed) {
         const result = await failure().catch(e => console.warn(e));
-        if (result) { tuts.push(...result); }
+        if (result) { libs.push(...result); }
     }
 
     // Combine and sort
-    return [...libs, ...tuts].filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
+    const cleaned = libs.filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
+    console.info(`Loaded ${cleaned.length.toLocaleString()} routes`);
+    return cleaned;
 };

@@ -1,9 +1,9 @@
-const routes = require('./util/build/routes');
-const images = require('./util/build/images');
-const fonts = require('./util/build/fonts');
+import routes from './util/build/routes';
+import images from './util/build/images';
+import fonts from './util/build/fonts';
 let cachedRoutes;
 
-module.exports = {
+export default {
     mode: 'universal',
     /*
     ** Headers of the page
@@ -126,7 +126,7 @@ module.exports = {
             ];
 
             if (!cachedRoutes) cachedRoutes = await routes();
-            urls.push(...cachedRoutes);
+            urls.push(...cachedRoutes.map(item => ({ url: item.url, priority: item.priority })));
 
             return urls;
         },
@@ -173,7 +173,7 @@ module.exports = {
                 if (cachedRoutes) return cachedRoutes.map(item => item.url);
                 return routes().then(data => {
                     cachedRoutes = data;
-                    return data.map(item => item.url);
+                    return data.map(item => ({ route: item.url, payload: item.data }));
                 });
             }
             return [];

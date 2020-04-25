@@ -45,7 +45,7 @@
                 </ul>
             </div>
             <div class="column-half">
-                <TutorialList :library="libraryName" :tutorials="tutorials"></TutorialList>
+                <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
             </div>
         </div>
         <JSONLDLibrary :library="library" :library-name="libraryName"></JSONLDLibrary>
@@ -62,7 +62,6 @@
 
     import formatUnits from '../../../util/format_units';
     import getLibrary from '../../../util/get_library';
-    import { getTutorials } from '../../../util/get_tutorial';
     import { getAssets } from '../../../util/get_asset';
     import setMeta from '../../../util/set_meta';
     import breadcrumbs from '../../../util/breadcrumbs';
@@ -83,6 +82,7 @@
         classes: ['library'],
     };
 
+    // FIXME: Use library.versions here, not library.assets
     const versions = (assets) => {
         if (!assets || !assets.length) {
             return [];
@@ -130,11 +130,10 @@
                 this.$data.crumbs = await breadcrumbs(newRoute.route, this.$router, this.$data);
             },
         },
-        async asyncData ({ params, route, app, error }) {
+        async asyncData ({ params, route, app, error, payload }) {
             const data = {
                 libraryName: params.library,
                 library: null,
-                tutorials: {},
                 ready: false,
                 message: 'Loading...',
                 version: null,
@@ -150,47 +149,39 @@
 
             // Attempt to get data for the lib
             let lib;
-            try {
-                lib = await getLibrary(data.libraryName);
-            } catch (e) {
-                // If we fail to find it, let the user know
-                if (e.message === 'Library not found') {
-                    error({
-                        statusCode: 404,
-                        customMsg: true,
-                        message: `Sorry, we could not find the library you requested, ${data.libraryName}.`,
-                    });
-                } else {
-                    error({
-                        statusCode: 500,
-                        customMsg: true,
-                        message: `Sorry, an error occurred whilst loading the library ${data.libraryName}.`,
-                    });
+            if (payload) {
+                lib = payload;
+            } else {
+                try {
+                    lib = await getLibrary(data.libraryName);
+                } catch (e) {
+                    // If we fail to find it, let the user know
+                    if (e.message === 'Library not found') {
+                        error({
+                            statusCode: 404,
+                            customMsg: true,
+                            message: `Sorry, we could not find the library you requested, ${data.libraryName}.`,
+                        });
+                    } else {
+                        error({
+                            statusCode: 500,
+                            customMsg: true,
+                            message: `Sorry, an error occurred whilst loading the library ${data.libraryName}.`,
+                        });
+                    }
+                    return;
                 }
-                return;
-            }
-
-            // Attempt to get tutorial data for the lib
-            let tuts;
-            try {
-                tuts = await getTutorials(data.libraryName);
-            } catch (_) {
-                // If we fail to load them, who cares
-            }
-
-            // Save tutorials
-            if (tuts) {
-                data.tutorials = tuts;
             }
 
             // Save the lib data
             if (lib) {
                 data.library = lib;
 
-                data.version = params.version && versions(lib.assets).includes(params.version)
-                    ? params.version : lib.version;
+                const vers = versions(lib.assets);
+                data.version = params.version && vers.includes(params.version) ? params.version : lib.version;
 
                 if (lib.assets && lib.assets.length) {
+                    data.version = vers.includes(data.version) ? data.version : lib.assets[0].version;
                     const { assets, hasHidden, categories } = getAssets(data);
                     data.assets = assets;
                     data.hasHidden = hasHidden;
@@ -211,10 +202,11 @@
                 if (lib) {
                     this.$data.library = lib;
 
-                    this.$data.version = this.versions(lib.assets).includes(this.$data.version)
-                        ? this.$data.version : lib.version;
+                    const vers = this.versions(lib.assets);
+                    this.$data.version = vers.includes(this.$data.version) ? this.$data.version : lib.version;
 
                     if (lib.assets && lib.assets.length) {
+                        this.$data.version = vers.includes(this.$data.version) ? this.$data.version : lib.assets[0].version;
                         const { assets, hasHidden, categories } = getAssets(this.$data);
                         this.$data.assets = assets;
                         this.$data.hasHidden = hasHidden;
@@ -222,11 +214,6 @@
                     }
 
                     this.$data.ready = true;
-                }
-            }).catch(() => {});
-            getTutorials(this.$data.libraryName).then((tuts) => {
-                if (tuts) {
-                    this.$data.tutorials = tuts;
                 }
             }).catch(() => {});
         },

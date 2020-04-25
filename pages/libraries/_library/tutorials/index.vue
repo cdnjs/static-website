@@ -42,23 +42,27 @@
             Breadcrumbs,
             TutorialList,
         },
-        async asyncData ({ params, route, app }) {
+        async asyncData ({ params, route, app, payload }) {
             const data = {
                 libraryName: params.library,
                 tutorials: {},
             };
 
             // Attempt to get tutorial data for the lib
-            let tuts;
-            try {
-                tuts = await getTutorials(data.libraryName);
-            } catch (_) {
-                // If we fail to load them, default to none
-            }
+            if (payload) {
+                data.tutorials = payload;
+            } else {
+                let tuts;
+                try {
+                    tuts = await getTutorials(data.libraryName);
+                } catch (_) {
+                    // If we fail to load them, default to none
+                }
 
-            // Save tutorials
-            if (tuts) {
-                data.tutorials = tuts;
+                // Save tutorials
+                if (tuts) {
+                    data.tutorials = tuts;
+                }
             }
 
             // Breadcrumbs!
