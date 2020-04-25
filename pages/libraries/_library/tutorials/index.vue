@@ -29,6 +29,9 @@
             return `Tutorials - ${data.libraryName} - Libraries`;
         },
         breadcrumb: 'Tutorials',
+        desc (data) {
+            return `Learn about ${data.libraryName} with the tutorials that cdnjs provides, or contribute your own via our GitHub repository.`;
+        },
         classes: [],
     };
 

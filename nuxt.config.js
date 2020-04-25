@@ -100,6 +100,7 @@ export default {
     sitemap: {
         gzip: true,
         hostname: process.env.SITE_HOST || undefined,
+        cacheTime: 60 * 60 * 1000,
         async routes() {
             const urls = [
                 {
@@ -124,6 +125,8 @@ export default {
                 },
             ];
 
+            // FIXME: This is awfully slow to load on demand
+            // Maybe instead of using this module we run a custom Express server and generate this in the background
             urls.push(...(await routes()));
 
             return urls;
@@ -168,6 +171,8 @@ export default {
     hooks: {
         build: {
             async done (builder) {
+                // FIXME: This doesn't optimize images in static assets
+                // Maybe use a custom Express server and copy /static/ to a new dir which we can optimize in
                 await images(builder);
                 await fonts(builder);
             },

@@ -7,7 +7,7 @@ export default (meta, context) => {
     let contextDesc = meta.desc || '';
     if (typeof contextDesc === 'function') { contextDesc = contextDesc(context); }
     const pageTitle = `${contextTitle}${contextTitle ? ' - ' : ''}${defaultTitle}`;
-    const pageDesc = `${contextDesc}${defaultDesc}`;
+    const pageDesc = `${contextDesc}${contextDesc ? ' - ' : ''}${defaultDesc}`;
 
     return {
         title: pageTitle,

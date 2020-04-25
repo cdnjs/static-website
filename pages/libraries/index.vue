@@ -16,6 +16,7 @@
     const meta = {
         title: 'Libraries',
         breadcrumb: 'Libraries',
+        desc: 'cdnjs offers a large collection of popular libraries for JavaScript, CSS and more. Search the full collection and start using them on your website.',
         classes: [],
     };
 

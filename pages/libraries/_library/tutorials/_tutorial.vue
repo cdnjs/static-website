@@ -42,6 +42,9 @@
         breadcrumb (data) {
             return tutorialPageName(data);
         },
+        desc (data) {
+            return data.tutorial.description;
+        },
         classes: [],
     };
 

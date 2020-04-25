@@ -42,7 +42,7 @@ export default async () => {
     });
 
     // Split into chunks and fetch
-    const libsChunks = chunk(libsAsync, 50);
+    const libsChunks = chunk(libsAsync, 100);
     const failed = [];
     const libs = [];
     for (const libsChunk of libsChunks) {

@@ -139,6 +139,7 @@
     const meta = {
         title: 'About Us',
         breadcrumb: 'About Us',
+        desc: 'Find about what cdnjs is about and how we follow our open-source mission, see who maintains the CDN and find out about our sponsors.',
         classes: [],
     };
 
