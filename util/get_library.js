@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import searchClient from './search_client';
+import { baseApi } from '../data/config';
 
 const spdxLicenseIds = require('spdx-license-ids/index.json');
 
@@ -17,14 +18,14 @@ const api = async (lib, limit) => {
 
     try {
         // Try getting all fields, including assets
-        const res = await fetch(`https://api.cdnjs.com/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
+        const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
             { size: limit ? 1 * 1024 * 1024 : undefined });
         data = await res.json();
     } catch (e) {
         // Try getting fields except assets, any error not caught now
         fields.delete('assets');
         console.info(`Failed to load assets for ${lib}, fetching without...`);
-        const res = await fetch(`https://api.cdnjs.com/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
+        const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
             { size: limit ? 1 * 1024 * 1024 : undefined });
         data = await res.json();
     }

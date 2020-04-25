@@ -1,9 +1,10 @@
 const chunk = require('chunk');
 const fetch = require('node-fetch');
+const { baseApi } = require('../../data/config');
 
 module.exports = async () => {
     // Get the libs
-    const libsRaw = await fetch('https://api.cdnjs.com/libraries?fields=name');
+    const libsRaw = await fetch(`${baseApi}/libraries?fields=name`);
     const libsJson = await libsRaw.json();
     const libs = libsJson.results.map((lib) => {
         // TODO: Add all version routes to here!
@@ -25,7 +26,7 @@ module.exports = async () => {
     // FIXME: Add tutorials meta data to api.cdnjs.com/libraries, so we don't need all this messy async chunking
     const tutsAsync = libsJson.results.map((lib) => {
         return async () => {
-            const tutsRaw = await fetch(`https://api.cdnjs.com/libraries/${lib.name}/tutorials`);
+            const tutsRaw = await fetch(`${baseApi}/libraries/${lib.name}/tutorials`);
             const tutsJson = await tutsRaw.json();
             return Object.keys(tutsJson).map((tut) => {
                 return {

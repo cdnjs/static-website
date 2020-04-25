@@ -1,8 +1,9 @@
 import fetch from 'node-fetch';
+import { baseApi } from '../data/config';
 
 export const getTutorials = async (lib) => {
     // Get data from cdnjs API
-    const res = await fetch(`https://api.cdnjs.com/libraries/${encodeURIComponent(lib)}/tutorials`);
+    const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}/tutorials`);
     const apiData = await res.json();
 
     // Done
@@ -11,7 +12,7 @@ export const getTutorials = async (lib) => {
 
 export const getTutorial = async (lib, tut) => {
     // Get data from cdnjs API
-    const res = await fetch(`https://api.cdnjs.com/libraries/${encodeURIComponent(lib)}/tutorials/${encodeURIComponent(tut)}`);
+    const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}/tutorials/${encodeURIComponent(tut)}`);
     const apiData = await res.json();
 
     // Not found
