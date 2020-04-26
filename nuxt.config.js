@@ -93,7 +93,8 @@ export default {
     ** Load in modules that we're using in the app
     */
     modules: [
-        '@nuxtjs/sitemap',
+        // FIXME: Sitemap seems to cause OOM on Heroku
+        //'@nuxtjs/sitemap',
         '@nuxtjs/svg',
     ],
     /*
