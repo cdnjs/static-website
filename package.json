@@ -7,7 +7,6 @@
   "engines" : {
     "node" : "12.16.2"
   },
-  "type": "module",
   "scripts": {
     "dev": "NODE_ENV=dev nuxt",
     "dev:analyze": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt build --analyze",
