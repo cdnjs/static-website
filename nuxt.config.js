@@ -1,4 +1,5 @@
 import routes from './util/build/routes';
+import staticFiles from './util/build/static';
 import images from './util/build/images';
 import fonts from './util/build/fonts';
 
@@ -172,8 +173,7 @@ export default {
     hooks: {
         build: {
             async done (builder) {
-                // FIXME: This doesn't optimize images in static assets
-                // Maybe use a custom Express server and copy /static/ to a new dir which we can optimize in
+                await staticFiles(builder);
                 await images(builder);
                 await fonts(builder);
             },

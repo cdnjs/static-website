@@ -6,11 +6,11 @@ import imageminJpegtran from 'imagemin-jpegtran';
 import imageminSvgo from 'imagemin-svgo';
 
 const png = async (builder) => {
-    const nuxtImg = path.join(builder.nuxt.options.buildDir, 'dist', 'client', 'img');
+    const nuxtStatic = path.join(builder.nuxt.options.buildDir, 'dist', 'static');
     await imagemin(
-        [path.join(nuxtImg, '*.png')],
+        [path.join(nuxtStatic, '*.png')],
         {
-            destination: nuxtImg,
+            destination: nuxtStatic,
             plugins: [
                 imageminOptipng({
                     optimizationLevel: 4,
