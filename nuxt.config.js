@@ -173,6 +173,7 @@ export default {
     hooks: {
         build: {
             async done (builder) {
+                // FIXME: `nuxt start` still uses static, not .nuxt/dist/static
                 await staticFiles(builder);
                 await images(builder);
                 await fonts(builder);
