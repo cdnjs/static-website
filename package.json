@@ -4,8 +4,8 @@
   "description": "The new cdnjs website, using Vue & Nuxt",
   "private": true,
   "main": "index.js",
-  "engines" : {
-    "node" : "12.16.2"
+  "engines": {
+    "node": "12.16.2"
   },
   "scripts": {
     "dev": "NODE_ENV=dev nuxt",
@@ -32,6 +32,7 @@
     "@nuxtjs/sitemap": "^2.0.1",
     "algoliasearch": "^4.0.3",
     "babel-polyfill": "^6.26.0",
+    "chunk": "0.0.2",
     "glob-to-regexp": "^0.4.1",
     "instantsearch.css": "^7.4.2",
     "markdown-it": "^10.0.0",
@@ -57,7 +58,6 @@
     "@nuxtjs/eslint-config": "^2.0.2",
     "@nuxtjs/svg": "^0.1.11",
     "babel-eslint": "^10.1.0",
-    "chunk": "0.0.2",
     "consola": "^2.11.3",
     "copyfiles": "^2.2.0",
     "eslint": "^6.8.0",
