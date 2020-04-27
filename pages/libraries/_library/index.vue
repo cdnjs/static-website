@@ -117,7 +117,7 @@
         watch: {
             async version () {
                 // Update the asset list
-                this.getAssets();
+                await this.getAssets();
 
                 // Update the URL without navigating
                 const newRoute = this.$router.resolve({
@@ -198,26 +198,10 @@
 
             return data;
         },
-        mounted () {
-            // Get latest data in the background (SSR may be old or incomplete)
-            getLibrary(this.$data.libraryName, false).then((lib) => {
-                if (lib) {
-                    this.$data.library = lib;
-
-                    const vers = this.versions(lib.assets);
-                    this.$data.version = vers.includes(this.$data.version) ? this.$data.version : lib.version;
-
-                    if (lib.assets && lib.assets.length) {
-                        this.$data.version = vers.includes(this.$data.version) ? this.$data.version : lib.assets[0].version;
-                        const { assets, hasHidden, categories } = getAssets(this.$data);
-                        this.$data.assets = assets;
-                        this.$data.hasHidden = hasHidden;
-                        this.$data.categories = categories;
-                    }
-
-                    this.$data.ready = true;
-                }
-            }).catch(() => {});
+        async mounted () {
+            if (!this.$data.library.assets || !this.$data.library.assets.length) {
+                await this.getAssets();
+            }
         },
         methods: {
             formatUnits,
@@ -232,8 +216,9 @@
                 }
                 return false;
             },
-            getAssets () {
-                const { assets, hasHidden, categories } = getAssets(this.$data);
+            async getAssets () {
+                // Fetch assets for the version (we might not have them so it may be a promise)
+                const { assets, hasHidden, categories } = await getAssets(this.$data);
                 this.$data.assets = assets;
                 this.$data.hasHidden = hasHidden;
                 this.$data.categories = categories;

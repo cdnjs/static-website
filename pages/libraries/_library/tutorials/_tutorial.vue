@@ -83,15 +83,6 @@
                 return md.render(this.$data.tutorial.content);
             },
         },
-        watch: {
-            rendered () {
-                // Highlight whenever rendered changes (including initial value) to bind event-based plugins
-                this.$nextTick(() => {
-                    this.$refs.tutorial.querySelectorAll('code[class*="language-"]')
-                        .forEach(elm => Prism.highlightElement(elm));
-                });
-            },
-        },
         async asyncData ({ params, route, app, error, payload }) {
             const data = {
                 libraryName: params.library,
@@ -135,12 +126,11 @@
             return data;
         },
         mounted () {
-            // Get latest data in the background (SSR may be old or incomplete)
-            getTutorial(this.$data.libraryName, this.$data.tutorialName).then((tut) => {
-                if (tut) {
-                    this.$data.tutorial = tut;
-                }
-            }).catch(() => {});
+            // Highlight to bind event-based plugins
+            this.$nextTick(() => {
+                this.$refs.tutorial.querySelectorAll('code[class*="language-"]')
+                    .forEach(elm => Prism.highlightElement(elm));
+            });
         },
     };
 </script>

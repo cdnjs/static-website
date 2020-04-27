@@ -73,13 +73,5 @@
 
             return data;
         },
-        mounted () {
-            // Get latest data in the background (SSR may be old or incomplete)
-            getTutorials(this.$data.libraryName).then((tuts) => {
-                if (tuts) {
-                    this.$data.tutorials = tuts;
-                }
-            }).catch(() => {});
-        },
     };
 </script>

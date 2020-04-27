@@ -12,7 +12,7 @@ const start = async () => {
     // Change static source to .nuxt/dist/static
     nuxt.server.options.dir.static = path.relative(
         nuxt.server.options.srcDir,
-        path.join(nuxt.server.options.buildDir, 'dist', 'static')
+        path.join(nuxt.server.options.buildDir, 'dist', 'static'),
     );
 
     // Render every route with Nuxt.js

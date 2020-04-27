@@ -1,6 +1,7 @@
 import firstBy from 'thenby';
 import globToRegExp from 'glob-to-regexp';
 import { category } from './file_type';
+import getVersion from './get_version';
 
 const sriAttr = (asset) => {
     if (!asset.sri) { return ''; }
@@ -47,13 +48,10 @@ export const getAsset = (library, version, file, sri) => {
     return asset;
 };
 
-export const getAssets = (data) => {
+const processAssets = (data, rawAssets) => {
     // Generate the categories
     const categories = new Set();
     categories.add('All');
-
-    // Get the raw assets for this version
-    const rawAssets = data.library.assets.find(a => a.version === data.version);
 
     // Convert them to asset objects and sort them
     const sortedAssets = rawAssets.files
@@ -101,4 +99,33 @@ export const getAssets = (data) => {
         hasHidden: hasHiddenFiles,
         categories: [...categories],
     };
+};
+
+export const getAssets = (data) => {
+    // If we already have assets, just return the data
+    if (data.library.assets && data.library.assets.length) {
+        const rawAssets = data.library.assets.find(a => a.version === data.version);
+        if (!rawAssets) {
+            return {
+                assets: [],
+                hasHidden: false,
+                categories: [],
+            };
+        }
+        return processAssets(data, rawAssets);
+    }
+
+    // If we don't have assets, we need to load the version, so we need to return a Promise
+    return new Promise((resolve) => {
+        getVersion(data.library.name, data.version).then((version) => {
+            if (version.error) {
+                resolve({
+                    assets: [],
+                    hasHidden: false,
+                    categories: [],
+                });
+            }
+            resolve(processAssets(data, version));
+        });
+    });
 };

@@ -17,16 +17,15 @@ const api = async (lib, limit) => {
     let data;
 
     try {
-        // Try getting all fields, including assets
+        // Try getting all fields, including assets (max resp size: .25 * 1024 * 1024 bytes [.25mb])
         const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
-            { size: limit ? 1 * 1024 * 1024 : undefined });
+            { size: limit ? 0.25 * 1024 * 1024 : undefined });
         data = await res.json();
     } catch (e) {
         // Try getting fields except assets, any error not caught now
         fields.delete('assets');
         console.info(`Failed to load assets for ${lib}, fetching without...`);
-        const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
-            { size: limit ? 1 * 1024 * 1024 : undefined });
+        const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`);
         data = await res.json();
     }
 
