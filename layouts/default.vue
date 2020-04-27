@@ -12,7 +12,6 @@
 
         <Footer></Footer>
         <JSONLDWebSite></JSONLDWebSite>
-        <GoogleAnalytics></GoogleAnalytics>
     </div>
 </template>
 
@@ -22,7 +21,6 @@
     import Banner from '../components/banner';
     import Footer from '../components/footer';
     import JSONLDWebSite from '../components/json-ld/website';
-    import GoogleAnalytics from '../components/google_analytics';
 
     let lastRoute;
 
@@ -34,7 +32,6 @@
             Banner,
             Footer,
             JSONLDWebSite,
-            GoogleAnalytics,
         },
         data () {
             return {
