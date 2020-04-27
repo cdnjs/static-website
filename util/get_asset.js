@@ -102,17 +102,21 @@ const processAssets = (data, rawAssets) => {
 };
 
 export const getAssets = (data) => {
+    // If non-existent, return empty
+    if (!data.library.versions.includes(data.version)) {
+        return {
+            assets: [],
+            hasHidden: false,
+            categories: [],
+        };
+    }
+
     // If we already have assets, just return the data
     if (data.library.assets && data.library.assets.length) {
         const rawAssets = data.library.assets.find(a => a.version === data.version);
-        if (!rawAssets) {
-            return {
-                assets: [],
-                hasHidden: false,
-                categories: [],
-            };
+        if (rawAssets) {
+            return processAssets(data, rawAssets);
         }
-        return processAssets(data, rawAssets);
     }
 
     // If we don't have assets, we need to load the version, so we need to return a Promise

@@ -8,7 +8,7 @@ export default async () => {
     const libsJson = await libsRaw.json();
     const libsAsync = libsJson.results.map((lib) => {
         return async () => {
-            const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,assets`);
+            const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,versions`);
             const libJson = await libRaw.json();
 
             const tutorials = libJson.tutorials.map((tut) => {
@@ -18,13 +18,12 @@ export default async () => {
                 };
             });
 
-            // FIXME: Use library.versions here, not library.assets
-            const versions = libJson.assets ? libJson.assets.map((version) => {
+            const versions = libJson.versions.map((version) => {
                 return {
-                    url: `/libraries/${lib.name}/${version.version}`,
+                    url: `/libraries/${lib.name}/${version}`,
                     priority: 0.5,
                 };
-            }) : [];
+            });
 
             return [
                 {

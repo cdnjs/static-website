@@ -13,7 +13,7 @@
             <div class="column-half">
                 <div class="row filter">
                     <p>Version</p>
-                    <VueSelect v-model="version" :options="versions(library.assets)" :clearable="false"></VueSelect>
+                    <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
                     <p>Asset Type</p>
                     <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
                 </div>
@@ -85,20 +85,6 @@
         classes: ['library'],
     };
 
-    // FIXME: Use library.versions here, not library.assets
-    const versions = (assets) => {
-        if (!assets || !assets.length) {
-            return [];
-        }
-
-        const vers = assets.map(a => a.version);
-        try {
-            return semverSort.desc(vers);
-        } catch (_) {
-            return vers;
-        }
-    };
-
     export default {
         name: 'Library',
         meta,
@@ -113,6 +99,15 @@
             TutorialList,
             JSONLDLibrary,
             VueSelect,
+        },
+        computed: {
+            versions () {
+                try {
+                    return semverSort.desc(this.$data.library.versions);
+                } catch (_) {
+                    return this.$data.library.versions;
+                }
+            },
         },
         watch: {
             async version () {
@@ -179,11 +174,10 @@
             if (lib) {
                 data.library = lib;
 
-                const vers = versions(lib.assets);
-                data.version = params.version && vers.includes(params.version) ? params.version : lib.version;
+                data.version = params.version && lib.versions.includes(params.version) ? params.version : lib.version;
 
                 if (lib.assets && lib.assets.length) {
-                    data.version = vers.includes(data.version) ? data.version : lib.assets[0].version;
+                    data.version = lib.versions.includes(data.version) ? data.version : lib.assets[0].version;
                     const { assets, hasHidden, categories } = getAssets(data);
                     data.assets = assets;
                     data.hasHidden = hasHidden;
@@ -206,7 +200,6 @@
         methods: {
             formatUnits,
             isWhitelisted,
-            versions,
             hideAsset (asset) {
                 if (asset.hidden && !this.$data.showHidden) {
                     return true;
