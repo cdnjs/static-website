@@ -5,18 +5,18 @@
             <p v-if="library.algolia && library.algolia.github && library.algolia.github.stargazers_count"
                class="stars"
             >
-                <Star class="icon" aria-label="Stars" />
+                <Star class="icon" aria-label="Stars"></Star>
                 {{ formatUnits(library.algolia.github.stargazers_count, 0) }}
             </p>
             <p v-if="repo()" class="repo">
                 <a :href="utm(`https://github.com/${repo()}`, 'library')">
-                    <GitHub class="icon" aria-hidden="true" />
+                    <GitHub class="icon" aria-hidden="true"></GitHub>
                     GitHub
                 </a>
             </p>
             <p v-if="library.autoupdate && library.autoupdate.source === 'npm'" class="auto-update">
                 <a :href="utm(`https://npmjs.com/package/${library.autoupdate.target}`, 'library')">
-                    <Npm class="icon" aria-label="NPM" />
+                    <Npm class="icon" aria-label="NPM"></Npm>
                     package
                 </a>
             </p>

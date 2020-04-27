@@ -14,12 +14,12 @@
                     <a :href="utm('https://twitter.com/cdnjs', 'footer')"
                        aria-label="cdnjs on Twitter"
                     >
-                        <Twitter class="icon" aria-hidden="true" />
+                        <Twitter class="icon" aria-hidden="true"></Twitter>
                     </a>
                     <a :href="utm('https://github.com/cdnjs', 'footer')"
                        aria-label="cdnjs on GitHub"
                     >
-                        <GitHub class="icon" aria-hidden="true" />
+                        <GitHub class="icon" aria-hidden="true"></GitHub>
                     </a>
                 </dd>
             </dl>

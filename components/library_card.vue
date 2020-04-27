@@ -7,7 +7,7 @@
             </nuxt-link>
 
             <p v-if="library.github && library.github.stargazers_count" class="stars">
-                <Star class="icon" aria-label="Stars" />
+                <Star class="icon" aria-label="Stars"></Star>
                 {{ formatUnits(library.github.stargazers_count, 0) }}
             </p>
 

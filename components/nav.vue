@@ -8,12 +8,12 @@
                 <a :href="utm('https://twitter.com/cdnjs', 'nav')"
                    aria-label="cdnjs on Twitter"
                 >
-                    <Twitter class="icon" aria-hidden="true" />
+                    <Twitter class="icon" aria-hidden="true"></Twitter>
                 </a>
                 <a :href="utm('https://cdnjs.discourse.group/', 'nav')"
                    aria-label="Community Discourse"
                 >
-                    <Discourse class="icon" aria-hidden="true" />
+                    <Discourse class="icon" aria-hidden="true"></Discourse>
                 </a>
             </div>
 

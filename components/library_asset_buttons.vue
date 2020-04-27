@@ -8,7 +8,7 @@
                 data-tooltip="Copy URL"
                 aria-label="Copy URL"
         >
-            <Link class="icon" aria-hidden="true" />
+            <Link class="icon" aria-hidden="true"></Link>
         </button>
         <button v-if="asset.code"
                 v-clipboard:copy="asset.code"
@@ -18,7 +18,7 @@
                 :data-tooltip="asset.codeTitle"
                 :aria-label="asset.codeTitle"
         >
-            <Code class="icon" aria-hidden="true" />
+            <Code class="icon" aria-hidden="true"></Code>
         </button>
         <button v-if="asset.sri"
                 v-clipboard:copy="asset.sri"
@@ -28,7 +28,7 @@
                 data-tooltip="Copy SRI Hash"
                 aria-label="Copy SRI Hash"
         >
-            <ShieldAlt class="icon" aria-hidden="true" />
+            <ShieldAlt class="icon" aria-hidden="true"></ShieldAlt>
         </button>
         <slot name="after"></slot>
     </div>

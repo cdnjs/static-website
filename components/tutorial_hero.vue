@@ -27,7 +27,7 @@
                 <a :href="utm(`https://twitter.com/${tutorial.author.twitter}`, 'tutorial')"
                    :aria-label="`${tutorial.author.twitter} on Twitter`"
                 >
-                    <Twitter class="icon" aria-hidden="true" />
+                    <Twitter class="icon" aria-hidden="true"></Twitter>
                 </a>
             </p>
 
@@ -35,7 +35,7 @@
                 <a :href="`mailto:${tutorial.author.email}`"
                    :aria-label="`${tutorial.author.name} via Email`"
                 >
-                    <EnvelopeOpen class="icon" aria-hidden="true" />
+                    <EnvelopeOpen class="icon" aria-hidden="true"></EnvelopeOpen>
                 </a>
             </p>
         </div>

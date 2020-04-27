@@ -3,7 +3,7 @@
         <p>Help support cdnjs</p>
         <p>
             You can <a :href="utm('https://github.com/cdnjs', 'banner')">contribute on
-                <GitHub class="icon" aria-hidden="true" /> GitHub</a> to help make cdnjs sustainable!
+            <GitHub class="icon" aria-hidden="true"></GitHub> GitHub</a> to help make cdnjs sustainable!
 
             Or, donate $5 to cdnjs via <a :href="utm('https://opencollective.com/cdnjs', 'banner')">
                 Open Collective</a>, <a :href="utm('https://www.patreon.com/cdnjs', 'banner')">Patreon</a>,

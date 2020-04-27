@@ -3,7 +3,7 @@
         <div>
             <a :href="utm('https://github.com/cdnjs', 'corner')">
                 <p>View on GitHub</p>
-                <GitHub class="icon" aria-hidden="true" />
+                <GitHub class="icon" aria-hidden="true"></GitHub>
             </a>
         </div>
     </aside>
