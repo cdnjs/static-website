@@ -168,6 +168,14 @@ export default {
             },
         },
     },
+    buildModules: [
+        [
+            '@nuxtjs/google-analytics',
+            {
+                id: 'UA-139601399-3',
+            },
+        ],
+    ],
     /*
     ** Use hooks to apply any optimizations to the final generated bundle
     */
