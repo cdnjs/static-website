@@ -167,6 +167,7 @@ export default {
                 removeComments: true, // Custom
             },
         },
+        publicPath: '/_/',
     },
     buildModules: [
         [

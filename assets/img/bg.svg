@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1920px" height="969px" viewBox="0 0 1920 969" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-    <title>background</title>
+    <title>bg</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="background">
-            <g id="Grid" stroke="#343535" stroke-width="4">
-                <polyline id="Path-2" points="91 163.25 263.421041 163.25 465.894976 163.25"></polyline>
-                <polyline id="Path-3" points="199.151312 163 199.151312 387 -3.15573612e-15 387"></polyline>
-                <polyline id="Path-4" points="75 388 75 511 259.5 511"></polyline>
-                <polyline id="Path-5" points="191.75 511 191.75 825 -3.56659147e-15 825"></polyline>
-                <path d="M123,661.5 L191.5,661.5" id="Path-6"></path>
-                <polyline id="Path-7" points="116 827 116 910 1790 910 1790 969"></polyline>
-                <path d="M1641.25,348 L1639,912" id="Path-9"></path>
-                <polyline id="Path-10" points="1769.5 315 1769.5 119 1920 119"></polyline>
-                <polyline id="Path-12" points="1734 345.5 1734 392 1865 392 1865 511 1920 511"></polyline>
-                <polyline id="Path-13" points="1865 405 1865 329.5 1920 329.5"></polyline>
-                <polyline id="Path-14" points="1664.5 288 1664.5 246 1485 246 1485 0"></polyline>
-                <path d="M1640.5,584 L1544,584" id="Path-15"></path>
-                <polyline id="Path-16" stroke-linecap="round" points="1666.5 463 1640.5 438 1612 463"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" transform="translate(1419.500000, 912.250000) scale(-1, 1) rotate(-90.000000) translate(-1419.500000, -912.250000) " points="1446.75 924.75 1420.75 899.75 1392.25 924.75"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" transform="translate(389.500000, 910.250000) scale(-1, 1) rotate(-90.000000) translate(-389.500000, -910.250000) " points="416.75 922.75 390.75 897.75 362.25 922.75"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" transform="translate(192.250000, 757.500000) rotate(180.000000) translate(-192.250000, -757.500000) " points="219.5 770 193.5 745 165 770"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" transform="translate(200.250000, 265.500000) rotate(180.000000) translate(-200.250000, -265.500000) " points="227.5 278 201.5 253 173 278"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" transform="translate(1809.500000, 388.250000) rotate(90.000000) translate(-1809.500000, -388.250000) " points="1836.75 400.75 1810.75 375.75 1782.25 400.75"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" points="1796.5 175 1770.5 150 1742 175"></polyline>
-                <polyline id="Path-16" stroke-linecap="round" points="1512.5 188 1486.5 163 1458 188"></polyline>
-                <path d="M920.5,913 L920.5,868.5" id="Path-17"></path>
-                <path d="M1638.5,736 L1733,736" id="Path-19"></path>
+        <g id="bg">
+            <g id="Grid">
+                <g id="Pre-cloud-tracks" transform="translate(0.000000, 163.000000)">
+                    <polyline id="Path" points="91 0 199.151312 0 200.25 224 75 225 75 348 191.5 348 191.5 662 116 662 116 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="465.894976 1.13686838e-13 199.151312 1.13686838e-13 200.25 224 75 225 75 348 191.5 348 191.5 662 116 662 116 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="0 224 75 225 75 348 191.5 348 191.5 662 116 662 116 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="259.5 348 191.5 348 191.5 662 116 662 116 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="123 498.5 191.5 498.5 191.5 662 116 662 116 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="0 662 116 662 116 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="920.5 705.5 920.5 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="1790 806 1790 747.25 1639 747.25 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="1733 573 1640.125 573 1641.25 185.5"></polyline>
+                    <polyline id="Path" points="1544 421 1640.125 421 1641.25 185.5"></polyline>
+                </g>
+                <g id="Post-cloud-tracks" transform="translate(1485.000000, 0.000000)">
+                    <polyline id="Path" points="179.5 271.859852 179.5 246 -4.26325641e-14 246 -4.26325641e-14 0"></polyline>
+                    <polyline id="Path" points="284.5 301.501293 284.5 119 435 119"></polyline>
+                    <polyline id="Path" points="249 348.5 249 392 380 392 380 329.5 435 329.5"></polyline>
+                    <polyline id="Path" points="249 348.5 249 392 380 392 380 511 435 511"></polyline>
+                </g>
+                <g id="Paths" transform="translate(-0.000000, 0.000000)" stroke="#343535" stroke-width="4">
+                    <polyline id="Path-2" points="91 163.25 263.421041 163.25 465.894976 163.25"></polyline>
+                    <polyline id="Path-3" points="199.151312 163 199.151312 387 0 387"></polyline>
+                    <polyline id="Path-4" points="75 388 75 511 259.5 511"></polyline>
+                    <polyline id="Path-5" points="191.75 511 191.75 825 0 825"></polyline>
+                    <path d="M123,661.5 L191.5,661.5" id="Path-6"></path>
+                    <polyline id="Path-7" points="116 827 116 910 1790 910 1790 969"></polyline>
+                    <path d="M1641.25,348 L1639,912" id="Path-9"></path>
+                    <polyline id="Path-10" points="1769.5 315 1769.5 119 1920 119"></polyline>
+                    <polyline id="Path-12" points="1734 345.5 1734 392 1865 392 1865 511 1920 511"></polyline>
+                    <polyline id="Path-13" points="1865 405 1865 329.5 1920 329.5"></polyline>
+                    <polyline id="Path-14" points="1664.5 288 1664.5 246 1485 246 1485 0"></polyline>
+                    <path d="M1640.5,584 L1544,584" id="Path-15"></path>
+                    <path d="M920.5,913 L920.5,868.5" id="Path-17"></path>
+                    <path d="M1638.5,736 L1733,736" id="Path-19"></path>
+                </g>
+                <g id="Arrows" transform="translate(165.000000, 150.000000)" stroke="#343535" stroke-linecap="round" stroke-width="4">
+                    <polyline id="Path-16" points="1501.5 313 1475.5 288 1447 313"></polyline>
+                    <polyline id="Path-16" transform="translate(1254.500000, 762.250000) scale(-1, 1) rotate(-90.000000) translate(-1254.500000, -762.250000) " points="1281.75 774.75 1255.75 749.75 1227.25 774.75"></polyline>
+                    <polyline id="Path-16" transform="translate(224.500000, 760.250000) scale(-1, 1) rotate(-90.000000) translate(-224.500000, -760.250000) " points="251.75 772.75 225.75 747.75 197.25 772.75"></polyline>
+                    <polyline id="Path-16" transform="translate(27.250000, 607.500000) rotate(180.000000) translate(-27.250000, -607.500000) " points="54.5 620 28.5 595 0 620"></polyline>
+                    <polyline id="Path-16" transform="translate(35.250000, 115.500000) rotate(180.000000) translate(-35.250000, -115.500000) " points="62.5 128 36.5 103 8 128"></polyline>
+                    <polyline id="Path-16" transform="translate(1644.500000, 238.250000) rotate(90.000000) translate(-1644.500000, -238.250000) " points="1671.75 250.75 1645.75 225.75 1617.25 250.75"></polyline>
+                    <polyline id="Path-16" points="1631.5 25 1605.5 0 1577 25"></polyline>
+                    <polyline id="Path-16" points="1347.5 38 1321.5 13 1293 38"></polyline>
+                </g>
             </g>
             <path d="M1626.64261,296.214779 C1612.20445,296.214779 1600.5,307.919225 1600.5,322.35739 C1600.5,336.795555 1612.20445,348.5 1626.64261,348.5 L1757.35739,348.5 C1771.79555,348.5 1783.5,336.795555 1783.5,322.35739 C1783.5,307.919225 1771.79555,296.214779 1757.35739,296.214779 L1754.8726,296.214779 L1754.82256,293.765852 C1754.41983,274.056525 1745.15531,261.751876 1726.66629,256.332439 C1708.20006,250.919685 1692.26068,257.486577 1678.40365,276.414729 L1677.07974,278.223141 L1675.13798,277.10391 C1663.43445,270.357981 1653.48951,269.238093 1645.07338,273.513248 C1636.4999,277.868335 1631.28409,284.712455 1629.29425,294.22657 L1628.87843,296.214779 L1626.64261,296.214779 Z" id="Cloud" stroke="#343535" stroke-width="5" fill="#D9643A" fill-rule="nonzero"></path>
             <g id="Icons" transform="translate(56.000000, 110.000000)" fill="#343535" fill-rule="nonzero">

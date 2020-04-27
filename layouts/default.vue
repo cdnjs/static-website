@@ -1,6 +1,7 @@
 <template>
     <div id="__app">
         <main :class="classes">
+            <AnimatedBackground v-if="showBg"></AnimatedBackground>
             <Nav>
                 <transition name="search" type="out-in">
                     <InlineSearch v-if="showSearch"></InlineSearch>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+    import AnimatedBackground from '../components/animated_background';
     import Nav from '../components/nav';
     import InlineSearch from '../components/inline_search';
     import Banner from '../components/banner';
@@ -27,6 +29,7 @@
     export default {
         name: 'App',
         components: {
+            AnimatedBackground,
             Nav,
             InlineSearch,
             Banner,
@@ -36,8 +39,14 @@
         data () {
             return {
                 classes: [],
-                showSearch: true,
+                showSearch: false,
+                showBg: false,
             };
+        },
+        watch: {
+            classes () {
+                this.$data.showBg = this.$data.classes.includes('landing');
+            },
         },
         created () {
             // Client-side only, trim trailing slashes
