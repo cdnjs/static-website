@@ -56,7 +56,7 @@
                         legal policy has to be at the forefront of our mind.
                     </p>
                     <p>
-                        As Cloudflare provides the core cdnjs service, please take a read of
+                        As Cloudflare provides the core cdnjs service, please have a read of
                         <a :href="utm('https://www.cloudflare.com/privacypolicy/', 'about')">
                             their privacy policy</a>.
                     </p>
@@ -66,8 +66,15 @@
                     <h2>Members</h2>
                     <div class="member-blocks">
                         <div v-for="member in members" class="member">
-                            <a :href="utm(`https://github.com/${member.github}`, 'about')">
-                                <img :src="require(`../assets/img/members/${member.image}`)" :alt="member.github" />
+                            <a :href="utm(`https://github.com/${member.github}`, 'about')"
+                               :aria-label="`${member.github} on GitHub`"
+                               class="avatar"
+                            >
+                                <img v-if="member.image"
+                                     :src="require(`../assets/img/members/${member.image}`)"
+                                     :alt="member.github"
+                                />
+                                <GitHub v-else class="icon" aria-hidden="true"></GitHub>
                             </a>
                             <div class="info">
                                 <p class="name">
@@ -77,15 +84,19 @@
                                     {{ member.role }}
                                     <a v-if="member.twitter"
                                        :href="utm(`https://twitter.com/${member.twitter}`, 'about')"
+                                       :aria-label="`${member.twitter} on Twitter`"
                                     >
-                                        <i class="fab fa-twitter"></i>
+                                        <Twitter class="icon" aria-hidden="true"></Twitter>
                                     </a>
                                 </p>
                             </div>
                         </div>
                         <div class="member you">
-                            <a :href="utm('https://github.com/cdnjs', 'about')">
-                                <i class="fab fa-github"></i>
+                            <a :href="utm('https://github.com/cdnjs', 'about')"
+                               aria-label="cdnjs GitHub"
+                               class="avatar"
+                            >
+                                <GitHub class="icon" aria-hidden="true"></GitHub>
                             </a>
                             <div class="info">
                                 <p class="name">
@@ -129,6 +140,8 @@
 </template>
 
 <script>
+    import GitHub from '@fortawesome/fontawesome-free/svgs/brands/github.svg?inline';
+    import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
     import Breadcrumbs from '../components/breadcrumbs';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
@@ -150,6 +163,8 @@
             return setMeta(meta, this);
         },
         components: {
+            GitHub,
+            Twitter,
             Breadcrumbs,
         },
         data () {

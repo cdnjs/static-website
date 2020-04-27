@@ -46,27 +46,28 @@ main {
                   flex-basis: 100%;
                 }
 
-                &.you {
-                  a {
-                    height: 78px;
-                    text-align: center;
-                    width: 78px;
-
-                    i {
-                      color: $white;
-                      font-size: 4rem;
-                    }
-                  }
-                }
-
                 a {
-                  display: inline-block;
-                  margin: 0 ($whitespace * .5) 0 0;
-
-                  img {
-                    border-radius: $radius / 2;
+                  &.avatar {
+                    align-items: center;
+                    display: inline-flex;
                     height: 78px;
+                    justify-content: center;
+                    margin: 0 ($whitespace * .5) 0 0;
                     width: 78px;
+
+                    img {
+                      border-radius: $radius / 2;
+                      height: 100%;
+                      object-fit: contain;
+                      width: 100%;
+                    }
+
+                    svg {
+                      color: $white;
+                      height: 90%;
+                      object-fit: contain;
+                      width: 90%;
+                    }
                   }
                 }
 
