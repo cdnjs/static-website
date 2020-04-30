@@ -30,7 +30,7 @@
                         <span class="url">{{ asset.url }}</span>
                         <LibraryAssetButtons :asset="asset">
                             <template slot="before">
-                                <span v-if="!isWhitelisted(asset.type)"
+                                <span v-if="!asset.whitelisted"
                                       @mouseenter.raw="tooltipShow"
                                       @mouseleave.raw="tooltipHide"
                                       data-tlite="This file type is not whitelisted on the CDN and will not be available."
@@ -65,7 +65,6 @@
     import { getAssets } from '../../../util/get_asset';
     import setMeta from '../../../util/set_meta';
     import breadcrumbs from '../../../util/breadcrumbs';
-    import { isWhitelisted, category } from '../../../util/file_type';
     import Breadcrumbs from '../../../components/breadcrumbs';
     import LibraryHero from '../../../components/library_hero';
     import LibraryAssetButtons from '../../../components/library_asset_buttons';
@@ -199,13 +198,12 @@
         },
         methods: {
             formatUnits,
-            isWhitelisted,
             hideAsset (asset) {
                 if (asset.hidden && !this.$data.showHidden) {
                     return true;
                 }
                 if (this.$data.category !== 'All') {
-                    return category(asset.type) !== this.$data.category;
+                    return asset.category !== this.$data.category;
                 }
                 return false;
             },

@@ -1,4 +1,5 @@
 import routes from './util/build/routes';
+import whitelist from './util/build/whitelist';
 import staticFiles from './util/build/static';
 import images from './util/build/images';
 import fonts from './util/build/fonts';
@@ -182,6 +183,9 @@ export default {
     */
     hooks: {
         build: {
+            async before (builder) {
+                await whitelist(builder);
+            },
             async done (builder) {
                 await staticFiles(builder);
                 await images(builder);

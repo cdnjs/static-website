@@ -1,6 +1,6 @@
 import firstBy from 'thenby';
 import globToRegExp from 'glob-to-regexp';
-import { category } from './file_type';
+import fileType from './file_type';
 import getVersion from './get_version';
 
 const sriAttr = (asset) => {
@@ -34,13 +34,16 @@ const codeTitle = (asset) => {
     }
 };
 
-export const getAsset = (library, version, file, sri) => {
+export const getAsset = (library, version, file, sri, whitelisted) => {
+    const ext = file.split('.').reverse()[0];
     const asset = {
         library,
         version,
         file,
         sri,
-        type: file.split('.').reverse()[0],
+        type: ext,
+        category: fileType(ext),
+        whitelisted,
         url: `https://cdnjs.cloudflare.com/ajax/libs/${library}/${version}/${file}`,
     };
     asset.code = code(asset);
@@ -53,19 +56,21 @@ const processAssets = (data, rawAssets) => {
     const categories = new Set();
     categories.add('All');
 
+    // Convert them to asset objects
+    const assetObjects = rawAssets.rawFiles.map(asset => getAsset(
+        data.library.name,
+        data.version,
+        asset,
+        rawAssets.sri && asset in rawAssets.sri ? rawAssets.sri[asset] : null,
+        rawAssets.files.includes(asset),
+    ));
+
     // Convert them to asset objects and sort them
-    const sortedAssets = rawAssets.files
-        .map(asset => getAsset(
-            data.library.name,
-            data.version,
-            asset,
-            rawAssets.sri && asset in rawAssets.sri ? rawAssets.sri[asset] : null,
-        ))
-        .sort(
-            firstBy(v1 => v1.file === data.library.filename, -1)
-                .thenBy((v1, v2) => v1.file.split('/').length - v2.file.split('/').length)
-                .thenBy('file'),
-        );
+    const sortedAssets = assetObjects.sort(
+        firstBy(v1 => v1.file === data.library.filename, -1)
+            .thenBy((v1, v2) => v1.file.split('/').length - v2.file.split('/').length)
+            .thenBy('file'),
+    );
 
     // Determine if we have any minified files
     const minFileRe = globToRegExp('*.min.*');
@@ -86,7 +91,7 @@ const processAssets = (data, rawAssets) => {
         }
 
         // Generate the categories whilst we're here
-        const cat = category(asset.type);
+        const cat = asset.category;
         categories.add(cat);
 
         // Done!
