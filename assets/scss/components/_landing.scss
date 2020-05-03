@@ -12,17 +12,21 @@ main {
     }
 
     section {
+      $section-width: 1200px;
+
       align-items: flex-start;
-      max-width: 932px;
+      justify-content: center;
+      max-width: $section-width;
       padding: $whitespace;
 
       h1 {
-        @include font-regular;
+        @include font-medium;
 
         color: $light;
-        font-size: 48px;
-        letter-spacing: .41px;
-        margin: 0 0 ($whitespace * 2);
+        font-size: 38px;
+        letter-spacing: .5px;
+        margin: 0 0 ($whitespace * 1);
+        max-width: $section-width * .5;
 
         @media only screen and (max-width: 768px) {
           font-size: 32px;
@@ -34,13 +38,23 @@ main {
         @include font-light;
 
         color: $light;
-        font-size: 24px;
-        letter-spacing: .2px;
-        margin: 0 0 ($whitespace * 5);
+        font-size: 22px;
+        letter-spacing: .5px;
+        margin: 0 0 ($whitespace * 4);
+        max-width: $section-width * .5;
+        opacity: .75;
 
         @media only screen and (max-width: 768px) {
           font-size: 16px;
           margin: 0 0 ($whitespace * 2.5);
+        }
+      }
+
+      div {
+        .button {
+          +.button {
+            margin-left: $whitespace;
+          }
         }
       }
     }

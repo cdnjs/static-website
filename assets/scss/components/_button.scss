@@ -1,26 +1,38 @@
 main {
-  section {
-    .content {
-      a,
-      button {
-        &.button {
-          -webkit-appearance: button;
-          background: $primary;
-          border: 0;
-          border-radius: $radius;
+  .content {
+    a,
+    button {
+      &.button {
+        @include font-regular;
+
+        -webkit-appearance: button;
+        background: $primary;
+        border: 2px solid $primary;
+        border-radius: $radius;
+        color: $white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        padding: ($whitespace * .75) ($whitespace * 2);
+        text-decoration: none;
+        transition: background $transition-duration $transition-timing-function, border-color $transition-duration $transition-timing-function, color $transition-duration $transition-timing-function;
+
+        &:hover,
+        &:focus {
+          background: $primary-hover;
+          border-color: $primary-hover;
           color: $white;
-          cursor: pointer;
-          display: inline-block;
-          font-size: 18px;
-          padding: ($whitespace * .75) ($whitespace * 2.5);
           text-decoration: none;
-          transition: background $transition-duration $transition-timing-function;
+        }
+
+        &.is-outline {
+          background: transparent;
+          border: 2px solid $white;
 
           &:hover,
           &:focus {
-            background: $primary-hover;
-            color: $white;
-            text-decoration: none;
+            border-color: $text;
+            color: $text;
           }
         }
       }

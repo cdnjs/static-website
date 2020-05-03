@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="content">
         <h1>
             Simple. Fast. Reliable.
             <br />Content delivery at its finest.
@@ -10,7 +10,14 @@
             We make it faster and easier to load library files on your websites.
         </h2>
 
-        <InlineSearch :margin="true"></InlineSearch>
+        <div>
+            <nuxt-link :to="{ name: 'libraries' }" class="button">
+                Find a Library
+            </nuxt-link>
+            <nuxt-link :to="{ name: 'about' }" class="button is-outline">
+                Learn More
+            </nuxt-link>
+        </div>
 
         <Corner></Corner>
     </section>
@@ -18,7 +25,6 @@
 
 <script>
     import Corner from '../components/corner';
-    import InlineSearch from '../components/inline_search';
     import setMeta from '../util/set_meta';
 
     const meta = {
@@ -35,7 +41,6 @@
         },
         components: {
             Corner,
-            InlineSearch,
         },
     };
 </script>
