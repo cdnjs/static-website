@@ -93,12 +93,6 @@
                 }
             },
             checkInlineSearch () {
-                // Hide search on landing
-                if (this.$nuxt.context.route.name === 'index') {
-                    this.$data.showSearch = false;
-                    return;
-                }
-
                 // Hide search on libraries
                 if (this.$nuxt.context.route.name === 'libraries') {
                     this.$data.showSearch = false;

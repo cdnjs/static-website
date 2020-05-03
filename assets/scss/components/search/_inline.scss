@@ -3,6 +3,21 @@
   position: relative;
   transition: margin-bottom $transition-duration-large $transition-timing-function-large;
 
+  .ais-SearchBox {
+    .ais-SearchBox-form {
+      .ais-SearchBox-input {
+        font-size: 15px;
+        padding: ($whitespace / 2) ($whitespace) ($whitespace / 2) ($whitespace * 3.25);
+      }
+
+      .ais-SearchBox-submit,
+      .ais-SearchBox-reset {
+        left: $whitespace;
+        right: unset;
+      }
+    }
+  }
+
   .ais-StateResults {
     position: absolute;
     top: calc(100% + 4px);
@@ -26,6 +41,7 @@
           padding: $whitespace;
 
           a {
+            color: $primary;
             display: block;
             margin: 0;
             padding: 0;

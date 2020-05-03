@@ -1,8 +1,9 @@
 .status-indicator {
+  border: 1px solid $light;
   border-radius: 50%;
   display: inline-block;
   height: 10px;
-  margin: 0 0 0 5px;
+  margin: ($whitespace * .1875) 0 0 ($whitespace * .5);
   width: 10px;
 
   &.status-indicator-critical {

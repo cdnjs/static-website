@@ -6,8 +6,8 @@ main {
         @include font-regular;
 
         -webkit-appearance: button;
-        background: $primary;
-        border: 2px solid $primary;
+        background: $secondary;
+        border: 2px solid $secondary;
         border-radius: $radius;
         color: $white;
         cursor: pointer;
@@ -19,8 +19,8 @@ main {
 
         &:hover,
         &:focus {
-          background: $primary-hover;
-          border-color: $primary-hover;
+          background: $secondary-hover;
+          border-color: $secondary-hover;
           color: $white;
           text-decoration: none;
         }

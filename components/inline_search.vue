@@ -59,13 +59,13 @@
                 showHits: false,
                 hasFocus: false,
                 listenerRegistered: false,
-                placeholder: 'Search libraries on cdnjs...',
+                placeholder: 'Search for supported libraries',
                 searchClient,
             };
         },
         created () {
             this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
-                .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`; });
+                .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} supported libraries`; });
         },
         methods: {
             focused () {

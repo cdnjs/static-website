@@ -9,45 +9,23 @@
 
     align-items: center;
     height: auto;
+    margin: 0 ($whitespace * 3);
+    max-width: none;
     min-height: 75px;
     padding: $whitespace 0;
+    width: auto;
 
     .left {
       margin: 0 auto 0 0;
     }
 
     .right {
+      flex-grow: 1;
       margin: 0 0 0 auto;
     }
 
-    .middle {
-      flex-grow: 1;
-
-      .inline-search {
-        margin: 0 auto;
-        max-width: 600px;
-        padding: 0 $whitespace;
-
-        // sass-lint:disable class-name-format
-        .ais-SearchBox {
-          .ais-SearchBox-form {
-            .ais-SearchBox-input {
-              height: $whitespace * 2.5;
-              padding: ($whitespace * .25) ($whitespace * 3.25) ($whitespace * .25) ($whitespace);
-            }
-          }
-        }
-
-        .ais-StateResults {
-          width: calc(100% - #{$whitespace * 2});
-        }
-        // sass-lint:enable class-name-format
-      }
-    }
-
     .left,
-    .right,
-    .middle {
+    .right {
       @include flex-row;
       align-content: center;
 
@@ -56,39 +34,79 @@
       }
     }
 
-    .left,
-    .right {
-      a {
-        @include font-regular;
+    .inline-search {
+      margin: 0 0 0 auto;
+      max-width: 450px;
+      padding: 0 $whitespace;
 
-        align-items: center;
-        color: $light;
-        display: flex;
-        font-size: 20px;
-        justify-content: center;
-        margin: ($whitespace * .25) $whitespace;
-        text-decoration: none;
-        transition: color $transition-duration $transition-timing-function;
+      // sass-lint:disable class-name-format
+      .ais-SearchBox {
+        .ais-SearchBox-form {
+          .ais-SearchBox-input {
+            height: $whitespace * 2.5;
+            padding: ($whitespace * .25) ($whitespace) ($whitespace * .25) ($whitespace * 3.25);
+          }
 
-        &:hover,
-        &:focus {
-          color: $alt;
+          .ais-SearchBox-submit,
+          .ais-SearchBox-reset {
+            height: $whitespace * 1.25;
+            width: $whitespace * 1.25;
 
-          i {
-            color: $light;
+            .ais-SearchBox-submitIcon,
+            .ais-SearchBox-resetIcon {
+              height: $whitespace * 1.25;
+              width: $whitespace * 1.25;
+            }
           }
         }
+      }
+
+      .ais-StateResults {
+        width: calc(100% - #{$whitespace * 2});
+
+        .ais-Hits {
+          ul {
+            li {
+              a {
+                font-size: 22px;
+              }
+            }
+          }
+        }
+      }
+      // sass-lint:enable class-name-format
+    }
+
+    a {
+      @include font-regular;
+
+      align-items: center;
+      color: $light;
+      display: flex;
+      font-size: 20px;
+      justify-content: center;
+      margin: ($whitespace * .25) $whitespace;
+      text-decoration: none;
+      transition: color $transition-duration $transition-timing-function;
+
+      &:hover,
+      &:focus {
+        color: $alt;
 
         i {
-          color: $alt;
-          font-size: 26px;
-          margin-top: 2px;
-          transition: color $transition-duration $transition-timing-function;
+          color: $light;
         }
+      }
 
-        img {
-          height: $whitespace * 2.25;
-        }
+      i {
+        color: $alt;
+        font-size: 26px;
+        margin-top: 2px;
+        transition: color $transition-duration $transition-timing-function;
+      }
+
+      img {
+        height: $whitespace * 2.25;
       }
     }
   }
