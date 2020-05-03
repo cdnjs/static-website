@@ -1,0 +1,28 @@
+section {
+  &.sponsors {
+    background: $header;
+
+    .content {
+      align-items: center;
+
+      h3 {
+        color: $alt;
+        font-size: 20px;
+        margin: ($whitespace * .5) 0 ($whitespace * 2.5);
+      }
+
+      .images {
+        @include flex-row;
+        justify-content: space-evenly;
+        margin: 0 0 $whitespace;
+        width: 100%;
+
+        img {
+          filter: contrast(.25) brightness(1.5) contrast(.5) grayscale(1);
+          opacity: .75;
+          width: 12%;
+        }
+      }
+    }
+  }
+}

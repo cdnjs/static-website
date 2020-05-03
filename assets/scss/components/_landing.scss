@@ -1,59 +1,64 @@
-main {
+section {
   &.landing {
     background-attachment: scroll;
     background-image: url("../../assets/img/bg.svg");
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    z-index: 0;
 
     @media only screen and (max-width: 768px) {
       background-image: url("../../assets/img/mobile.svg");
       background-position: left top;
     }
 
-    section {
-      $section-width: 1200px;
+    div {
+      &.content {
+        $section-width: 1200px;
 
-      align-items: flex-start;
-      justify-content: center;
-      max-width: $section-width;
-      padding: $whitespace;
+        align-items: flex-start;
+        height: calc(100vh - #{$whitespace * 4.75});
+        justify-content: center;
+        max-width: $section-width;
+        padding: $whitespace;
 
-      h1 {
-        @include font-medium;
+        h1 {
+          @include font-medium;
 
-        color: $light;
-        font-size: 38px;
-        letter-spacing: .5px;
-        margin: 0 0 ($whitespace * 1);
-        max-width: $section-width * .5;
+          color: $light;
+          font-size: 38px;
+          letter-spacing: .5px;
+          margin: 0 0 ($whitespace * 1);
+          max-width: $section-width * .5;
 
-        @media only screen and (max-width: 768px) {
-          font-size: 32px;
-          margin: 0 0 $whitespace;
+          @media only screen and (max-width: 768px) {
+            font-size: 32px;
+            margin: 0 0 $whitespace;
+          }
         }
-      }
 
-      h2 {
-        @include font-light;
+        h2 {
+          @include font-light;
 
-        color: $light;
-        font-size: 22px;
-        letter-spacing: .5px;
-        margin: 0 0 ($whitespace * 4);
-        max-width: $section-width * .5;
-        opacity: .75;
+          color: $light;
+          font-size: 22px;
+          letter-spacing: .5px;
+          margin: 0 0 ($whitespace * 4);
+          max-width: $section-width * .5;
+          opacity: .75;
 
-        @media only screen and (max-width: 768px) {
-          font-size: 16px;
-          margin: 0 0 ($whitespace * 2.5);
+          @media only screen and (max-width: 768px) {
+            font-size: 16px;
+            margin: 0 0 ($whitespace * 2.5);
+          }
         }
-      }
 
-      div {
-        .button {
-          +.button {
-            margin-left: $whitespace;
+        div {
+          .button {
+            + .button {
+              margin-left: $whitespace;
+            }
           }
         }
       }
