@@ -30,13 +30,6 @@
                             We're on GitHub
                         </a>
                     </p>
-                    <p>
-                        <small>
-                            <sup>*</sup> 985,000,000 websites using cdnjs is based on a 1% sample of 9,859,171 unique
-                            subdomains that made requests (based on the Referer header) to
-                            cdnjs.cloudflare.com during February 2020.
-                        </small>
-                    </p>
                 </div>
 
                 <div class="contribute-legal">

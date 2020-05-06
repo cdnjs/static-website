@@ -6,9 +6,8 @@
         </h1>
 
         <h2>
-            cdnjs is a web CDN service, trusted by over 985,000,000
-            websites<sup><nuxt-link :to="{ name: 'about' }">*</nuxt-link></sup>,
-            working to make it faster and easier to load library files to your websites.
+            cdnjs is a free and open-source web CDN service trusted by over 10% of websites.
+            We make it faster and easier to load library files on your websites.
         </h2>
 
         <InlineSearch :margin="true"></InlineSearch>
