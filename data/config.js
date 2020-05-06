@@ -1,1 +1,1 @@
-export const baseApi = 'https://cdnjs-api-server.speedcf.com';
+export const baseApi = 'https://api.cdnjs.com';
