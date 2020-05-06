@@ -18,7 +18,7 @@ export default [
         role: 'Active Contributor',
         twitter: 'drewfreyling',
         github: 'drewfreyling',
-        image: '',
+        image: 'drewfreyling.jpg',
     },
     {
         name: 'Alex',
