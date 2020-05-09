@@ -13,9 +13,11 @@
     "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt build",
     "start": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ node server/app.js",
     "test": "npm run test:eslint && npm run test:scss",
+    "test:fix": "npm run test:eslint:fix && npm run test:scss:fix",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
     "test:eslint:fix": "npm run test:eslint -- --fix",
-    "test:scss": "sass-lint '!(node_modules|.nuxt|dist)/**/*.scss' --verbose --no-exit --config .sasslintrc"
+    "test:scss": "sass-lint '!(node_modules|.nuxt|dist)/**/*.scss' --verbose --no-exit --config .sasslintrc",
+    "test:scss:fix": "sass-lint-auto-fix '!(node_modules|.nuxt|dist)/**/*.scss'"
   },
   "repository": {
     "type": "git",
@@ -73,6 +75,7 @@
     "node-sass": "^4.14.0",
     "nodemon": "^2.0.3",
     "sass-lint": "^1.13.1",
+    "sass-lint-auto-fix": "^0.21.0",
     "sass-loader": "^8.0.2",
     "vue-eslint-parser": "^7.0.0"
   }

@@ -23,7 +23,7 @@ export default {
             { hid: 'title', name: 'title', content: 'cdnjs' },
             { hid: 'description', name: 'description', content: 'cdnjs' },
 
-            { name: 'twitter:card', content: 'large_summary_image' },
+            { name: 'twitter:card', content: 'summary_large_image' },
             { name: 'twitter:site', content: '@cdnjs' },
             { name: 'twitter:creator', content: '@MattIPv4' },
             { hid: 'twitter:title', name: 'twitter:title', content: 'cdnjs' },
