@@ -24,6 +24,7 @@
         </header>
         <div class="content">
             <APIBrowse></APIBrowse>
+            <APILibrary></APILibrary>
         </div>
     </section>
 </template>
@@ -31,6 +32,7 @@
 <script>
     import Breadcrumbs from '../components/breadcrumbs';
     import APIBrowse from '../components/api/browse';
+    import APILibrary from '../components/api/library';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
 
@@ -50,6 +52,7 @@
         components: {
             Breadcrumbs,
             APIBrowse,
+            APILibrary,
         },
         async asyncData (data) {
             return {

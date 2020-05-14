@@ -212,7 +212,7 @@
                             'string',
                         ],
                         desc: [
-                            'The description of the library if it has been provided in the cdnjs package.json file.',
+                            'The description of the library if it has been provided in the cdnjs package JSON file.',
                         ],
                     },
                     {
@@ -229,10 +229,11 @@
                         prop: 'results[].keywords',
                         type: [
                             'optional',
+                            'nullable',
                             'array<string>',
                         ],
                         desc: [
-                            'An array of keywords provided in the cdnjs package.json for the library.',
+                            'An array of keywords provided in the cdnjs package JSON for the library.',
                         ],
                     },
                     {
@@ -252,17 +253,18 @@
                             'string',
                         ],
                         desc: [
-                            'The file type (extension) for the default file defined for the library in the cdnjs package.json.',
+                            'The file type (extension) for the default file defined for the library in the cdnjs package JSON.',
                         ],
                     },
                     {
                         prop: 'results[].github',
                         type: [
                             'optional',
+                            'nullable',
                             'object',
                         ],
                         desc: [
-                            'Some meta data from the relevant GitHub repository for the library, if available and configured in the cdnjs package.json for the library.',
+                            'Some meta data from the relevant GitHub repository for the library, if available and configured in the cdnjs package JSON for the library.',
                         ],
                     },
                     {
@@ -343,13 +345,14 @@
                             'string',
                         ],
                         desc: [
-                            'A link to the homepage of the package, if one is defined in the cdnjs package.json file. Normally, this is either the package repository or the package website.',
+                            'A link to the homepage of the package, if one is defined in the cdnjs package JSON file. Normally, this is either the package repository or the package website.',
                         ],
                     },
                     {
                         prop: 'results[].repository',
                         type: [
                             'optional',
+                            'nullable',
                             'object',
                         ],
                         desc: [
@@ -373,7 +376,7 @@
                             'string',
                         ],
                         desc: [
-                            'The url for repository associated with the library, if provided in the library\'s cdnjs package.json file.',
+                            'The url for repository associated with the library, if provided in the library\'s cdnjs package JSON file.',
                         ],
                     },
                     {
@@ -383,7 +386,7 @@
                             'string',
                         ],
                         desc: [
-                            'The attributed author for the library, as defined in the cdnjs package.json file for this library.',
+                            'The attributed author for the library, as defined in the cdnjs package JSON file for this library.',
                         ],
                     },
                     {
