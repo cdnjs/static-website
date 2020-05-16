@@ -5,7 +5,7 @@
         </h2>
         <div class="doc">
             <p>
-                The <code>libraries/:library/:version</code> endpoint returns a JSON object with details specific to a
+                The <code>/libraries/:library/:version</code> endpoint returns a JSON object with details specific to a
                 requested version of a library on cdnjs.
             </p>
             <p>

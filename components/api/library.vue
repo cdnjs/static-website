@@ -5,7 +5,7 @@
         </h2>
         <div class="doc">
             <p>
-                The <code>libraries/:library</code> endpoint allows for data on a specific library to be
+                The <code>/libraries/:library</code> endpoint allows for data on a specific library to be
                 requested and will return a JSON object with all library data properties by default.
             </p>
             <p>

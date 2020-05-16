@@ -22,6 +22,9 @@
                     <li>
                         <a href="#version">Getting a specific version for a library on cdnjs</a>
                     </li>
+                    <li>
+                        <a href="#tutorials">Listing all tutorials for a library on cdnjs</a>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -29,6 +32,7 @@
             <APIBrowse></APIBrowse>
             <APILibrary></APILibrary>
             <APIVersion></APIVersion>
+            <APITutorials></APITutorials>
         </div>
     </section>
 </template>
@@ -38,6 +42,7 @@
     import APIBrowse from '../components/api/browse';
     import APILibrary from '../components/api/library';
     import APIVersion from '../components/api/version';
+    import APITutorials from '../components/api/tutorials';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
 
@@ -59,6 +64,7 @@
             APIBrowse,
             APILibrary,
             APIVersion,
+            APITutorials,
         },
         async asyncData (data) {
             return {
