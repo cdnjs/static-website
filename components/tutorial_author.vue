@@ -38,8 +38,8 @@
 <script>
     import EnvelopeOpen from '@fortawesome/fontawesome-free/svgs/regular/envelope-open.svg?inline';
     import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
-    import utm from '../util/utm';
     import VueGravatar from 'vue-gravatar';
+    import utm from '../util/utm';
 
     export default {
         name: 'TutorialAuthor',

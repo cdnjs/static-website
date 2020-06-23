@@ -9,6 +9,7 @@
             <div ref="tutorial" v-html="rendered" class="tutorial"></div>
         </div>
         <TutorialAuthor :library="libraryName" :tutorial="tutorial"></TutorialAuthor>
+        <!-- TODO: Callout to other tutorials for library -->
         <JSONLDTutorial :library="libraryName" :tutorial="tutorial" :tutorial-name="tutorialName"></JSONLDTutorial>
     </section>
 </template>
@@ -32,7 +33,7 @@
     import breadcrumbs from '../../../../util/breadcrumbs';
     import Breadcrumbs from '../../../../components/breadcrumbs';
     import TutorialHero from '../../../../components/tutorial_hero';
-    import TutorialAuthor from "../../../../components/tutorial_author";
+    import TutorialAuthor from '../../../../components/tutorial_author';
     import JSONLDTutorial from '../../../../components/json-ld/tutorial';
 
     const tutorialPageName = data => (data.tutorial && data.tutorial.name) || data.tutorialName;
