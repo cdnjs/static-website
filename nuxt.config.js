@@ -193,4 +193,10 @@ export default {
             },
         },
     },
+    /*
+    ** Disable graceful 404 handling by serve-placeholder, which breaks libraries with exts in their names (animate.css)
+    */
+    render: {
+        fallback: false,
+    },
 };
