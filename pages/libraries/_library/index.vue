@@ -47,7 +47,9 @@
                             </li>
                         </ul>
                     </template>
-                    <p v-else class="assets-error">{{ assetsMessage }}</p>
+                    <p v-else class="assets-error">
+                        {{ assetsMessage }}
+                    </p>
                 </transition>
             </div>
             <div class="column-half">

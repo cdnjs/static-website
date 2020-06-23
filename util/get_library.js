@@ -14,14 +14,12 @@ const apiFieldsQuery = fields => `?fields=${Array.from(fields).map(f => encodeUR
 
 const api = async (lib, limit) => {
     const fields = apiFields();
-    let data;
 
     // Max resp size: .25 * 1024 * 1024 bytes [.25mb]
     const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
         { size: limit ? 0.25 * 1024 * 1024 : undefined });
-    data = await res.json();
 
-    return data;
+    return res.json();
 };
 
 const algolia = async (name) => {
