@@ -123,6 +123,14 @@ main {
           }
         }
       }
+
+      .assets-error {
+        @include font-regular;
+
+        color: $light;
+        font-size: 18px;
+        margin: ($whitespace * 1.5) 0;
+      }
     }
   }
 }

@@ -10,46 +10,46 @@
         <div v-if="!ready" class="content">
         </div>
         <div v-else class="content row has-columns">
-            <transition name="assets" type="out-in">
-                <div v-if="assetsReady" class="column-half">
-                    <div class="row filter">
-                        <p>Version</p>
-                        <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
-                        <p>Asset Type</p>
-                        <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
-                    </div>
-                    <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
-                        {{ showHidden ? 'All files are shown, click to hide non-essential files'
-                            : 'Some files are hidden, click to show all files' }}
-                    </a>
-                    <ul class="assets">
-                        <li v-for="asset of assets"
-                            :key="asset.url"
-                            :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
-                            :style="{ display: hideAsset(asset) ? 'none' : undefined }"
-                        >
-                            <span class="url">{{ asset.url }}</span>
-                            <LibraryAssetButtons :asset="asset">
-                                <template slot="before">
-                                    <span v-if="!asset.whitelisted"
-                                          @mouseenter.raw="tooltipShow"
-                                          @mouseleave.raw="tooltipHide"
-                                          data-tlite="This file type is not whitelisted on the CDN and will not be available."
-                                    >
-                                        <ExclamationTriangle
-                                            class="icon"
-                                            aria-label="This file type is not whitelisted on the CDN and will not be available."
-                                        />
-                                    </span>
-                                </template>
-                            </LibraryAssetButtons>
-                        </li>
-                    </ul>
+            <div class="column-half">
+                <div class="row filter">
+                    <p>Version</p>
+                    <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
+                    <p>Asset Type</p>
+                    <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
                 </div>
-                <div v-else class="column-half">
-                    <p>Loading assets for {{ libraryName }}/{{ version }}...</p>
-                </div>
-            </transition>
+                <transition name="assets" type="out-in">
+                    <template v-if="!assetsMessage">
+                        <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
+                            {{ showHidden ? 'All files are shown, click to hide non-essential files'
+                                : 'Some files are hidden, click to show all files' }}
+                        </a>
+                        <ul class="assets">
+                            <li v-for="asset of assets"
+                                :key="asset.url"
+                                :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
+                                :style="{ display: hideAsset(asset) ? 'none' : undefined }"
+                            >
+                                <span class="url">{{ asset.url }}</span>
+                                <LibraryAssetButtons :asset="asset">
+                                    <template slot="before">
+                                        <span v-if="!asset.whitelisted"
+                                              @mouseenter.raw="tooltipShow"
+                                              @mouseleave.raw="tooltipHide"
+                                              data-tlite="This file type is not whitelisted on the CDN and will not be available."
+                                        >
+                                            <ExclamationTriangle
+                                                class="icon"
+                                                aria-label="This file type is not whitelisted on the CDN and will not be available."
+                                            />
+                                        </span>
+                                    </template>
+                                </LibraryAssetButtons>
+                            </li>
+                        </ul>
+                    </template>
+                    <p v-else class="assets-error">{{ assetsMessage }}</p>
+                </transition>
+            </div>
             <div class="column-half">
                 <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
             </div>
@@ -90,13 +90,17 @@
     };
 
     const getAssetsData = async (data, limit = false) => {
-        const { assets, hasHidden, categories } = await getAssets(data, limit);
-        data.assets = assets;
-        data.hasHidden = hasHidden;
-        data.categories = categories;
-        data.assetsReady = true;
-        // TODO: Handle showing an error message if version couldn't be loaded
-        //       This shouldn't show if error is due to limit being true, as we'll fetch again client-side
+        try {
+            const { assets, hasHidden, categories } = await getAssets(data, limit);
+            data.assets = assets;
+            data.hasHidden = hasHidden;
+            data.categories = categories;
+            data.assetsMessage = '';
+        } catch (_) {
+            if (!limit) {
+                data.assetsMessage = `Failed to load assets for ${data.libraryName}/${data.version}`;
+            }
+        }
     };
 
     export default {
@@ -126,7 +130,7 @@
         watch: {
             async version () {
                 // Update the asset list
-                this.$data.assetsReady = false;
+                this.$data.assetsMessage = `Loading assets for ${this.$data.libraryName}/${this.$data.version}...`;
                 await getAssetsData(this.$data);
 
                 // Update the URL without navigating
@@ -147,7 +151,7 @@
                 libraryName: params.library,
                 library: null,
                 ready: false,
-                assetsReady: false,
+                assetsMessage: 'Loading...',
                 message: 'Loading...',
                 version: null,
                 category: 'All',
