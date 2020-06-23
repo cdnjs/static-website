@@ -7,7 +7,7 @@ const spdxLicenseIds = require('spdx-license-ids/index.json');
 const index = searchClient.initIndex('libraries');
 
 const apiFields = () => new Set([
-    'name', 'autoupdate', 'licenses', 'license', 'homepage', 'description', 'keywords', 'version', 'filename', 'assets', 'versions', 'tutorials',
+    'name', 'autoupdate', 'licenses', 'license', 'homepage', 'description', 'keywords', 'version', 'filename', 'versions', 'tutorials',
 ]);
 
 const apiFieldsQuery = fields => `?fields=${Array.from(fields).map(f => encodeURIComponent(f)).join(',')}`;
@@ -16,18 +16,10 @@ const api = async (lib, limit) => {
     const fields = apiFields();
     let data;
 
-    try {
-        // Try getting all fields, including assets (max resp size: .25 * 1024 * 1024 bytes [.25mb])
-        const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
-            { size: limit ? 0.25 * 1024 * 1024 : undefined });
-        data = await res.json();
-    } catch (e) {
-        // Try getting fields except assets, any error not caught now
-        fields.delete('assets');
-        console.info(`Failed to load assets for ${lib}, fetching without...`);
-        const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`);
-        data = await res.json();
-    }
+    // Max resp size: .25 * 1024 * 1024 bytes [.25mb]
+    const res = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib)}${apiFieldsQuery(fields)}`,
+        { size: limit ? 0.25 * 1024 * 1024 : undefined });
+    data = await res.json();
 
     return data;
 };

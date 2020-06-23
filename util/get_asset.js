@@ -117,6 +117,7 @@ export const getAssets = (data) => {
     }
 
     // If we already have assets, just return the data
+    // This shouldn't ever be used, but can be left in to avoid a call if we do happen to ever have assets
     if (data.library.assets && data.library.assets.length) {
         const rawAssets = data.library.assets.find(a => a.version === data.version);
         if (rawAssets) {

@@ -176,7 +176,7 @@
                 data.version = params.version && lib.versions.includes(params.version) ? params.version : lib.version;
 
                 if (lib.assets && lib.assets.length) {
-                    data.version = lib.versions.includes(data.version) ? data.version : lib.assets[0].version;
+                    data.version = lib.versions.includes(data.version) ? data.version : lib.versions[0];
                     const { assets, hasHidden, categories } = getAssets(data);
                     data.assets = assets;
                     data.hasHidden = hasHidden;
