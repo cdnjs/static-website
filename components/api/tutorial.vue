@@ -145,6 +145,16 @@
                         ],
                     },
                     {
+                        prop: 'created',
+                        type: [
+                            'string',
+                        ],
+                        desc: [
+                            'The timestamp of when the tutorial was first published, in ISO 8601 format.',
+                            'This is based on the first commit where the tutorial was added in cdnjs/tutorials.',
+                        ],
+                    },
+                    {
                         prop: 'name',
                         type: [
                             'string',

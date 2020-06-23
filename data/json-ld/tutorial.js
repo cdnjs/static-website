@@ -33,5 +33,6 @@ export default (base, tutorial, tutorialName, library) => ({
         name: 'cdnjs',
         url: base,
     },
-    datePublished: '2020-01-01', // FIXME: API needs this value!
+    dateModified: tutorial.modified,
+    datePublished: tutorial.created,
 });
