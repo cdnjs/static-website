@@ -34,5 +34,6 @@ export default (base, tutorial, tutorialName, library) => ({
         url: base,
     },
     dateModified: tutorial.modified,
-    datePublished: tutorial.created,
+    // FIXME: remove fallback once https://github.com/cdnjs/api-server/pull/23 merged
+    datePublished: tutorial.created || new Date(),
 });
