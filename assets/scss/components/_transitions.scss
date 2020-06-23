@@ -12,6 +12,7 @@
 
 @include opacity-vue-transition("page");
 @include opacity-vue-transition("search");
+@include opacity-vue-transition("assets");
 
 #__app { // sass-lint:disable-line no-ids
   main {

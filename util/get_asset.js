@@ -106,7 +106,7 @@ const processAssets = (data, rawAssets) => {
     };
 };
 
-export const getAssets = (data) => {
+export const getAssets = (data, limit = false) => {
     // If non-existent, return empty
     if (!data.library.versions.includes(data.version)) {
         return {
@@ -126,8 +126,8 @@ export const getAssets = (data) => {
     }
 
     // If we don't have assets, we need to load the version, so we need to return a Promise
-    return new Promise((resolve) => {
-        getVersion(data.library.name, data.version).then((version) => {
+    return new Promise((resolve, reject) => {
+        getVersion(data.library.name, data.version, limit).then((version) => {
             if (version.error) {
                 resolve({
                     assets: [],
@@ -136,6 +136,6 @@ export const getAssets = (data) => {
                 });
             }
             resolve(processAssets(data, version));
-        });
+        }).catch(e => reject(e));
     });
 };

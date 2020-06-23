@@ -10,41 +10,46 @@
         <div v-if="!ready" class="content">
         </div>
         <div v-else class="content row has-columns">
-            <div class="column-half">
-                <div class="row filter">
-                    <p>Version</p>
-                    <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
-                    <p>Asset Type</p>
-                    <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
+            <transition name="assets" type="out-in">
+                <div v-if="assetsReady" class="column-half">
+                    <div class="row filter">
+                        <p>Version</p>
+                        <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
+                        <p>Asset Type</p>
+                        <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
+                    </div>
+                    <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
+                        {{ showHidden ? 'All files are shown, click to hide non-essential files'
+                            : 'Some files are hidden, click to show all files' }}
+                    </a>
+                    <ul class="assets">
+                        <li v-for="asset of assets"
+                            :key="asset.url"
+                            :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
+                            :style="{ display: hideAsset(asset) ? 'none' : undefined }"
+                        >
+                            <span class="url">{{ asset.url }}</span>
+                            <LibraryAssetButtons :asset="asset">
+                                <template slot="before">
+                                    <span v-if="!asset.whitelisted"
+                                          @mouseenter.raw="tooltipShow"
+                                          @mouseleave.raw="tooltipHide"
+                                          data-tlite="This file type is not whitelisted on the CDN and will not be available."
+                                    >
+                                        <ExclamationTriangle
+                                            class="icon"
+                                            aria-label="This file type is not whitelisted on the CDN and will not be available."
+                                        />
+                                    </span>
+                                </template>
+                            </LibraryAssetButtons>
+                        </li>
+                    </ul>
                 </div>
-                <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
-                    {{ showHidden ? 'All files are shown, click to hide non-essential files'
-                        : 'Some files are hidden, click to show all files' }}
-                </a>
-                <ul class="assets">
-                    <li v-for="asset of assets"
-                        :key="asset.url"
-                        :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
-                        :style="{ display: hideAsset(asset) ? 'none' : undefined }"
-                    >
-                        <span class="url">{{ asset.url }}</span>
-                        <LibraryAssetButtons :asset="asset">
-                            <template slot="before">
-                                <span v-if="!asset.whitelisted"
-                                      @mouseenter.raw="tooltipShow"
-                                      @mouseleave.raw="tooltipHide"
-                                      data-tlite="This file type is not whitelisted on the CDN and will not be available."
-                                >
-                                    <ExclamationTriangle
-                                        class="icon"
-                                        aria-label="This file type is not whitelisted on the CDN and will not be available."
-                                    />
-                                </span>
-                            </template>
-                        </LibraryAssetButtons>
-                    </li>
-                </ul>
-            </div>
+                <div v-else class="column-half">
+                    <p>Loading assets for {{ libraryName }}/{{ version }}...</p>
+                </div>
+            </transition>
             <div class="column-half">
                 <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
             </div>
@@ -84,6 +89,16 @@
         classes: ['library'],
     };
 
+    const getAssetsData = async (data, limit = false) => {
+        const { assets, hasHidden, categories } = await getAssets(data, limit);
+        data.assets = assets;
+        data.hasHidden = hasHidden;
+        data.categories = categories;
+        data.assetsReady = true;
+        // TODO: Handle showing an error message if version couldn't be loaded
+        //       This shouldn't show if error is due to limit being true, as we'll fetch again client-side
+    };
+
     export default {
         name: 'Library',
         meta,
@@ -111,7 +126,8 @@
         watch: {
             async version () {
                 // Update the asset list
-                await this.getAssets();
+                this.$data.assetsReady = false;
+                await getAssetsData(this.$data);
 
                 // Update the URL without navigating
                 const newRoute = this.$router.resolve({
@@ -122,7 +138,6 @@
                 window.history.pushState({}, '', newRoute.href);
 
                 // Update the crumbs
-                // this.$route = newRoute.route;
                 this.$data.params = newRoute.route.params;
                 this.$data.crumbs = await breadcrumbs(newRoute.route, this.$router, this.$data);
             },
@@ -132,6 +147,7 @@
                 libraryName: params.library,
                 library: null,
                 ready: false,
+                assetsReady: false,
                 message: 'Loading...',
                 version: null,
                 category: 'All',
@@ -174,13 +190,13 @@
                 data.library = lib;
 
                 data.version = params.version && lib.versions.includes(params.version) ? params.version : lib.version;
+                data.version = lib.versions.includes(data.version) ? data.version : lib.versions[0];
 
-                if (lib.assets && lib.assets.length) {
-                    data.version = lib.versions.includes(data.version) ? data.version : lib.versions[0];
-                    const { assets, hasHidden, categories } = getAssets(data);
-                    data.assets = assets;
-                    data.hasHidden = hasHidden;
-                    data.categories = categories;
+                // Try loading in the assets for the requested version server-side, fail if too large
+                try {
+                    await getAssetsData(data, true);
+                } catch (_) {
+                    console.info(`Could not load assets for ${data.library.name}/${data.version}...`);
                 }
 
                 data.ready = true;
@@ -192,8 +208,8 @@
             return data;
         },
         async mounted () {
-            if (!this.$data.library.assets || !this.$data.library.assets.length) {
-                await this.getAssets();
+            if (!this.$data.assets || !this.$data.assets.length) {
+                await getAssetsData(this.$data);
             }
         },
         methods: {
@@ -206,13 +222,6 @@
                     return asset.category !== this.$data.category;
                 }
                 return false;
-            },
-            async getAssets () {
-                // Fetch assets for the version (we might not have them so it may be a promise)
-                const { assets, hasHidden, categories } = await getAssets(this.$data);
-                this.$data.assets = assets;
-                this.$data.hasHidden = hasHidden;
-                this.$data.categories = categories;
             },
             tooltipShow (evt) {
                 tlite.show(evt.target);
