@@ -2,6 +2,7 @@ main {
   &.libraries-library-tutorials-tutorial {
     .tutorial {
       color: $light;
+      max-width: 100%;
 
       h1,
       h2 {
