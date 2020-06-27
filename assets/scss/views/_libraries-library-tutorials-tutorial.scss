@@ -1,7 +1,6 @@
 main {
   &.libraries-library-tutorials-tutorial {
     .tutorial {
-      color: $light;
       max-width: 100%;
 
       h1,
@@ -44,6 +43,18 @@ main {
         @include primary-link;
 
         text-decoration: underline;
+      }
+    }
+
+    .callout {
+      align-items: center;
+
+      h4 {
+        margin: $whitespace 0;
+      }
+
+      .button {
+        margin: $whitespace;
       }
     }
   }

@@ -9,7 +9,17 @@
             <div ref="tutorial" v-html="rendered" class="tutorial"></div>
         </div>
         <TutorialAuthor :library="libraryName" :tutorial="tutorial"></TutorialAuthor>
-        <!-- TODO: Callout to other tutorials for library -->
+        <div class="content row callout">
+            <h4>Looking for more {{ libraryName }} tutorials?</h4>
+            <nuxt-link :to="{
+                name: 'libraries-library-tutorials',
+                params: { library: libraryName }
+            }"
+                       class="button"
+            >
+                View all tutorials for {{ libraryName }}
+            </nuxt-link>
+        </div>
         <JSONLDTutorial :library="libraryName" :tutorial="tutorial" :tutorial-name="tutorialName"></JSONLDTutorial>
     </section>
 </template>
