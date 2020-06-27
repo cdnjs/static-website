@@ -18,12 +18,17 @@
                     <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
                 </div>
                 <transition name="assets" type="out-in">
+                    <p v-if="assetsMessage" class="assets-message">
+                        {{ assetsMessage }}
+                    </p>
+                </transition>
+                <transition-group name="assets" type="out-in">
                     <template v-if="!assetsMessage">
-                        <a @click="showHidden = !showHidden" v-if="hasHidden" class="button">
+                        <a @click="showHidden = !showHidden" v-if="hasHidden" class="button" key="hasHidden">
                             {{ showHidden ? 'All files are shown, click to hide non-essential files'
                                 : 'Some files are hidden, click to show all files' }}
                         </a>
-                        <ul class="assets">
+                        <ul class="assets" key="assets">
                             <li v-for="asset of assets"
                                 :key="asset.url"
                                 :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
@@ -47,10 +52,7 @@
                             </li>
                         </ul>
                     </template>
-                    <p v-else class="assets-error">
-                        {{ assetsMessage }}
-                    </p>
-                </transition>
+                </transition-group>
             </div>
             <div class="column-half">
                 <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
