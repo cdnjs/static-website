@@ -85,12 +85,12 @@
             version: {
                 immediate: true,
                 async handler () {
-                    this.vulns = await getVulns(this.$props.library, this.$props.version);
+                    this.$data.vulns = await getVulns(this.$props.library, this.$props.version).catch(() => {});
                 },
             },
         },
         async created () {
-            this.vulns = await getVulns(this.$props.library, this.$props.version);
+            this.$data.vulns = await getVulns(this.$props.library, this.$props.version).catch(() => {});
         },
         methods: {
             formatUnits,
