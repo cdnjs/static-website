@@ -5,7 +5,7 @@
             <div v-if="!ready" class="content library-hero">
                 <h1>{{ message }}</h1>
             </div>
-            <LibraryHero v-else :library="library"></LibraryHero>
+            <LibraryHero v-else :library="library" :version="version"></LibraryHero>
         </header>
         <div v-if="!ready" class="content">
         </div>
