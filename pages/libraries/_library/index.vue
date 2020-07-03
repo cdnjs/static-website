@@ -24,11 +24,11 @@
                 </transition>
                 <transition-group name="assets" type="out-in">
                     <template v-if="!assetsMessage">
-                        <a @click="showHidden = !showHidden" v-if="hasHidden" class="button" key="hasHidden">
+                        <a key="hasHidden" @click="showHidden = !showHidden" v-if="hasHidden" class="button">
                             {{ showHidden ? 'All files are shown, click to hide non-essential files'
                                 : 'Some files are hidden, click to show all files' }}
                         </a>
-                        <ul class="assets" key="assets">
+                        <ul key="assets" class="assets">
                             <li v-for="asset of assets"
                                 :key="asset.url"
                                 :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
