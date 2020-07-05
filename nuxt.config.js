@@ -1,8 +1,9 @@
-import routes from './util/build/routes';
+import { join } from 'path';
 import whitelist from './util/build/whitelist';
 import staticFiles from './util/build/static';
 import images from './util/build/images';
 import fonts from './util/build/fonts';
+import sitemap from './util/build/sitemap';
 
 export default {
     mode: 'universal',
@@ -94,48 +95,8 @@ export default {
     ** Load in modules that we're using in the app
     */
     modules: [
-        // FIXME: Sitemap seems to cause OOM on Heroku
-        //'@nuxtjs/sitemap',
         '@nuxtjs/svg',
     ],
-    /*
-    ** Configure the sitemap and let it know about all the dynamic routes
-    */
-    sitemap: {
-        gzip: true,
-        hostname: process.env.SITE_HOST || undefined,
-        cacheTime: 60 * 60 * 1000,
-        async routes() {
-            const urls = [
-                {
-                    url: '/',
-                    priority: 1,
-                },
-                {
-                    url: '/libraries',
-                    priority: 0.9,
-                },
-                {
-                    url: '/about',
-                    priority: 0.8,
-                },
-                {
-                    url: '/api',
-                    priority: 0.8,
-                },
-                {
-                    url: '/sponsor',
-                    priority: 0.7,
-                },
-            ];
-
-            // FIXME: This is awfully slow to load on demand
-            // Maybe instead of using this module we run a custom Express server and generate this in the background
-            urls.push(...(await routes()));
-
-            return urls;
-        },
-    },
     /*
     ** Configure the router to not use trailing slashes and to handle our custom routing
     */
@@ -190,6 +151,7 @@ export default {
                 await staticFiles(builder);
                 await images(builder);
                 await fonts(builder);
+                await sitemap(join(builder.nuxt.options.buildDir, 'dist', 'static'));
             },
         },
     },

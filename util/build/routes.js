@@ -54,7 +54,5 @@ export default async () => {
     }
 
     // Combine and sort
-    const cleaned = libs.filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
-    console.info(`Loaded ${cleaned.length.toLocaleString()} routes`);
-    return cleaned;
+    return libs.filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
 };
