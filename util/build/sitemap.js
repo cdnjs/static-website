@@ -35,10 +35,10 @@ const getUrls = async () => {
     return urls;
 };
 
-export default async base => {
+export default async (base) => {
     const sms = new SitemapAndIndexStream({
         limit: 10000,
-        getSitemapStream: i => {
+        getSitemapStream: (i) => {
             const sitemapStream = new SitemapStream({ hostname: process.env.SITE_HOST });
             const name = `sitemap-${i}.xml`;
 
@@ -62,6 +62,3 @@ export default async base => {
 
     consola.success('Generated sitemaps');
 };
-
-
-

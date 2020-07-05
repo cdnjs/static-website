@@ -1,6 +1,6 @@
 const path = require('path');
-const { Nuxt, loadNuxtConfig } = require('nuxt');
 const { readFile } = require('fs');
+const { Nuxt, loadNuxtConfig } = require('nuxt');
 
 const app = require('express')();
 const port = process.env.PORT || 3000;
@@ -24,7 +24,7 @@ const start = async () => {
     app.get('/sitemap*.xml(.gz)?', (req, res) => {
         try {
             readFile(path.join(buildStatic, `${req.url.replace(/^\/+/, '').replace(/\.gz$/, '')}.gz`), (err, data) => {
-                if (err) throw err;
+                if (err) { throw err; }
 
                 res.header('Content-Type', 'application/xml');
                 res.header('Content-Encoding', 'gzip');
