@@ -4,6 +4,7 @@ import staticFiles from './util/build/static';
 import images from './util/build/images';
 import fonts from './util/build/fonts';
 import sitemap from './util/build/sitemap';
+import { sentryDsn } from './data/config';
 
 export default {
     mode: 'universal',
@@ -96,6 +97,7 @@ export default {
     */
     modules: [
         '@nuxtjs/svg',
+        '@nuxtjs/sentry',
     ],
     /*
     ** Configure the router to not use trailing slashes and to handle our custom routing
@@ -160,5 +162,11 @@ export default {
     */
     render: {
         fallback: false,
+    },
+    /*
+    ** Allow Sentry to log errors within Nuxt
+    */
+    sentry: {
+        dsn: sentryDsn,
     },
 };

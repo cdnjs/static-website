@@ -1,13 +1,21 @@
 const path = require('path');
 const { readFileSync } = require('fs');
 const { Nuxt, loadNuxtConfig } = require('nuxt');
+const Sentry = require('@sentry/node');
+const express = require('express');
+const esm = require('esm')(module);
 
-const app = require('express')();
+const { sentryDsn } = esm('../data/config');
+const sitemap = esm('../util/build/sitemap').default;
 const port = process.env.PORT || 3000;
-
-const sitemap = require('esm')(module)('../util/build/sitemap').default;
+Sentry.init({ dsn: sentryDsn });
 
 const start = async () => {
+    // Create the Express app
+    const app = express();
+    app.disable('x-powered-by');
+    app.use(Sentry.Handlers.requestHandler());
+
     // Create the Nuxt instance
     const config = await loadNuxtConfig({ for: 'start' });
     const nuxt = new Nuxt(config);
@@ -26,7 +34,7 @@ const start = async () => {
             sitemapLog = `Last generation completed successfully at ${new Date().toISOString()}`;
         }).catch((e) => {
             sitemapLog = `Last generation failed at ${new Date().toISOString()}\n\n${e.message}\n\n${e.stack}`;
-            // Sentry?
+            Sentry.captureException(e);
             console.error(e);
         });
     }, 1000 * 60 * 30);
@@ -47,7 +55,6 @@ const start = async () => {
             }
 
             // Otherwise, send a 500
-            // Sentry?
             console.error(e);
             throw e;
         }
@@ -60,6 +67,9 @@ const start = async () => {
 
     // Render every route with Nuxt.js
     app.use(nuxt.render);
+
+    // Sentry error handler
+    app.use(Sentry.Handlers.errorHandler());
 
     // Start the server
     app.listen(port);
