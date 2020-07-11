@@ -6,7 +6,7 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: $mobile) {
       background-image: url("../../assets/img/mobile.svg");
       background-position: left top;
     }
@@ -24,7 +24,7 @@ main {
         letter-spacing: .41px;
         margin: 0 0 ($whitespace * 2);
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $mobile) {
           font-size: 32px;
           margin: 0 0 $whitespace;
         }
@@ -38,7 +38,7 @@ main {
         letter-spacing: .2px;
         margin: 0 0 ($whitespace * 5);
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $mobile) {
           font-size: 16px;
           margin: 0 0 ($whitespace * 2.5);
         }

@@ -76,8 +76,8 @@
                 const duration = path.getTotalLength() / 1000 * speed;
 
                 const circle = document.createElementNS(svgNS, 'circle');
-                circle.setAttribute('cx', '');
-                circle.setAttribute('cy', '');
+                circle.setAttribute('cx', '0');
+                circle.setAttribute('cy', '0');
                 circle.setAttribute('r', '5');
                 circle.setAttribute('fill', '#d9643a');
                 circle.setAttribute('transform', path.parentElement.getAttribute('transform'));
