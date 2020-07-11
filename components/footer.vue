@@ -34,11 +34,6 @@
                     </nuxt-link>
                 </dd>
                 <dd>
-                    <nuxt-link :to="{ name: 'sponsor' }">
-                        Sponsor Us
-                    </nuxt-link>
-                </dd>
-                <dd>
                     <a :href="utm('https://swag.cdnjs.com', 'footer')">
                         Swag Store
                     </a>

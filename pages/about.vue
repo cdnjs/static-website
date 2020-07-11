@@ -37,10 +37,9 @@
                     <p>
                         As a public OSS project, cdnjs relies on contributions and donations from the community.
                         You can get get involved on
-                        <a :href="utm('https://github.com/cdnjs', 'about')">GitHub</a> or find out more
-                        about <nuxt-link :to="{ name: 'sponsor' }">
-                            donating here
-                        </nuxt-link>.
+                        <a :href="utm('https://github.com/cdnjs', 'about')">GitHub</a> or help support us financially by
+                        donating $5 to cdnjs via <a :href="utm('https://opencollective.com/cdnjs', 'about')">
+                            Open Collective</a> or <a :href="utm('https://www.patreon.com/cdnjs', 'about')">Patreon</a>.
                     </p>
 
                     <h1>Legal</h1>
@@ -124,7 +123,8 @@
                 <div class="sponsor-blocks">
                     <div class="sponsor contact">
                         <h3>Want to become a Sponsor?</h3>
-                        <p><a href="">Contact Us</a></p> <!-- FIXME -->
+                        <p><a :href="utm('https://github.com/cdnjs/cdnjs/issues/new', 'about')">Contact Us</a></p>
+                        <!-- TODO: This should probably be an email or form? -->
                     </div>
                 </div>
             </div>

@@ -23,10 +23,6 @@ const getUrls = async () => {
             url: '/api',
             priority: 0.8,
         },
-        {
-            url: '/sponsor',
-            priority: 0.7,
-        },
     ];
 
     // Get all the libraries, their versions & tutorials

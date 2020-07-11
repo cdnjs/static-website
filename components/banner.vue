@@ -6,10 +6,7 @@
                 <GitHub class="icon" aria-hidden="true"></GitHub> GitHub</a> to help make cdnjs sustainable!
 
             Or, donate $5 to cdnjs via <a :href="utm('https://opencollective.com/cdnjs', 'banner')">
-                Open Collective</a>, <a :href="utm('https://www.patreon.com/cdnjs', 'banner')">Patreon</a>,
-            or find out more on our <nuxt-link :to="{ name: 'sponsor' }">
-                Sponsor Us page
-            </nuxt-link>.
+                Open Collective</a> or <a :href="utm('https://www.patreon.com/cdnjs', 'banner')">Patreon</a>.
         </p>
     </div>
 </template>
