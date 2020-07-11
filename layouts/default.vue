@@ -89,6 +89,8 @@
                         hash: this.$nuxt.$route.hash,
                         query: this.$nuxt.$route.query,
                         params: this.$nuxt.$route.params,
+                    }).catch(() => {
+                        // If it fails to trim, not something we need to worry about
                     });
                 }
             },
