@@ -68,7 +68,9 @@ export default async (lib, limit = true) => {
     const apiData = await api(lib, limit);
 
     // Not found
-    if (Object.entries(apiData).length === 0 && apiData.constructor.name === Object.name) {
+    if (apiData.constructor.name !== Object.name ||
+        Object.entries(apiData).length === 0 ||
+        (apiData.error && apiData.status && apiData.status === 404)) {
         throw new Error('Library not found');
     }
 

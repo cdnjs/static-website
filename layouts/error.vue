@@ -31,8 +31,5 @@
         props: {
             error: Object,
         },
-        created () {
-            console.log(this.$props.error);
-        },
     };
 </script>
