@@ -3,6 +3,7 @@ const { readFileSync } = require('fs');
 const { Nuxt, loadNuxtConfig } = require('nuxt');
 const Sentry = require('@sentry/node');
 const express = require('express');
+const morgan = require('morgan');
 const esm = require('esm')(module);
 
 const { sentryDsn } = esm('../data/config');
@@ -15,6 +16,7 @@ const start = async () => {
     const app = express();
     app.disable('x-powered-by');
     app.use(Sentry.Handlers.requestHandler());
+    app.use(morgan('combined'));
 
     // Create the Nuxt instance
     const config = await loadNuxtConfig({ for: 'start' });
