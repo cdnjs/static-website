@@ -6,7 +6,7 @@
             index-name="libraries"
             class="inline-search"
         >
-            <ais-configure :hits-per-page.camel="3"></ais-configure>
+            <ais-configure :hits-per-page.camel="results"></ais-configure>
             <ais-search-box ref="search"
                             :placeholder="placeholder"
                             @focus="focused"
@@ -53,6 +53,12 @@
         },
         props: {
             margin: Boolean,
+            results: {
+                default () {
+                    return 3;
+                },
+                type: Number,
+            },
         },
         data () {
             return {
@@ -86,6 +92,8 @@
                 // Ensure we are showing hits now they're using the input
                 this.$data.showHits = true;
                 this.$data.hasFocus = true;
+
+                this.$emit('focused');
             },
             blurred () {
                 // If no query, this will hide the default results
@@ -97,6 +105,8 @@
                         });
                     });
                 }, 200);
+
+                this.$emit('blurred');
             },
             showMore () {
                 this.$router.push({

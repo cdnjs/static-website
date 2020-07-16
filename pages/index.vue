@@ -1,16 +1,22 @@
 <template>
     <section>
-        <h1>
-            Simple. Fast. Reliable.
-            <br />Content delivery at its finest.
-        </h1>
+        <transition-group name="homepage-search" type="out-in">
+            <template v-if="!searchActive">
+                <h1 key="h1">
+                    Simple. Fast. Reliable.
+                    <br />Content delivery at its finest.
+                </h1>
 
-        <h2>
-            cdnjs is a free and open-source web CDN service trusted by over 10% of websites.
-            We make it faster and easier to load library files on your websites.
-        </h2>
+                <h2 key="h2">
+                    cdnjs is a free and open-source web CDN service trusted by over 10% of websites.
+                    We make it faster and easier to load library files on your websites.
+                </h2>
+            </template>
+        </transition-group>
 
-        <InlineSearch :margin="true"></InlineSearch>
+        <div class="homepage-search">
+            <InlineSearch :margin="true" :results="5" @focused="focused" @blurred="blurred"></InlineSearch>
+        </div>
 
         <Corner></Corner>
     </section>
@@ -33,6 +39,19 @@
         components: {
             Corner,
             InlineSearch,
+        },
+        data () {
+            return {
+                searchActive: false,
+            };
+        },
+        methods: {
+            focused () {
+                this.$data.searchActive = true;
+            },
+            blurred () {
+                this.$data.searchActive = false;
+            },
         },
         head () {
             return setMeta(meta, this);
