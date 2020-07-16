@@ -167,6 +167,7 @@ export default {
     ** Allow Sentry to log errors within Nuxt
     */
     sentry: {
+        publishRelease: true,
         dsn: sentryDsn,
     },
 };

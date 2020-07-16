@@ -1,0 +1,3 @@
+[defaults]
+org = cloudflare
+project = cdnjs-website
