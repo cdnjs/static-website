@@ -152,13 +152,15 @@
     export default {
         name: 'About',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             GitHub,
             Twitter,
             Breadcrumbs,
+        },
+        async asyncData (data) {
+            return {
+                crumbs: await breadcrumbs(data.route, data.app.router, {}),
+            };
         },
         data () {
             return {
@@ -166,13 +168,11 @@
                 sponsors,
             };
         },
-        async asyncData (data) {
-            return {
-                crumbs: await breadcrumbs(data.route, data.app.router, {}),
-            };
-        },
         methods: {
             utm,
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

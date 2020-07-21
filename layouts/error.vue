@@ -25,11 +25,11 @@
     export default {
         name: 'NotFound',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         props: {
             error: Object,
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

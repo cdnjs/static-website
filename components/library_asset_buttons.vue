@@ -3,30 +3,30 @@
         <slot name="before"></slot>
         <button v-clipboard:copy="asset.url"
                 v-clipboard:success="tooltipCopied"
-                @mouseenter="tooltipShow"
-                @mouseleave="tooltipHide"
                 data-tooltip="Copy URL"
                 aria-label="Copy URL"
+                @mouseenter="tooltipShow"
+                @mouseleave="tooltipHide"
         >
             <Link class="icon" aria-hidden="true"></Link>
         </button>
         <button v-if="asset.code"
                 v-clipboard:copy="asset.code"
                 v-clipboard:success="tooltipCopied"
-                @mouseenter="tooltipShow"
-                @mouseleave="tooltipHide"
                 :data-tooltip="asset.codeTitle"
                 :aria-label="asset.codeTitle"
+                @mouseenter="tooltipShow"
+                @mouseleave="tooltipHide"
         >
             <Code class="icon" aria-hidden="true"></Code>
         </button>
         <button v-if="asset.sri"
                 v-clipboard:copy="asset.sri"
                 v-clipboard:success="tooltipCopied"
-                @mouseenter="tooltipShow"
-                @mouseleave="tooltipHide"
                 data-tooltip="Copy SRI Hash"
                 aria-label="Copy SRI Hash"
+                @mouseenter="tooltipShow"
+                @mouseleave="tooltipHide"
         >
             <ShieldAlt class="icon" aria-hidden="true"></ShieldAlt>
         </button>

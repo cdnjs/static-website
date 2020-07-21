@@ -71,9 +71,6 @@
     export default {
         name: 'API',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             Breadcrumbs,
             APIBrowse,
@@ -88,6 +85,9 @@
             return {
                 crumbs: await breadcrumbs(data.route, data.app.router, {}),
             };
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

@@ -24,7 +24,7 @@
                 </transition>
                 <transition-group name="assets" type="out-in">
                     <template v-if="!assetsMessage">
-                        <a key="hasHidden" @click="showHidden = !showHidden" v-if="hasHidden" class="button">
+                        <a v-if="hasHidden" key="hasHidden" class="button" @click="showHidden = !showHidden">
                             {{ showHidden ? 'All files are shown, click to hide non-essential files'
                                 : 'Some files are hidden, click to show all files' }}
                         </a>
@@ -38,9 +38,9 @@
                                 <LibraryAssetButtons :asset="asset">
                                     <template slot="before">
                                         <span v-if="!asset.whitelisted"
-                                              @mouseenter.raw="tooltipShow"
-                                              @mouseleave.raw="tooltipHide"
                                               data-tlite="This file type is not whitelisted on the CDN and will not be available."
+                                              @mouseenter="tooltipShow"
+                                              @mouseleave="tooltipHide"
                                         >
                                             <ExclamationTriangle
                                                 class="icon"
@@ -110,9 +110,6 @@
     export default {
         name: 'Library',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             ExclamationTriangle,
             Breadcrumbs,
@@ -121,34 +118,6 @@
             TutorialList,
             JSONLDLibrary,
             VueSelect,
-        },
-        computed: {
-            versions () {
-                try {
-                    return semverSort.desc(this.$data.library.versions);
-                } catch (_) {
-                    return this.$data.library.versions;
-                }
-            },
-        },
-        watch: {
-            async version () {
-                // Update the asset list
-                this.$data.assetsMessage = `Loading assets for ${this.$data.libraryName}/${this.$data.version}...`;
-                await getAssetsData(this.$data);
-
-                // Update the URL without navigating
-                const newRoute = this.$router.resolve({
-                    name: 'libraries-library-version',
-                    params: { ...this.$route.params, version: this.$data.version },
-                    query: this.$route.query,
-                });
-                window.history.pushState({}, '', newRoute.href);
-
-                // Update the crumbs
-                this.$data.params = newRoute.route.params;
-                this.$data.crumbs = await breadcrumbs(newRoute.route, this.$router, this.$data);
-            },
         },
         async asyncData ({ params, route, app, error, payload }) {
             const data = {
@@ -215,6 +184,34 @@
 
             return data;
         },
+        computed: {
+            versions () {
+                try {
+                    return semverSort.desc(this.$data.library.versions);
+                } catch (_) {
+                    return this.$data.library.versions;
+                }
+            },
+        },
+        watch: {
+            async version () {
+                // Update the asset list
+                this.$data.assetsMessage = `Loading assets for ${this.$data.libraryName}/${this.$data.version}...`;
+                await getAssetsData(this.$data);
+
+                // Update the URL without navigating
+                const newRoute = this.$router.resolve({
+                    name: 'libraries-library-version',
+                    params: { ...this.$route.params, version: this.$data.version },
+                    query: this.$route.query,
+                });
+                window.history.pushState({}, '', newRoute.href);
+
+                // Update the crumbs
+                this.$data.params = newRoute.route.params;
+                this.$data.crumbs = await breadcrumbs(newRoute.route, this.$router, this.$data);
+            },
+        },
         async mounted () {
             if (!this.$data.assets || !this.$data.assets.length) {
                 await getAssetsData(this.$data);
@@ -237,6 +234,9 @@
             tooltipHide (evt) {
                 tlite.hide(evt.target);
             },
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

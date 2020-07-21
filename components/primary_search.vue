@@ -28,7 +28,7 @@
                                 <LibraryCard :key="item.objectID" :library="item"></LibraryCard>
                             </template>
                             <li v-if="page + 1 < nbPages" class="library-card show-more">
-                                <button @click="refineNext" class="button">
+                                <button class="button" @click="refineNext">
                                     Show more results
                                 </button>
                             </li>

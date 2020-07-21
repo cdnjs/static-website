@@ -1,5 +1,5 @@
 <template>
-    <Script v-html="json" type="application/ld+json"></Script>
+    <Script type="application/ld+json" v-html="json"></Script>
 </template>
 
 <script>

@@ -38,9 +38,6 @@
     export default {
         name: 'Tutorials',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             Breadcrumbs,
             TutorialList,
@@ -72,6 +69,9 @@
             data.crumbs = await breadcrumbs(route, app.router, data);
 
             return data;
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

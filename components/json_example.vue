@@ -1,8 +1,8 @@
 <template>
     <div class="json-example">
         <div class="select">
-            <a @click="raw" :class="showRaw ? 'active' : ''">Raw</a>
-            <a @click="formatted" :class="showRaw ? '' : 'active'">Formatted</a>
+            <a :class="showRaw ? 'active' : ''" @click="raw">Raw</a>
+            <a :class="showRaw ? '' : 'active'" @click="formatted">Formatted</a>
         </div>
         <pre v-if="showRaw"><code><slot></slot></code></pre>
         <Prism v-else :code="pretty" language="json"></Prism>

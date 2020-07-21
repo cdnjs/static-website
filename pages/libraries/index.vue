@@ -23,9 +23,6 @@
     export default {
         name: 'Libraries',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             Breadcrumbs,
             PrimarySearch,
@@ -34,6 +31,9 @@
             return {
                 crumbs: await breadcrumbs(data.route, data.app.router, {}),
             };
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

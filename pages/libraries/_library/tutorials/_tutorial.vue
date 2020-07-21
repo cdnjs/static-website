@@ -6,15 +6,15 @@
         </header>
         <div class="content row">
             <div class="contents"></div>
-            <div ref="tutorial" v-html="rendered" class="tutorial"></div>
+            <div ref="tutorial" class="tutorial" v-html="rendered"></div>
         </div>
         <TutorialAuthor :library="libraryName" :tutorial="tutorial"></TutorialAuthor>
         <div class="content row callout">
             <h4>Looking for more {{ libraryName }} tutorials?</h4>
             <nuxt-link :to="{
-                name: 'libraries-library-tutorials',
-                params: { library: libraryName }
-            }"
+                           name: 'libraries-library-tutorials',
+                           params: { library: libraryName }
+                       }"
                        class="button"
             >
                 View all tutorials for {{ libraryName }}
@@ -64,38 +64,11 @@
     export default {
         name: 'Tutorial',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             Breadcrumbs,
             TutorialHero,
             TutorialAuthor,
             JSONLDTutorial,
-        },
-        computed: {
-            rendered () {
-                const md = MarkdownIt({
-                    html: true,
-                    linkify: true,
-                    typographer: true,
-                    highlight (str, lang) {
-                        let highlighted;
-
-                        try {
-                            if (!(lang in Prism.languages)) { loadLanguages([lang]); }
-                            highlighted = Prism.highlight(str, Prism.languages[lang]);
-                        } catch (e) {
-                            console.error(e);
-                            highlighted = md.utils.escapeHtml(str);
-                        }
-
-                        const langClass = `match-braces language-${lang}`;
-                        return `<pre class="${langClass}"><code class="${langClass}">${highlighted}</code></pre>`;
-                    },
-                });
-                return md.render(this.$data.tutorial.content);
-            },
         },
         async asyncData ({ params, route, app, error, payload }) {
             const data = {
@@ -139,12 +112,39 @@
 
             return data;
         },
+        computed: {
+            rendered () {
+                const md = MarkdownIt({
+                    html: true,
+                    linkify: true,
+                    typographer: true,
+                    highlight (str, lang) {
+                        let highlighted;
+
+                        try {
+                            if (!(lang in Prism.languages)) { loadLanguages([lang]); }
+                            highlighted = Prism.highlight(str, Prism.languages[lang]);
+                        } catch (e) {
+                            console.error(e);
+                            highlighted = md.utils.escapeHtml(str);
+                        }
+
+                        const langClass = `match-braces language-${lang}`;
+                        return `<pre class="${langClass}"><code class="${langClass}">${highlighted}</code></pre>`;
+                    },
+                });
+                return md.render(this.$data.tutorial.content);
+            },
+        },
         mounted () {
             // Highlight to bind event-based plugins
             this.$nextTick(() => {
                 this.$refs.tutorial.querySelectorAll('code[class*="language-"]')
                     .forEach(elm => Prism.highlightElement(elm));
             });
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>

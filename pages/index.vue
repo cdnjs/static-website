@@ -30,12 +30,12 @@
     export default {
         name: 'Index',
         meta,
-        head () {
-            return setMeta(meta, this);
-        },
         components: {
             Corner,
             InlineSearch,
+        },
+        head () {
+            return setMeta(meta, this);
         },
     };
 </script>
