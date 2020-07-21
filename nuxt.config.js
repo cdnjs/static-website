@@ -116,7 +116,10 @@ export default {
     ** Customise our build process to handle additions we've made
     */
     build: {
-        transpile: ['vue-instantsearch'],
+        transpile: [
+            'vue-instantsearch',
+            'instantsearch.js/es',
+        ],
         html: {
             minify: {
                 collapseBooleanAttributes: true, // Default
