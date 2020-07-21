@@ -56,6 +56,12 @@ To deploy this website to production, the following steps should be taken:
 - Build the site for production with `npm run build`
 - Start the custom Express server with `npm run start`
 
+During the build step, we enable Sentry error logging and publish the sourcemaps for the site
+directly to Sentry. This is done as in production we use minified, bundled JavaScript, so the
+sourcemaps allow Sentry to show where an error originated from in the source code. To do this, the
+info in [`.sentryclirc`](.sentryclirc) must be correct, and a valid Sentry auth token must be
+provided in the `SENTRY_AUTH_TOKEN` env var.
+
 For deployments to Heroku, the installation of dependencies and building the app will automatically
 be done, with `npm run start` being defined in the [`Procfile`](Procfile).
 
