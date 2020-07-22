@@ -73,6 +73,7 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
+    "@sentry/cli": "^1.55.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.5.0",
     "eslint-plugin-nuxt": "^1.0.0",
