@@ -171,7 +171,8 @@ export default {
     ** Allow Sentry to log errors within Nuxt
     */
     sentry: {
-        publishRelease: 'SENTRY_AUTH_TOKEN' in process.env,
         dsn: sentryDsn,
+        publishRelease: 'SENTRY_AUTH_TOKEN' in process.env,
+        sourceMapStyle: 'hidden-source-map',
     },
 };

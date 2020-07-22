@@ -88,7 +88,7 @@
             return url.endsWith(data.libraryName) ? data.libraryName : data.params.version;
         },
         desc (data) {
-            return data.library.description.trim();
+            return (data.library.description || '').trim();
         },
         classes: ['library'],
     };
