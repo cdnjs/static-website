@@ -9,7 +9,13 @@ import { sentryDsn } from './data/config';
 
 export default async () => {
     // We need to get the commit hash for Sentry versioning
-    const version = await new Sentry().releases.proposeVersion();
+    let version;
+    try {
+        // Let Sentry try to determine the version (doesn't work on Heroku, not a git repo there)
+        version = await new Sentry().releases.proposeVersion();
+    } catch (_) {
+        version = process.env.SOURCE_VERSION; // Heroku sets this, otherwise version can just be undefined
+    }
 
     // Now we can generate the config
     return {
