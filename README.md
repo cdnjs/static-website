@@ -48,6 +48,17 @@ To run the analyzer, use the following package script:
 npm run dev:analyze
 ```
 
+## Sentry Error Logging
+
+To enable basic Sentry error logging, the `SENTRY_DSN` environment variable must be set with a valid
+DSN URL from Sentry.
+
+To enable source maps & release tracking for error reporting in production, the `SENTRY_ORG` and
+`SENTRY_PROJECT` environment variables must be set with the correct Sentry project information, as
+well as `SENTRY_AUTH_TOKEN` being set to a valid auth token from Sentry. Source maps are used as in
+production we use minified, bundled JavaScript, so the sourcemaps allow Sentry to show where an
+error originated from in the source code.
+
 ## Production Deployment
 
 To deploy this website to production, the following steps should be taken:
@@ -55,12 +66,6 @@ To deploy this website to production, the following steps should be taken:
 - Install dependencies with `npm ci`
 - Build the site for production with `npm run build`
 - Start the custom Express server with `npm run start`
-
-During the build step, we enable Sentry error logging and publish the sourcemaps for the site
-directly to Sentry. This is done as in production we use minified, bundled JavaScript, so the
-sourcemaps allow Sentry to show where an error originated from in the source code. To do this, the
-info in [`.sentryclirc`](.sentryclirc) must be correct, and a valid Sentry auth token must be
-provided in the `SENTRY_AUTH_TOKEN` env var.
 
 For deployments to Heroku, the installation of dependencies and building the app will automatically
 be done, with `npm run start` being defined in the [`Procfile`](Procfile).

@@ -5,7 +5,6 @@ import staticFiles from './util/build/static';
 import images from './util/build/images';
 import fonts from './util/build/fonts';
 import sitemap from './util/build/sitemap';
-import { sentryDsn } from './data/config';
 
 export default async () => {
     // We need to get the commit hash for Sentry versioning
@@ -183,7 +182,7 @@ export default async () => {
         ** Allow Sentry to log errors within Nuxt
         */
         sentry: {
-            dsn: sentryDsn,
+            dsn: process.env.SENTRY_DSN,
             publishRelease: 'SENTRY_AUTH_TOKEN' in process.env,
             sourceMapStyle: 'hidden-source-map',
             config: {
