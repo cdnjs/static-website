@@ -1,0 +1,11 @@
+.transition-height-enter-active,
+.transition-height-leave-active {
+  overflow: hidden;
+  transition: height $transition-duration-large $transition-timing-function-large, opacity $transition-duration-large $transition-timing-function-large;
+}
+
+.transition-height-enter,
+.transition-height-leave-to {
+  height: 0;
+  opacity: 0;
+}

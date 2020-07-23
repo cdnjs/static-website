@@ -18,6 +18,8 @@ main {
     }
 
     .homepage-search {
+      margin: 0 0 ($whitespace * 8);
+      transition: margin-bottom $transition-duration-large $transition-timing-function-large;
       width: 100%;
     }
   }

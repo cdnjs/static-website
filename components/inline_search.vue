@@ -12,17 +12,20 @@
                             @focus="focused"
                             @blur="blurred"
                             @submit.native="showMore"
+                            @input.native="getQuery"
             ></ais-search-box>
             <ais-state-results ref="results">
-                <template slot-scope="{ query }">
-                    <ais-hits v-if="(hasFocus || query.length > 0) && showHits">
-                        <ul slot-scope="{ items }">
-                            <template v-for="item in items">
-                                <LibraryCard :key="item.objectID" :library="item" :small="true"></LibraryCard>
-                            </template>
-                        </ul>
-                    </ais-hits>
-                    <div v-else></div>
+                <template>
+                    <transition name="search" type="out-in">
+                        <ais-hits v-if="active">
+                            <ul slot-scope="{ items }">
+                                <template v-for="item in items">
+                                    <LibraryCard :key="item.objectID" :library="item" :small="true"></LibraryCard>
+                                </template>
+                            </ul>
+                        </ais-hits>
+                        <div v-else></div>
+                    </transition>
                 </template>
             </ais-state-results>
         </ais-instant-search>
@@ -65,9 +68,20 @@
                 showHits: false,
                 hasFocus: false,
                 listenerRegistered: false,
+                query: undefined,
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
             };
+        },
+        computed: {
+            active () {
+                return this.$data.showHits && (this.$data.hasFocus || this.$data.query);
+            },
+        },
+        watch: {
+            active (value) {
+                this.$emit(value ? 'active' : 'inactive');
+            },
         },
         created () {
             this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
@@ -82,7 +96,7 @@
                             // Set a margin so it doesn't overflow the page (if enabled)
                             if (this.$props.margin) {
                                 const results = this.$refs.results.$el;
-                                results.parentElement.style.marginBottom = `${results.offsetHeight + 4}px`;
+                                results.parentElement.style.marginBottom = this.active ? `${results.offsetHeight + 4}px` : null;
                             }
                         });
                     });
@@ -92,8 +106,6 @@
                 // Ensure we are showing hits now they're using the input
                 this.$data.showHits = true;
                 this.$data.hasFocus = true;
-
-                this.$emit('focused');
             },
             blurred () {
                 // If no query, this will hide the default results
@@ -105,16 +117,17 @@
                         });
                     });
                 }, 200);
-
-                this.$emit('blurred');
             },
             showMore () {
                 this.$router.push({
                     name: 'libraries',
                     query: {
-                        q: this.$refs.search.$children[0].$refs.input.value || undefined,
+                        q: this.$data.query,
                     },
                 });
+            },
+            getQuery () {
+                this.$data.query = (this.$refs.search ? this.$refs.search.$children[0].$refs.input.value : undefined) || undefined;
             },
         },
     };

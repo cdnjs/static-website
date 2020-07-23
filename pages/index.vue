@@ -1,21 +1,21 @@
 <template>
     <section>
-        <transition-group name="homepage-search" type="out-in">
-            <template v-if="!searchActive">
-                <h1 key="h1">
+        <TransitionHeight>
+            <div v-if="!searchActive">
+                <h1>
                     Simple. Fast. Reliable.
                     <br />Content delivery at its finest.
                 </h1>
 
-                <h2 key="h2">
+                <h2>
                     cdnjs is a free and open-source web CDN service trusted by over 10% of websites.
                     We make it faster and easier to load library files on your websites.
                 </h2>
-            </template>
-        </transition-group>
+            </div>
+        </TransitionHeight>
 
-        <div class="homepage-search">
-            <InlineSearch :margin="true" :results="5" @focused="focused" @blurred="blurred"></InlineSearch>
+        <div class="homepage-search" :style="{ marginBottom: searchActive ? 0 : null }">
+            <InlineSearch :margin="true" :results="5" @active="active" @inactive="inactive"></InlineSearch>
         </div>
 
         <Corner></Corner>
@@ -25,6 +25,7 @@
 <script>
     import Corner from '../components/corner';
     import InlineSearch from '../components/inline_search';
+    import TransitionHeight from '../components/transition_height';
     import setMeta from '../util/set_meta';
 
     const meta = {
@@ -39,6 +40,7 @@
         components: {
             Corner,
             InlineSearch,
+            TransitionHeight,
         },
         data () {
             return {
@@ -46,10 +48,10 @@
             };
         },
         methods: {
-            focused () {
+            active () {
                 this.$data.searchActive = true;
             },
-            blurred () {
+            inactive () {
                 this.$data.searchActive = false;
             },
         },
