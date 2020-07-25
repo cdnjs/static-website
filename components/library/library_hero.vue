@@ -1,6 +1,10 @@
 <template>
     <div class="content library-hero">
-        <h1>{{ library.name }}</h1>
+        <div class="row name">
+            <h1>{{ library.name }}</h1>
+            <p>{{ library.description }}</p>
+        </div>
+
         <div class="row">
             <p v-if="library.algolia && library.algolia.github && library.algolia.github.stargazers_count"
                class="stars"
@@ -27,6 +31,7 @@
                 </a>
             </p>
         </div>
+
         <div class="row">
             <p v-if="library.licenses && library.licenses.length" class="license">
                 <template v-for="(license, index) of library.licenses">
@@ -46,9 +51,7 @@
                 </a>
             </p>
         </div>
-        <p class="description">
-            {{ library.description }}
-        </p>
+
         <p v-if="library.keywords" class="tags">
             Tags: <span class="keywords">{{ library.keywords.join(', ') }}</span>
         </p>

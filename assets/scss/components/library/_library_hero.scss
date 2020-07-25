@@ -1,21 +1,22 @@
 .content {
   &.library-hero {
-    h1 {
-      @include font-medium;
-
-      color: $light;
-      font-size: 45px;
-      margin: ($whitespace * .5) 0;
-    }
-
-    p {
-      @include font-regular;
-
-      color: $light;
-      font-size: 18px;
-    }
-
     .row {
+      &.name {
+        align-items: baseline;
+
+        h1 {
+          @include font-medium;
+
+          color: $light;
+          font-size: 45px;
+        }
+
+        h1,
+        p {
+          margin: ($whitespace * .5) ($whitespace) ($whitespace * .5) 0;
+        }
+      }
+
       p {
         margin: ($whitespace * .5) $whitespace ($whitespace * .5) 0;
 
@@ -25,8 +26,11 @@
       }
     }
 
-    .description {
-      margin: ($whitespace * 2) 0 0;
+    p {
+      @include font-regular;
+
+      color: $light;
+      font-size: 18px;
     }
 
     .tags {

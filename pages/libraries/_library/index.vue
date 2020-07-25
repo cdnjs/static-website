@@ -9,54 +9,53 @@
         </header>
         <div v-if="!ready" class="content">
         </div>
-        <div v-else class="content row has-columns">
-            <div class="column-half">
-                <div class="row filter">
-                    <p>Version</p>
-                    <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
-                    <p>Asset Type</p>
-                    <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
-                </div>
-                <transition name="assets" type="out-in">
-                    <p v-if="assetsMessage" class="assets-message">
-                        {{ assetsMessage }}
-                    </p>
-                </transition>
-                <transition-group name="assets" type="out-in">
-                    <template v-if="!assetsMessage">
-                        <a v-if="hasHidden" key="hasHidden" class="button" @click="showHidden = !showHidden">
-                            {{ showHidden ? 'All files are shown, click to hide non-essential files'
-                                : 'Some files are hidden, click to show all files' }}
-                        </a>
-                        <ul key="assets" class="assets">
-                            <li v-for="asset of assets"
-                                :key="asset.url"
-                                :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
-                                :style="{ display: hideAsset(asset) ? 'none' : undefined }"
-                            >
-                                <span class="url">{{ asset.url }}</span>
-                                <LibraryAssetButtons :asset="asset">
-                                    <template slot="before">
-                                        <span v-if="!asset.whitelisted"
-                                              data-tlite="This file type is not whitelisted on the CDN and will not be available."
-                                              @mouseenter="tooltipShow"
-                                              @mouseleave="tooltipHide"
-                                        >
-                                            <ExclamationTriangle
-                                                class="icon"
-                                                aria-label="This file type is not whitelisted on the CDN and will not be available."
-                                            />
-                                        </span>
-                                    </template>
-                                </LibraryAssetButtons>
-                            </li>
-                        </ul>
-                    </template>
-                </transition-group>
+        <div v-else class="content">
+            <div class="row filter">
+                <p>Version</p>
+                <VueSelect v-model="version" :options="versions" :clearable="false"></VueSelect>
+                <p>Asset Type</p>
+                <VueSelect v-model="category" :options="categories" :clearable="false"></VueSelect>
             </div>
-            <div class="column-half">
-                <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
-            </div>
+
+            <transition name="assets" type="out-in">
+                <p v-if="assetsMessage" class="assets-message">
+                    {{ assetsMessage }}
+                </p>
+            </transition>
+
+            <transition-group name="assets" type="out-in">
+                <template v-if="!assetsMessage">
+                    <a v-if="hasHidden" key="hasHidden" class="button" @click="showHidden = !showHidden">
+                        {{ showHidden ? 'All files are shown, click to hide non-essential files'
+                            : 'Some files are hidden, click to show all files' }}
+                    </a>
+                    <ul key="assets" class="assets">
+                        <li v-for="asset of assets"
+                            :key="asset.url"
+                            :class="`asset${library.filename === asset.file ? ' default-asset' : ''}`"
+                            :style="{ display: hideAsset(asset) ? 'none' : undefined }"
+                        >
+                            <span class="url">{{ asset.url }}</span>
+                            <LibraryAssetButtons :asset="asset">
+                                <template slot="before">
+                                    <span v-if="!asset.whitelisted"
+                                          data-tlite="This file type is not whitelisted on the CDN and will not be available."
+                                          @mouseenter="tooltipShow"
+                                          @mouseleave="tooltipHide"
+                                    >
+                                        <ExclamationTriangle
+                                            class="icon"
+                                            aria-label="This file type is not whitelisted on the CDN and will not be available."
+                                        />
+                                    </span>
+                                </template>
+                            </LibraryAssetButtons>
+                        </li>
+                    </ul>
+                </template>
+            </transition-group>
+
+            <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
         </div>
         <JSONLDLibrary :library="library" :library-name="libraryName"></JSONLDLibrary>
     </section>
@@ -90,7 +89,7 @@
         desc (data) {
             return (data.library.description || '').trim();
         },
-        classes: ['library'],
+        classes: [],
     };
 
     const getAssetsData = async (data, limit = false) => {

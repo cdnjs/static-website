@@ -4,7 +4,7 @@
 
     color: $light;
     font-size: 30px;
-    margin: 0 0 ($whitespace);
+    margin: ($whitespace * 2) 0 ($whitespace);
   }
 
   p {
