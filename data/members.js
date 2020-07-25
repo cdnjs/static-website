@@ -14,6 +14,13 @@ export default [
         image: 'svensauleau.jpg',
     },
     {
+        name: 'Tyler Caslin',
+        role: 'Maintainer (Cloudflare)',
+        twitter: '',
+        github: 'tc80',
+        image: 'tylercaslin.jpg',
+    },
+    {
         name: 'Drew Freyling',
         role: 'Active Contributor',
         twitter: 'drewfreyling',
