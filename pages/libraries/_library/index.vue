@@ -75,9 +75,9 @@
     import setMeta from '../../../util/set_meta';
     import breadcrumbs from '../../../util/breadcrumbs';
     import Breadcrumbs from '../../../components/breadcrumbs';
-    import LibraryHero from '../../../components/library_hero';
-    import LibraryAssetButtons from '../../../components/library_asset_buttons';
-    import TutorialList from '../../../components/tutorial_list';
+    import LibraryHero from '../../../components/library/library_hero';
+    import LibraryAssetButtons from '../../../components/library/library_asset_buttons';
+    import TutorialList from '../../../components/tutorial/tutorial_list';
     import JSONLDLibrary from '../../../components/json-ld/library';
 
     const meta = {

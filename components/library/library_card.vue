@@ -25,9 +25,9 @@
 
 <script>
     import Star from '@fortawesome/fontawesome-free/svgs/solid/star.svg?inline';
-    import { getAsset } from '../util/get_asset';
-    import formatUnits from '../util/format_units';
-    import truncate from '../util/truncate';
+    import { getAsset } from '../../util/get_asset';
+    import formatUnits from '../../util/format_units';
+    import truncate from '../../util/truncate';
     import LibraryAssetButtons from './library_asset_buttons';
 
     export default {

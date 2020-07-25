@@ -24,7 +24,7 @@
 
 <script>
     import Corner from '../components/corner';
-    import InlineSearch from '../components/inline_search';
+    import InlineSearch from '../components/search/inline_search';
     import TransitionHeight from '../components/transition_height';
     import setMeta from '../util/set_meta';
 

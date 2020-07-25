@@ -60,9 +60,9 @@
     import GitHub from '@fortawesome/fontawesome-free/svgs/brands/github.svg?inline';
     import Npm from '@fortawesome/fontawesome-free/svgs/brands/npm.svg?inline';
     import ShieldAlt from '@fortawesome/fontawesome-free/svgs/solid/shield-alt.svg?inline';
-    import formatUnits from '../util/format_units';
-    import utm from '../util/utm';
-    import getVulns from '../util/get_vulns';
+    import formatUnits from '../../util/format_units';
+    import utm from '../../util/utm';
+    import getVulns from '../../util/get_vulns';
 
     export default {
         name: 'LibraryHero',

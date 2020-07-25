@@ -43,8 +43,8 @@
 </template>
 
 <script>
-    import utm from '../util/utm';
-    import JSONLDTutorials from './json-ld/tutorials';
+    import utm from '../../util/utm';
+    import JSONLDTutorials from '../json-ld/tutorials';
 
     export default {
         name: 'TutorialList',

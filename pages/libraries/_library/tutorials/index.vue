@@ -22,7 +22,7 @@
     import setMeta from '../../../../util/set_meta';
     import breadcrumbs from '../../../../util/breadcrumbs';
     import Breadcrumbs from '../../../../components/breadcrumbs';
-    import TutorialList from '../../../../components/tutorial_list';
+    import TutorialList from '../../../../components/tutorial/tutorial_list';
 
     const meta = {
         title (data) {

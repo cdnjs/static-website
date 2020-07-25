@@ -45,8 +45,8 @@
 <script>
     import EnvelopeOpen from '@fortawesome/fontawesome-free/svgs/regular/envelope-open.svg?inline';
     import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
-    import formatUnits from '../util/format_units';
-    import utm from '../util/utm';
+    import formatUnits from '../../util/format_units';
+    import utm from '../../util/utm';
 
     export default {
         name: 'TutorialHero',

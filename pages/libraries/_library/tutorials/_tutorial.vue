@@ -42,8 +42,8 @@
     import setMeta from '../../../../util/set_meta';
     import breadcrumbs from '../../../../util/breadcrumbs';
     import Breadcrumbs from '../../../../components/breadcrumbs';
-    import TutorialHero from '../../../../components/tutorial_hero';
-    import TutorialAuthor from '../../../../components/tutorial_author';
+    import TutorialHero from '../../../../components/tutorial/tutorial_hero';
+    import TutorialAuthor from '../../../../components/tutorial/tutorial_author';
     import JSONLDTutorial from '../../../../components/json-ld/tutorial';
 
     const tutorialPageName = data => (data.tutorial && data.tutorial.name) || data.tutorialName;

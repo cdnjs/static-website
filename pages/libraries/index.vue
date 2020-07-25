@@ -9,7 +9,7 @@
 
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
-    import PrimarySearch from '../../components/primary_search';
+    import PrimarySearch from '../../components/search/primary_search';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
 

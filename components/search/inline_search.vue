@@ -40,8 +40,8 @@
     import AisStateResults from 'vue-instantsearch/src/components/StateResults';
     import AisHits from 'vue-instantsearch/src/components/Hits';
 
-    import searchClient from '../util/search_client';
-    import LibraryCard from './library_card';
+    import searchClient from '../../util/search_client';
+    import LibraryCard from '../library/library_card';
 
     export default {
         name: 'InlineSearch',

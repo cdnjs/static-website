@@ -65,9 +65,9 @@
     import AisStateResults from 'vue-instantsearch/src/components/StateResults';
     import AisInfiniteHits from 'vue-instantsearch/src/components/InfiniteHits';
 
-    import searchClient from '../util/search_client';
-    import utm from '../util/utm';
-    import LibraryCard from './library_card';
+    import searchClient from '../../util/search_client';
+    import utm from '../../util/utm';
+    import LibraryCard from '../library/library_card';
 
     export default {
         name: 'PrimarySearch',

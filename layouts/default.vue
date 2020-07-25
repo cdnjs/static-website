@@ -19,7 +19,7 @@
 <script>
     import AnimatedBackground from '../components/animated_background';
     import Nav from '../components/nav';
-    import InlineSearch from '../components/inline_search';
+    import InlineSearch from '../components/search/inline_search';
     import Banner from '../components/banner';
     import Footer from '../components/footer';
     import JSONLDWebSite from '../components/json-ld/website';
