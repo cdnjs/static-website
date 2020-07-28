@@ -149,15 +149,22 @@ export default async () => {
             },
             // Use _/, not .nuxt/
             publicPath: '/_/',
-            // Change the browserslist used for the client
+            // Change babel to improve browser support
             babel: {
                 presets({ isServer }, [, options ]) {
+                    // Change the browserslist used for the client
                     if (!isServer) {
                         options.targets = {
                             ...options.targets,
                             browsers: 'defaults, > 0.2%',
                         };
                     }
+
+                    // Use core-js@3
+                    options.corejs = {
+                        ...options.corejs,
+                        version: 3
+                    };
                 },
             },
         },
