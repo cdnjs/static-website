@@ -204,7 +204,7 @@ export default async () => {
         */
         sentry: {
             dsn: process.env.SENTRY_DSN,
-            publishRelease: 'SENTRY_AUTH_TOKEN' in process.env,
+            publishRelease: version && 'SENTRY_AUTH_TOKEN' in process.env,
             sourceMapStyle: 'hidden-source-map',
             config: {
                 release: version,
