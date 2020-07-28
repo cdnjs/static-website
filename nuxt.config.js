@@ -127,10 +127,12 @@ export default async () => {
         ** Customise our build process to handle additions we've made
         */
         build: {
+            // Instantsearch needs specific treatment
             transpile: [
                 'vue-instantsearch',
                 'instantsearch.js/es',
             ],
+            // Compress HTML a bit more than default
             html: {
                 minify: {
                     collapseBooleanAttributes: true, // Default
@@ -145,7 +147,19 @@ export default async () => {
                     removeComments: true, // Custom
                 },
             },
+            // Use _/, not .nuxt/
             publicPath: '/_/',
+            // Change the browserslist used for the client
+            babel: {
+                presets({ isServer }, [, options ]) {
+                    if (!isServer) {
+                        options.targets = {
+                            ...options.targets,
+                            browsers: 'defaults, > 0.2%',
+                        };
+                    }
+                },
+            },
         },
         buildModules: [
             [
