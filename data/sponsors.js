@@ -58,5 +58,13 @@ export default [
             site: 'https://www.solarwinds.com/',
             words: '',
         },
+        {
+            name: 'Sentry',
+            color: '#584674',
+            text: 'light',
+            image: 'sentry.svg',
+            site: 'https://sentry.io/welcome/',
+            words: '',
+        },
     ],
 ];

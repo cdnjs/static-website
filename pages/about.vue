@@ -165,7 +165,7 @@
         data () {
             return {
                 members,
-                sponsors,
+                sponsors: [sponsors.flat(1)],
             };
         },
         methods: {
