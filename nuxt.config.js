@@ -207,7 +207,7 @@ export default async () => {
             publishRelease: version && 'SENTRY_AUTH_TOKEN' in process.env,
             sourceMapStyle: 'hidden-source-map',
             config: {
-                release: version || true, // Pass true if undefined, so it doesn't try to automatically get the release
+                release: version,
             },
         },
     };
