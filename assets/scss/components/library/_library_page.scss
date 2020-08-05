@@ -1,0 +1,132 @@
+.content {
+  .filter {
+    align-items: center;
+    margin: 0 0 ($whitespace * .5);
+
+    @media screen and (max-width: $breakpoint) {
+      align-items: flex-start;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    p {
+      @include font-regular;
+
+      color: $light;
+      font-size: 20px;
+      margin: 0 ($whitespace * .75) ($whitespace * .5) 0;
+
+      &:not(:first-child) {
+        @media screen and (min-width: $breakpoint) {
+          margin: 0 ($whitespace * .75) ($whitespace * .5);
+        }
+      }
+    }
+
+    // sass-lint:disable class-name-format
+    .v-select {
+      background: $light;
+      border: 0;
+      border-radius: $radius;
+      flex-grow: 1;
+      margin: 0 0 ($whitespace * .5);
+      min-width: 200px;
+
+      &.vs--open {
+        border-radius: $radius $radius 0 0;
+      }
+
+      .vs__selected {
+        @include font-medium;
+
+        color: $darker;
+        font-size: 20px;
+      }
+
+      .vs__dropdown-menu {
+        .vs__dropdown-option {
+          @include font-regular;
+
+          background: transparent;
+          color: $darker;
+          transition: background $transition-duration $transition-timing-function, color $transition-duration $transition-timing-function;
+
+          &.vs__dropdown-option--selected {
+            color: $primary;
+          }
+
+          &.vs__dropdown-option--highlight {
+            background: $dark;
+            color: $primary;
+          }
+        }
+      }
+    }
+    // sass-lint:enable class-name-format
+  }
+
+  .assets {
+    @include flex-column;
+    align-items: flex-start;
+
+    list-style: none;
+    margin: $whitespace 0 0;
+    padding: 0;
+
+    .asset {
+      @include flex-row;
+      @include font-regular;
+
+      background: $alt;
+      border-radius: $radius;
+      box-shadow: $shadow;
+      color: $darker;
+      flex-wrap: nowrap;
+      font-size: 18px;
+      margin: ($whitespace * .75) 0;
+      padding: ($whitespace * .75) ($whitespace * 1.25) ($whitespace * .875);
+      width: 100%;
+
+      &.default-asset {
+        background: mix($primary, $alt);
+        color: $footer;
+
+        .library-asset-buttons {
+          svg {
+            color: $footer;
+
+            &:hover,
+            &:focus {
+              color: $darker;
+            }
+          }
+        }
+      }
+
+      .url {
+        word-break: break-word;
+      }
+
+      .library-asset-buttons {
+        padding: 0 0 0 $whitespace;
+
+        svg {
+          color: $darker;
+
+          &:hover,
+          &:focus {
+            color: $dark;
+          }
+        }
+      }
+    }
+  }
+
+  .assets-message {
+    @include font-regular;
+
+    color: $light;
+    font-size: 18px;
+    margin: ($whitespace * 1.5) 0;
+  }
+}
