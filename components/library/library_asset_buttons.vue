@@ -1,7 +1,8 @@
 <template>
     <div class="library-asset-buttons">
         <slot name="before"></slot>
-        <button v-clipboard:copy="asset.url"
+        <button v-if="asset.url"
+                v-clipboard:copy="asset.url"
                 v-clipboard:success="tooltipCopied"
                 data-tooltip="Copy URL"
                 aria-label="Copy URL"

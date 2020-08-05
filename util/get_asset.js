@@ -44,9 +44,9 @@ export const getAsset = (library, version, file, sri, whitelisted) => {
         type: ext,
         category: fileType(ext),
         whitelisted,
-        url: `https://cdnjs.cloudflare.com/ajax/libs/${library}/${version}/${file}`,
+        url: version && file ? `https://cdnjs.cloudflare.com/ajax/libs/${library}/${version}/${file}` : null,
     };
-    asset.code = code(asset);
+    asset.code = asset.url ? code(asset) : null;
     asset.codeTitle = codeTitle(asset);
     return asset;
 };
