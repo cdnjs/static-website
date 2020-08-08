@@ -32,6 +32,9 @@
                         <a href="#whitelist">Fetch details about the cdnjs file extension whitelist</a>
                     </li>
                     <li>
+                        <a href="#stats">Fetch basic statistics for cdnjs</a>
+                    </li>
+                    <li>
                         <a href="#errors">Error responses from the cdnjs API</a>
                     </li>
                 </ul>
@@ -44,6 +47,7 @@
             <APITutorials></APITutorials>
             <APITutorial></APITutorial>
             <APIWhitelist></APIWhitelist>
+            <APIStats></APIStats>
             <APIErrors></APIErrors>
         </div>
     </section>
@@ -57,6 +61,7 @@
     import APITutorials from '../components/api/tutorials';
     import APITutorial from '../components/api/tutorial';
     import APIWhitelist from '../components/api/whitelist';
+    import APIStats from '../components/api/stats';
     import APIErrors from '../components/api/errors';
     import breadcrumbs from '../util/breadcrumbs';
     import setMeta from '../util/set_meta';
@@ -79,6 +84,7 @@
             APITutorials,
             APITutorial,
             APIWhitelist,
+            APIStats,
             APIErrors,
         },
         async asyncData (data) {
