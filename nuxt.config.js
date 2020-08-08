@@ -172,7 +172,7 @@ export default async () => {
             [
                 '@nuxtjs/google-analytics',
                 {
-                    id: 'UA-139601399-3',
+                    id: 'UA-44291190-1',
                 },
             ],
         ],
