@@ -2,7 +2,7 @@
     <client-only>
         <ais-instant-search
             ref="instantSearch"
-            :search-client="searchClient"
+            :search-client="customSearchClient"
             index-name="libraries"
             class="inline-search"
         >
@@ -71,7 +71,9 @@
                 listenerRegistered: false,
                 query: undefined,
                 placeholder: 'Search libraries on cdnjs...',
-                searchClient,
+                customSearchClient: {
+                    search: this.doSearch,
+                },
             };
         },
         computed: {
@@ -130,6 +132,22 @@
             },
             getQuery () {
                 this.$data.query = (this.$refs.search ? this.$refs.search.$children[0].$refs.input.value : undefined) || undefined;
+            },
+            doSearch (requests) {
+                // Only run the actual search if active
+                if (this.active) {
+                    return searchClient.search(requests);
+                }
+
+                // Return nothing if not active
+                return Promise.resolve({
+                    results: requests.map(() => ({
+                        hits: [],
+                        nbHits: 0,
+                        nbPages: 0,
+                        processingTimeMS: 0,
+                    })),
+                });
             },
         },
     };
