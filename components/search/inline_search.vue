@@ -41,6 +41,7 @@
     import AisHits from 'vue-instantsearch/src/components/Hits';
 
     import searchClient from '../../util/search_client';
+    import getStats from '../../util/get_stats';
     import LibraryCard from '../library/library_card';
 
     export default {
@@ -84,8 +85,9 @@
             },
         },
         created () {
-            this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
-                .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`; });
+            getStats().then((data) => {
+                this.$data.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
+            });
         },
         methods: {
             focused () {

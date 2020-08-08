@@ -66,6 +66,7 @@
     import AisInfiniteHits from 'vue-instantsearch/src/components/InfiniteHits';
 
     import searchClient from '../../util/search_client';
+    import getStats from '../../util/get_stats';
     import utm from '../../util/utm';
     import LibraryCard from '../library/library_card';
 
@@ -89,8 +90,9 @@
             };
         },
         created () {
-            this.$data.searchClient.initIndex('libraries').search('', { hitsPerPage: 0 })
-                .then((data) => { this.$data.placeholder = `Search from ${data.nbHits.toLocaleString()} libraries on cdnjs...`; });
+            getStats().then((data) => {
+                this.$data.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
+            });
         },
         methods: {
             utm,
