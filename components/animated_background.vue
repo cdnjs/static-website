@@ -16,9 +16,9 @@
         data () {
             return {
                 pre: {},
-                preSpeed: 5,
+                preSpeed: 8, // Smaller is faster
                 post: {},
-                postSpeed: 3,
+                postSpeed: 4,
             };
         },
         mounted () {
