@@ -10,7 +10,7 @@ export default async (library, version) => {
         libname = libname.slice(0, -3);
     }
 
-    const res = await fetch(`${snykApi}/test/npm/lib/${libname}/${version}`,
+    const res = await fetch(`${snykApi}/test/npm/lib/${encodeURIComponent(libname)}/${encodeURIComponent(version)}`,
         { headers: { Authorization: snykKey } });
     return res.json();
 };
