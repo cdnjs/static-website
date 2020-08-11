@@ -169,13 +169,13 @@ export default async () => {
             },
         },
         buildModules: [
-            [
+            process.env.GA_ID ? [
                 '@nuxtjs/google-analytics',
                 {
-                    id: 'UA-139601399-3',
+                    id: process.env.GA_ID,
                 },
-            ],
-        ],
+            ] : null,
+        ].filter(x => !!x),
         /*
         ** Use hooks to apply any optimizations to the final generated bundle
         */

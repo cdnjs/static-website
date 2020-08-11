@@ -60,6 +60,15 @@ When deploying this site to production using the `npm run build` and `npm run st
 `SITE_HOST` environment variable must be set and should be the canonical base for where the site
 will be hosted. In production for us, this is set to `https://cdnjs.com/`.
 
+### Google Analytics
+
+To enable Google Analytics for a deployment of the site, you should set the `GA_ID` environment
+variable. This should be set to the unique Google Analytics ID for your property, in the form
+`UA-xxxxxxxxx-x`.
+
+Google Analytics is bundled with the site using the `@nuxtjs/google-analytics` module. If the
+environment variable is not specified, Google Analytics will not be bundled with the deployment.
+
 ### Sentry Error Logging
 
 To enable basic Sentry error logging, the `SENTRY_DSN` environment variable must be set with a valid
