@@ -80,6 +80,26 @@ well as `SENTRY_AUTH_TOKEN` being set to a valid auth token from Sentry. Source 
 production we use minified, bundled JavaScript, so the sourcemaps allow Sentry to show where an
 error originated from in the source code.
 
+### Disallow in robots.txt
+
+By default, during the build process a `robots.txt` file will be generated for the site that has
+`User-agent: *` and `Allow: *`. If you wish to have a more private instance of the site or want to
+prevent potential SEO contamination, you can set the `ROBOTS_DISALLOW` env var to be `1`. This will
+change the `Allow: *` rule to be `Disallow: /`.
+
+### Sitemap generation
+
+To enable sitemap generation for the site, `NODE_ENV` must be set to `production`. This will enable
+the initial sitemap generation during build as well as the background task for regenerating the
+sitemap during `npm run start`, every 30 minutes.
+
+Further, by having `NODE_ENV=production`, this will also tell the `robots.txt` generation script,
+referenced above, to include a rule pointing to the sitemap index file, based on the provided
+`SITE_HOST` env var.
+
+(Note that for `npm run dev:analyze`, `npm run build` & `npm run start`, `NODE_ENV` will be
+automatically set to `production`).
+
 ## Production Deployment
 
 To deploy this website to production, the following steps should be taken:

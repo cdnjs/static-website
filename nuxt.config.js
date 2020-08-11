@@ -5,6 +5,7 @@ import staticFiles from './util/build/static';
 import images from './util/build/images';
 import fonts from './util/build/fonts';
 import sitemap from './util/build/sitemap';
+import robots from './util/build/robots';
 
 export default async () => {
     // We need to get the commit hash for Sentry versioning
@@ -193,6 +194,7 @@ export default async () => {
                     await fonts(builder);
                     if (process.env.NODE_ENV && process.env.NODE_ENV === 'production')
                         await sitemap(join(builder.nuxt.options.buildDir, 'dist', 'static'));
+                    await robots(builder);
                 },
             },
         },

@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /
-
-Sitemap: https://cdnjs.dev/sitemap-index.xml
