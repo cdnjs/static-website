@@ -79,7 +79,8 @@
                 circle.setAttribute('cx', '0');
                 circle.setAttribute('cy', '0');
                 circle.setAttribute('r', '5');
-                circle.setAttribute('fill', '#d9643a');
+                circle.setAttribute('fill', '#E95420');
+                circle.setAttribute('opacity', '0.75');
                 circle.setAttribute('transform', path.parentElement.getAttribute('transform'));
 
                 const motion = document.createElementNS(svgNS, 'animateMotion');
