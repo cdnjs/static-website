@@ -48,7 +48,19 @@ To run the analyzer, use the following package script:
 npm run dev:analyze
 ```
 
-## Sentry Error Logging
+## Environment Variables
+
+### Site Base
+
+When working with the site in development, using `npm run dev` or `npm run dev:analyze`, the
+`SITE_HOST` environment variable will be automatically set to be `http://localhost:3000/`, as this
+is where the site is made accessible by the dev script.
+
+When deploying this site to production using the `npm run build` and `npm run start` scripts, the
+`SITE_HOST` environment variable must be set and should be the canonical base for where the site
+will be hosted. In production for us, this is set to `https://cdnjs.com/`.
+
+### Sentry Error Logging
 
 To enable basic Sentry error logging, the `SENTRY_DSN` environment variable must be set with a valid
 DSN URL from Sentry.

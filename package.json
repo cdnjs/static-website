@@ -10,8 +10,8 @@
   "scripts": {
     "dev": "NODE_ENV=dev SITE_HOST=http://localhost:3000/ nuxt",
     "dev:analyze": "NODE_ENV=production SITE_HOST=http://localhost:3000/ nuxt build --analyze",
-    "build": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ nuxt build",
-    "start": "NODE_ENV=production SITE_HOST=https://cdnjs.dev/ node server/app.js",
+    "build": "NODE_ENV=production nuxt build",
+    "start": "NODE_ENV=production node server/app.js",
     "test": "npm run test:eslint && npm run test:scss",
     "test:fix": "npm run test:eslint:fix && npm run test:scss:fix",
     "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
