@@ -10,7 +10,7 @@
             <header>
                 <div class="content">
                     <!-- TODO: Make autofocus work -->
-                    <ais-search-box :placeholder="placeholder" :autofocus="true"></ais-search-box>
+                    <ais-search-box ref="search" :placeholder="placeholder"></ais-search-box>
 
                     <ais-stats>
                         <p slot-scope="{ nbHits, processingTimeMS }">
@@ -87,12 +87,26 @@
                 searchQuery: this.$route.query.q || this.$route.query.query || '',
                 placeholder: 'Search libraries on cdnjs...',
                 searchClient,
+                autofocusDone: false,
             };
         },
         created () {
             getStats().then((data) => {
                 this.$data.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
             });
+        },
+        updated () {
+            // Autofocus the search box once it gets rendered
+            // I hate how incredibly hacky this feels, but it works
+            if (!this.$data.autofocusDone &&
+                this.$refs.search &&
+                this.$refs.search.$children &&
+                this.$refs.search.$children[0] &&
+                this.$refs.search.$children[0].$refs &&
+                this.$refs.search.$children[0].$refs.input) {
+                this.$data.autofocusDone = true;
+                this.$refs.search.$children[0].$refs.input.focus();
+            }
         },
         methods: {
             utm,

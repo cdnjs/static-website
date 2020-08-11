@@ -15,7 +15,7 @@
         </TransitionHeight>
 
         <div class="homepage-search" :style="{ marginBottom: searchActive ? 0 : null }">
-            <InlineSearch :margin="true" :results="5" @active="active" @inactive="inactive"></InlineSearch>
+            <InlineSearch :margin="true" :results="5" :autofocus="true" @active="active" @inactive="inactive"></InlineSearch>
         </div>
 
         <Corner></Corner>
