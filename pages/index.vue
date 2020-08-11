@@ -47,6 +47,18 @@
                 searchActive: false,
             };
         },
+        mounted () {
+            // Handle old website searching
+            const match = (window.location.hash || '').match(/^#q=(.+)$/);
+            if (match) {
+                this.$router.push({
+                    name: 'libraries',
+                    query: {
+                        q: match[1],
+                    },
+                });
+            }
+        },
         methods: {
             active () {
                 this.$data.searchActive = true;
