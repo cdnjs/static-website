@@ -16,6 +16,9 @@ export default async () => {
         version = process.env.SOURCE_VERSION; // Heroku sets this, otherwise version can just be undefined
     }
 
+    // Get base URL
+    const base = process.env.SITE_HOST.trim().replace(/\/*$/, '');
+
     // Now we can generate the config
     return {
         mode: 'universal',
@@ -41,11 +44,11 @@ export default async () => {
                 { name: 'twitter:creator', content: '@MattIPv4' },
                 { hid: 'twitter:title', name: 'twitter:title', content: 'cdnjs' },
                 { hid: 'twitter:description', name: 'twitter:description', content: 'cdnjs' },
-                { name: 'twitter:image', content: 'https://cdnjs.dev/banner.png' },
+                { name: 'twitter:image', content: `${base}/banner.png` },
                 { name: 'twitter:image:alt', content: 'cdnjs banner image' },
-                { name: 'twitter:url', content: 'https://cdnjs.dev' },
+                { name: 'twitter:url', content: base },
 
-                { name: 'canonicalURL', content: 'https://cdnjs.dev' },
+                { name: 'canonicalURL', content: base },
 
                 { hid: 'og:title', prefix: 'og: http://ogp.me/ns#', property: 'og:title', content: 'cdnjs' },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:type', content: 'website' },
@@ -57,15 +60,15 @@ export default async () => {
                     property: 'og:description',
                     content: 'cdnjs'
                 },
-                { prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: 'https://cdnjs.dev' },
-                { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: 'https://cdnjs.dev/banner.png' },
-                { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: 'https://cdnjs.dev/banner.png' },
+                { prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: base },
+                { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: `${base}/banner.png` },
+                { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: `${base}/banner.png` },
             ],
             link: [
                 { rel: 'icon', type: 'image/png', href: '/favicon.png' },
                 { rel: 'shortcut-icon', type: 'image/png', href: '/favicon.png' },
                 { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
-                { rel: 'canonical', href: 'https://cdnjs.dev' },
+                { rel: 'canonical', href: base },
             ]
         },
         /*
