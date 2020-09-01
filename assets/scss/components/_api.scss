@@ -5,19 +5,19 @@ main {
       flex-direction: row;
 
       .docs-sidebar {
-        position: relative;
-        padding: ($whitespace * 2) $whitespace 0;
         background: $header;
         box-shadow: $shadow-sidebar;
+        padding: ($whitespace * 2) $whitespace 0;
+        position: relative;
 
         ul {
-          position: sticky;
-          top: 0;
-          margin: 0;
-          padding: 0;
-          list-style: none;
           display: flex;
           flex-direction: column;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: sticky;
+          top: 0;
 
           li {
             padding: ($whitespace * .5) $whitespace;
@@ -25,9 +25,9 @@ main {
             h3 {
               @include font-light;
 
-              letter-spacing: 1px;
-              font-size: 12px;
               color: $alt;
+              font-size: 12px;
+              letter-spacing: 1px;
               text-transform: uppercase;
             }
 
@@ -43,8 +43,8 @@ main {
         flex-grow: 1;
 
         header {
-          padding: 0 0 ($whitespace * 2);
           margin: 0 0 ($whitespace * 2);
+          padding: 0 0 ($whitespace * 2);
 
           .content {
             padding: ($whitespace * 2) $whitespace 0;
