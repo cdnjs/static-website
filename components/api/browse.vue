@@ -1,107 +1,91 @@
 <template>
-    <div>
-        <h2 id="browse">
-            Browsing all libraries on cdnjs
-        </h2>
-        <div class="doc">
-            <p>
-                The <code>/libraries</code> endpoint will return a JSON object with three top-level properties.
-            </p>
-            <p>
-                This API endpoint can also be used to search cdnjs for libraries, by making use of the
-                optional <code>search</code> URL query parameter.
-            </p>
-            <p>
-                The cache lifetime on this endpoint is six hours.
-            </p>
+    <div class="doc">
+        <h3>Query Parameters</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="field in query">
+                    <td><code class="key">{{ field.param }}</code></td>
+                    <td><code class="key">{{ field.type }}</code></td>
+                    <td><code class="key">{{ field.req ? 'required' : 'optional' }}</code></td>
+                    <td>
+                        <p v-for="desc in field.desc" v-html="desc"></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-            <h3>Query Parameters</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Required</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="field in query">
-                        <td><code class="key">{{ field.param }}</code></td>
-                        <td><code class="key">{{ field.type }}</code></td>
-                        <td><code class="key">{{ field.req ? 'required' : 'optional' }}</code></td>
-                        <td>
-                            <p v-for="desc in field.desc" v-html="desc"></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <h3>JSON Response</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="field in response">
+                    <td><code class="key">{{ field.prop }}</code></td>
+                    <td>
+                        <template v-for="type in field.type">
+                            <code class="key">{{ type }}</code>&nbsp;
+                        </template>
+                    </td>
+                    <td>
+                        <p v-for="desc in field.desc" v-html="desc"></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-            <h3>JSON Response</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Property</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="field in response">
-                        <td><code class="key">{{ field.prop }}</code></td>
-                        <td>
-                            <template v-for="type in field.type">
-                                <code class="key">{{ type }}</code>&nbsp;
-                            </template>
-                        </td>
-                        <td>
-                            <p v-for="desc in field.desc" v-html="desc"></p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <p>
+            This endpoint is directly powered by our Algolia index, the same one that is used on this
+            website for the search box at the top and on the
+            <router-link :to="{ name: 'libraries' }">
+                Libraries page
+            </router-link>.
+        </p>
 
-            <p>
-                This endpoint is directly powered by our Algolia index, the same one that is used on this
-                website for the search box at the top and on the
-                <router-link :to="{ name: 'libraries' }">
-                    Libraries page
-                </router-link>.
-            </p>
+        <h3>Example Requests</h3>
 
-            <h3>Example Requests</h3>
+        <h4>
+            <a href="https://api.cdnjs.com/libraries">
+                <code class="key">https://api.cdnjs.com/libraries</code>
+            </a>
+        </h4>
+        <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"},{"name":"react-is","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-is/16.13.1/umd/react-is.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"}, "..."],"total":3606,"available":3606}</JSONExample>
+        <p>
+            <small>
+                <i>Example response has been trimmed to remove items in the results array.</i>
+            </small>
+        </p>
 
-            <h4>
-                <a href="https://api.cdnjs.com/libraries">
-                    <code class="key">https://api.cdnjs.com/libraries</code>
-                </a>
-            </h4>
-            <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"},{"name":"react","latest":"https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"},{"name":"react-dom","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"},{"name":"react-is","latest":"https://cdnjs.cloudflare.com/ajax/libs/react-is/16.13.1/umd/react-is.production.min.js"},{"name":"twitter-bootstrap","latest":"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.min.js"},{"name":"d3","latest":"https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"},{"name":"axios","latest":"https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"},{"name":"animate.css","latest":"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"},{"name":"font-awesome","latest":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"}, "..."],"total":3606,"available":3606}</JSONExample>
-            <p>
-                <small>
-                    <i>Example response has been trimmed to remove items in the results array.</i>
-                </small>
-            </p>
+        <h4>
+            <a href="https://api.cdnjs.com/libraries?search=jquery">
+                <code class="key">https://api.cdnjs.com/libraries?search=jquery</code>
+            </a>
+        </h4>
+        <JSONExample>{"results":[{"name":"jquery","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"},{"name":"jquery-compat","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"},{"name":"blueimp-file-upload","latest":"https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.23.0/js/jquery.fileupload.min.js"},{"name":"fullPage.js","latest":"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.css"},{"name":"select2","latest":"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"},{"name":"chosen","latest":"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"},{"name":"cheerio","latest":"https://cdnjs.cloudflare.com/ajax/libs/cheerio/1.0.0-rc.3/index.js"},{"name":"Sortable","latest":"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js"}, "..."],"total":865,"available":865}</JSONExample>
+        <p>
+            <small>
+                <i>Example response has been trimmed to remove items in the results array.</i>
+            </small>
+        </p>
 
-            <h4>
-                <a href="https://api.cdnjs.com/libraries?search=jquery">
-                    <code class="key">https://api.cdnjs.com/libraries?search=jquery</code>
-                </a>
-            </h4>
-            <JSONExample>{"results":[{"name":"jquery","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"},{"name":"jquery-compat","latest":"https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"},{"name":"blueimp-file-upload","latest":"https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.23.0/js/jquery.fileupload.min.js"},{"name":"fullPage.js","latest":"https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.css"},{"name":"select2","latest":"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"},{"name":"chosen","latest":"https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"},{"name":"cheerio","latest":"https://cdnjs.cloudflare.com/ajax/libs/cheerio/1.0.0-rc.3/index.js"},{"name":"Sortable","latest":"https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.1/Sortable.min.js"}, "..."],"total":865,"available":865}</JSONExample>
-            <p>
-                <small>
-                    <i>Example response has been trimmed to remove items in the results array.</i>
-                </small>
-            </p>
-
-            <h4>
-                <a href="https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github">
-                    <code class="key">https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github&limit=3</code>
-                </a>
-            </h4>
-            <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js","filename":"vue.min.js","description":"Simple, Fast & Composable MVVM for building interactive interfaces","version":"2.6.11","github":{"user":"vuejs","repo":"vue","stargazers_count":163564,"forks":24743,"subscribers_count":6145}},{"name":"element-ui","latest":"https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.1/index.js","filename":"index.js","description":"A Component Library for Vue.js.","version":"2.13.1","github":{"user":"ElemeFE","repo":"element","stargazers_count":45141,"forks":10399,"subscribers_count":1378}},{"name":"vuetify","latest":"https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.0-beta.4/vuetify.min.js","filename":"vuetify.min.js","description":"Vue.js 2 Semantic Component Framework","version":"2.3.0-beta.4","github":{"user":"vuetifyjs","repo":"vuetify","stargazers_count":25230,"forks":4186,"subscribers_count":575}}],"total":3,"available":53}</JSONExample>
-        </div>
+        <h4>
+            <a href="https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github">
+                <code class="key">https://api.cdnjs.com/libraries?search=vue&fields=filename,description,version,github&limit=3</code>
+            </a>
+        </h4>
+        <JSONExample>{"results":[{"name":"vue","latest":"https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js","filename":"vue.min.js","description":"Simple, Fast & Composable MVVM for building interactive interfaces","version":"2.6.11","github":{"user":"vuejs","repo":"vue","stargazers_count":163564,"forks":24743,"subscribers_count":6145}},{"name":"element-ui","latest":"https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.1/index.js","filename":"index.js","description":"A Component Library for Vue.js.","version":"2.13.1","github":{"user":"ElemeFE","repo":"element","stargazers_count":45141,"forks":10399,"subscribers_count":1378}},{"name":"vuetify","latest":"https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.3.0-beta.4/vuetify.min.js","filename":"vuetify.min.js","description":"Vue.js 2 Semantic Component Framework","version":"2.3.0-beta.4","github":{"user":"vuetifyjs","repo":"vuetify","stargazers_count":25230,"forks":4186,"subscribers_count":575}}],"total":3,"available":53}</JSONExample>
     </div>
 </template>
 
