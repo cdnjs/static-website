@@ -47,7 +47,7 @@ export default async () => {
                 { hid: 'twitter:description', name: 'twitter:description', content: 'cdnjs' },
                 { name: 'twitter:image', content: `${base}/banner.png` },
                 { name: 'twitter:image:alt', content: 'cdnjs banner image' },
-                { name: 'twitter:url', content: base },
+                { hid: 'twitter:url', name: 'twitter:url', content: base },
 
                 { hid: 'og:title', prefix: 'og: http://ogp.me/ns#', property: 'og:title', content: 'cdnjs' },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:type', content: 'website' },
@@ -59,7 +59,7 @@ export default async () => {
                     property: 'og:description',
                     content: 'cdnjs'
                 },
-                { prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: base },
+                { hid: 'og:url', prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: base },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: `${base}/banner.png` },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:image:url', content: `${base}/banner.png` },
             ],

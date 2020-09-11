@@ -22,9 +22,11 @@ export default (meta, context) => {
 
             { hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
             { hid: 'twitter:description', name: 'twitter:description', content: pageDesc },
+            { hid: 'twitter:url', name: 'twitter:url', content: pageUrl },
 
             { hid: 'og:title', prefix: 'og: http://ogp.me/ns#', property: 'og:title', content: pageTitle },
             { hid: 'og:description', prefix: 'og: http://ogp.me/ns#', property: 'og:description', content: pageDesc },
+            { hid: 'og:url', prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: pageUrl },
 
             { hid: 'canonical', rel: 'canonical', href: pageUrl },
         ],
