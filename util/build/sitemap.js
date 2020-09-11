@@ -24,10 +24,8 @@ const getUrls = async () => {
         },
     ];
 
-    // Get all the libraries, their versions & tutorials
-    urls.push(...(await routes()));
-
-    return urls;
+    // Add in all the libraries, their versions & tutorials
+    return urls.concat(await routes());
 };
 
 export default async (base) => {
