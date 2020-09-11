@@ -11,7 +11,7 @@ export default (meta, context) => {
     const pageDesc = `${contextDesc}${contextDesc ? ' - ' : ''}${defaultDesc}`;
 
     // Get base & page URL
-    const pageUrl = context.$base.trim().replace(/\/*$/, '') + context.$route.path;
+    const pageUrl = context.$base.slice(0, -1) + context.$route.path;
 
     return {
         title: pageTitle,
