@@ -5,7 +5,7 @@
         name: 'JSONLDWebSite',
         computed: {
             json () {
-                return WebSite(this.$base);
+                return WebSite(this.$baseUrl);
             },
         },
         head () {

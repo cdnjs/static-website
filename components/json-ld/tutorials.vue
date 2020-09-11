@@ -9,7 +9,7 @@
         },
         computed: {
             json () {
-                return Tutorials(this.$base, this.$props.library, this.$props.tutorials, this.keywords);
+                return Tutorials(this.$baseUrl, this.$props.library, this.$props.tutorials, this.keywords);
             },
             keywords () {
                 const tags = [];

@@ -3,5 +3,5 @@ const origin = process.env.SITE_HOST ||
 const base = origin.trim().replace(/\/*$/, '') + '/';
 
 export default function (ctx, inject) {
-    inject('base', base);
+    inject('baseUrl', base);
 }

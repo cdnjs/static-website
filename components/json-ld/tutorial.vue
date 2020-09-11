@@ -11,7 +11,7 @@
         computed: {
             json () {
                 return Tutorial(
-                    this.$base,
+                    this.$baseUrl,
                     this.$props.tutorial,
                     this.$props.tutorialName,
                     this.$props.library,
