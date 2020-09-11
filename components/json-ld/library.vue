@@ -1,12 +1,8 @@
 <script>
-    import Script from '../script';
     import Library from '../../data/json-ld/library';
 
     export default {
         name: 'JSONLDLibrary',
-        components: {
-            Script,
-        },
         props: {
             library: Object,
             libraryName: String,
@@ -25,6 +21,9 @@
                     },
                 ],
             };
+        },
+        render () {
+            return '';
         },
     };
 </script>
