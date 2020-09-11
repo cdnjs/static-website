@@ -104,6 +104,7 @@ export default async () => {
         */
         plugins: [
             '~/plugins/vue-clipboard2.js',
+            '~/plugins/inject-base.js',
         ],
         /*
         ** Load in modules that we're using in the app
