@@ -190,7 +190,9 @@ export default async () => {
                     await staticFiles(builder);
                     await images(builder);
                     await fonts(builder);
-                    if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') { await sitemap(join(builder.nuxt.options.buildDir, 'dist', 'static')); }
+                    if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
+                        await sitemap(join(builder.nuxt.options.buildDir, 'dist', 'static'));
+                    }
                     await robots(builder);
                 },
             },
