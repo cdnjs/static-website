@@ -49,8 +49,6 @@ export default async () => {
                 { name: 'twitter:image:alt', content: 'cdnjs banner image' },
                 { name: 'twitter:url', content: base },
 
-                { name: 'canonicalURL', content: base },
-
                 { hid: 'og:title', prefix: 'og: http://ogp.me/ns#', property: 'og:title', content: 'cdnjs' },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:type', content: 'website' },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:locale', content: 'en_GB' },
@@ -69,7 +67,7 @@ export default async () => {
                 { rel: 'icon', type: 'image/png', href: '/favicon.png' },
                 { rel: 'shortcut-icon', type: 'image/png', href: '/favicon.png' },
                 { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
-                { rel: 'canonical', href: base },
+                { hid: 'canonical', rel: 'canonical', href: base },
             ]
         },
         /*
