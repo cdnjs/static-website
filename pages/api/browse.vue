@@ -4,21 +4,7 @@
         <div class="docs-main">
             <header>
                 <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-                <div class="content">
-                    <h1>
-                        Browsing all libraries on cdnjs
-                    </h1>
-                    <p>
-                        The <code>/libraries</code> endpoint will return a JSON object with three top-level properties.
-                    </p>
-                    <p>
-                        This API endpoint can also be used to search cdnjs for libraries, by making use of the
-                        optional <code>search</code> URL query parameter.
-                    </p>
-                    <p>
-                        The cache lifetime on this endpoint is six hours.
-                    </p>
-                </div>
+                <APIBrowseHeader></APIBrowseHeader>
             </header>
             <div class="content">
                 <APIBrowse></APIBrowse>
@@ -30,6 +16,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import APISidebar from '../../components/api/sidebar';
+    import APIBrowseHeader from '../../components/api/header/browse';
     import APIBrowse from '../../components/api/browse';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
@@ -49,6 +36,7 @@
         components: {
             Breadcrumbs,
             APISidebar,
+            APIBrowseHeader,
             APIBrowse,
         },
         async asyncData (data) {

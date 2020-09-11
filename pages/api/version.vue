@@ -4,19 +4,7 @@
         <div class="docs-main">
             <header>
                 <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-                <div class="content">
-                    <h1>
-                        Getting a specific version for a library on cdnjs
-                    </h1>
-                    <p>
-                        The <code>/libraries/:library/:version</code> endpoint returns a JSON object with details specific to a
-                        requested version of a library on cdnjs.
-                    </p>
-                    <p>
-                        The cache lifetime on this endpoint is 355 days, identical to the CDN.
-                        The response is also marked as immutable, as a version on cdnjs will never change once published.
-                    </p>
-                </div>
+                <APIVersionHeader></APIVersionHeader>
             </header>
             <div class="content">
                 <APIVersion></APIVersion>
@@ -28,6 +16,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import APISidebar from '../../components/api/sidebar';
+    import APIVersionHeader from '../../components/api/header/version';
     import APIVersion from '../../components/api/version';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
@@ -47,6 +36,7 @@
         components: {
             Breadcrumbs,
             APISidebar,
+            APIVersionHeader,
             APIVersion,
         },
         async asyncData (data) {

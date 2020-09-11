@@ -4,18 +4,7 @@
         <div class="docs-main">
             <header>
                 <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-                <div class="content">
-                    <h1>
-                        Fetch details about the cdnjs file extension whitelist
-                    </h1>
-                    <p>
-                        The <code>/whitelist</code> endpoint returns a JSON object containing a list of extensions permitted on
-                        the CDN as well as categories for those extensions.
-                    </p>
-                    <p>
-                        The cache lifetime on this endpoint is 6 hours.
-                    </p>
-                </div>
+                <APIWhitelistHeader></APIWhitelistHeader>
             </header>
             <div class="content">
                 <APIWhitelist></APIWhitelist>
@@ -27,6 +16,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import APISidebar from '../../components/api/sidebar';
+    import APIWhitelistHeader from '../../components/api/header/whitelist';
     import APIWhitelist from '../../components/api/whitelist';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
@@ -46,6 +36,7 @@
         components: {
             Breadcrumbs,
             APISidebar,
+            APIWhitelistHeader,
             APIWhitelist,
         },
         async asyncData (data) {

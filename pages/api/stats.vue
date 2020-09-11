@@ -4,17 +4,7 @@
         <div class="docs-main">
             <header>
                 <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-                <div class="content">
-                    <h1>
-                        Fetch basic statistics for cdnjs
-                    </h1>
-                    <p>
-                        The <code>/stats</code> endpoint returns a JSON object containing a set of statistics relating to cdnjs.
-                    </p>
-                    <p>
-                        The cache lifetime on this endpoint is 6 hours.
-                    </p>
-                </div>
+                <APIStatsHeader></APIStatsHeader>
             </header>
             <div class="content">
                 <APIStats></APIStats>
@@ -26,6 +16,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import APISidebar from '../../components/api/sidebar';
+    import APIStatsHeader from '../../components/api/header/stats';
     import APIStats from '../../components/api/stats';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
@@ -45,6 +36,7 @@
         components: {
             Breadcrumbs,
             APISidebar,
+            APIStatsHeader,
             APIStats,
         },
         async asyncData (data) {

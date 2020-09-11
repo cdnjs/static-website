@@ -168,6 +168,20 @@ main {
             }
           }
         }
+
+        .docs-desc {
+          h1 {
+            margin: 0 0 $whitespace;
+          }
+
+          p {
+            margin: ($whitespace * .5) 0;
+          }
+
+          + .content {
+            margin-bottom: ($whitespace * 2);
+          }
+        }
       }
     }
   }

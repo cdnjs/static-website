@@ -4,27 +4,7 @@
         <div class="docs-main">
             <header>
                 <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-                <div class="content">
-                    <h1>
-                        Listing all tutorials for a library on cdnjs
-                    </h1>
-                    <p>
-                        The <code>/libraries/:library/tutorials</code> endpoint returns a JSON array containing all the
-                        user-submitted tutorials relating to this library on cdnjs. This is a mirror of the
-                        <code>tutorials</code> property returned from the main library endpoint.
-                    </p>
-                    <p>
-                        The cache lifetime on this endpoint is 24 hours.
-                    </p>
-                    <p>
-                        <small>
-                            <i>
-                                Alongside the properties listed here, there may be other optional properties available based on
-                                the metadata available in each source tutorial file.
-                            </i>
-                        </small>
-                    </p>
-                </div>
+                <APITutorialsHeader></APITutorialsHeader>
             </header>
             <div class="content">
                 <APITutorials></APITutorials>
@@ -36,6 +16,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import APISidebar from '../../components/api/sidebar';
+    import APITutorialsHeader from '../../components/api/header/tutorials';
     import APITutorials from '../../components/api/tutorials';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
@@ -55,6 +36,7 @@
         components: {
             Breadcrumbs,
             APISidebar,
+            APITutorialsHeader,
             APITutorials,
         },
         async asyncData (data) {

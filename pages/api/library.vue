@@ -4,18 +4,7 @@
         <div class="docs-main">
             <header>
                 <Breadcrumbs :crumbs="crumbs"></Breadcrumbs>
-                <div class="content">
-                    <h1>
-                        Getting a specific library on cdnjs
-                    </h1>
-                    <p>
-                        The <code>/libraries/:library</code> endpoint allows for data on a specific library to be
-                        requested and will return a JSON object with all library data properties by default.
-                    </p>
-                    <p>
-                        The cache lifetime on this endpoint is six hours.
-                    </p>
-                </div>
+                <APILibraryHeader></APILibraryHeader>
             </header>
             <div class="content">
                 <APILibrary></APILibrary>
@@ -27,6 +16,7 @@
 <script>
     import Breadcrumbs from '../../components/breadcrumbs';
     import APISidebar from '../../components/api/sidebar';
+    import APILibraryHeader from '../../components/api/header/library';
     import APILibrary from '../../components/api/library';
     import breadcrumbs from '../../util/breadcrumbs';
     import setMeta from '../../util/set_meta';
@@ -46,6 +36,7 @@
         components: {
             Breadcrumbs,
             APISidebar,
+            APILibraryHeader,
             APILibrary,
         },
         async asyncData (data) {
