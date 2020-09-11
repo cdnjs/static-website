@@ -42,12 +42,11 @@ const start = async () => {
     }, 1000 * 60 * 30);
 
     // Handle sitemaps ourselves
-    app.get('/sitemap-(index|\\d+).xml(.gz)?', (req, res) => {
+    app.get('/sitemap-(index|\\d+).xml', (req, res) => {
         try {
             // Try to load the sitemap file & send it as gzip data
-            const data = readFileSync(path.join(buildStatic, `${req.url.replace(/^\/+/, '').replace(/\.gz$/, '')}.gz`));
+            const data = readFileSync(path.join(buildStatic, req.url.replace(/^\/+/, '')));
             res.header('Content-Type', 'application/xml');
-            res.header('Content-Encoding', 'gzip');
             res.send(data);
         } catch (e) {
             // If ENOENT, send a 404
