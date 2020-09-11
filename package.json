@@ -14,7 +14,7 @@
     "start": "NODE_ENV=production node server/app.js",
     "test": "npm run test:eslint && npm run test:scss",
     "test:fix": "npm run test:eslint:fix && npm run test:scss:fix",
-    "test:eslint": "eslint '!(node_modules|.nuxt|dist)/**/*.{js,vue}'",
+    "test:eslint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test:eslint:fix": "npm run test:eslint -- --fix",
     "test:scss": "sass-lint '!(node_modules|.nuxt|dist)/**/*.scss' --verbose --no-exit --config .sasslintrc",
     "test:scss:fix": "sass-lint-auto-fix '!(node_modules|.nuxt|dist)/**/*.scss'"

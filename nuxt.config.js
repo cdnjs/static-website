@@ -57,7 +57,7 @@ export default async () => {
                     hid: 'og:description',
                     prefix: 'og: http://ogp.me/ns#',
                     property: 'og:description',
-                    content: 'cdnjs'
+                    content: 'cdnjs',
                 },
                 { hid: 'og:url', prefix: 'og: http://ogp.me/ns#', property: 'og:url', content: base },
                 { prefix: 'og: http://ogp.me/ns#', property: 'og:image', content: `${base}/banner.png` },
@@ -68,7 +68,7 @@ export default async () => {
                 { rel: 'shortcut-icon', type: 'image/png', href: '/favicon.png' },
                 { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
                 { hid: 'canonical', rel: 'canonical', href: base },
-            ]
+            ],
         },
         /*
         ** Customize the progress-bar color
@@ -80,16 +80,16 @@ export default async () => {
         pageTransition: {
             name: 'page',
             mode: 'out-in',
-            beforeLeave(el) {
+            beforeLeave (el) {
                 this.$emit('beforeLeave', el);
             },
-            afterLeave(el) {
+            afterLeave (el) {
                 this.$emit('afterLeave', el);
             },
-            beforeEnter(el) {
+            beforeEnter (el) {
                 this.$emit('beforeEnter', el);
             },
-            afterEnter(el) {
+            afterEnter (el) {
                 this.$emit('afterEnter', el);
             },
         },
@@ -117,7 +117,7 @@ export default async () => {
         */
         router: {
             trailingSlash: false,
-            extendRoutes(routes, resolve) {
+            extendRoutes (routes, resolve) {
                 routes.push({
                     name: 'libraries-library-version',
                     path: '/libraries/:library/:version?',
@@ -153,7 +153,7 @@ export default async () => {
             publicPath: '/_/',
             // Change babel to improve browser support
             babel: {
-                presets({ isServer }, [, options ]) {
+                presets ({ isServer }, [, options]) {
                     // Change the browserslist used for the client
                     if (!isServer) {
                         options.targets = {
@@ -165,7 +165,7 @@ export default async () => {
                     // Use core-js@3
                     options.corejs = {
                         ...options.corejs,
-                        version: 3
+                        version: 3,
                     };
                 },
             },
@@ -183,15 +183,16 @@ export default async () => {
         */
         hooks: {
             build: {
-                async before(builder) {
+                async before (builder) {
                     await whitelist(builder);
                 },
-                async done(builder) {
+                async done (builder) {
                     await staticFiles(builder);
                     await images(builder);
                     await fonts(builder);
-                    if (process.env.NODE_ENV && process.env.NODE_ENV === 'production')
+                    if (process.env.NODE_ENV && process.env.NODE_ENV === 'production') {
                         await sitemap(join(builder.nuxt.options.buildDir, 'dist', 'static'));
+                    }
                     await robots(builder);
                 },
             },
