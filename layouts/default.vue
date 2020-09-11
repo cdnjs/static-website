@@ -45,7 +45,7 @@
         },
         watch: {
             classes () {
-                this.$data.showBg = this.$data.classes.includes('landing');
+                this.showBg = this.classes.includes('landing');
             },
         },
         created () {
@@ -59,22 +59,22 @@
         },
         mounted () {
             this.$refs.nuxt.$on('beforeLeave', () => {
-                this.$data.showSearch = false;
-                this.$data.classes = this.$data.classes.filter(c => c !== 'ready');
+                this.showSearch = false;
+                this.classes = this.classes.filter(c => c !== 'ready');
             });
             this.$refs.nuxt.$on('afterLeave', () => {
-                this.$data.classes = [];
+                this.classes = [];
             });
             this.$refs.nuxt.$on('beforeEnter', () => {
                 this.setClasses();
                 this.checkInlineSearch();
             });
             this.$refs.nuxt.$on('afterEnter', () => {
-                this.$data.classes.push('ready');
+                this.classes.push('ready');
             });
             this.setClasses();
             this.checkInlineSearch();
-            this.$nextTick(() => this.$data.classes.push('ready'));
+            this.$nextTick(() => this.classes.push('ready'));
         },
         methods: {
             checkTrailingSlash () {
@@ -97,24 +97,24 @@
             checkInlineSearch () {
                 // Hide search on landing
                 if (this.$nuxt.context.route.name === 'index') {
-                    this.$data.showSearch = false;
+                    this.showSearch = false;
                     return;
                 }
 
                 // Hide search on libraries
                 if (this.$nuxt.context.route.name === 'libraries') {
-                    this.$data.showSearch = false;
+                    this.showSearch = false;
                     return;
                 }
 
                 // Otherwise, show it
-                this.$data.showSearch = true;
+                this.showSearch = true;
             },
             setClasses () {
                 // Handle the error page which isn't a route
                 if (this.$nuxt.context._errored) {
-                    this.$data.classes = ['error', 'landing'];
-                    this.$nextTick(() => this.$data.classes.push('ready'));
+                    this.classes = ['error', 'landing'];
+                    this.$nextTick(() => this.classes.push('ready'));
                     return;
                 }
 
@@ -134,7 +134,7 @@
                 }
 
                 // Store it!
-                this.$data.classes = newClasses;
+                this.classes = newClasses;
             },
         },
     };

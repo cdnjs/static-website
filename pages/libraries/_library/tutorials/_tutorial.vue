@@ -133,7 +133,7 @@
                         return `<pre class="${langClass}"><code class="${langClass}">${highlighted}</code></pre>`;
                     },
                 });
-                return md.render(this.$data.tutorial.content);
+                return md.render(this.tutorial.content);
             },
         },
         mounted () {

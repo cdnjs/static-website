@@ -92,19 +92,19 @@
         },
         created () {
             getStats().then((data) => {
-                this.$data.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
+                this.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
             });
         },
         updated () {
             // Autofocus the search box once it gets rendered
             // I hate how incredibly hacky this feels, but it works
-            if (!this.$data.autofocusDone &&
+            if (!this.autofocusDone &&
                 this.$refs.search &&
                 this.$refs.search.$children &&
                 this.$refs.search.$children[0] &&
                 this.$refs.search.$children[0].$refs &&
                 this.$refs.search.$children[0].$refs.input) {
-                this.$data.autofocusDone = true;
+                this.autofocusDone = true;
                 this.$refs.search.$children[0].$refs.input.focus();
             }
         },

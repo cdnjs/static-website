@@ -30,12 +30,12 @@
         },
         methods: {
             async updateStatus () {
-                const data = await status(this.$props.pageId);
-                this.$data.status = data.status;
+                const data = await status(this.pageId);
+                this.status = data.status;
                 this.$refs.dot.className = `status-indicator status-indicator-${data.status.indicator}`;
             },
             tooltipShow (evt) {
-                evt.target.setAttribute('data-tlite', this.$data.status.description);
+                evt.target.setAttribute('data-tlite', this.status.description);
                 tlite.show(evt.target);
             },
             tooltipHide (evt) {

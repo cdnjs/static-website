@@ -17,11 +17,11 @@
         },
         computed: {
             json () {
-                return JSON.stringify(Tutorials(this.base, this.$props.library, this.$props.tutorials, this.keywords));
+                return JSON.stringify(Tutorials(this.base, this.library, this.tutorials, this.keywords));
             },
             keywords () {
                 const tags = [];
-                for (const tutorial of this.$props.tutorials) {
+                for (const tutorial of this.tutorials) {
                     if (tutorial.keywords) {
                         tags.push(...tutorial.keywords);
                     }

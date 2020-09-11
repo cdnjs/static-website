@@ -17,7 +17,7 @@
         },
         computed: {
             json () {
-                return JSON.stringify(Library(this.base, this.$props.library, this.$props.libraryName));
+                return JSON.stringify(Library(this.base, this.library, this.libraryName));
             },
             base () {
                 const origin = process.env.SITE_HOST ||

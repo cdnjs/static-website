@@ -186,44 +186,44 @@
         computed: {
             versions () {
                 try {
-                    return semverSort.desc(this.$data.library.versions);
+                    return semverSort.desc(this.library.versions);
                 } catch (_) {
-                    return this.$data.library.versions;
+                    return this.library.versions;
                 }
             },
         },
         watch: {
             async version () {
                 // Update the asset list
-                this.$data.assetsMessage = `Loading assets for ${this.$data.libraryName}/${this.$data.version}...`;
-                await getAssetsData(this.$data);
+                this.assetsMessage = `Loading assets for ${this.libraryName}/${this.version}...`;
+                await getAssetsData(this);
 
                 // Update the URL without navigating
                 const newRoute = this.$router.resolve({
                     name: 'libraries-library-version',
-                    params: { ...this.$route.params, version: this.$data.version },
+                    params: { ...this.$route.params, version: this.version },
                     query: this.$route.query,
                 });
                 window.history.pushState({}, '', newRoute.href);
 
                 // Update the crumbs
-                this.$data.params = newRoute.route.params;
-                this.$data.crumbs = await breadcrumbs(newRoute.route, this.$router, this.$data);
+                this.params = newRoute.route.params;
+                this.crumbs = await breadcrumbs(newRoute.route, this.$router, this);
             },
         },
         async mounted () {
-            if (!this.$data.assets || !this.$data.assets.length) {
-                await getAssetsData(this.$data);
+            if (!this.assets || !this.assets.length) {
+                await getAssetsData(this);
             }
         },
         methods: {
             formatUnits,
             hideAsset (asset) {
-                if (asset.hidden && !this.$data.showHidden) {
+                if (asset.hidden && !this.showHidden) {
                     return true;
                 }
-                if (this.$data.category !== 'All') {
-                    return asset.category !== this.$data.category;
+                if (this.category !== 'All') {
+                    return asset.category !== this.category;
                 }
                 return false;
             },

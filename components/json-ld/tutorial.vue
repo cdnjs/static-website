@@ -20,9 +20,9 @@
             json () {
                 return JSON.stringify(Tutorial(
                     this.base,
-                    this.$props.tutorial,
-                    this.$props.tutorialName,
-                    this.$props.library,
+                    this.tutorial,
+                    this.tutorialName,
+                    this.library,
                 ));
             },
             base () {

@@ -43,10 +43,10 @@
         computed: {
             asset () {
                 return getAsset(
-                    this.$props.library.name,
-                    this.$props.library.version,
-                    this.$props.library.filename,
-                    this.$props.library.sri,
+                    this.library.name,
+                    this.library.version,
+                    this.library.filename,
+                    this.library.sri,
                 );
             },
         },

@@ -37,10 +37,10 @@
         },
         methods: {
             raw () {
-                this.$data.showRaw = true;
+                this.showRaw = true;
             },
             formatted () {
-                this.$data.showRaw = false;
+                this.showRaw = false;
             },
         },
     };

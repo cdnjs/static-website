@@ -86,7 +86,7 @@
         },
         computed: {
             active () {
-                return this.$data.showHits && (this.$data.hasFocus || this.$data.query);
+                return this.showHits && (this.hasFocus || this.query);
             },
         },
         watch: {
@@ -96,52 +96,52 @@
         },
         created () {
             getStats().then((data) => {
-                this.$data.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
+                this.placeholder = `Search from ${data.libraries.toLocaleString()} libraries on cdnjs...`;
             });
         },
         updated () {
-            if (this.$props.autofocus) {
+            if (this.autofocus) {
                 // Autofocus the search box once it gets rendered
                 // I hate how incredibly hacky this feels, but it works
-                if (!this.$data.autofocusDone &&
+                if (!this.autofocusDone &&
                     this.$refs.search &&
                     this.$refs.search.$children &&
                     this.$refs.search.$children[0] &&
                     this.$refs.search.$children[0].$refs &&
                     this.$refs.search.$children[0].$refs.input) {
                     // Focus the input
-                    this.$data.autofocusDone = true;
+                    this.autofocusDone = true;
                     this.$refs.search.$children[0].$refs.input.focus();
 
                     // Disable focus events for a tick
-                    this.$nextTick(() => { this.$data.listenForFocus = true; });
+                    this.$nextTick(() => { this.listenForFocus = true; });
                 }
             }
         },
         methods: {
             focused () {
                 // Don't act as focused if autofocus
-                if (this.$props.autofocus && !this.$data.listenForFocus) {
+                if (this.autofocus && !this.listenForFocus) {
                     return;
                 }
 
                 // Register a listener for results
-                if (!this.$data.listenerRegistered) {
+                if (!this.listenerRegistered) {
                     this.$refs.instantSearch.instantSearchInstance.on('render', () => {
                         this.$nextTick(() => {
                             // Set a margin so it doesn't overflow the page (if enabled)
-                            if (this.$props.margin) {
+                            if (this.margin) {
                                 const results = this.$refs.results.$el;
                                 results.parentElement.style.marginBottom = this.active ? `${results.offsetHeight + 4}px` : null;
                             }
                         });
                     });
-                    this.$data.listenerRegistered = true;
+                    this.listenerRegistered = true;
                 }
 
                 // Ensure we are showing hits now they're using the input
-                this.$data.showHits = true;
-                this.$data.hasFocus = true;
+                this.showHits = true;
+                this.hasFocus = true;
             },
             blurred () {
                 // If no query, this will hide the default results
@@ -149,7 +149,7 @@
                 setTimeout(() => {
                     this.$nextTick(() => {
                         this.$nextTick(() => {
-                            this.$data.hasFocus = false;
+                            this.hasFocus = false;
                         });
                     });
                 }, 200);
@@ -162,12 +162,12 @@
                 this.$router.push({
                     name: 'libraries',
                     query: {
-                        q: this.$data.query,
+                        q: this.query,
                     },
                 });
             },
             getQuery () {
-                this.$data.query = (this.$refs.search ? this.$refs.search.$children[0].$refs.input.value : undefined) || undefined;
+                this.query = (this.$refs.search ? this.$refs.search.$children[0].$refs.input.value : undefined) || undefined;
             },
             doSearch (requests) {
                 // Only run the actual search if active

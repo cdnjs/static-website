@@ -30,28 +30,28 @@
             this.$refs.background.querySelectorAll('#Pre-cloud-tracks path').forEach((elm, index) => {
                 const id = `PreCloudTracks${index}`;
                 elm.setAttribute('id', id);
-                this.$data.pre[id] = 0;
+                this.pre[id] = 0;
             });
             this.$refs.background.querySelectorAll('#Post-cloud-tracks path').forEach((elm, index) => {
                 const id = `PostCloudTracks${index}`;
                 elm.setAttribute('id', id);
-                this.$data.post[id] = 0;
+                this.post[id] = 0;
             });
 
             // Do the origin feeds
-            Object.keys(this.$data.pre).forEach((id) => {
+            Object.keys(this.pre).forEach((id) => {
                 const path = this.$refs.background.querySelector(`#${id}`);
-                this.create(path, 0, this.$data.preSpeed,
+                this.create(path, 0, this.preSpeed,
                             () => Math.random() * 3 - 1, d => d * 2 * Math.random());
             });
 
             // Do the edge feeds
-            Object.keys(this.$data.post).forEach((id) => {
+            Object.keys(this.post).forEach((id) => {
                 const path = this.$refs.background.querySelector(`#${id}`);
                 const pathIndex = Number(id.match(/^.+(\d+)/)[1]);
                 const dots = 6 - pathIndex;
                 for (let i = 0; i < dots; i++) {
-                    this.create(path, i, this.$data.postSpeed, () => -i / dots, d => pathIndex < 2 ? 0 : d);
+                    this.create(path, i, this.postSpeed, () => -i / dots, d => pathIndex < 2 ? 0 : d);
                 }
             });
         },

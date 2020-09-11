@@ -88,20 +88,20 @@
             version: {
                 immediate: true,
                 async handler () {
-                    this.$data.vulns = await getVulns(this.$props.library, this.$props.version).catch(() => {});
+                    this.vulns = await getVulns(this.library, this.version).catch(() => {});
                 },
             },
         },
         async created () {
-            this.$data.vulns = await getVulns(this.$props.library, this.$props.version).catch(() => {});
+            this.vulns = await getVulns(this.library, this.version).catch(() => {});
         },
         methods: {
             formatUnits,
             utm,
             repo () {
-                if (this.$props.library.algolia && this.$props.library.algolia.github &&
-                    this.$props.library.algolia.github.user && this.$props.library.algolia.github.repo) {
-                    return `${this.$props.library.algolia.github.user}/${this.$props.library.algolia.github.repo}`;
+                if (this.library.algolia && this.library.algolia.github &&
+                    this.library.algolia.github.user && this.library.algolia.github.repo) {
+                    return `${this.library.algolia.github.user}/${this.library.algolia.github.repo}`;
                 }
             },
         },

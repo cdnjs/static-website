@@ -61,10 +61,10 @@
         },
         methods: {
             active () {
-                this.$data.searchActive = true;
+                this.searchActive = true;
             },
             inactive () {
-                this.$data.searchActive = false;
+                this.searchActive = false;
             },
         },
         head () {
