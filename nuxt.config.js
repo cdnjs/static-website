@@ -22,7 +22,6 @@ export default async () => {
 
     // Now we can generate the config
     return {
-        mode: 'universal',
         /*
         ** Headers of the page
         */
