@@ -9,7 +9,7 @@
         },
         computed: {
             json () {
-                return Library(this.$baseUrl, this.library, this.libraryName);
+                return Library(this.$baseUrl, this.$props.library, this.$props.libraryName);
             },
         },
         head () {
