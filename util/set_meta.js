@@ -11,8 +11,7 @@ export default (meta, context) => {
     const pageDesc = `${contextDesc}${contextDesc ? ' - ' : ''}${defaultDesc}`;
 
     // Get base & page URL
-    const base = process.env.SITE_HOST || (typeof (window) !== 'undefined' ? window.location.origin : '/');
-    const pageUrl = base.trim().replace(/\/*$/, '') + context.$route.path;
+    const pageUrl = context.$baseUrl.slice(0, -1) + context.$route.path;
 
     return {
         title: pageTitle,

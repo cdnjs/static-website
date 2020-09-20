@@ -1,16 +1,8 @@
-<template>
-    <Script type="application/ld+json" v-html="json"></Script>
-</template>
-
 <script>
-    import Script from '../script';
     import Tutorial from '../../data/json-ld/tutorial';
 
     export default {
         name: 'JSONLDTutorial',
-        components: {
-            Script,
-        },
         props: {
             library: String,
             tutorial: Object,
@@ -18,18 +10,26 @@
         },
         computed: {
             json () {
-                return JSON.stringify(Tutorial(
-                    this.base,
+                return Tutorial(
+                    this.$baseUrl,
                     this.$props.tutorial,
                     this.$props.tutorialName,
                     this.$props.library,
-                ));
+                );
             },
-            base () {
-                const origin = process.env.SITE_HOST ||
-                    (typeof (window) !== 'undefined' ? window.location.origin : '/');
-                return origin + (origin.endsWith('/') ? '' : '/');
-            },
+        },
+        head () {
+            return {
+                script: [
+                    {
+                        type: 'application/ld+json',
+                        json: this.json,
+                    },
+                ],
+            };
+        },
+        render () {
+            return '';
         },
     };
 </script>
