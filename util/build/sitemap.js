@@ -1,6 +1,5 @@
 import { createWriteStream, readdirSync, renameSync, unlinkSync } from 'fs';
 import { join } from 'path';
-import { createGzip } from 'zlib';
 import { SitemapAndIndexStream, SitemapStream } from 'sitemap';
 import consola from 'consola';
 import routes from './routes';
@@ -25,10 +24,8 @@ const getUrls = async () => {
         },
     ];
 
-    // Get all the libraries, their versions & tutorials
-    urls.push(...(await routes()));
-
-    return urls;
+    // Add in all the libraries, their versions & tutorials
+    return urls.concat(await routes());
 };
 
 export default async (base) => {
@@ -40,15 +37,13 @@ export default async (base) => {
             const name = `sitemap-${i}.xml`;
 
             sitemapStream
-                .pipe(createGzip())
-                .pipe(createWriteStream(join(base, `${name}.gz.temp`)));
+                .pipe(createWriteStream(join(base, `${name}.temp`)));
 
             return [`${process.env.SITE_HOST.replace(/\/+$/, '')}/${name}`, sitemapStream];
         },
     });
     sms
-        .pipe(createGzip())
-        .pipe(createWriteStream(join(base, 'sitemap-index.xml.gz.temp')));
+        .pipe(createWriteStream(join(base, 'sitemap-index.xml.temp')));
 
     // Load all the library URLs from the API
     consola.info('Loading sitemap URLs');
@@ -61,8 +56,8 @@ export default async (base) => {
 
     // Figure out which maps are new and will be renamed, as well as which maps can be removed
     const files = readdirSync(base);
-    const newMaps = files.filter(x => x.match(/^sitemap-(index|\d+)\.xml\.gz\.temp$/) !== null);
-    const oldMaps = files.filter(x => x.match(/^sitemap-(index|\d+)\.xml\.gz$/) !== null && !newMaps.includes(`${x}.temp`));
+    const newMaps = files.filter(x => x.match(/^sitemap-(index|\d+)\.xml\.temp$/) !== null);
+    const oldMaps = files.filter(x => x.match(/^sitemap-(index|\d+)\.xml$/) !== null && !newMaps.includes(`${x}.temp`));
 
     // Rename the new maps, removing the temp prefix
     newMaps.forEach(map => renameSync(join(base, map), join(base, map.slice(0, map.length - 5))));

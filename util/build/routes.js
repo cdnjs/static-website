@@ -7,7 +7,7 @@ export default async () => {
     const libsRaw = await fetch(`${baseApi}/libraries?fields=name`);
     const libsJson = await libsRaw.json();
     const libsAsync = libsJson.results.map((lib) => {
-        return async () => {
+        return [lib.name, async () => {
             const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,versions`);
             const libJson = await libRaw.json();
 
@@ -37,7 +37,7 @@ export default async () => {
                     priority: 0.4,
                 },
             ];
-        };
+        }];
     });
 
     // Split into chunks and fetch
@@ -45,14 +45,14 @@ export default async () => {
     const failed = [];
     const libs = [];
     for (const libsChunk of libsChunks) {
-        const chunkRes = await Promise.all(libsChunk.map(cb => cb().catch(() => failed.push(cb))));
+        const chunkRes = await Promise.all(libsChunk.map(cb => cb[1]().catch(() => failed.push(cb))));
         libs.push(...chunkRes.flat(1));
     }
     for (const failure of failed) {
-        const result = await failure().catch(e => console.warn(e));
+        const result = await failure[1]().catch(e => console.warn(failure[0], e));
         if (result) { libs.push(...result); }
     }
 
-    // Combine and sort
+    // Ensure everything is valid & sort by URL
     return libs.filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
 };

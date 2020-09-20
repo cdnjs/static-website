@@ -1,5 +1,4 @@
 const path = require('path');
-const { readFileSync } = require('fs');
 const { Nuxt, loadNuxtConfig } = require('nuxt');
 const Sentry = require('@sentry/node');
 const express = require('express');
@@ -40,27 +39,6 @@ const start = async () => {
             console.error(e);
         });
     }, 1000 * 60 * 30);
-
-    // Handle sitemaps ourselves
-    app.get('/sitemap-(index|\\d+).xml(.gz)?', (req, res) => {
-        try {
-            // Try to load the sitemap file & send it as gzip data
-            const data = readFileSync(path.join(buildStatic, `${req.url.replace(/^\/+/, '').replace(/\.gz$/, '')}.gz`));
-            res.header('Content-Type', 'application/xml');
-            res.header('Content-Encoding', 'gzip');
-            res.send(data);
-        } catch (e) {
-            // If ENOENT, send a 404
-            if (e && e.code && e.code === 'ENOENT') {
-                res.status(404).send('Not found');
-                return;
-            }
-
-            // Otherwise, send a 500
-            console.error(e);
-            throw e;
-        }
-    });
 
     // Text sitemap generation log for production debugging
     app.get('/sitemap-log.txt', (req, res) => {
