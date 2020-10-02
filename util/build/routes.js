@@ -13,27 +13,27 @@ export default async () => {
 
             const tutorials = libJson.tutorials.map((tut) => {
                 return {
-                    url: `/libraries/${lib.name}/tutorials/${tut.id}`,
+                    url: `/libraries/${encodeURIComponent(lib.name)}/tutorials/${encodeURIComponent(tut.id)}`,
                     priority: 0.5,
                 };
             });
 
             const versions = libJson.versions.map((version) => {
                 return {
-                    url: `/libraries/${lib.name}/${version}`,
+                    url: `/libraries/${encodeURIComponent(lib.name)}/${encodeURIComponent(version)}`,
                     priority: 0.5,
                 };
             });
 
             return [
                 {
-                    url: `/libraries/${lib.name}`,
+                    url: `/libraries/${encodeURIComponent(lib.name)}`,
                     priority: 0.6,
                 },
                 ...tutorials,
                 ...versions,
                 {
-                    url: `/libraries/${lib.name}/tutorials`,
+                    url: `/libraries/${encodeURIComponent(lib.name)}/tutorials`,
                     priority: 0.4,
                 },
             ];
