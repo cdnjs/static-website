@@ -20,6 +20,15 @@ pre {
     border-radius: $radius;
     box-shadow: $shadow;
   }
+
+  > code {
+    overflow: auto;
+
+    &[class*="language-"] {
+      overflow: initial;
+      padding: 0;
+    }
+  }
 }
 
 .code-toolbar {
