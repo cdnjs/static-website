@@ -38,7 +38,7 @@ npm run dev
 
 ### Development in Windows
 
-Before running  ```npm run dev ``` add a global npm package to resolve the ```'NODE_ENV' is not recognized as an internal or external command``` issue:
+Before running `npm run dev`, add a global npm package to resolve the `'NODE_ENV' is not recognized as an internal or external command` issue:
 
 ```shell script
 npm install -g win-node-env
