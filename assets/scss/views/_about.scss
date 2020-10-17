@@ -123,10 +123,26 @@ main {
               background: $darker;
               border-radius: $radius;
 
-              @media screen and (max-width: $breakpoint) {
+              @media screen and (max-width: $breakpoint) and (min-width: $mobile) {
                 height: 200px;
                 margin: 0 0 $whitespace;
                 width: 200px;
+              }
+
+              @media screen and (max-width: $mobile) and (min-width: $mobile-sm) {
+                height: 220px;
+                width: 100%;
+                padding-left: 30%;
+                padding-right: 30%;
+                margin: 0 0 $whitespace;
+              }
+
+              @media screen and (max-width: $mobile-sm) {
+                height: 150px;
+                width: 100%;
+                padding-left: 15%;
+                padding-right: 15%;
+                margin: 0 0 $whitespace;
               }
 
               &.contact {

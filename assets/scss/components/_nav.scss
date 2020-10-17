@@ -95,46 +95,65 @@
           height: $whitespace * 2.25;
         }
 
-        @media screen and (max-width: 730px) {
+        @media screen and (max-width: $mobile-sm) {
           &:not(.logo) {
             display: none;
           }
-          
+        }
+      }
+
+      .fix-mobile {
+        a {
+          float: right;
+          transition: 0.5s;
+
           &.status {
-            float: right;
+            margin: 4px 0px;
             display: block;
           }
-          
+
           &.icon-mobile {
-            float: right;
+            padding-top: 0.15rem;
             display: block;
-            margin-top: 6px;
           }
         }
       }
     }
   }
   
-  @media screen and (max-width: 600px) {
-    // &.responsive {
-    //   position: relative;
-    // }
+  @media screen and (max-width: $mobile-sm) {
+    &.responsive {
+      transition: 0.5s;
 
-    // &.responsive .icon-mobile {
-    //   position: absolute;
-    //   right: 0;
-    //   top: 0;
-    // }
+      .content {
+        transition: 0.5s;
+        padding-bottom: 0;
 
-    // &.responsive {
-    //   .left,
-    //   .right {
-    //     a {
-    //       float: none;
-    //       display: block;
-    //       text-align: left;
-    //     }
-    //   }
-    // }
+        .right {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          background-color: $footer;
+          margin-top: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          transition: 0.5s;
+  
+          a:not(.icon-mobile):not(.status) {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            transition: 0.5s;
+          }
+  
+          .fix-mobile {
+            position: fixed;
+            right: 0;
+            top: 1.3rem;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
   }
 }

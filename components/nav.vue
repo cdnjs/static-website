@@ -34,12 +34,14 @@
                 <a :href="utm('https://github.com/cdnjs', 'nav')">
                     GitHub
                 </a>
-                <a class="status" :href="utm('https://status.cdnjs.com', 'nav')">
-                    Status <StatusIndicator page-id="1fkb7yl9sw87"></StatusIndicator>
-                </a>
-                <a href="javascript:void(0);" class="icon-mobile" @click="openMenu">
-                    <Bars class="icon" aria-hidden="true"></Bars>
-                </a>
+                <div class="fix-mobile">
+                    <a href="javascript:void(0);" class="icon-mobile" @click="openMenu">
+                        <Bars class="icon" aria-hidden="true"></Bars>
+                    </a>
+                    <a class="status" :href="utm('https://status.cdnjs.com', 'nav')">
+                        Status <StatusIndicator page-id="1fkb7yl9sw87"></StatusIndicator>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
