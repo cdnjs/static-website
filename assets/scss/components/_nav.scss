@@ -46,6 +46,15 @@
         // sass-lint:enable class-name-format
       }
 
+      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
+        display: contents !important;
+
+        .inline-search {
+          margin-top: 12px;
+          max-width: 100%;
+        }        
+      }
+
       @media screen and (max-width: $mobile-sm) {
         display: contents;
 
@@ -139,11 +148,11 @@
 
     .right {
       @media screen and (max-width: $mobile) and  (min-width: $mobile-sm){
-        margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
+        position: fixed;
+        right: 0;
+        top: 1.3rem;
+        transition: 0.5s;
+      }   
     }
   }
   
