@@ -6,12 +6,14 @@
                 <span class="version">@ {{ library.version }}</span>
             </nuxt-link>
 
-            <p v-if="library.github && library.github.stargazers_count" class="stars">
-                <Star class="icon" aria-label="Stars"></Star>
-                {{ formatUnits(library.github.stargazers_count, 0) }}
-            </p>
+            <div class="library-options">
+                <p v-if="library.github && library.github.stargazers_count" class="stars">
+                    <Star class="icon" aria-label="Stars"></Star>
+                    {{ formatUnits(library.github.stargazers_count, 0) }}
+                </p>
 
-            <LibraryAssetButtons :asset="asset"></LibraryAssetButtons>
+                <LibraryAssetButtons :asset="asset"></LibraryAssetButtons>
+            </div>
         </div>
 
         <p class="description">

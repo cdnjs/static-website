@@ -46,6 +46,20 @@ li {
         i {
           margin: 0 0 ($whitespace / 4);
         }
+
+        @media screen and (max-width: $mobile-sm) {
+          margin: 0;
+        }
+      }
+
+      .library-options {
+        display: contents;
+
+        @media screen and (max-width: $mobile-sm) {
+          display: flex;
+          margin-top: 5px;
+          width: 100% !important;
+        }
       }
     }
 
