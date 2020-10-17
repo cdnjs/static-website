@@ -3,6 +3,7 @@
   box-shadow: $shadow-bottom;
   width: 100%;
   z-index: 1;
+  overflow: hidden;
 
   .content {
     @include flex-row;
@@ -79,6 +80,10 @@
           }
         }
 
+        &.icon-mobile {
+          display: none;
+        }
+
         i {
           color: $alt;
           font-size: 26px;
@@ -89,7 +94,47 @@
         img {
           height: $whitespace * 2.25;
         }
+
+        @media screen and (max-width: 730px) {
+          &:not(.logo) {
+            display: none;
+          }
+          
+          &.status {
+            float: right;
+            display: block;
+          }
+          
+          &.icon-mobile {
+            float: right;
+            display: block;
+            margin-top: 6px;
+          }
+        }
       }
     }
+  }
+  
+  @media screen and (max-width: 600px) {
+    // &.responsive {
+    //   position: relative;
+    // }
+
+    // &.responsive .icon-mobile {
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    // }
+
+    // &.responsive {
+    //   .left,
+    //   .right {
+    //     a {
+    //       float: none;
+    //       display: block;
+    //       text-align: left;
+    //     }
+    //   }
+    // }
   }
 }

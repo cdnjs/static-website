@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav">
+    <nav ref="nav" class="nav">
         <div class="content">
             <div class="left">
                 <nuxt-link :to="{ name: 'index' }" class="logo">
@@ -34,8 +34,11 @@
                 <a :href="utm('https://github.com/cdnjs', 'nav')">
                     GitHub
                 </a>
-                <a :href="utm('https://status.cdnjs.com', 'nav')">
+                <a class="status" :href="utm('https://status.cdnjs.com', 'nav')">
                     Status <StatusIndicator page-id="1fkb7yl9sw87"></StatusIndicator>
+                </a>
+                <a href="javascript:void(0);" class="icon-mobile" @click="openMenu">
+                    <Bars class="icon" aria-hidden="true"></Bars>
                 </a>
             </div>
         </div>
@@ -45,6 +48,7 @@
 <script>
     import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
     import Discourse from '@fortawesome/fontawesome-free/svgs/brands/discourse.svg?inline';
+    import Bars from '@fortawesome/fontawesome-free/svgs/solid/bars.svg?inline';
     import utm from '../util/utm';
     import StatusIndicator from '../components/status_indicator';
 
@@ -53,10 +57,19 @@
         components: {
             Twitter,
             Discourse,
+            Bars,
             StatusIndicator,
         },
         methods: {
             utm,
+            openMenu () {
+                const navBar = this.$refs.nav;
+                if (navBar.className === 'nav') {
+                    navBar.className += ' responsive';
+                } else {
+                    navBar.className = 'nav';
+                }
+            },
         },
     };
 </script>
