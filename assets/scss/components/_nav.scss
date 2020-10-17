@@ -2,8 +2,9 @@
   background: $darker;
   box-shadow: $shadow-bottom;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
+  position: fixed;
 
   .content {
     @include flex-row;
@@ -44,6 +45,14 @@
         }
         // sass-lint:enable class-name-format
       }
+
+      @media screen and (max-width: $mobile-sm) {
+        display: contents;
+
+        .inline-search {
+          margin-top: 12px;
+        }
+      }
     }
 
     .left,
@@ -80,10 +89,6 @@
           }
         }
 
-        &.icon-mobile {
-          display: none;
-        }
-
         i {
           color: $alt;
           font-size: 26px;
@@ -107,16 +112,37 @@
           float: right;
           transition: 0.5s;
 
-          &.status {
-            margin: 4px 0px;
-            display: block;
-          }
-
           &.icon-mobile {
             padding-top: 0.15rem;
-            display: block;
+            display: none;
           }
         }
+
+        @media screen and (max-width: $mobile-sm) {
+          position: fixed;
+          right: 0;
+          top: 1.3rem;
+          transition: 0.5s;
+
+          a {
+            &.status {
+              margin: 4px 0px;
+              display: block;
+            }
+            &.icon-mobile {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm){
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
       }
     }
   }
@@ -143,13 +169,6 @@
             display: block;
             width: 100%;
             padding: 10px 20px;
-            transition: 0.5s;
-          }
-  
-          .fix-mobile {
-            position: fixed;
-            right: 0;
-            top: 1.3rem;
             transition: 0.5s;
           }
         }

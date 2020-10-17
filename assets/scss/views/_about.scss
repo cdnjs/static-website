@@ -159,11 +159,17 @@ main {
                   height: 200px;
                 }
 
+                @media screen and (max-width: $mobile-sm) {
+                  padding-left: 5%;
+                  padding-right: 5%;
+                }
+
                 h3 {
                   @include font-medium;
 
                   color: $light;
                   font-size: 22px;
+                  text-align: center;
                   margin: 0 0 ($whitespace * .25);
                 }
 

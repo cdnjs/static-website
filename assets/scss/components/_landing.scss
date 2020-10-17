@@ -43,6 +43,10 @@ main {
           margin: 0 0 ($whitespace * 2.5);
         }
       }
+
+      @media screen and (max-width: $mobile-sm) {
+        margin-top: 80px;
+      }
     }
   }
 }

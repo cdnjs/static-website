@@ -34,6 +34,18 @@ main {
     width: 100%;
   }
 
+  section {
+    margin-top: 60px;
+
+    @media screen and (max-width: $mobile) and  (min-width: $mobile-sm){
+      margin-top: 123px;
+    }
+
+    @media screen and (max-width: $mobile-sm) {
+      margin-top: 130px;
+    }
+  }
+
   .row {
     @include flex-row;
   }
