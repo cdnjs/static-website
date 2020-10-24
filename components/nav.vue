@@ -35,7 +35,7 @@
                     GitHub
                 </a>
                 <div class="fix-mobile">
-                    <a class="icon-mobile" aria-label="Toggle menu" @click="openMenu">
+                    <a class="icon-mobile" aria-label="Toggle menu" @click="toggleMenu">
                         <Bars class="icon" aria-hidden="true"></Bars>
                     </a>
                     <a class="status" :href="utm('https://status.cdnjs.com', 'nav')">
@@ -64,13 +64,8 @@
         },
         methods: {
             utm,
-            openMenu () {
-                const navBar = this.$refs.nav;
-                if (navBar.className === 'nav') {
-                    navBar.className += ' responsive';
-                } else {
-                    navBar.className = 'nav';
-                }
+            toggleMenu () {
+                this.$refs.nav.classList.toggle('responsive');
             },
         },
     };
