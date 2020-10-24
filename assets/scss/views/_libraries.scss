@@ -4,14 +4,6 @@ main {
       > header {
         box-shadow: none;
       }
-
-      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
-        margin-top: 76px;
-      }
-  
-      @media screen and (max-width: $mobile-sm) {
-        margin-top: 77px;
-      }
     }
   }
 }

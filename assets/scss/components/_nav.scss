@@ -2,9 +2,9 @@
   background: $darker;
   box-shadow: $shadow-bottom;
   width: 100%;
-  z-index: 2;
+  z-index: 1;
   overflow: hidden;
-  position: fixed;
+  position: relative;
 
   .content {
     @include flex-row;
@@ -128,7 +128,7 @@
         }
 
         @media screen and (max-width: $mobile-sm) {
-          position: fixed;
+          position: absolute;
           right: 0;
           top: 1.3rem;
           transition: 0.5s;
@@ -148,7 +148,7 @@
 
     .right {
       @media screen and (max-width: $mobile) and  (min-width: $mobile-sm){
-        position: fixed;
+        position: absolute;
         right: 0;
         top: 1.3rem;
         transition: 0.5s;
