@@ -35,7 +35,7 @@
                     GitHub
                 </a>
                 <div class="fix-mobile">
-                    <a href="javascript:void(0);" class="icon-mobile" @click="openMenu">
+                    <a class="icon-mobile" aria-label="Toggle menu" @click="openMenu">
                         <Bars class="icon" aria-hidden="true"></Bars>
                     </a>
                     <a class="status" :href="utm('https://status.cdnjs.com', 'nav')">
