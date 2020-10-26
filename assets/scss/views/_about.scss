@@ -131,18 +131,18 @@ main {
 
               @media screen and (max-width: $mobile) and (min-width: $mobile-sm) {
                 height: 220px;
-                width: 100%;
+                margin: 0 0 $whitespace;
                 padding-left: 30%;
                 padding-right: 30%;
-                margin: 0 0 $whitespace;
+                width: 100%;
               }
 
               @media screen and (max-width: $mobile-sm) {
                 height: 150px;
-                width: 100%;
+                margin: 0 0 $whitespace;
                 padding-left: 15%;
                 padding-right: 15%;
-                margin: 0 0 $whitespace;
+                width: 100%;
               }
 
               &.contact {
@@ -169,8 +169,8 @@ main {
 
                   color: $light;
                   font-size: 22px;
-                  text-align: center;
                   margin: 0 0 ($whitespace * .25);
+                  text-align: center;
                 }
 
                 p {
