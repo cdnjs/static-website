@@ -41,10 +41,24 @@ li {
         color: $light;
         display: block;
         font-size: 14px;
-        margin: 0 0 0 $whitespace;
+        margin: auto 0 auto $whitespace;
 
         i {
           margin: 0 0 ($whitespace / 4);
+        }
+
+        @media screen and (max-width: $mobile-sm) {
+          margin: 0;
+        }
+      }
+
+      .library-options {
+        display: contents;
+
+        @media screen and (max-width: $mobile-sm) {
+          display: flex;
+          margin-top: 5px;
+          width: 100% !important;
         }
       }
     }

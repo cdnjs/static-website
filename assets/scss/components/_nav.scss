@@ -3,6 +3,7 @@
   box-shadow: $shadow-bottom;
   width: 100%;
   z-index: 1;
+  position: relative;
 
   .content {
     @include flex-row;
@@ -42,6 +43,23 @@
           width: calc(100% - #{$whitespace * 2});
         }
         // sass-lint:enable class-name-format
+      }
+
+      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
+        display: contents !important;
+
+        .inline-search {
+          margin-top: 12px;
+          max-width: 100%;
+        }        
+      }
+
+      @media screen and (max-width: $mobile-sm) {
+        display: contents;
+
+        .inline-search {
+          margin-top: 12px;
+        }
       }
     }
 
@@ -88,6 +106,79 @@
 
         img {
           height: $whitespace * 2.25;
+        }
+
+        @media screen and (max-width: $mobile-sm) {
+          &:not(.logo) {
+            display: none;
+          }
+        }
+      }
+
+      .fix-mobile {
+        a {
+          float: right;
+          transition: 0.5s;
+
+          &.icon-mobile {
+            padding-top: 0.15rem;
+            display: none;
+          }
+        }
+
+        @media screen and (max-width: $mobile-sm) {
+          position: absolute;
+          right: 0;
+          top: 1.3rem;
+          transition: 0.5s;
+
+          a {
+            &.status {
+              margin: 4px 0px;
+              display: block;
+            }
+            &.icon-mobile {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm){
+        position: absolute;
+        right: 0;
+        top: 1.3rem;
+        transition: 0.5s;
+      }   
+    }
+  }
+  
+  @media screen and (max-width: $mobile-sm) {
+    &.responsive {
+      transition: 0.5s;
+
+      .content {
+        transition: 0.5s;
+        padding-bottom: 0;
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          background-color: $footer;
+          margin-top: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          transition: 0.5s;
+  
+          a:not(.icon-mobile):not(.status) {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            transition: 0.5s;
+          }
         }
       }
     }

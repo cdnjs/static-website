@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav">
+    <nav ref="nav" class="nav">
         <div class="content">
             <div class="left">
                 <nuxt-link :to="{ name: 'index' }" class="logo">
@@ -34,9 +34,14 @@
                 <a :href="utm('https://github.com/cdnjs', 'nav')">
                     GitHub
                 </a>
-                <a :href="utm('https://status.cdnjs.com', 'nav')">
-                    Status <StatusIndicator page-id="1fkb7yl9sw87"></StatusIndicator>
-                </a>
+                <div class="fix-mobile">
+                    <a class="icon-mobile" aria-label="Toggle menu" @click="toggleMenu">
+                        <Bars class="icon" aria-hidden="true"></Bars>
+                    </a>
+                    <a class="status" :href="utm('https://status.cdnjs.com', 'nav')">
+                        Status <StatusIndicator page-id="1fkb7yl9sw87"></StatusIndicator>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -45,6 +50,7 @@
 <script>
     import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
     import Discourse from '@fortawesome/fontawesome-free/svgs/brands/discourse.svg?inline';
+    import Bars from '@fortawesome/fontawesome-free/svgs/solid/bars.svg?inline';
     import utm from '../util/utm';
     import StatusIndicator from '../components/status_indicator';
 
@@ -53,10 +59,14 @@
         components: {
             Twitter,
             Discourse,
+            Bars,
             StatusIndicator,
         },
         methods: {
             utm,
+            toggleMenu () {
+                this.$refs.nav.classList.toggle('responsive');
+            },
         },
     };
 </script>
