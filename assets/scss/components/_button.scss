@@ -12,10 +12,10 @@ main {
           cursor: pointer;
           display: inline-block;
           font-size: 18px;
+          margin-bottom: 10px;
           padding: ($whitespace * .75) ($whitespace * 2.5);
           text-decoration: none;
           transition: background $transition-duration $transition-timing-function;
-          margin-bottom: 10px;
 
           &:hover,
           &:focus {
