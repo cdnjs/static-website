@@ -23,7 +23,7 @@
                         While a CDN isn’t perfect for every occasion, when it is we’re here for you.
                     </p>
                     <p>
-                        <nuxt-link :to="{ name: 'libraries' }" class="button">
+                        <nuxt-link :to="{ name: 'libraries' }" class="button" style="margin-bottom:10px">
                             View our libraries
                         </nuxt-link>
                         <a :href="utm('https://github.com/cdnjs', 'about')" class="button">

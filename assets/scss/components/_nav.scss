@@ -26,7 +26,7 @@
       .inline-search {
         margin: 0 auto;
         max-width: 600px;
-        padding: 0 $whitespace;
+        padding:$whitespace;
 
         // sass-lint:disable class-name-format
         .ais-SearchBox {
