@@ -9,9 +9,9 @@ main {
       > .content {
         align-items: start;
         display: grid;
-        grid-column-gap: $whitespace * 2;
-        grid-row-gap: $whitespace * 2;
-        grid-template-columns: 3fr 1fr;
+        column-gap: $whitespace * 2;
+        row-gap: $whitespace * 2;
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
 
         @media screen and (max-width: $breakpoint) {
@@ -20,8 +20,8 @@ main {
 
         .left {
           display: grid;
-          grid-column-gap: $whitespace * 2;
-          grid-row-gap: $whitespace * 2;
+          column-gap: $whitespace * 2;
+          row-gap: $whitespace * 2;
           grid-template-columns: 6fr 4fr;
           grid-template-rows: auto;
 
@@ -52,7 +52,7 @@ main {
                     display: inline-flex;
                     height: 78px;
                     justify-content: center;
-                    margin: 0 ($whitespace * .5) 0 0;
+                    margin: 0 ($whitespace * 0.5) 0 0;
                     width: 78px;
 
                     img {
@@ -81,17 +81,17 @@ main {
 
                     color: $light;
                     font-size: 23px;
-                    margin: ($whitespace * .25) 0;
+                    margin: ($whitespace * 0.25) 0;
                   }
 
                   .role {
                     color: $alt;
                     font-size: 18px;
-                    margin: ($whitespace * .25) 0;
+                    margin: ($whitespace * 0.25) 0;
 
                     a {
                       color: $light;
-                      padding: 0 0 0 ($whitespace * .25);
+                      padding: 0 0 0 ($whitespace * 0.25);
                       text-decoration: none;
 
                       &:hover,
@@ -107,18 +107,27 @@ main {
         }
 
         .sponsors {
+          h1{
+            text-align: center;
+            @media screen and (max-width: $mobile) {
+             text-align: left;
+            }
+          }
           .sponsor-blocks {
             display: grid;
             grid-auto-rows: 200px;
-            grid-column-gap: $whitespace * 2;
-            grid-row-gap: $whitespace * 2;
-            grid-template-columns: 200px 200px;
-            margin: 0 0 ($whitespace * 2);
+            column-gap: $whitespace * 10;
+            row-gap: $whitespace * 2;
+            grid-template-columns: 200px 200px 200px;
+            margin: ($whitespace * 2) 0 ($whitespace * 2);
+            justify-content: center;
 
             @media screen and (max-width: $breakpoint) {
+              grid-template-columns: 200px 200px;
+            }
+            @media screen and (max-width: $mobile) {
               display: block;
             }
-
             .sponsor {
               background: $darker;
               border-radius: $radius;
@@ -148,7 +157,7 @@ main {
 
                   color: $light;
                   font-size: 22px;
-                  margin: 0 0 ($whitespace * .25);
+                  margin: 0 0 ($whitespace * 0.25);
                 }
 
                 p {
@@ -174,7 +183,7 @@ main {
                   &:hover,
                   &:focus {
                     img {
-                      opacity: .05;
+                      opacity: 0.05;
                     }
 
                     > div {
@@ -194,7 +203,9 @@ main {
                     pointer-events: none;
                     position: absolute;
                     top: 0;
-                    transition: background $transition-duration $transition-timing-function, opacity $transition-duration $transition-timing-function;
+                    transition: background $transition-duration
+                        $transition-timing-function,
+                      opacity $transition-duration $transition-timing-function;
                     width: 100%;
 
                     p {
@@ -214,7 +225,7 @@ main {
                   &:hover,
                   &:focus {
                     img {
-                      opacity: .25;
+                      opacity: 0.25;
                     }
                   }
 
@@ -238,7 +249,8 @@ main {
                   max-width: 100%;
                   opacity: 1;
                   padding: 0 ($whitespace);
-                  transition: opacity $transition-duration $transition-timing-function;
+                  transition: opacity $transition-duration
+                    $transition-timing-function;
                   width: 100%;
                 }
               }
@@ -249,7 +261,6 @@ main {
 
       h1 {
         @include font-medium;
-
         color: $light;
         font-size: 30px;
       }
