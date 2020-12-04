@@ -66,4 +66,8 @@ footer {
       }
     }
   }
+
+  @media screen and (max-width: $mobile) {
+    padding-top: 20px;
+  }
 }

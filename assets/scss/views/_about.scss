@@ -132,10 +132,26 @@ main {
               background: $darker;
               border-radius: $radius;
 
-              @media screen and (max-width: $breakpoint) {
+              @media screen and (max-width: $breakpoint) and (min-width: $mobile) {
                 height: 200px;
                 margin: 0 0 $whitespace;
                 width: 200px;
+              }
+
+              @media screen and (max-width: $mobile) and (min-width: $mobile-sm) {
+                height: 220px;
+                margin: 0 0 $whitespace;
+                padding-left: 30%;
+                padding-right: 30%;
+                width: 100%;
+              }
+
+              @media screen and (max-width: $mobile-sm) {
+                height: 150px;
+                margin: 0 0 $whitespace;
+                padding-left: 15%;
+                padding-right: 15%;
+                width: 100%;
               }
 
               &.contact {
@@ -152,12 +168,19 @@ main {
                   height: 200px;
                 }
 
+                @media screen and (max-width: $mobile-sm) {
+                  padding-left: 5%;
+                  padding-right: 5%;
+                }
+
                 h3 {
                   @include font-medium;
 
                   color: $light;
                   font-size: 22px;
                   margin: 0 0 ($whitespace * 0.25);
+                  text-align: center;
+
                 }
 
                 p {

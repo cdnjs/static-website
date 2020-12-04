@@ -1,6 +1,7 @@
 .nav {
   background: $darker;
   box-shadow: $shadow-bottom;
+  position: relative;
   width: 100%;
   z-index: 1;
 
@@ -18,6 +19,13 @@
 
     .right {
       margin: 0 0 0 auto;
+
+      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
+        position: absolute;
+        right: 0;
+        top: 1.3rem;
+        transition: .5s;
+      }
     }
 
     .middle {
@@ -42,6 +50,23 @@
           width: calc(100% - #{$whitespace * 2});
         }
         // sass-lint:enable class-name-format
+      }
+
+      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
+        display: contents !important;
+
+        .inline-search {
+          margin-top: 12px;
+          max-width: 100%;
+        }
+      }
+
+      @media screen and (max-width: $mobile-sm) {
+        display: contents;
+
+        .inline-search {
+          margin-top: 12px;
+        }
       }
     }
 
@@ -88,6 +113,71 @@
 
         img {
           height: $whitespace * 2.25;
+        }
+
+        @media screen and (max-width: $mobile-sm) {
+          &:not(.logo) {
+            display: none;
+          }
+        }
+      }
+
+      .fix-mobile {
+        a {
+          float: right;
+          transition: .5s;
+
+          &.icon-mobile {
+            display: none;
+            padding-top: .15rem;
+          }
+        }
+
+        @media screen and (max-width: $mobile-sm) {
+          position: absolute;
+          right: 0;
+          top: 1.3rem;
+          transition: .5s;
+
+          a {
+            &.status {
+              display: block;
+              margin: 4px 0;
+            }
+
+            &.icon-mobile {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $mobile-sm) {
+    &.responsive {
+      transition: .5s;
+
+      .content {
+        padding-bottom: 0;
+        transition: .5s;
+
+        .right {
+          background-color: $footer;
+          display: flex;
+          flex-direction: column;
+          margin-top: 15px;
+          padding-bottom: 5px;
+          padding-top: 5px;
+          transition: .5s;
+          width: 100%;
+
+          a:not(.icon-mobile):not(.status) {
+            display: block;
+            padding: 10px 20px;
+            transition: .5s;
+            width: 100%;
+          }
         }
       }
     }
