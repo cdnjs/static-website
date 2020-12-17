@@ -9,15 +9,15 @@
                     <h1>Who are we?</h1>
                     <p>
                         We are cdnjs, the #1 free and open source CDN built to make life easier for developers
-                        serving
-                        <a :href="utm('https://w3techs.com/technologies/details/cd-cdnjs/all/all', 'about')">
+                        serving <a :href="utm('https://w3techs.com/technologies/details/cd-cdnjs', 'about')">
                             over 11% of all websites</a>, powered by Cloudflare.
                     </p>
                     <p>
                         We believe in the open-source mission, and want to support a fast and free web. To do that,
                         we’ve built our service to be free, public, and developer/web friendly since 2011.
-                        We handle <a :href="utm('https://github.com/cdnjs/cf-stats', 'about')">over
-                            185 billion requests a month</a> and support HTTP/3, HTTP/2, QUIC, SPDY, HSTS & HTTPS!
+                        We handle <a :href="utm('https://github.com/cdnjs/cf-stats', 'about')">over 215 billion requests
+                            a month</a> and support HTTP/3, HTTP/2, QUIC, and SPDY, with HSTS enabled to ensure a secure
+                        connection and using Brotli 11 to compress files.
                     </p>
                     <p>
                         While a CDN isn’t perfect for every occasion, when it is we’re here for you.
