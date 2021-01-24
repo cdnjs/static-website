@@ -38,6 +38,7 @@ export default async () => {
 
                 { hid: 'title', name: 'title', content: 'cdnjs' },
                 { hid: 'description', name: 'description', content: 'cdnjs' },
+                { hid: 'keywords', name: 'keywords', content: 'cdnjs' },
 
                 { name: 'twitter:card', content: 'summary_large_image' },
                 { name: 'twitter:site', content: '@cdnjs' },

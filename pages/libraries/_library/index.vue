@@ -89,6 +89,16 @@
         desc (data) {
             return (data.library.description || '').trim();
         },
+        keywords (data) {
+            return (data.library.keywords || []).concat([...new Set([
+                `${data.libraryName.toLowerCase()} cdn`,
+                `${data.libraryName.toLowerCase().replace(/[-_]/g, ' ')} cdn`,
+                `${data.libraryName.toLowerCase()} cdnjs`,
+                `${data.libraryName.toLowerCase().replace(/[-_]/g, ' ')} cdnjs`,
+                `${data.libraryName.toLowerCase()} library`,
+                `${data.libraryName.toLowerCase().replace(/[-_]/g, ' ')} library`,
+            ])]);
+        },
         classes: [],
     };
 
