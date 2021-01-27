@@ -1,5 +1,7 @@
 export const defaultTitle = 'cdnjs - The #1 free and open source CDN built to make life easier for developers';
 export const defaultDesc = 'Simple. Fast. Reliable. Content delivery at its finest. cdnjs is a free and open-source CDN service trusted by over 11% of all websites, powered by Cloudflare. We make it faster and easier to load library files on your websites.';
+export const defaultKeywords = Object.freeze(['cdn', 'cdnjs', 'js', 'javascript', 'css', 'library', 'web', 'front-end',
+    'free', 'open-source', 'open source', 'oss', 'npm', 'github']);
 
 export default (meta, context) => {
     // Get meta title & desc
@@ -13,11 +15,17 @@ export default (meta, context) => {
     // Get base & page URL
     const pageUrl = context.$baseUrl.slice(0, -1) + context.$route.path;
 
+    // Do keywords
+    let contextKeywords = meta.keywords || [];
+    if (typeof contextKeywords === 'function') { contextKeywords = contextKeywords(context); }
+    const pageKeywords = contextKeywords.concat(defaultKeywords).join(', ');
+
     return {
         title: pageTitle,
         meta: [
             { hid: 'title', name: 'title', content: pageTitle },
             { hid: 'description', name: 'description', content: pageDesc },
+            { hid: 'keywords', name: 'keywords', content: pageKeywords },
 
             { hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
             { hid: 'twitter:description', name: 'twitter:description', content: pageDesc },

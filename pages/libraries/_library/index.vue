@@ -89,6 +89,20 @@
         desc (data) {
             return (data.library.description || '').trim();
         },
+        keywords (data) {
+            const name = data.libraryName.toLowerCase();
+            const nameSpaces = name.replace(/[-_]/g, ' ');
+            return (data.library.keywords || []).concat([...new Set([
+                name,
+                nameSpaces,
+                `${name} cdn`,
+                `${nameSpaces} cdn`,
+                `${name} cdnjs`,
+                `${nameSpaces} cdnjs`,
+                `${name} library`,
+                `${nameSpaces} library`,
+            ])]);
+        },
         classes: [],
     };
 
