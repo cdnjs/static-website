@@ -90,13 +90,17 @@
             return (data.library.description || '').trim();
         },
         keywords (data) {
+            const name = data.libraryName.toLowerCase();
+            const nameSpaces = name.replace(/[-_]/g, ' ');
             return (data.library.keywords || []).concat([...new Set([
-                `${data.libraryName.toLowerCase()} cdn`,
-                `${data.libraryName.toLowerCase().replace(/[-_]/g, ' ')} cdn`,
-                `${data.libraryName.toLowerCase()} cdnjs`,
-                `${data.libraryName.toLowerCase().replace(/[-_]/g, ' ')} cdnjs`,
-                `${data.libraryName.toLowerCase()} library`,
-                `${data.libraryName.toLowerCase().replace(/[-_]/g, ' ')} library`,
+                name,
+                nameSpaces,
+                `${name} cdn`,
+                `${nameSpaces} cdn`,
+                `${name} cdnjs`,
+                `${nameSpaces} cdnjs`,
+                `${name} library`,
+                `${nameSpaces} library`,
             ])]);
         },
         classes: [],
