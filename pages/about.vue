@@ -36,7 +36,7 @@
                     <h1>Contribute</h1>
                     <p>
                         As a public OSS project, cdnjs relies on contributions and donations from the community.
-                        You can get get involved on
+                        You can get involved on
                         <a :href="utm('https://github.com/cdnjs', 'about')">GitHub</a> or help support us financially by
                         donating $5 to cdnjs via <a :href="utm('https://opencollective.com/cdnjs', 'about')">
                             Open Collective</a> or <a :href="utm('https://www.patreon.com/cdnjs', 'about')">Patreon</a>.
