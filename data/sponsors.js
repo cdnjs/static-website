@@ -43,14 +43,6 @@ export default [
             words: '',
         },
         {
-            name: 'Discourse',
-            color: '#fff',
-            text: 'dark',
-            image: 'discourse.svg',
-            site: 'https://www.discourse.org/',
-            words: '',
-        },
-        {
             name: 'SolarWinds',
             color: '#666',
             text: 'light',
