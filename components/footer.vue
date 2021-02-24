@@ -44,8 +44,8 @@
                 <dd class="break"></dd>
 
                 <dd>
-                    <a :href="utm('https://cdnjs.discourse.group', 'footer')" rel="noopener">
-                        Community Discourse
+                    <a :href="utm('https://github.com/cdnjs/cdnjs/discussions', 'footer')" rel="noopener">
+                        Community Discussions
                     </a>
                 </dd>
                 <dd>

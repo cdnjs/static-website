@@ -10,10 +10,10 @@
                 >
                     <Twitter class="icon" aria-hidden="true"></Twitter>
                 </a>
-                <a :href="utm('https://cdnjs.discourse.group/', 'nav')"
-                   aria-label="Community Discourse"
+                <a :href="utm('https://github.com/cdnjs/cdnjs/discussions', 'nav')"
+                   aria-label="Community Discussions"
                 >
-                    <Discourse class="icon" aria-hidden="true"></Discourse>
+                    <Comments class="icon" aria-hidden="true"></Comments>
                 </a>
             </div>
 
@@ -49,7 +49,7 @@
 
 <script>
     import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg?inline';
-    import Discourse from '@fortawesome/fontawesome-free/svgs/brands/discourse.svg?inline';
+    import Comments from '@fortawesome/fontawesome-free/svgs/solid/comments.svg?inline';
     import Bars from '@fortawesome/fontawesome-free/svgs/solid/bars.svg?inline';
     import utm from '../util/utm';
     import StatusIndicator from '../components/status_indicator';
@@ -58,7 +58,7 @@
         name: 'Nav',
         components: {
             Twitter,
-            Discourse,
+            Comments,
             Bars,
             StatusIndicator,
         },
