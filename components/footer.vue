@@ -89,11 +89,6 @@
                         cdnjsStatus on Twitter
                     </a>
                 </dd>
-                <dd>
-                    <a :href="utm('http://stats.pingdom.com/4jg86a2wqei0', 'footer')" rel="noopener">
-                        CDN Uptime
-                    </a>
-                </dd>
             </dl>
 
             <dl>
