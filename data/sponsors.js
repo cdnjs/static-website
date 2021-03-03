@@ -43,14 +43,6 @@ export default [
             words: '',
         },
         {
-            name: 'SolarWinds',
-            color: '#666',
-            text: 'light',
-            image: 'solarwinds.svg',
-            site: 'https://www.solarwinds.com/',
-            words: '',
-        },
-        {
             name: 'Sentry',
             color: '#584674',
             text: 'light',
