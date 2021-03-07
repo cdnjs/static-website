@@ -50,5 +50,13 @@ export default [
             site: 'https://sentry.io/welcome/',
             words: '',
         },
+        {
+            name: 'Lean20',
+            color: '#F6F6F6',
+            text: 'dark',
+            image: 'lean20.svg',
+            site: 'https://lean20.com/',
+            words: '',
+        },
     ],
 ];
