@@ -2,15 +2,9 @@ import fetch from 'node-fetch';
 import { snykApi, snykKey } from '../data/config';
 
 export default async (library, version) => {
-    let libname = library.name;
-    if (library.autoupdate && library.autoupdate.source === 'npm') {
-        libname = library.autoupdate.target;
-    }
-    if (libname.endsWith('.js')) {
-        libname = libname.slice(0, -3);
-    }
+    const lib = library.autoupdate && library.autoupdate.source === 'npm' ? library.autoupdate.target : library.name;
 
-    const res = await fetch(`${snykApi}/test/npm/lib/${encodeURIComponent(libname)}/${encodeURIComponent(version)}`,
+    const res = await fetch(`${snykApi}/test/npm/lib/${encodeURIComponent(lib)}/${encodeURIComponent(version)}`,
         { headers: { Authorization: snykKey } });
     return res.json();
 };
