@@ -11,10 +11,10 @@ const sriAttr = (asset) => {
 const code = (asset) => {
     switch (asset.type) {
     case 'css':
-        return `<link rel="stylesheet" href="${asset.url}"${sriAttr(asset)} />`;
+        return `<link rel="stylesheet" href="${asset.url}"${sriAttr(asset)} referrerpolicy="no-referrer" />`;
 
     case 'js':
-        return `<script src="${asset.url}"${sriAttr(asset)}></script>`;
+        return `<script src="${asset.url}"${sriAttr(asset)} referrerpolicy="no-referrer"></script>`;
 
     default:
         return undefined;
