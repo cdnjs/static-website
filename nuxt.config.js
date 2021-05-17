@@ -215,5 +215,11 @@ export default async () => {
                 release: version,
             },
         },
+        /*
+        ** Ensure that our env is exposed within Nuxt
+        */
+        env: {
+            API_BASE: process.env.API_BASE,
+        },
     };
 };
