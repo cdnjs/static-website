@@ -41,7 +41,7 @@
                                 </p>
                                 <p>
                                     You can make a request to have it added on our
-                                    <a :href="utm('https://github.com/cdnjs/cdnjs', 'search')">GitHub repository</a>.
+                                    <a :href="utm('https://github.com/cdnjs/packages', 'search')">GitHub repository</a>.
                                 </p>
                                 <p>
                                     Please make sure to <a :href="cdnjsSearch(query)">search and see if there is already an
@@ -111,7 +111,7 @@
         methods: {
             utm,
             cdnjsSearch (query) {
-                return utm(`https://github.com/cdnjs/cdnjs/issues?utf8=✓&q=${encodeURIComponent(query)}`, 'search');
+                return utm(`https://github.com/cdnjs/packages/issues?utf8=✓&q=${encodeURIComponent(query)}`, 'search');
             },
         },
     };
