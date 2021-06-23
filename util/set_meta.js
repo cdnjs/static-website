@@ -1,5 +1,5 @@
 export const defaultTitle = 'cdnjs - The #1 free and open source CDN built to make life easier for developers';
-export const defaultDesc = 'Simple. Fast. Reliable. Content delivery at its finest. cdnjs is a free and open-source CDN service trusted by over 11% of all websites, powered by Cloudflare. We make it faster and easier to load library files on your websites.';
+export const defaultDesc = 'Simple. Fast. Reliable. Content delivery at its finest. cdnjs is a free and open-source CDN service trusted by over 12.5% of all websites, serving over 200 billion requests each month, powered by Cloudflare. We make it faster and easier to load library files on your websites.';
 export const defaultKeywords = Object.freeze(['cdn', 'cdnjs', 'js', 'javascript', 'css', 'library', 'web', 'front-end',
     'free', 'open-source', 'open source', 'oss', 'npm', 'github']);
 
