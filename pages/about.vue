@@ -18,7 +18,7 @@
                     </p>
                     <p>
                         We handle <a :href="utm('https://github.com/cdnjs/cf-stats', 'about')">over 200 billion requests
-                        a month</a> and support HTTP/3, HTTP/2, QUIC, and SPDY, with HSTS enabled to ensure a secure
+                            a month</a> and support HTTP/3, HTTP/2, QUIC, and SPDY, with HSTS enabled to ensure a secure
                         connection and using Brotli 11 to compress files.
                     </p>
                     <p>
