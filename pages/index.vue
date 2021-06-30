@@ -8,8 +8,11 @@
                 </h1>
 
                 <h2>
-                    cdnjs is a free and open-source CDN service trusted by over 11% of all websites, powered by Cloudflare.
-                    <br />We make it faster and easier to load library files on your websites.
+                    cdnjs is a free and open-source CDN service trusted by over <b>12.5% of all websites</b>, serving
+                    over <b>200 billion requests each month</b>, powered by Cloudflare.
+                    <br />
+                    <br />
+                    We make it faster and easier to load library files on your websites.
                 </h2>
             </div>
         </TransitionHeight>
