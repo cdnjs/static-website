@@ -170,11 +170,11 @@
                 sponsors: [sponsors.flat(1)],
             };
         },
-        methods: {
-            utm,
-        },
         head () {
             return setMeta(meta, this);
+        },
+        methods: {
+            utm,
         },
     };
 </script>

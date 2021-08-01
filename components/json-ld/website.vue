@@ -3,11 +3,6 @@
 
     export default {
         name: 'JSONLDWebSite',
-        computed: {
-            json () {
-                return WebSite(this.$baseUrl);
-            },
-        },
         head () {
             return {
                 script: [
@@ -17,6 +12,11 @@
                     },
                 ],
             };
+        },
+        computed: {
+            json () {
+                return WebSite(this.$baseUrl);
+            },
         },
         render () {
             return '';

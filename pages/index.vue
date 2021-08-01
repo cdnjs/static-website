@@ -50,6 +50,9 @@
                 searchActive: false,
             };
         },
+        head () {
+            return setMeta(meta, this);
+        },
         mounted () {
             // Handle old website searching
             const match = (window.location.hash || '').match(/^#q=(.+)$/);
@@ -69,9 +72,6 @@
             inactive () {
                 this.$data.searchActive = false;
             },
-        },
-        head () {
-            return setMeta(meta, this);
         },
     };
 </script>

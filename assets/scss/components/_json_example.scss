@@ -10,7 +10,7 @@
       cursor: pointer;
       display: inline-block;
       font-size: .9em;
-      padding: ($whitespace / 8) ($whitespace / 2);
+      padding: ($whitespace * .125) ($whitespace * .5);
       text-decoration: none;
       transition: background $transition-duration $transition-timing-function;
 
@@ -36,7 +36,7 @@
     &[class*="language-"] {
       background: $darker;
       border-radius: $radius;
-      margin: ($whitespace / 2) 0 0;
+      margin: ($whitespace * .5) 0 0;
       padding: 0;
 
       code {
@@ -50,7 +50,7 @@
     code {
       box-shadow: $shadow;
       font-size: 14px;
-      margin: ($whitespace / 2) 0 0;
+      margin: ($whitespace * .5) 0 0;
       white-space: normal;
     }
   }

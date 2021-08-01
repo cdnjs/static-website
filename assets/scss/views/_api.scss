@@ -20,7 +20,7 @@ main {
           }
 
           ul {
-            margin: ($whitespace / 2) 0 ($whitespace * 2);
+            margin: ($whitespace * .5) 0 ($whitespace * 2);
             padding: 0;
 
             li {
@@ -32,14 +32,14 @@ main {
                 color: $alt;
                 display: inline-block;
                 font-size: .75em;
-                margin: 0 0 ($whitespace / 2);
+                margin: 0 0 ($whitespace * .5);
                 text-transform: uppercase;
               }
 
               a {
                 color: $light;
                 display: inline-block;
-                margin: 0 0 ($whitespace / 4) ($whitespace / 2);
+                margin: 0 0 ($whitespace * .25) ($whitespace * .5);
                 transition: color $transition-duration $transition-timing-function;
 
                 &:hover,

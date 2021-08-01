@@ -52,7 +52,7 @@
       width: 100%;
 
       @media screen and (max-width: $breakpoint) {
-        margin: ($whitespace / 2) 0;
+        margin: ($whitespace * .5) 0;
       }
 
       li {

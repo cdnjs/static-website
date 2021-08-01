@@ -24,7 +24,7 @@ header {
                 color: $light;
                 content: "/";
                 display: inline-block;
-                margin: 0 ($whitespace / 2);
+                margin: 0 ($whitespace * .5);
               }
             }
           }

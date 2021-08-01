@@ -15,7 +15,7 @@
                             @input.native="input"
             ></ais-search-box>
             <ais-state-results ref="results">
-                <template>
+                <div>
                     <transition name="search" type="out-in">
                         <ais-hits v-if="active">
                             <ul slot-scope="{ items }">
@@ -26,7 +26,7 @@
                         </ais-hits>
                         <div v-else></div>
                     </transition>
-                </template>
+                </div>
             </ais-state-results>
         </ais-instant-search>
     </client-only>

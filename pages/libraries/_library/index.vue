@@ -197,6 +197,9 @@
 
             return data;
         },
+        head () {
+            return setMeta(meta, this);
+        },
         computed: {
             versions () {
                 try {
@@ -247,9 +250,6 @@
             tooltipHide (evt) {
                 tlite.hide(evt.target);
             },
-        },
-        head () {
-            return setMeta(meta, this);
         },
     };
 </script>

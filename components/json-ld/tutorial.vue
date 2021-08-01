@@ -8,16 +8,6 @@
             tutorial: Object,
             tutorialName: String,
         },
-        computed: {
-            json () {
-                return Tutorial(
-                    this.$baseUrl,
-                    this.$props.tutorial,
-                    this.$props.tutorialName,
-                    this.$props.library,
-                );
-            },
-        },
         head () {
             return {
                 script: [
@@ -27,6 +17,16 @@
                     },
                 ],
             };
+        },
+        computed: {
+            json () {
+                return Tutorial(
+                    this.$baseUrl,
+                    this.$props.tutorial,
+                    this.$props.tutorialName,
+                    this.$props.library,
+                );
+            },
         },
         render () {
             return '';
