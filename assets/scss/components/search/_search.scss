@@ -14,7 +14,7 @@
         color: $dark;
         font-size: 18px;
         height: $whitespace * 3;
-        padding: ($whitespace / 2) ($whitespace * 3.25) ($whitespace / 2) ($whitespace);
+        padding: ($whitespace * .5) ($whitespace * 3.25) ($whitespace * .5) ($whitespace);
 
         &::placeholder {
           color: $dark;

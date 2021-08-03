@@ -7,11 +7,6 @@
             library: Object,
             libraryName: String,
         },
-        computed: {
-            json () {
-                return Library(this.$baseUrl, this.$props.library, this.$props.libraryName);
-            },
-        },
         head () {
             return {
                 script: [
@@ -21,6 +16,11 @@
                     },
                 ],
             };
+        },
+        computed: {
+            json () {
+                return Library(this.$baseUrl, this.$props.library, this.$props.libraryName);
+            },
         },
         render () {
             return '';

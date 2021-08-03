@@ -112,6 +112,9 @@
 
             return data;
         },
+        head () {
+            return setMeta(meta, this);
+        },
         computed: {
             rendered () {
                 const md = MarkdownIt({
@@ -142,9 +145,6 @@
                 this.$refs.tutorial.querySelectorAll('code[class*="language-"]')
                     .forEach(elm => Prism.highlightElement(elm));
             });
-        },
-        head () {
-            return setMeta(meta, this);
         },
     };
 </script>

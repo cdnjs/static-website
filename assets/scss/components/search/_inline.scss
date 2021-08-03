@@ -21,7 +21,7 @@
 
         li {
           background: $dark;
-          border-radius: $radius / 2;
+          border-radius: $radius * .5;
           margin: 0;
           padding: $whitespace;
 
@@ -52,7 +52,7 @@
 
                 color: $primary;
                 font-size: 20px;
-                margin: 0 0 ($whitespace / 4);
+                margin: 0 0 ($whitespace * .25);
 
                 span {
                   &.version {

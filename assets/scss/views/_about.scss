@@ -56,7 +56,7 @@ main {
                     width: 78px;
 
                     img {
-                      border-radius: $radius / 2;
+                      border-radius: $radius * .5;
                       height: 100%;
                       object-fit: contain;
                       width: 100%;
@@ -224,7 +224,7 @@ main {
 
                       font-size: 14px;
                       margin: 0;
-                      padding: $whitespace / 2;
+                      padding: $whitespace * .5;
                       text-align: center;
                     }
                   }

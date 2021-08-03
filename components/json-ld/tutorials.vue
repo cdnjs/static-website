@@ -7,6 +7,16 @@
             library: String,
             tutorials: Array,
         },
+        head () {
+            return {
+                script: [
+                    {
+                        type: 'application/ld+json',
+                        json: this.json,
+                    },
+                ],
+            };
+        },
         computed: {
             json () {
                 return Tutorials(this.$baseUrl, this.$props.library, this.$props.tutorials, this.keywords);
@@ -20,16 +30,6 @@
                 }
                 return tags.join(',');
             },
-        },
-        head () {
-            return {
-                script: [
-                    {
-                        type: 'application/ld+json',
-                        json: this.json,
-                    },
-                ],
-            };
         },
         render () {
             return '';
