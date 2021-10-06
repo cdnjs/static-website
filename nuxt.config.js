@@ -69,6 +69,9 @@ export default async () => {
                 { rel: 'apple-touch-icon', type: 'image/png', href: '/favicon.png' },
                 { hid: 'canonical', rel: 'canonical', href: base },
             ],
+            script: [
+                { src: 'https://api.radar.cloudflare.com/beacon.js', defer: true },
+            ],
         },
         /*
         ** Customize the progress-bar color
