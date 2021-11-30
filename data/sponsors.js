@@ -27,14 +27,6 @@ export default [
     ],
     [
         {
-            name: 'Heroku',
-            color: '#c3c5c8',
-            text: 'dark',
-            image: 'heroku.svg',
-            site: 'https://www.heroku.com/',
-            words: '',
-        },
-        {
             name: 'StatusPage',
             color: '#f4f5f7',
             text: 'dark',

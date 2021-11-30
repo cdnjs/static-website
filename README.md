@@ -38,7 +38,8 @@ npm run dev
 
 ### Development in Windows
 
-Before running `npm run dev`, add a global npm package to resolve the `'NODE_ENV' is not recognized as an internal or external command` issue:
+Before running `npm run dev`, add a global npm package to resolve the `'NODE_ENV' is not recognized
+as an internal or external command` issue:
 
 ```shell script
 npm install -g win-node-env
@@ -116,11 +117,10 @@ To deploy this website to production, the following steps should be taken:
 - Build the site for production with `npm run build`
 - Start the custom Express server with `npm run start`
 
-For deployments to Heroku, the installation of dependencies and building the app will automatically
-be done, with `npm run start` being defined in the [`Procfile`](Procfile).
+For deployments to some PaaS hosts, the installation of dependencies and building the app will
+automatically be done, with `npm run start` being defined in the [`Procfile`](Procfile).
 
 To change the port that the app binds to, set the `PORT` environment var when running the script.
-For our Heroku deployment, this is set automatically by Heroku.
 
 The custom Express server is used to handle our sitemaps, as we have too many routes for Nuxt's
 sitemap offering to handle reliably. During the build step (`npm run build`) initial sitemaps will
