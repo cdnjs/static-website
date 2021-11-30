@@ -11,10 +11,11 @@ export default async () => {
     // We need to get the commit hash for Sentry versioning
     let version;
     try {
-        // Let Sentry try to determine the version (doesn't work on Heroku, not a git repo there)
+        // Let Sentry try to determine the version
+        // Doesn't work on deployment hosts where git is not initialized
         version = await new Sentry().releases.proposeVersion();
     } catch (_) {
-        version = process.env.SOURCE_VERSION; // Heroku sets this, otherwise version can just be undefined
+        version = process.env.SOURCE_VERSION; // Set by deployment host, otherwise version can just be undefined
     }
 
     // Get base URL
