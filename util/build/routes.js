@@ -11,7 +11,9 @@ export default async () => {
             const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,versions`);
             const libJson = await libRaw.json();
 
-            if (!libJson.tutorials) console.warn(`No tutorials array for ${lib.name}`, libJson);
+            if (!libJson.tutorials) {
+                console.warn(`No tutorials array for ${lib.name}`, libJson);
+            }
 
             const tutorials = (libJson.tutorials || []).map((tut) => {
                 return {
@@ -20,7 +22,9 @@ export default async () => {
                 };
             });
 
-            if (!libJson.versions) console.warn(`No versions array for ${lib.name}`, libJson);
+            if (!libJson.versions) {
+                console.warn(`No versions array for ${lib.name}`, libJson);
+            }
 
             const versions = (libJson.versions || []).map((version) => {
                 return {
