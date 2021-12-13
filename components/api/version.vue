@@ -12,6 +12,11 @@
                 The cache lifetime on this endpoint is 355 days, identical to the CDN.
                 The response is also marked as immutable, as a version on cdnjs will never change once published.
             </p>
+            <p>
+                cdnjs only allows access to specific versions of a library, and these are considered immutable. Access
+                to tags for a library, such as <code>latest</code>, is not supported as these have a mutable definition,
+                which would go against what cdnjs aims to provide with long-life caching on responses and SRI hashes.
+            </p>
 
             <h3>Query Parameters</h3>
             <table>
