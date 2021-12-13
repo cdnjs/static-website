@@ -11,14 +11,22 @@ export default async () => {
             const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,versions`);
             const libJson = await libRaw.json();
 
-            const tutorials = libJson.tutorials.map((tut) => {
+            if (!libJson.tutorials) {
+                console.warn(`No tutorials array for ${lib.name}`, libJson);
+            }
+
+            const tutorials = (libJson.tutorials || []).map((tut) => {
                 return {
                     url: `/libraries/${encodeURIComponent(lib.name)}/tutorials/${encodeURIComponent(tut.id)}`,
                     priority: 0.5,
                 };
             });
 
-            const versions = libJson.versions.map((version) => {
+            if (!libJson.versions) {
+                console.warn(`No versions array for ${lib.name}`, libJson);
+            }
+
+            const versions = (libJson.versions || []).map((version) => {
                 return {
                     url: `/libraries/${encodeURIComponent(lib.name)}/${encodeURIComponent(version)}`,
                     priority: 0.5,
