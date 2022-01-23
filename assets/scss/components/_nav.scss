@@ -19,12 +19,9 @@
 
     .right {
       margin: 0 0 0 auto;
-
-      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
-        position: absolute;
-        right: 0;
-        top: 1.3rem;
-        transition: .5s;
+      
+      @media screen and (min-width: $mobile-xs) and  (max-width: $breakpoint) {
+        margin: 15px 0 0 auto;
       }
     }
 
@@ -32,7 +29,7 @@
       flex-grow: 1;
 
       .inline-search {
-        margin: 0 auto;
+        margin-left: auto;
         max-width: 600px;
         padding: 0 $whitespace;
 
@@ -52,17 +49,8 @@
         // sass-lint:enable class-name-format
       }
 
-      @media screen and (max-width: $mobile) and  (min-width: $mobile-sm) {
-        display: contents !important;
-
-        .inline-search {
-          margin-top: 12px;
-          max-width: 100%;
-        }
-      }
-
       @media screen and (max-width: $mobile-sm) {
-        display: contents;
+        display: contents !important;
 
         .inline-search {
           margin-top: 12px;
@@ -75,11 +63,8 @@
     .middle {
       @include flex-row;
       align-content: center;
-
-      @media screen and (max-width: $breakpoint) {
-        margin: 0;
-      }
     }
+
 
     .left,
     .right {
