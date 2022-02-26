@@ -54,7 +54,7 @@
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.6",
     "nuxt": "^2.15.8",
-    "prismjs": "^1.25.0",
+    "prismjs": "^1.27.0",
     "semver-sort": "0.0.4",
     "sitemap": "^7.0.0",
     "spdx-license-ids": "^3.0.11",
