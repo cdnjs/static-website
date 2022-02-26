@@ -52,7 +52,7 @@
     "instantsearch.css": "^7.4.5",
     "markdown-it": "^12.3.2",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.6",
+    "node-fetch": "^2.6.7",
     "nuxt": "^2.15.8",
     "prismjs": "^1.27.0",
     "semver-sort": "0.0.4",
