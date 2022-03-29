@@ -48,7 +48,7 @@ export default [
             text: 'light',
             image: 'uptimerobot.svg',
             site: 'https://uptimerobot.com/',
-            words: '',
+            words: 'UptimeRobot is the world\'s leading uptime monitoring service.',
         },
     ],
 ];
