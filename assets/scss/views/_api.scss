@@ -122,6 +122,40 @@ main {
               }
             }
           }
+
+          .callout {
+            align-items: center;
+            background: rgba($primary, .9);
+            border-radius: .5em;
+            display: flex;
+            flex-flow: row nowrap;
+            margin: 2em 0;
+            padding: 1em;
+
+            > * {
+              margin: 0 .5em;
+            }
+
+            .icon {
+              color: $white;
+              font-size: 2.25em;
+            }
+
+            p {
+              @include font-medium;
+
+              color: $banner;
+
+              a {
+                color: $white;
+
+                &:hover,
+                &:focus {
+                  color: $banner;
+                }
+              }
+            }
+          }
         }
       }
     }

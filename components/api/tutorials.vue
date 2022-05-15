@@ -4,6 +4,20 @@
             Listing all tutorials for a library on cdnjs
         </h2>
         <div class="doc">
+            <div class="callout">
+                <ExclamationTriangle class="icon" />
+                <div>
+                    <p>
+                        This endpoint is deprecated. All requests to this endpoint will return an empty array.
+                    </p>
+                    <p>
+                        See
+                        <a href="https://github.com/cdnjs/cdnjs/issues/14130" target="_blank">
+                            cdnjs/cdnjs issue #14130</a>
+                        for more information.
+                    </p>
+                </div>
+            </div>
             <p>
                 The <code>/libraries/:library/tutorials</code> endpoint returns a JSON array containing all the
                 user-submitted tutorials relating to this library on cdnjs. This is a mirror of the
@@ -92,11 +106,13 @@
 </template>
 
 <script>
+    import ExclamationTriangle from '@fortawesome/fontawesome-free/svgs/solid/exclamation-triangle.svg?inline';
     import JSONExample from '../json_example';
 
     export default {
         name: 'APITutorials',
         components: {
+            ExclamationTriangle,
             JSONExample,
         },
         data () {

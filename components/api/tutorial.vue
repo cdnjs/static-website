@@ -4,6 +4,21 @@
             Getting a specific tutorial for a cdnjs library
         </h2>
         <div class="doc">
+            <div class="callout">
+                <ExclamationTriangle class="icon" />
+                <div>
+                    <p>
+                        This endpoint is deprecated. All requests to this endpoint will return a 404.
+                    </p>
+                    <p>
+                        See
+                        <a href="https://github.com/cdnjs/cdnjs/issues/14130" target="_blank">
+                            cdnjs/cdnjs issue #14130</a>
+                        for more information.
+                    </p>
+                </div>
+            </div>
+
             <p>
                 The <code>/libraries/:library/tutorials/:tutorial</code> endpoint returns a JSON object containing
                 metadata and the content of a specified user-submitted tutorial relating to the specified library hosted
@@ -97,11 +112,13 @@
 </template>
 
 <script>
+    import ExclamationTriangle from '@fortawesome/fontawesome-free/svgs/solid/exclamation-triangle.svg?inline';
     import JSONExample from '../json_example';
 
     export default {
         name: 'APITutorial',
         components: {
+            ExclamationTriangle,
             JSONExample,
         },
         data () {
