@@ -4,6 +4,22 @@
             Getting a specific library on cdnjs
         </h2>
         <div class="doc">
+            <div class="callout">
+                <ExclamationTriangle class="icon" />
+                <div>
+                    <p>
+                        The <code>tutorials</code> property of libraries is deprecated.
+                        It will always be an empty array, and will be removed in the future.
+                    </p>
+                    <p>
+                        See
+                        <a href="https://github.com/cdnjs/cdnjs/issues/14130" target="_blank">
+                            cdnjs/cdnjs issue #14130</a>
+                        for more information.
+                    </p>
+                </div>
+            </div>
+
             <p>
                 The <code>/libraries/:library</code> endpoint allows for data on a specific library to be
                 requested and will return a JSON object with all library data properties by default.
@@ -68,11 +84,11 @@
             <JSONExample>{"name":"vue","author":"Evan You &lt;yyx990803@gmail.com&gt;","description":"Simple, Fast & Composable MVVM for building interactive interfaces","filename":"vue.min.js","sri":"sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=","version":"2.6.11","repository":{"type":"git","url":"https://github.com/vuejs/vue.git"},"autoupdate":{"source":"npm","target":"vue"}}</JSONExample>
 
             <h4>
-                <a href="https://api.cdnjs.com/libraries/react?fields=name,description,tutorials">
-                    <code class="key">https://api.cdnjs.com/libraries/react?fields=name,description,tutorials</code>
+                <a href="https://api.cdnjs.com/libraries/react?fields=name,description">
+                    <code class="key">https://api.cdnjs.com/libraries/react?fields=name,description</code>
                 </a>
             </h4>
-            <JSONExample>{"name":"react","description":"React is a JavaScript library for building user interfaces.","tutorials":[{"id":"universal-react-apps","modified":"2017-09-05T17:31:26.000Z","author":{"name":"Ahmed Bouchefra","email":"techiediaries9@gmail.com","description":"Web developer, technical writer and entrepreneur","homepage":"https://www.techiediaries.com","twitter":"techiediaries"},"description":"This tutorial will cover how to use React and Next.js to build a simple universal web app.","homepage":"https://www.techiediaries.com","keywords":["react","nextjs","universal"],"library-tags":["react","nextjs"],"name":"Building Universal Server Rendered Apps with React and Next.js 3.0","repository":"https://github.com/techiediaries","content":"\n## Introduction\n\nNext.js is a framework for quickly building universal (also called Isomorphic) server-rendered web apps with\nReact. In this tutorial you will learn essential concepts of server-rendered React apps by creating a demo app with Next.js.\n\nBuilding apps with Next.js is simple. You just create a &lt;em&gt;pages&lt;/em&gt; directory and place React components in it.\nNext.js will take care of everything else.\n\nThis tutorial was originally published in [techiediaries](https://www.techiediaries.com/universal-react-apps-nextjs/)\n\nNow let's get started\n\nFirst we need to install the required tools:\n\n## Installing Next.js 2.0\n\nYou can install Next.js 2.0 via npm with:\n\n    npm install --save next react react-dom\n\n## Installing Next.js 3.0\n\nNext.js 3.0 is still in beta, you can also install it via npm with:\n\n    npm install next@beta react react-dom --save\n\n## Adding NPM Scripts to package.json\n\nBuilding apps with Next.js is a matter of using three commands:\n\n    next\n    next build\n    next start\n\nSo lets add NPM scripts to trigger these commands:\n\n  \"scripts\": {\n    \"dev\": \"next\",\n    \"build\": \"next build\",\n    \"start\": \"next start\"\n  },\n\n## Adding Pages\n\nTo create pages you first need to create a pages directory:\n\n    mkdir pages\n\n### Adding the Home Page\n\nCreate an index.js file inside pages folder and put this content in it:\n\n    import Link from 'next/link'\n    export default () =&gt; (\n    &lt;div&gt;\n                &lt;Link href='/'&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/Link&gt; -\n                &lt;Link href='/about'&gt;&lt;a&gt;About Me&lt;/a&gt;&lt;/Link&gt; -\n                &lt;Link href='/contact'&gt;&lt;a&gt;Contact&lt;/a&gt;&lt;/Link&gt;\n                &lt;br&gt;&lt;/br&gt;\n                &lt;p&gt;This is the home page&lt;/p&gt;\n\n    &lt;/div&gt;\n    )\n\n### Adding the About Page\n\nNext create an about.js file inside pages folder then put the following content:\n\n    import Link from 'next/link'\n    export default () =&gt; (\n    &lt;div&gt;\n                &lt;Link href='/'&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/Link&gt; -\n                &lt;Link href='/about'&gt;&lt;a&gt;About Me&lt;/a&gt;&lt;/Link&gt; -\n                &lt;Link href='/contact'&gt;&lt;a&gt;Contact&lt;/a&gt;&lt;/Link&gt;\n                &lt;br&gt;&lt;/br&gt;\n                &lt;p&gt;This is about page&lt;/p&gt;\n    &lt;/div&gt;\n    )\n\n### Adding the Contact Page\n\nAdd contact.js file inside pages folder then put the following:\n\n    import Link from 'next/link'\n    export default () =&gt; (\n    &lt;div&gt;\n                &lt;Link href='/'&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/Link&gt; -\n                &lt;Link href='/about'&gt;&lt;a&gt;About Me&lt;/a&gt;&lt;/Link&gt; -\n                &lt;Link href='/contact'&gt;&lt;a&gt;Contact&lt;/a&gt;&lt;/Link&gt;\n                &lt;br&gt;&lt;/br&gt;\n                &lt;p&gt;This is the contact page&lt;/p&gt;\n\n    &lt;/div&gt;\n    )\n\nNow you can launch next with:\n\n    npm run dev\n\nYour app will be available from [http://localhost:3000](http://localhost:3000).\n\nAs you can see the names of files inside pages directory become the routes except for / which points to index.js\n\n## Conclusion\n\nUniversal apps become very popular in these days and thanks to React and Next.js you can build them in a matter\nof a few commands.\n\nThanks for reading!\n"}]}</JSONExample>
+            <JSONExample>{"name":"react","description":"React is a JavaScript library for building user interfaces."}</JSONExample>
 
             <h4>
                 <a href="https://api.cdnjs.com/libraries/jquery?fields=assets,versions">
@@ -90,11 +106,13 @@
 </template>
 
 <script>
+    import ExclamationTriangle from '@fortawesome/fontawesome-free/svgs/solid/exclamation-triangle.svg?inline';
     import JSONExample from '../json_example';
 
     export default {
         name: 'APILibrary',
         components: {
+            ExclamationTriangle,
             JSONExample,
         },
         data () {
@@ -346,49 +364,10 @@
                     {
                         prop: 'tutorials',
                         type: [
-                            'array<object>',
+                            'array',
                         ],
                         desc: [
-                            'An array that houses all tutorials that cdnjs has for this library, from the cdnjs/tutorials GitHub repository.',
-                            '<small><i>Alongside the properties listed here, there may be other optional properties available based on the metadata available in each source tutorial file.</i></small>',
-                        ],
-                    },
-                    {
-                        prop: 'tutorials[].id',
-                        type: [
-                            'string',
-                        ],
-                        desc: [
-                            'The slug/identifier for the tutorial, based on the filename of the tutorial in cdnjs/tutorials.',
-                            '<small><i>This is the id that should be used when accessing the <code>/libraries/:library/tutorials/:tutorial</code> API endpoint.</i></small>',
-                        ],
-                    },
-                    {
-                        prop: 'tutorials[].modified',
-                        type: [
-                            'string',
-                        ],
-                        desc: [
-                            'The timestamp of when the tutorial was last modified, in ISO 8601 format.',
-                            'This is based on the last commit that touched the tutorial in cdnjs/tutorials.',
-                        ],
-                    },
-                    {
-                        prop: 'tutorials[].name',
-                        type: [
-                            'string',
-                        ],
-                        desc: [
-                            'The title/name for the tutorial.',
-                        ],
-                    },
-                    {
-                        prop: 'tutorials[].content',
-                        type: [
-                            'string',
-                        ],
-                        desc: [
-                            'The raw markdown content for the tutorial.',
+                            'An empty array. See deprecation notice.',
                         ],
                     },
                 ],
