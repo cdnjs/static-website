@@ -27,9 +27,5 @@ export default (base, library, libraryName) => {
         softwareVersion: library.version,
         applicationCategory: 'library',
         operatingSystem: 'any',
-        hasPart: {
-            '@type': 'CreativeWorkSeries',
-            url: `${base}libraries/${libraryName}/tutorials`,
-        },
     };
 };

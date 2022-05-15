@@ -54,8 +54,6 @@
                     </ul>
                 </template>
             </transition-group>
-
-            <TutorialList :library="libraryName" :tutorials="library.tutorials"></TutorialList>
         </div>
         <JSONLDLibrary :library="library" :library-name="libraryName"></JSONLDLibrary>
     </section>
@@ -76,7 +74,6 @@
     import Breadcrumbs from '../../../components/breadcrumbs';
     import LibraryHero from '../../../components/library/library_hero';
     import LibraryAssetButtons from '../../../components/library/library_asset_buttons';
-    import TutorialList from '../../../components/tutorial/tutorial_list';
     import JSONLDLibrary from '../../../components/json-ld/library';
 
     const meta = {
@@ -128,7 +125,6 @@
             Breadcrumbs,
             LibraryHero,
             LibraryAssetButtons,
-            TutorialList,
             JSONLDLibrary,
             VueSelect,
         },
