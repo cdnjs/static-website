@@ -24,7 +24,7 @@ const getUrls = async () => {
         },
     ];
 
-    // Add in all the libraries, their versions & tutorials
+    // Add in all the libraries and their versions
     return urls.concat(await routes());
 };
 

@@ -7,7 +7,7 @@ const spdxLicenseIds = require('spdx-license-ids/index.json');
 const index = searchClient.initIndex('libraries');
 
 const apiFields = () => new Set([
-    'name', 'autoupdate', 'licenses', 'license', 'homepage', 'description', 'keywords', 'version', 'filename', 'versions', 'tutorials',
+    'name', 'autoupdate', 'licenses', 'license', 'homepage', 'description', 'keywords', 'version', 'filename', 'versions',
 ]);
 
 const apiFieldsQuery = fields => `?fields=${Array.from(fields).map(f => encodeURIComponent(f)).join(',')}`;

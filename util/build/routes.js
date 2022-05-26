@@ -8,19 +8,8 @@ export default async () => {
     const libsJson = await libsRaw.json();
     const libsAsync = libsJson.results.map((lib) => {
         return [lib.name, async () => {
-            const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=tutorials,versions`);
+            const libRaw = await fetch(`${baseApi}/libraries/${encodeURIComponent(lib.name)}?fields=versions`);
             const libJson = await libRaw.json();
-
-            if (!libJson.tutorials) {
-                console.warn(`No tutorials array for ${lib.name}`, libJson);
-            }
-
-            const tutorials = (libJson.tutorials || []).map((tut) => {
-                return {
-                    url: `/libraries/${encodeURIComponent(lib.name)}/tutorials/${encodeURIComponent(tut.id)}`,
-                    priority: 0.5,
-                };
-            });
 
             if (!libJson.versions) {
                 console.warn(`No versions array for ${lib.name}`, libJson);
@@ -38,12 +27,7 @@ export default async () => {
                     url: `/libraries/${encodeURIComponent(lib.name)}`,
                     priority: 0.6,
                 },
-                ...tutorials,
                 ...versions,
-                {
-                    url: `/libraries/${encodeURIComponent(lib.name)}/tutorials`,
-                    priority: 0.4,
-                },
             ];
         }];
     });
