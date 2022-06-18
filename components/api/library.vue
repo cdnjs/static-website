@@ -23,8 +23,9 @@
                 <ExclamationTriangle class="icon" />
                 <div>
                     <p>
-                        Access to older versions in the <code>assets</code> property of libraries is deprecated.
-                        This array will now only contain a single entry for the latest version.
+                        Accessing <code>assets</code> for all versions of a library using this endpoint is deprecated.
+                        The <code>assets</code> property now only contains a single entry for the latest version.
+                        To access the assets of any version, use the <code>/libraries/:library/:version</code> endpoint.
                     </p>
                     <p>
                         See
@@ -320,7 +321,7 @@
                         ],
                         desc: [
                             'An array containing all the versions of the library available on cdnjs.',
-                            '<small><i>These may, or may not, be valid semver.</i></small>',
+                            '<small><i>These may not be valid semver.</i></small>',
                         ],
                     },
                     {
@@ -329,7 +330,7 @@
                             'array<object>',
                         ],
                         desc: [
-                            'An array containing an object for the latest version of the library on cdnjs, or empty if the library has no known versions.',
+                            'An array containing an object for the latest version of the library on cdnjs. The array is empty if the library has no known versions.',
                             '<small><i>Older versions of the library are no longer included in this array. See deprecation notice.</i></small>',
                         ],
                     },
@@ -340,7 +341,7 @@
                         ],
                         desc: [
                             'The version identifier for this version of the library on cdnjs.',
-                            '<small><i>This may, or may not, be valid semver.</i></small>',
+                            '<small><i>This may not be valid semver.</i></small>',
                         ],
                     },
                     {
