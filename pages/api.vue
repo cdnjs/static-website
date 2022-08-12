@@ -59,7 +59,7 @@
     const meta = {
         title: 'API Documentation',
         breadcrumb: 'API Documentation',
-        desc: 'The cdnjs API allows for easy programmatic navigation of our libraries and tutorials. Read the docs to learn about all the endpoints we offer.',
+        desc: 'The cdnjs API allows for easy programmatic navigation of our libraries. Read the docs to learn about all the endpoints we offer.',
         classes: [],
     };
 
