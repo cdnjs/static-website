@@ -48,13 +48,6 @@
             <JSONExample>{"error":true,"status":404,"message":"Library not found"}</JSONExample>
 
             <h4>
-                <a href="https://api.cdnjs.com/libraries/backbone.js/tutorials/this-tutorial-doesnt-exist">
-                    <code class="key">https://api.cdnjs.com/libraries/backbone.js/tutorials/this-tutorial-doesnt-exist</code>
-                </a>
-            </h4>
-            <JSONExample>{"error":true,"status":404,"message":"Tutorial not found"}</JSONExample>
-
-            <h4>
                 <a href="https://api.cdnjs.com/this-route-doesnt-exist">
                     <code class="key">https://api.cdnjs.com/this-route-doesnt-exist</code>
                 </a>
