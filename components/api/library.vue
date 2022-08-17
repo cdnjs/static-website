@@ -8,21 +8,6 @@
                 <ExclamationTriangle class="icon" />
                 <div>
                     <p>
-                        The <code>tutorials</code> property of libraries is deprecated.
-                        It will always be an empty array, and will be removed in the future.
-                    </p>
-                    <p>
-                        See
-                        <a href="https://github.com/cdnjs/cdnjs/issues/14130" target="_blank">
-                            cdnjs/cdnjs issue #14130</a>
-                        for more information.
-                    </p>
-                </div>
-            </div>
-            <div class="callout">
-                <ExclamationTriangle class="icon" />
-                <div>
-                    <p>
                         Accessing <code>assets</code> for all versions of a library using this endpoint is deprecated.
                         The <code>assets</code> property now only contains a single entry for the latest version.
                         To access the assets of any version, use the <code>/libraries/:library/:version</code> endpoint.
@@ -372,15 +357,6 @@
                         ],
                         desc: [
                             'This object will contain a key for each file that cdnjs could calculate an SRI hash for, with the value being the SRI hash.',
-                        ],
-                    },
-                    {
-                        prop: 'tutorials',
-                        type: [
-                            'array',
-                        ],
-                        desc: [
-                            'An empty array. See deprecation notice.',
                         ],
                     },
                 ],

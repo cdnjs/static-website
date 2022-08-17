@@ -23,12 +23,6 @@
                         <a href="#version">Getting a specific version for a library on cdnjs</a>
                     </li>
                     <li>
-                        <a href="#tutorials">Listing all tutorials for a library on cdnjs</a>
-                    </li>
-                    <li>
-                        <a href="#tutorial">Getting a specific tutorial for a cdnjs library</a>
-                    </li>
-                    <li>
                         <a href="#whitelist">Fetch details about the cdnjs file extension whitelist</a>
                     </li>
                     <li>
@@ -44,8 +38,6 @@
             <APIBrowse></APIBrowse>
             <APILibrary></APILibrary>
             <APIVersion></APIVersion>
-            <APITutorials></APITutorials>
-            <APITutorial></APITutorial>
             <APIWhitelist></APIWhitelist>
             <APIStats></APIStats>
             <APIErrors></APIErrors>
@@ -58,8 +50,6 @@
     import APIBrowse from '../components/api/browse';
     import APILibrary from '../components/api/library';
     import APIVersion from '../components/api/version';
-    import APITutorials from '../components/api/tutorials';
-    import APITutorial from '../components/api/tutorial';
     import APIWhitelist from '../components/api/whitelist';
     import APIStats from '../components/api/stats';
     import APIErrors from '../components/api/errors';
@@ -69,7 +59,7 @@
     const meta = {
         title: 'API Documentation',
         breadcrumb: 'API Documentation',
-        desc: 'The cdnjs API allows for easy programmatic navigation of our libraries and tutorials. Read the docs to learn about all the endpoints we offer.',
+        desc: 'The cdnjs API allows for easy programmatic navigation of our libraries. Read the docs to learn about all the endpoints we offer.',
         classes: [],
     };
 
@@ -81,8 +71,6 @@
             APIBrowse,
             APILibrary,
             APIVersion,
-            APITutorials,
-            APITutorial,
             APIWhitelist,
             APIStats,
             APIErrors,
