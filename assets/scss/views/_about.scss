@@ -39,7 +39,7 @@ main {
                 border-radius: $radius;
                 display: flex;
                 flex-direction: row;
-                flex:  calc(50% - #{$whitespace});
+                flex: calc(50% - #{$whitespace});
                 margin: 0 $whitespace $whitespace 0;
                 padding: $whitespace;
                 transition: all $transition-duration $transition-timing-function;
