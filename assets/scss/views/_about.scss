@@ -59,6 +59,7 @@ main {
                 @media screen and (max-width: $mobile-sm) {
                   flex-basis: 100%;
                   margin: 0 0 $whitespace 0;
+
                   &:nth-child(odd) {
                     margin-right: 0;
                   }
