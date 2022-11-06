@@ -36,33 +36,14 @@ main {
               @include flex-row;
 
               .member {
-                border-radius: $radius;
-                display: flex;
-                flex-direction: row;
-                flex: calc(50% - #{$whitespace});
-                margin: 0 $whitespace $whitespace 0;
-                padding: $whitespace;
-                transition: all $transition-duration $transition-timing-function;
+                @include flex-row;
 
-                &:hover {
-                  transform: translateY(- calc($whitespace / 2));
-                }
-
-                @media screen and (max-width: $breakpoint) {
-                  margin: 0 0 $whitespace 0;
-
-                  &:nth-child(odd) {
-                    margin-right: $whitespace;
-                  }
-                }
+                flex-basis: 50%;
+                flex-wrap: nowrap;
+                padding: 0 ($whitespace * 1.5) ($whitespace) 0;
 
                 @media screen and (max-width: $mobile-sm) {
                   flex-basis: 100%;
-                  margin: 0 0 $whitespace 0;
-
-                  &:nth-child(odd) {
-                    margin-right: 0;
-                  }
                 }
 
                 a {
@@ -73,11 +54,17 @@ main {
                     justify-content: center;
                     margin: 0 ($whitespace * .5) 0 0;
                     width: 78px;
+
                     img {
                       border-radius: $radius * .5;
                       height: 100%;
                       object-fit: contain;
                       width: 100%;
+                      transition: filter $transition-duration $transition-timing-function;
+
+                      &:hover {
+                        filter: grayscale(100%);
+                      }
                     }
 
                     svg {
@@ -91,6 +78,7 @@ main {
 
                 .info {
                   @include flex-column;
+
                   align-items: flex-start;
 
                   .name {
