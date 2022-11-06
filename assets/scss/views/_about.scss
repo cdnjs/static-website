@@ -50,6 +50,7 @@ main {
 
                 @media screen and (max-width: $breakpoint) {
                   margin: 0 0 $whitespace 0;
+
                   &:nth-child(odd) {
                     margin-right: $whitespace;
                   }
