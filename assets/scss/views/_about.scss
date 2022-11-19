@@ -59,8 +59,8 @@ main {
                       border-radius: $radius * .5;
                       height: 100%;
                       object-fit: contain;
-                      width: 100%;
                       transition: filter $transition-duration $transition-timing-function;
+                      width: 100%;
 
                       &:hover {
                         filter: grayscale(100%);
@@ -129,10 +129,10 @@ main {
               border-radius: $radius;
 
               @media screen and (max-width: $breakpoint) and (min-width: $mobile) {
-                height: 200px;
-                width: 200px;
                 display: inline-flex;
+                height: 200px;
                 margin: 0 $whitespace $whitespace 0;
+                width: 200px;
 
                 img {
                   height: 100%;
