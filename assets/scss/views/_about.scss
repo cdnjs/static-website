@@ -42,7 +42,7 @@ main {
                 flex-wrap: nowrap;
                 padding: 0 ($whitespace * 1.5) ($whitespace) 0;
 
-                @media screen and (max-width: $breakpoint) {
+                @media screen and (max-width: $mobile-sm) {
                   flex-basis: 100%;
                 }
 
@@ -59,7 +59,12 @@ main {
                       border-radius: $radius * .5;
                       height: 100%;
                       object-fit: contain;
+                      transition: filter $transition-duration $transition-timing-function;
                       width: 100%;
+
+                      &:hover {
+                        filter: grayscale(100%);
+                      }
                     }
 
                     svg {
@@ -124,9 +129,16 @@ main {
               border-radius: $radius;
 
               @media screen and (max-width: $breakpoint) and (min-width: $mobile) {
+                display: inline-flex;
                 height: 200px;
-                margin: 0 0 $whitespace;
+                margin: 0 $whitespace $whitespace 0;
                 width: 200px;
+
+                img {
+                  height: 100%;
+                  object-fit: contain;
+                  width: 100%;
+                }
               }
 
               @media screen and (max-width: $mobile) and (min-width: $mobile-sm) {
