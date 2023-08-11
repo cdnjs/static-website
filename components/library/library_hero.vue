@@ -27,7 +27,7 @@
             <p v-if="vulns">
                 <a :href="vulns.url">
                     <ShieldAlt class="icon" aria-label="Snyk"></ShieldAlt>
-                    {{ vulns.vulns }} vulnerabilities
+                    {{ vulns.vulns }} known vulnerabilities
                 </a>
             </p>
         </div>
