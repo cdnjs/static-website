@@ -10,7 +10,7 @@
                     <p>
                         We are cdnjs, the #1 free and open source CDN built to make life easier for developers
                         serving <a :href="utm('https://w3techs.com/technologies/details/cd-cdnjs', 'about')">
-                            over 13.0% of all websites</a>, and powered by Cloudflare.
+                            over 13.0% of all websites</a>, powered by Cloudflare.
                     </p>
                     <p>
                         We believe in the open-source mission, and want to support a fast and free web. To do that,
