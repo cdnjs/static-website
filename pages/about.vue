@@ -18,11 +18,11 @@
                     </p>
                     <p>
                         We handle <a :href="utm('https://github.com/cdnjs/cf-stats', 'about')">over 250 billion requests
-                            a month</a> and support HTTP/3, HTTP/2, QUIC, and SPDY, with HSTS enabled to ensure a secure
-                        connection and using Brotli 11 to compress files.
+                            a month</a> and support HTTP/3, HTTP/2, and QUIC, with HSTS preloaded and enabled to ensure a secure
+                        connection while using Brotli 11 to compress files.
                     </p>
                     <p>
-                        While a CDN isn’t perfect for every occasion, when it is we’re here for you.
+                        While a CDN isn’t perfect for every occasion, when it is, we’re here for you.
                     </p>
                     <p>
                         <nuxt-link :to="{ name: 'libraries' }" class="button">
