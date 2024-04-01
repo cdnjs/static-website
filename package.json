@@ -37,7 +37,6 @@
     "@sentry/node": "^6.18.0",
     "algoliasearch": "^4.12.1",
     "babel-polyfill": "^6.26.0",
-    "chunk": "0.0.3",
     "consola": "^2.15.3",
     "copyfiles": "^2.4.1",
     "core-js": "^3.21.1",

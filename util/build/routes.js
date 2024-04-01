@@ -1,4 +1,3 @@
-import chunk from 'chunk';
 import fetch from 'node-fetch';
 import consola from 'consola';
 import { baseApi } from '../../data/config';
@@ -11,6 +10,7 @@ export default async () => {
     consola.info(`  Fetched ${libsJson.results.length} libraries in ${Date.now() - libsStart}ms`);
 
     // Track timings for individual libraries
+    const libsAsyncStart = Date.now();
     const timings = [];
 
     // Create the lib promises
@@ -21,7 +21,7 @@ export default async () => {
             const libJson = await libRaw.json();
 
             if (!libJson.versions) {
-                console.warn(`No versions array for ${lib.name}`, libJson);
+                consola.warn(`No versions array for ${lib.name}`, libJson);
             }
 
             const versions = (libJson.versions || []).map((version) => {
@@ -43,22 +43,26 @@ export default async () => {
         }];
     });
 
-    // Split into chunks and fetch
-    const libsChunksStart = Date.now();
-    const libsChunks = chunk(libsAsync, 100);
-    const failed = [];
+    // Run with a continual concurrency of 100
     const libs = [];
-    for (const libsChunk of libsChunks) {
-        const chunkRes = await Promise.all(libsChunk.map(cb => cb[1]().catch(() => failed.push(cb))));
-        libs.push(...chunkRes.flat(1));
-    }
-    for (const failure of failed) {
-        const result = await failure[1]().catch(e => console.warn(failure[0], e));
+    const failed = [];
+    const libPromise = (name, callback) => callback()
+        .then(result => libs.push(...result))
+        .catch(() => failed.push([name, callback]))
+        .finally(() => {
+            const next = libsAsync.shift();
+            if (next) { return libPromise(...next); }
+        });
+    await Promise.all(libsAsync.splice(0, 100).map(next => libPromise(...next)));
+
+    // Re-run any failures with a concurrency of 1
+    for (const [name, callback] of failed) {
+        const result = await callback().catch(e => consola.warn(name, e));
         if (result) { libs.push(...result); }
     }
 
     // Report the timings
-    consola.info(`  Fetched ${timings.length} libraries in ${Date.now() - libsChunksStart}ms`);
+    consola.info(`  Fetched ${timings.length} libraries in ${Date.now() - libsAsyncStart}ms`);
     timings.sort((a, b) => a[1] - b[1]);
     consola.info(`    p99: ${timings[Math.floor(timings.length * 0.99)][1]}ms`);
     consola.info(`    p90: ${timings[Math.floor(timings.length * 0.9)][1]}ms`);
