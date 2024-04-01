@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": "14.18.0"
+    "node": "16.20.2"
   },
   "scripts": {
     "dev": "NODE_ENV=dev SITE_HOST=http://localhost:3000/ nuxt",
