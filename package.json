@@ -81,6 +81,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.20.0",
     "fibers": "^5.0.1",
+    "postcss": "^8.4.38",
     "sass": "^1.49.9",
     "sass-lint": "^1.13.1",
     "sass-lint-auto-fix": "^0.21.2",
