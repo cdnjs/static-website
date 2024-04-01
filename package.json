@@ -62,7 +62,7 @@
     "tlite": "^0.1.9",
     "typeface-ubuntu": "^1.1.13",
     "url-parse": "^1.5.10",
-    "vue": "^2.6.14",
+    "vue": "^2.7.16",
     "vue-client-only": "^2.1.0",
     "vue-clipboard2": "^0.3.3",
     "vue-gravatar": "^1.4.1",
