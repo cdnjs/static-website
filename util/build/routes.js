@@ -43,7 +43,7 @@ export default async () => {
         }];
     });
 
-    // Run with a continual concurrency of 100
+    // Run with a continual concurrency of 10
     const libs = [];
     const failed = [];
     const libPromise = (name, callback) => callback()
@@ -53,7 +53,7 @@ export default async () => {
             const next = libsAsync.shift();
             if (next) { return libPromise(...next); }
         });
-    await Promise.all(libsAsync.splice(0, 100).map(next => libPromise(...next)));
+    await Promise.all(libsAsync.splice(0, 10).map(next => libPromise(...next)));
 
     // Re-run any failures with a concurrency of 1
     for (const [name, callback] of failed) {
