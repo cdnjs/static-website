@@ -62,11 +62,13 @@ export default async () => {
     }
 
     // Report the timings
-    consola.info(`  Fetched ${timings.length} libraries in ${Date.now() - libsAsyncStart}ms`);
     timings.sort((a, b) => a[1] - b[1]);
+    consola.info(`  Fetched ${timings.length} libraries in ${Date.now() - libsAsyncStart}ms:`);
     consola.info(`    p99: ${timings[Math.floor(timings.length * 0.99)][1]}ms`);
     consola.info(`    p90: ${timings[Math.floor(timings.length * 0.9)][1]}ms`);
     consola.info(`    p50: ${timings[Math.floor(timings.length * 0.5)][1]}ms`);
+    consola.info('  Slowest libraries:');
+    timings.slice(-5).reverse().forEach(([name, time]) => consola.info(`    ${name}: ${time}ms`));
 
     // Ensure everything is valid & sort by URL
     return libs.filter(x => !!x && !!x.url).sort((a, b) => a.url.localeCompare(b.url));
