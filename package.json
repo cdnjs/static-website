@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "engines": {
-    "node": "14.18.0"
+    "node": "16.20.2"
   },
   "scripts": {
     "dev": "NODE_ENV=dev SITE_HOST=http://localhost:3000/ nuxt",
@@ -37,7 +37,6 @@
     "@sentry/node": "^6.18.0",
     "algoliasearch": "^4.12.1",
     "babel-polyfill": "^6.26.0",
-    "chunk": "0.0.3",
     "consola": "^2.15.3",
     "copyfiles": "^2.4.1",
     "core-js": "^3.21.1",
@@ -50,7 +49,6 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^10.0.1",
     "instantsearch.css": "^7.4.5",
-    "markdown-it": "^12.3.2",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.7",
     "nuxt": "^2.17.3",
@@ -65,11 +63,8 @@
     "vue": "^2.7.16",
     "vue-client-only": "^2.1.0",
     "vue-clipboard2": "^0.3.3",
-    "vue-gravatar": "^1.4.1",
-    "vue-hot-reload-api": "^2.3.4",
     "vue-instantsearch": "^4.6.0",
     "vue-prism-component": "^1.2.0",
-    "vue-router": "^3.5.3",
     "vue-select": "^3.18.3"
   },
   "devDependencies": {
@@ -85,7 +80,7 @@
     "sass": "^1.49.9",
     "sass-lint": "^1.13.1",
     "sass-lint-auto-fix": "^0.21.2",
-    "sass-loader": "^10.2.1",
+    "sass-loader": "^10.5.2",
     "vue-eslint-parser": "^7.11.0"
   }
 }
