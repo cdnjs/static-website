@@ -32,7 +32,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@nuxtjs/google-analytics": "^2.4.0",
-    "@nuxtjs/sentry": "^5.1.7",
+    "@nuxtjs/sentry": "^8.0.8",
     "@nuxtjs/svg": "^0.3.0",
     "@sentry/node": "^6.18.0",
     "algoliasearch": "^4.12.1",
