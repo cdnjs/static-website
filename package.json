@@ -32,8 +32,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@nuxtjs/google-analytics": "^2.4.0",
-    "@nuxtjs/sentry": "^5.1.7",
+    "@nuxtjs/sentry": "^8.0.8",
     "@nuxtjs/svg": "^0.3.0",
+    "@sentry/cli": "^2.36.6",
     "@sentry/node": "^6.18.0",
     "algoliasearch": "^4.12.1",
     "babel-polyfill": "^6.26.0",
@@ -70,7 +71,7 @@
   "devDependencies": {
     "@babel/runtime-corejs3": "^7.17.2",
     "@nuxtjs/eslint-config": "^6.0.1",
-    "@sentry/cli": "^1.73.0",
+    "@sentry/webpack-plugin": "^2.22.5",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
