@@ -24,12 +24,6 @@
                     package
                 </a>
             </p>
-            <p v-if="vulns">
-                <a :href="vulns.url">
-                    <ShieldAlt class="icon" aria-label="Snyk"></ShieldAlt>
-                    {{ vulns.vulns }} known vulnerabilities
-                </a>
-            </p>
         </div>
 
         <div class="row">
@@ -62,10 +56,8 @@
     import Star from '@fortawesome/fontawesome-free/svgs/solid/star.svg?inline';
     import GitHub from '@fortawesome/fontawesome-free/svgs/brands/github.svg?inline';
     import Npm from '@fortawesome/fontawesome-free/svgs/brands/npm.svg?inline';
-    import ShieldAlt from '@fortawesome/fontawesome-free/svgs/solid/shield-alt.svg?inline';
     import formatUnits from '../../util/format_units';
     import utm from '../../util/utm';
-    import getVulns from '../../util/get_vulns';
 
     export default {
         name: 'LibraryHero',
@@ -73,27 +65,9 @@
             Star,
             GitHub,
             Npm,
-            ShieldAlt,
         },
         props: {
             library: Object,
-            version: String,
-        },
-        data () {
-            return {
-                vulns: null,
-            };
-        },
-        watch: {
-            version: {
-                immediate: true,
-                async handler () {
-                    this.$data.vulns = await getVulns(this.$props.library, this.$props.version).catch(() => {});
-                },
-            },
-        },
-        async created () {
-            this.$data.vulns = await getVulns(this.$props.library, this.$props.version).catch(() => {});
         },
         methods: {
             formatUnits,
