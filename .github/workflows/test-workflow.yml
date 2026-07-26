@@ -23,3 +23,13 @@ jobs:
 
     - name: Run Tests
       run: npm test
+
+    - name: Build Site
+      run: SITE_HOST=http://localhost:3000/ npm run build
+
+    - name: Check Site
+      run: |
+        trap 'kill $(jobs -p)' EXIT
+        SITE_HOST=http://localhost:3000/ npm run start &
+        sleep 5
+        curl -fsSI http://localhost:3000/
