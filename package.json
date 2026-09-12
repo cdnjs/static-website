@@ -51,7 +51,7 @@
     "imagemin-svgo": "^10.0.1",
     "instantsearch.css": "^7.4.5",
     "instantsearch.js": "^4.89.0",
-    "morgan": "^1.11.0",
+    "morgan": "^1.12.0",
     "node-fetch": "^2.6.7",
     "nuxt": "^2.17.3",
     "prismjs": "^1.30.0",
