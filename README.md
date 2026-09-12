@@ -8,6 +8,9 @@
 
 ## cdnjs Website
 
+> [!WARNING]
+> This repository is no longer home to the cdnjs website. The website is now served by the same Cloudflare Worker that powers our API, and the source code can be found in the [cdnjs/api-server repository](https://github.com/cdnjs/api-server).
+
 Welcome to the cdnjs/static-website repository, the home of the new cdnjs website built with Vue &
 Nuxt, following the new cdnjs branding proposal from [cdnjs/brand](https://github.com/cdnjs/brand).
 
